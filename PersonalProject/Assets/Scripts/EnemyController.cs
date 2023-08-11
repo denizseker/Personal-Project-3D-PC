@@ -10,15 +10,11 @@ public class EnemyController : MonoBehaviour
         Idle,
         Catching,
         Patroling,
-        RunningFromEnemy,
+        RunningFrom,
     }
 
     //Soldiers current state.
     public CurrentState currentState = CurrentState.Idle;
-
-    //This is contain settlements patrol radius.
-    [SerializeField] private GetPatrolPoint patrolArea;
-
 
     const string IDLE = "Idle";
     const string RUN = "Run";
@@ -26,25 +22,34 @@ public class EnemyController : MonoBehaviour
     NavMeshAgent agent;
 
     //Soldier values
-    public string clan;
+    public GameManager.Clans clan;
     public string soldierName;
     public int troops;
 
     //chaseandcatch
     private ChaseAndCatch chaseAndCatch;
 
+    public Settlement settlement;
+
+    private GameObject patrolTown;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         chaseAndCatch = GetComponentInChildren<ChaseAndCatch>();
+        patrolTown = settlement.gameObject;
     }
+
     private void Update()
     {
         SetAnimations();
-        GoPatrol();
-        
+        //if AI have town for patroling.
+        if(patrolTown != null)
+        {
+            GoPatrol();
+        }
+
     }
 
     void SetAnimations()
@@ -60,15 +65,48 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    //Enemy AI Soldier movement
     public void GoPatrol()
+    {
+        if (!agent.hasPath && !chaseAndCatch.isCatched)
+        {
+            Vector3 patrolPoint = patrolTown.GetComponentInChildren<GetPatrolPoint>().GetPatrolPostition();
+            agent.destination = patrolPoint;
+            currentState = CurrentState.Patroling;
+        }
+    }
+
+    //Enemy AI Soldier movement
+    public void GetPatrolTown()
     {
         //If agent dont have path (patroling,catching,runningfromus) we are giving it patrol job.
         if (!agent.hasPath && !chaseAndCatch.isCatched)
         {
-            Vector3 patrolPoint = patrolArea.GetPatrolPostition();
-            agent.destination = patrolPoint;
-            currentState = CurrentState.Patroling;
+            //Checking all available town.
+            for (int i = 0; i < GameManager.Instance.Settlements.Count; i++)
+            {
+                Debug.Log(gameObject.name + " looking for town.");
+
+                //Looking for a town owned by ally clan.
+                if (GameManager.Instance.Settlements[i].GetComponent<Settlement>().RullerClan == clan)
+                {
+                    if (!GameManager.Instance.Settlements[i].GetComponent<Settlement>().isHavePatrol)
+                    {
+                        
+                        patrolTown = GameManager.Instance.Settlements[i];
+                        patrolTown.GetComponent<Settlement>().isHavePatrol = true;
+                        Debug.Log(patrolTown.name + " patrol is " + gameObject.name);
+                        return;
+                    }
+                    else
+                    {
+                        //Debug.Log("Have town but someone patroling already.");
+                    }
+                }
+                else
+                {
+                    //Debug.Log("Dont have clan");
+                }
+            }
         }
     }
 

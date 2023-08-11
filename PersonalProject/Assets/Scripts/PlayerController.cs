@@ -16,12 +16,10 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] ParticleSystem clickEffect;
 
-    private GameManager gameManager;
 
 
     void Awake()
     {
-        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         input = new CustomAction();
@@ -46,31 +44,9 @@ public class PlayerController : MonoBehaviour
 
                 agent.destination = hit.point;
 
+                //User clicked terrain for move so we are clearing selected objects.
+                GameManager.Instance.ClearSelectedObjects();
 
-                gameManager.ClearSelectedObjects();
-
-                ////If we have a clicked object already and somewhere else for move we are going to unselect that object.
-                //if (gameManager.selectedObjects.Count == 1)
-                //{
-
-                //    gameManager.selectedObjects[0].transform.parent.GetComponentInChildren<MoveToObject>().isSelected = false;
-                //    //checking what is selected object - This is soldier.
-                //    if (gameManager.selectedObjects[0].transform.parent.GetComponentInChildren<CanvasControllerSoldier>() != null)
-                //    {
-                //        gameManager.selectedObjects[0].transform.parent.GetComponentInChildren<CanvasControllerSoldier>().infoPanel.SetActive(false);
-                //        gameManager.selectedObjects[0].transform.parent.GetComponentInChildren<CanvasControllerSoldier>().armySizePanel.SetActive(true);
-                //    }
-                //    //checking what is selected object - This is town.
-                //    else if (gameManager.selectedObjects[0].transform.parent.GetComponentInChildren<CanvasControllerSettlement>() != null)
-                //    {
-                //        gameManager.selectedObjects[0].transform.parent.GetComponentInChildren<CanvasControllerSettlement>().InfoPanel.SetActive(false);
-                //    }
-                //    //SelectEffect deactivating
-                //    gameManager.selectedObjects[0].SetActive(false);
-                //    //Selectedoject list cleared.
-                //    gameManager.selectedObjects.Clear();
-                //}
-                //Click effect instantiating at hit point.
                 if (clickEffect != null)
                 { Instantiate(clickEffect, hit.point + new Vector3(0, 0.1f, 0), clickEffect.transform.rotation); }
             }

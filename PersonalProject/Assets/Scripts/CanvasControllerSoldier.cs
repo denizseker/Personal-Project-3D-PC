@@ -15,7 +15,8 @@ public class CanvasControllerSoldier : MonoBehaviour
     public GameObject infoPanel;
     public GameObject armySizePanel;
     //UI text and image elements
-    [SerializeField] private Text soldierName;
+    [SerializeField] private Text infoSoldierName;
+    [SerializeField] private Text littleSoldierName;
     [SerializeField] private Text armySizeValue;
     [SerializeField] private Text clanValue;
     [SerializeField] private Text troopsValue;
@@ -31,6 +32,7 @@ public class CanvasControllerSoldier : MonoBehaviour
 
     private void Awake()
     {
+        enemyController = GetComponentInParent<EnemyController>();
         UpdateTextAndScale();
         MoveToObject = GetComponent<MoveToObject>();
     }
@@ -90,12 +92,34 @@ public class CanvasControllerSoldier : MonoBehaviour
     //updating text and scale
     void UpdateTextAndScale()
     {
-        enemyController = GetComponentInParent<EnemyController>();
-        soldierName.text = enemyController.soldierName.ToString();
+        infoSoldierName.text = enemyController.soldierName.ToString();
+        littleSoldierName.text = enemyController.soldierName.ToString();
         armySizeValue.text = enemyController.troops.ToString();
         clanValue.text = enemyController.clan.ToString();
         troopsValue.text = enemyController.troops.ToString();
-        currentStateValue.text = enemyController.currentState.ToString();
+        
+
+        if(enemyController.currentState == EnemyController.CurrentState.Patroling)
+        {
+            currentStateValue.text = enemyController.currentState.ToString() + " " + enemyController.settlement.Name;
+        }
+        else
+        {
+            currentStateValue.text = enemyController.currentState.ToString();
+        }
+        //else if (enemyController.currentState == EnemyController.CurrentState.Catching)
+        //{
+
+        //}
+        //else if (enemyController.currentState == EnemyController.CurrentState.RunningFrom)
+        //{
+
+        //}
+        //else if (enemyController.currentState == EnemyController.CurrentState.Idle)
+        //{
+
+        //}
+
         dist = Vector3.Distance(Camera.main.transform.position, transform.position);
         var scale = Mathf.Lerp(minScale, maxScale, Mathf.InverseLerp(minDistance, maxDistance, dist));
         infoPanel.transform.localScale = new Vector3(scale, scale, scale);

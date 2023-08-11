@@ -1059,7 +1059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb9ac37d6c277345beb6aba59342a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  troops: 40
+  troops: 110
   armySizeText: {fileID: 3329993035422253358}
 --- !u!136 &5701563116415177455
 CapsuleCollider:

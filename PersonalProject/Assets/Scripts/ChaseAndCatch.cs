@@ -30,7 +30,9 @@ public class ChaseAndCatch : MonoBehaviour
     {
         isCatched = false;
         agent.ResetPath();
+
         enemyController.GoPatrol();
+
         enemyController.currentState = EnemyController.CurrentState.Patroling;
     }
 
@@ -49,7 +51,7 @@ public class ChaseAndCatch : MonoBehaviour
 
     private void RunFromEnemy(Collider other)
     {
-        enemyController.currentState = EnemyController.CurrentState.RunningFromEnemy;
+        enemyController.currentState = EnemyController.CurrentState.RunningFrom;
         Vector3 dirToPlayer = transform.position - other.transform.position;
         Vector3 runPos = transform.position + dirToPlayer;
         agent.SetDestination(runPos);

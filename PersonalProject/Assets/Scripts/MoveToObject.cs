@@ -8,7 +8,6 @@ public class MoveToObject : MonoBehaviour
     [SerializeField] private GameObject selectedEffect;
 
     private GameObject player;
-    private GameObject gameManager;
     private ChaseAndCatch chaseAndCatch;
     private GameObject parent;
 
@@ -16,7 +15,6 @@ public class MoveToObject : MonoBehaviour
     private void Awake()
     {
         parent = transform.parent.gameObject;
-        gameManager = GameObject.FindGameObjectWithTag("GameManager");
         player = GameObject.FindGameObjectWithTag("Player");
         //town ise null olacak.
         chaseAndCatch = parent.GetComponentInChildren<ChaseAndCatch>();
@@ -28,10 +26,10 @@ public class MoveToObject : MonoBehaviour
     private void OnMouseDown()
     {
         //Resetting selected object for every town/enemy click
-        GameManager gameManagerScr = gameManager.GetComponent<GameManager>();
-        gameManagerScr.ClearSelectedObjects();
-        
-        gameManagerScr.selectedObjects.Add(selectedEffect);
+        GameManager.Instance.ClearSelectedObjects();
+        GameManager.Instance.selectedObjects.Add(selectedEffect);
+
+
         selectedEffect.SetActive(true);
         isSelected = true;
         //Clicking to town

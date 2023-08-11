@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class CanvasControllerSettlement : MonoBehaviour
 {
-    [SerializeField] private BaseSettlement townBase;
+    private Settlement settlement;
     [SerializeField] private Text titleValue;
     [SerializeField] private Text rulerValue;
     [SerializeField] private Text powerValue;
@@ -14,7 +14,6 @@ public class CanvasControllerSettlement : MonoBehaviour
     [SerializeField] private Text economyValue;
     [SerializeField] private Text defendersValue;
     public GameObject InfoPanel;
-    private NavMeshAgent playerAgent;
     private MoveToObject moveToObject;
 
 
@@ -26,11 +25,11 @@ public class CanvasControllerSettlement : MonoBehaviour
 
     private void Awake()
     {
-        UpdateTextAndScale();
+        
         moveToObject = GetComponent<MoveToObject>();
-        playerAgent = GameObject.FindGameObjectWithTag("Player").GetComponent<NavMeshAgent>();
+        settlement = GetComponentInParent<Settlement>();
+        UpdateTextAndScale();
     }
-
 
     private void OnMouseEnter()
     {
@@ -62,12 +61,12 @@ public class CanvasControllerSettlement : MonoBehaviour
     }
     private void UpdateTextAndScale()
     {
-        titleValue.text = townBase.Name;
-        rulerValue.text = townBase.RullerName;
-        powerValue.text = townBase.Power.ToString();
-        wallValue.text = townBase.WallLevel.ToString();
-        economyValue.text = townBase.Economy;
-        defendersValue.text = townBase.Defenders.ToString();
+        titleValue.text = settlement.Name;
+        rulerValue.text = settlement.RullerClan.ToString();
+        powerValue.text = settlement.Power.ToString();
+        wallValue.text = settlement.WallLevel.ToString();
+        economyValue.text = settlement.Economy;
+        defendersValue.text = settlement.Defenders.ToString();
         dist = Vector3.Distance(Camera.main.transform.position, transform.position);
         var scale = Mathf.Lerp(minScale, maxScale, Mathf.InverseLerp(minDistance, maxDistance, dist));
         InfoPanel.transform.localScale = new Vector3(scale, scale, scale);
