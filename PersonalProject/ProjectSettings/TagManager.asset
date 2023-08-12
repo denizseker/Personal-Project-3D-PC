@@ -11,6 +11,7 @@ TagManager:
   - GameManager
   - Town
   - DetectArea
+  - NPC
   layers:
   - Default
   - TransparentFX

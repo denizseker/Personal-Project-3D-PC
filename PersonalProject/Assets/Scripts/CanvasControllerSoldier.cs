@@ -23,6 +23,10 @@ public class CanvasControllerSoldier : MonoBehaviour
     [SerializeField] private Text currentStateValue;
     [SerializeField] private GameObject smallExclamationMark;
     [SerializeField] private GameObject bigExclamationMark;
+    [SerializeField] private SpriteRenderer clanLogo;
+    //Clan logos
+    [SerializeField] private Sprite WUTANG_LOGO;
+    [SerializeField] private Sprite V8_LOGO;
     //script for selectable objects.
     private MoveToObject MoveToObject;
     //main script for enemies
@@ -36,6 +40,12 @@ public class CanvasControllerSoldier : MonoBehaviour
         UpdateTextAndScale();
         MoveToObject = GetComponent<MoveToObject>();
     }
+
+    private void Start()
+    {
+        UpdateTextAndScale();
+    }
+
     //If mouse enter this gameobject
     private void OnMouseEnter()
     {
@@ -98,6 +108,15 @@ public class CanvasControllerSoldier : MonoBehaviour
         clanValue.text = enemyController.clan.ToString();
         troopsValue.text = enemyController.troops.ToString();
         
+        if(enemyController.clan == GameManager.Clans.WUTANG)
+        {
+            clanLogo.sprite = WUTANG_LOGO;
+        }
+        else if(enemyController.clan == GameManager.Clans.V8)
+        {
+            clanLogo.sprite = V8_LOGO;
+        }
+
 
         if(enemyController.currentState == EnemyController.CurrentState.Patroling)
         {

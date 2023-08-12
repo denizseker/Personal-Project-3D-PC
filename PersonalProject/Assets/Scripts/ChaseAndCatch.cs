@@ -63,22 +63,38 @@ public class ChaseAndCatch : MonoBehaviour
     }
 
     private void OnTriggerStay(Collider other)
-    { 
-        if(other.tag == "DetectArea" && other.GetComponentInParent<PlayerManager>() != null)
+    {
+        //if soldiers detect an other soldier.
+        if (other.tag == "DetectArea")
         {
-            if (!isCatched && other.GetComponentInParent<PlayerManager>().troops <= enemyController.troops)
+            //if detected soldier is NPC
+            if (other.transform.parent.tag == "NPC")
             {
-                
-                Chase(other);
+                if (!isCatched && other.GetComponentInParent<EnemyController>().troops <= enemyController.troops)
+                {
+                    Chase(other);
+                }
+                else if (!isCatched && other.GetComponentInParent<EnemyController>().troops > enemyController.troops)
+                {
+                    RunFromEnemy(other);
+                }
+                else { return; }
             }
-            else if (!isCatched && other.GetComponentInParent<PlayerManager>().troops > enemyController.troops)
+            //if detected soldier is PLAYER
+            else if (other.transform.parent.tag == "Player")
             {
-                RunFromEnemy(other);
+                if (!isCatched && other.GetComponentInParent<PlayerManager>().troops <= enemyController.troops)
+                {
+
+                    Chase(other);
+                }
+                else if (!isCatched && other.GetComponentInParent<PlayerManager>().troops > enemyController.troops)
+                {
+                    RunFromEnemy(other);
+                }
+                else { return; }
             }
-            else { return; }
         }
-        
-        
     }
 
     private void OnTriggerExit(Collider other)

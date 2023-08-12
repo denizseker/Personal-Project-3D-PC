@@ -487,7 +487,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3694209937629801131}
   m_LocalRotation: {x: 0.00017455219, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.11834639}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -496,7 +496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 74.00003, y: -339}
+  m_AnchoredPosition: {x: 74.00003, y: -320}
   m_SizeDelta: {x: 155, y: 155}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3694209937629801134
@@ -841,6 +841,9 @@ MonoBehaviour:
   currentStateValue: {fileID: 3694209938389589238}
   smallExclamationMark: {fileID: 3694209937382680502}
   bigExclamationMark: {fileID: 3694209939286122368}
+  clanLogo: {fileID: 7911702372570636865}
+  WUTANG_LOGO: {fileID: 21300000, guid: fe411cf4f7584c344814aa2032021222, type: 3}
+  V8_LOGO: {fileID: 21300000, guid: 9b3663580c8f58f40b7264f85773fe1d, type: 3}
 --- !u!114 &3694209938059827685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1523,7 +1526,7 @@ GameObject:
   - component: {fileID: 4175216542275334479}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1602,9 +1605,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  clan: 0
-  soldierName: Sir Godsea
-  troops: 55
+  clan: 1
+  soldierName: Sir Sef0
+  troops: 75
   settlement: {fileID: 0}
 --- !u!1 &4203135021029877753
 GameObject:
@@ -1652,7 +1655,7 @@ GameObject:
   - component: {fileID: 929174473846113830}
   m_Layer: 2
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: DetectArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1840,7 +1843,7 @@ GameObject:
   - component: {fileID: 4572404318815320675}
   - component: {fileID: 7911702372570636865}
   m_Layer: 0
-  m_Name: Wu-Tang_Clan_logo
+  m_Name: ClanLogo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1902,15 +1905,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fe411cf4f7584c344814aa2032021222, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 14.72, y: 12.82}
+  m_Size: {x: 5.12, y: 5.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5088822788573356662
