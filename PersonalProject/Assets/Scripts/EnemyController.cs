@@ -28,10 +28,9 @@ public class EnemyController : MonoBehaviour
 
     //chaseandcatch
     private ChaseAndCatch chaseAndCatch;
-
     public Settlement settlement;
-
     private GameObject patrolTown;
+    public string intrectedSoldierName;
 
     private void Awake()
     {

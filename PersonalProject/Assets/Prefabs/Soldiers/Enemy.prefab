@@ -1609,6 +1609,7 @@ MonoBehaviour:
   soldierName: Sir Sef0
   troops: 75
   settlement: {fileID: 0}
+  intrectedSoldierName: 
 --- !u!1 &4203135021029877753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,7 +1911,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.13}
+  m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

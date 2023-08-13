@@ -1248,12 +1248,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87f935ceae9e354195179c2f0c46a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Jadoli
-  RullerName: ABC
+  Name: JADOLI
+  RullerClan: 0
   Defenders: 55
   Power: 55
   Economy: ABC
   WallLevel: 55
+  isHavePatrol: 0
 --- !u!1 &2527539638849294920
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
 
 
+
+
     public static GameManager Instance;
 
     public List<GameObject> selectedObjects = new List<GameObject>();

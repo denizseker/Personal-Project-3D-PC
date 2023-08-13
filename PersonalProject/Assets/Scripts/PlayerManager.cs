@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
     public int troops;
 
     [SerializeField] private Text armySizeText;
+    public string playerName = "Sir Eternal";
 
     private void Awake()
     {

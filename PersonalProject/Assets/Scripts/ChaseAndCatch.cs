@@ -18,21 +18,25 @@ public class ChaseAndCatch : MonoBehaviour
 
     private void Chase(Collider other)
     {
-        enemyController.currentState = EnemyController.CurrentState.Catching;
-        agent.SetDestination(other.transform.position);
-        float distance = Vector3.Distance(transform.position, other.transform.position);
-        if (distance < 5)
+        //if soldier running from someone, it cant chase anyone just can run.
+        if(enemyController.currentState != EnemyController.CurrentState.RunningFrom)
         {
-            Catch(other);
+            enemyController.currentState = EnemyController.CurrentState.Catching;
+            agent.SetDestination(other.transform.position);
+            float distance = Vector3.Distance(transform.position, other.transform.position);
+            if (distance < 5)
+            {
+                Catch(other);
+            }
         }
+        
     }
     private void StopChase(Collider other)
     {
         isCatched = false;
         agent.ResetPath();
-
+        enemyController.intrectedSoldierName = "";
         enemyController.GoPatrol();
-
         enemyController.currentState = EnemyController.CurrentState.Patroling;
     }
 
@@ -44,14 +48,11 @@ public class ChaseAndCatch : MonoBehaviour
         isCatched = true;
         targetAgent.ResetPath();
     }
-    private void GetCatch(Collider other)
-    {
-
-    }
 
     private void RunFromEnemy(Collider other)
     {
         enemyController.currentState = EnemyController.CurrentState.RunningFrom;
+
         Vector3 dirToPlayer = transform.position - other.transform.position;
         Vector3 runPos = transform.position + dirToPlayer;
         agent.SetDestination(runPos);
@@ -70,6 +71,8 @@ public class ChaseAndCatch : MonoBehaviour
             //if detected soldier is NPC
             if (other.transform.parent.tag == "NPC")
             {
+                enemyController.intrectedSoldierName = other.transform.parent.GetComponent<EnemyController>().soldierName;
+
                 if (!isCatched && other.GetComponentInParent<EnemyController>().troops <= enemyController.troops)
                 {
                     Chase(other);
@@ -83,6 +86,8 @@ public class ChaseAndCatch : MonoBehaviour
             //if detected soldier is PLAYER
             else if (other.transform.parent.tag == "Player")
             {
+                enemyController.intrectedSoldierName = other.transform.parent.GetComponent<PlayerManager>().playerName;
+
                 if (!isCatched && other.GetComponentInParent<PlayerManager>().troops <= enemyController.troops)
                 {
 

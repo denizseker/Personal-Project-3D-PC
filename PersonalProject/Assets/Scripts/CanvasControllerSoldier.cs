@@ -7,9 +7,9 @@ public class CanvasControllerSoldier : MonoBehaviour
 {
     //This values are need when we calculating scale of canvas for easy readable infos.
     private float minScale = 0.5f;
-    private float maxScale = 2.5f;
+    private float maxScale = 3f;
     private float minDistance = 20f;
-    private float maxDistance = 130f;
+    private float maxDistance = 115f;
     private float dist;
     //Panels
     public GameObject infoPanel;
@@ -107,8 +107,9 @@ public class CanvasControllerSoldier : MonoBehaviour
         armySizeValue.text = enemyController.troops.ToString();
         clanValue.text = enemyController.clan.ToString();
         troopsValue.text = enemyController.troops.ToString();
-        
-        if(enemyController.clan == GameManager.Clans.WUTANG)
+        currentStateValue.text = enemyController.currentState.ToString();
+
+        if (enemyController.clan == GameManager.Clans.WUTANG)
         {
             clanLogo.sprite = WUTANG_LOGO;
         }
@@ -120,20 +121,16 @@ public class CanvasControllerSoldier : MonoBehaviour
 
         if(enemyController.currentState == EnemyController.CurrentState.Patroling)
         {
-            currentStateValue.text = enemyController.currentState.ToString() + " " + enemyController.settlement.Name;
+            currentStateValue.text = enemyController.currentState.ToString() + " " + "<color=red><b>" + enemyController.settlement.Name + "</b></color>";
         }
-        else
+        else if (enemyController.currentState == EnemyController.CurrentState.Catching)
         {
-            currentStateValue.text = enemyController.currentState.ToString();
+            currentStateValue.text = enemyController.currentState.ToString() + " " + "<color=red><b>" + enemyController.intrectedSoldierName + "</b></color>";
         }
-        //else if (enemyController.currentState == EnemyController.CurrentState.Catching)
-        //{
-
-        //}
-        //else if (enemyController.currentState == EnemyController.CurrentState.RunningFrom)
-        //{
-
-        //}
+        else if (enemyController.currentState == EnemyController.CurrentState.RunningFrom)
+        {
+            currentStateValue.text = enemyController.currentState.ToString() + " " + "<color=red><b>" + enemyController.intrectedSoldierName+ "</b></color>";
+        }
         //else if (enemyController.currentState == EnemyController.CurrentState.Idle)
         //{
 

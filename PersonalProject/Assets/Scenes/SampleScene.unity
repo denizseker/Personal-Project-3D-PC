@@ -140,6 +140,11 @@ PrefabInstance:
       propertyPath: Name
       value: ISTANBUL
       objectReference: {fileID: 0}
+    - target: {fileID: 2527539637461471789, guid: 2fbb135ab6668304497f87b4ae69a1ac,
+        type: 3}
+      propertyPath: RullerClan
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2527539637461471790, guid: 2fbb135ab6668304497f87b4ae69a1ac,
         type: 3}
       propertyPath: m_RootOrder
@@ -262,6 +267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10d5940763c1ff84fa00980c1049a82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WUTANG_LOGO: {fileID: 0}
+  V8_LOGO: {fileID: 0}
   selectedObjects: []
   Settlements: []
   NPCSoldiers: []
@@ -1292,6 +1299,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 20077030}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1421285953 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2527539637461471789, guid: 2fbb135ab6668304497f87b4ae69a1ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 20077030}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87f935ceae9e354195179c2f0c46a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1462072300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,6 +1709,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3694209938059827687, guid: fa79acbac24491842ba83a10d61153a0,
+        type: 3}
+      propertyPath: WUTANG_LOGO
+      value: 
+      objectReference: {fileID: 21300000, guid: fe411cf4f7584c344814aa2032021222,
+        type: 3}
     - target: {fileID: 4175216542275334472, guid: fa79acbac24491842ba83a10d61153a0,
         type: 3}
       propertyPath: m_Name
@@ -1703,7 +1728,7 @@ PrefabInstance:
     - target: {fileID: 4175216542275334473, guid: fa79acbac24491842ba83a10d61153a0,
         type: 3}
       propertyPath: m_Speed
-      value: 12
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4175216542275334479, guid: fa79acbac24491842ba83a10d61153a0,
         type: 3}
@@ -1752,7 +1777,7 @@ PrefabInstance:
     - target: {fileID: 3655385773526985714, guid: fa79acbac24491842ba83a10d61153a0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 109.4
+      value: 13.8
       objectReference: {fileID: 0}
     - target: {fileID: 3655385773526985714, guid: fa79acbac24491842ba83a10d61153a0,
         type: 3}
@@ -1798,7 +1823,7 @@ PrefabInstance:
         type: 3}
       propertyPath: settlement
       value: 
-      objectReference: {fileID: 934426973}
+      objectReference: {fileID: 1421285953}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa79acbac24491842ba83a10d61153a0, type: 3}
 --- !u!4 &1843220279 stripped
@@ -1854,7 +1879,7 @@ PrefabInstance:
     - target: {fileID: 4681693868726137158, guid: 7e120d6acf6a3ae478b3da663527864a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 111.39576
+      value: 92.22
       objectReference: {fileID: 0}
     - target: {fileID: 4681693868726137158, guid: 7e120d6acf6a3ae478b3da663527864a,
         type: 3}
@@ -2068,11 +2093,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Jadoli
-      objectReference: {fileID: 0}
-    - target: {fileID: 2527539637461471789, guid: 2fbb135ab6668304497f87b4ae69a1ac,
-        type: 3}
-      propertyPath: Name
-      value: JADOLI
       objectReference: {fileID: 0}
     - target: {fileID: 2527539637461471790, guid: 2fbb135ab6668304497f87b4ae69a1ac,
         type: 3}
