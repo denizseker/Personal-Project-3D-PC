@@ -7,6 +7,8 @@ namespace CameraControl {
 		
 		private float _targetAngle;
 		private float _currentAngle;
+
+		
 		
 		private void Awake() {
 			_targetAngle = transform.eulerAngles.y;

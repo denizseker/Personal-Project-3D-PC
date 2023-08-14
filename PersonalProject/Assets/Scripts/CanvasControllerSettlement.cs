@@ -18,9 +18,9 @@ public class CanvasControllerSettlement : MonoBehaviour
 
 
     private float minScale = 1f;
-    private float maxScale = 3f;
+    private float maxScale = 10f;
     private float minDistance = 50f;
-    private float maxDistance = 150f;
+    private float maxDistance = 500f;
     private float dist;
 
     private void Awake()

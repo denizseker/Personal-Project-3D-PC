@@ -11,8 +11,8 @@ namespace CameraControl {
 	
 		private Vector3 _targetPosition;
 		private float _input;
-		
-		
+
+
 		private void Awake() {
 			_targetPosition = _cameraHolder.localPosition;
 		}

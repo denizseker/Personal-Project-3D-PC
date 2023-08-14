@@ -31,7 +31,8 @@ public class EnemyController : MonoBehaviour
     public Settlement settlement;
     private GameObject patrolTown;
     public string intrectedSoldierName;
-
+    private Vector3 patrolPoint;
+    private bool drawLineandPoint;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -68,11 +69,26 @@ public class EnemyController : MonoBehaviour
     {
         if (!agent.hasPath && !chaseAndCatch.isCatched)
         {
-            Vector3 patrolPoint = patrolTown.GetComponentInChildren<GetPatrolPoint>().GetPatrolPostition();
+            patrolPoint = patrolTown.GetComponentInChildren<GetPatrolPoint>().GetPatrolPostition();
             agent.destination = patrolPoint;
+            drawLineandPoint = true;
             currentState = CurrentState.Patroling;
         }
     }
+
+
+
+    private void OnDrawGizmos()
+    {
+        if (patrolPoint != null && drawLineandPoint)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(patrolPoint, 2f);
+            Gizmos.DrawLine(transform.position, patrolPoint);
+        }
+        
+    }
+
 
     //Enemy AI Soldier movement
     public void GetPatrolTown()

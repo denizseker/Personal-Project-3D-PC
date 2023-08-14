@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class CanvasControllerSoldier : MonoBehaviour
 {
     //This values are need when we calculating scale of canvas for easy readable infos.
-    private float minScale = 0.5f;
-    private float maxScale = 3f;
-    private float minDistance = 20f;
-    private float maxDistance = 115f;
+    private float minScale = 1f;
+    private float maxScale = 7f;
+    private float minDistance = 50f;
+    private float maxDistance = 500f;
     private float dist;
     //Panels
     public GameObject infoPanel;

@@ -33,6 +33,7 @@ public class ChaseAndCatch : MonoBehaviour
     }
     private void StopChase(Collider other)
     {
+
         isCatched = false;
         agent.ResetPath();
         enemyController.intrectedSoldierName = "";
@@ -104,7 +105,7 @@ public class ChaseAndCatch : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        
-        StopChase(other);
+        if(other.transform.parent.tag == "Player" || other.transform.parent.tag == "NPC") StopChase(other);
+
     }
 }
