@@ -630,7 +630,7 @@ GameObject:
   - component: {fileID: 982034621784973068}
   - component: {fileID: 982034621784973070}
   - component: {fileID: 982034621784973069}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EconomyValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 982034622787414314}
   - component: {fileID: 982034622787414356}
   - component: {fileID: 982034622787414315}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PowerValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -790,7 +790,7 @@ GameObject:
   - component: {fileID: 982034622857656914}
   - component: {fileID: 982034622857656924}
   - component: {fileID: 982034622857656915}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DefendersValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -870,7 +870,7 @@ GameObject:
   - component: {fileID: 982034623575505256}
   - component: {fileID: 982034623575505258}
   - component: {fileID: 982034623575505257}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WallValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1577,7 +1577,7 @@ GameObject:
   - component: {fileID: 4116946344363485973}
   - component: {fileID: 4116946344363485963}
   - component: {fileID: 4116946344363485972}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Defenders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1661,7 +1661,7 @@ GameObject:
   - component: {fileID: 4715038821873928906}
   - component: {fileID: 4715038821873928938}
   - component: {fileID: 4715038821873928939}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1708,7 +1708,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &4715038821873928919
 MonoBehaviour:
@@ -7282,7 +7282,7 @@ GameObject:
   - component: {fileID: 8917508320654479229}
   - component: {fileID: 8917508320654479227}
   - component: {fileID: 8917508320654479226}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Wall Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7362,7 +7362,7 @@ GameObject:
   - component: {fileID: 8917508320955150597}
   - component: {fileID: 8917508320955150595}
   - component: {fileID: 8917508320955150594}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Ruler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7443,7 +7443,7 @@ GameObject:
   - component: {fileID: 8917508321033281875}
   - component: {fileID: 8917508321033281874}
   - component: {fileID: 8917508321033281898}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Info Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7543,7 +7543,7 @@ GameObject:
   - component: {fileID: 8917508321071077111}
   - component: {fileID: 8917508321071077109}
   - component: {fileID: 8917508321071077108}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Power
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7623,7 +7623,7 @@ GameObject:
   - component: {fileID: 8917508321408300890}
   - component: {fileID: 8917508321408300888}
   - component: {fileID: 8917508321408300891}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RulerValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7703,7 +7703,7 @@ GameObject:
   - component: {fileID: 8917508321605472311}
   - component: {fileID: 8917508321605472309}
   - component: {fileID: 8917508321605472308}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Economy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7783,7 +7783,7 @@ GameObject:
   - component: {fileID: 8917508321876795078}
   - component: {fileID: 8917508321876795076}
   - component: {fileID: 8917508321876795079}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Divider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7859,7 +7859,7 @@ GameObject:
   - component: {fileID: 8917508322008602967}
   - component: {fileID: 8917508322008602965}
   - component: {fileID: 8917508322008602964}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tittle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
