@@ -513,8 +513,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb319500ff7ff848b735d01cad007e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 80
-  _smoothing: 5
+  _normalSpeed: 100
+  _shiftSpeed: 450
+  _smoothing: 7
   _range: {x: 500, y: 500}
 --- !u!114 &312020758
 MonoBehaviour:
@@ -528,8 +529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02f8ffbeaa582149b505d71799afe5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 150
-  _smoothing: 10
+  _speed: 190
+  _smoothing: 8
   _range: {x: 25, y: 500}
   _cameraHolder: {fileID: 145207099}
 --- !u!114 &312020759
@@ -585,12 +586,12 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 57f18247938c1fd4585ce9a6878a24d5, type: 2}
-  m_TreeDistance: 233
+  m_TreeDistance: 197
   m_TreeBillboardDistance: 61
   m_TreeCrossFadeLength: 13
-  m_TreeMaximumFullLODCount: 280
-  m_DetailObjectDistance: 40
-  m_DetailObjectDensity: 1
+  m_TreeMaximumFullLODCount: 1327
+  m_DetailObjectDistance: 16
+  m_DetailObjectDensity: 0.096
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 3071
   m_HeightmapMaximumLOD: 0
@@ -781,7 +782,7 @@ Light:
     m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.468
+    m_Strength: 0.632
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.1
