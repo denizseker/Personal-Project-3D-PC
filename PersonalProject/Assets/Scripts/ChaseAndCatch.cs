@@ -68,16 +68,18 @@ public class ChaseAndCatch : MonoBehaviour
         //if soldiers detect an other soldier.
         if (other.tag == "DetectArea")
         {
-            //if detected soldier is NPC
-            if (other.transform.parent.tag == "NPC" && enemyController.clan != other.transform.parent.GetComponent<EnemyController>().clan)
-            {
-                enemyController.intrectedSoldierName = other.transform.parent.GetComponent<EnemyController>().soldierName;
+            EnemyController targetSoldier = other.transform.parent.GetComponent<EnemyController>();
 
-                if (!isCatched && other.GetComponentInParent<EnemyController>().troops <= enemyController.troops)
+            //if detected soldier is NPC
+            if (other.transform.parent.tag == "NPC" && enemyController.clan != targetSoldier.clan)
+            {
+                enemyController.intrectedSoldierName = targetSoldier.soldierName;
+
+                if (!isCatched && targetSoldier.troops <= enemyController.troops)
                 {
                     Chase(other);
                 }
-                else if (!isCatched && other.GetComponentInParent<EnemyController>().troops > enemyController.troops)
+                else if (!isCatched && targetSoldier.troops > enemyController.troops)
                 {
                     RunFromEnemy(other);
                 }
@@ -86,14 +88,16 @@ public class ChaseAndCatch : MonoBehaviour
             //if detected soldier is PLAYER
             else if (other.transform.parent.tag == "Player")
             {
-                enemyController.intrectedSoldierName = other.transform.parent.GetComponent<PlayerManager>().playerName;
+                PlayerManager Player = other.transform.parent.GetComponent<PlayerManager>();
 
-                if (!isCatched && other.GetComponentInParent<PlayerManager>().troops <= enemyController.troops)
+                enemyController.intrectedSoldierName = Player.playerName;
+
+                if (!isCatched && Player.troops <= enemyController.troops)
                 {
 
                     Chase(other);
                 }
-                else if (!isCatched && other.GetComponentInParent<PlayerManager>().troops > enemyController.troops)
+                else if (!isCatched && Player.troops > enemyController.troops)
                 {
                     RunFromEnemy(other);
                 }

@@ -79,7 +79,7 @@ namespace CameraControl {
 			if (isCameraLockedToPlayer)
             {
 				Vector3 playerPos = new Vector3(player.transform.position.x,defaultPosY,player.transform.position.z);
-				transform.position = Vector3.Lerp(transform.position, playerPos, Time.deltaTime * 15f);
+				transform.position = Vector3.Lerp(transform.position, playerPos, Time.deltaTime * 10f);
 			}
 
 		}
