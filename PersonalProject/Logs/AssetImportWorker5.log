@@ -2353,3 +2353,31 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 6367.319207 seconds.
+  path: Assets/New Terrain.asset
+  artifactKey: Guid(57f18247938c1fd4585ce9a6878a24d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/New Terrain.asset using Guid(57f18247938c1fd4585ce9a6878a24d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76b032e2cadeda30b291ffba564beecd') in 0.072991 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 256.860845 seconds.
+  path: Assets/TerrainData_4ece7891-2426-4845-a7b8-5454ecf8f75b.asset
+  artifactKey: Guid(7d95091ae8752c445a3bc0afe1a34e1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TerrainData_4ece7891-2426-4845-a7b8-5454ecf8f75b.asset using Guid(7d95091ae8752c445a3bc0afe1a34e1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5781c46fa990ced77c9a7fd8b534c1a3') in 0.028855 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/TerrainData_cd826040-a8df-47ce-b8c9-6b84b97c7cf9.asset
+  artifactKey: Guid(f3158e9aa39f0054484acf766548b9d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TerrainData_cd826040-a8df-47ce-b8c9-6b84b97c7cf9.asset using Guid(f3158e9aa39f0054484acf766548b9d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6cfc8ed7b74f8a2a6cd9132e714df80') in 0.020570 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/TerrainData_b5f60ac4-c126-45ca-bd01-6d58dca9c0b5.asset
+  artifactKey: Guid(d16fb61bac7603f4daad0076cb350c87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TerrainData_b5f60ac4-c126-45ca-bd01-6d58dca9c0b5.asset using Guid(d16fb61bac7603f4daad0076cb350c87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7be9b67a4dc1ecb85d1cf7f546ec9d93') in 0.030783 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

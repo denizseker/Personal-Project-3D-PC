@@ -558,7 +558,7 @@ GameObject:
   m_Name: Terrain_(-1500.00, -40.00, -1500.00)
   m_TagString: Terrain
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 95
   m_IsActive: 1
 --- !u!154 &130526698
@@ -769,7 +769,7 @@ GameObject:
   m_Name: Terrain
   m_TagString: Terrain
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 95
   m_IsActive: 1
 --- !u!154 &315784995
@@ -1109,7 +1109,7 @@ GameObject:
   m_Name: Terrain_(-1500.00, -40.00, 500.00)
   m_TagString: Terrain
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 95
   m_IsActive: 1
 --- !u!154 &471089358
@@ -2095,7 +2095,7 @@ GameObject:
   m_Name: Terrain_(-1500.00, -40.00, -500.00)
   m_TagString: Terrain
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 95
   m_IsActive: 1
 --- !u!154 &968749156
@@ -2173,7 +2173,7 @@ GameObject:
   m_Name: Terrain_(500.00, -40.00, -1500.00)
   m_TagString: Terrain
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 95
   m_IsActive: 1
 --- !u!154 &1019074359
@@ -2336,7 +2336,7 @@ GameObject:
   m_Name: Terrain_(500.00, -40.00, 500.00)
   m_TagString: Terrain
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 95
   m_IsActive: 1
 --- !u!154 &1087361404
@@ -2483,7 +2483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1180548724
 Transform:
   m_ObjectHideFlags: 0
@@ -2652,7 +2652,7 @@ GameObject:
   m_Name: Terrain_(-500.00, -40.00, 500.00)
   m_TagString: Terrain
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 95
   m_IsActive: 1
 --- !u!154 &1312959061
@@ -2967,7 +2967,7 @@ GameObject:
   m_Name: Terrain_(500.00, -40.00, -500.00)
   m_TagString: Terrain
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 95
   m_IsActive: 1
 --- !u!154 &1584965121
@@ -3045,7 +3045,7 @@ GameObject:
   m_Name: Terrain_(-500.00, -40.00, -1500.00)
   m_TagString: Terrain
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 95
   m_IsActive: 1
 --- !u!154 &1727167883
@@ -3199,7 +3199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Size: {x: 50, y: 25.01, z: 50.35}
-  m_Center: {x: 0, y: -12.4, z: 0}
+  m_Center: {x: 0, y: -12.3, z: 0}
   m_Area: 1
   m_AffectedAgents: ffffffff
 --- !u!224 &6940376832596359385
