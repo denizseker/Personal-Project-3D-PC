@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            AddSoldier();
+            //AddSoldier();
         }
     }
 

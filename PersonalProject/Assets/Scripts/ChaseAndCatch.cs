@@ -70,7 +70,7 @@ public class ChaseAndCatch : MonoBehaviour
         if (other.tag == "DetectArea")
         {
             //if detected soldier is NPC
-            if (other.transform.parent.tag == "NPC")
+            if (other.transform.parent.tag == "NPC" && enemyController.clan != other.transform.parent.GetComponent<EnemyController>().clan)
             {
                 enemyController.intrectedSoldierName = other.transform.parent.GetComponent<EnemyController>().soldierName;
 
