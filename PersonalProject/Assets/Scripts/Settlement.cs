@@ -5,8 +5,6 @@ using UnityEngine;
 public class Settlement : MonoBehaviour
 {
 
-
-
     public string Name;
     public GameManager.Clans RullerClan;
     public int Defenders;
@@ -14,7 +12,6 @@ public class Settlement : MonoBehaviour
     public string Economy;
     public int WallLevel;
     public bool isHavePatrol;
-
 
     private void Start()
     {

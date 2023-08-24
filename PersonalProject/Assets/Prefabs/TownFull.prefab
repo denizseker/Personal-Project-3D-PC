@@ -263,7 +263,6 @@ GameObject:
   - component: {fileID: 565045273245339392}
   - component: {fileID: 565045273245339407}
   - component: {fileID: 565045273245339393}
-  - component: {fileID: 565045273245339394}
   m_Layer: 0
   m_Name: PatrolArea
   m_TagString: Untagged
@@ -349,21 +348,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GizmosColor: {r: 1, g: 0, b: 0, a: 0.2}
---- !u!114 &565045273245339394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 565045273245339405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10d5940763c1ff84fa00980c1049a82a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedObjects: []
-  Settlements: []
-  NPCSoldiers: []
 --- !u!1 &647612742017567285
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,26 +10,26 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Text armySizeText;
     public string playerName = "Sir Eternal";
 
+    private Army army;
+
+
+
     private void Awake()
     {
         armySizeText.text = troops.ToString();
+        army = GetComponent<Army>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("g"))
         {
-            //AddSoldier();
+
+            Debug.Log(army.PeasentRecruit.ShareExp(300));
+            
         }
     }
 
-
-
-    private void AddSoldier()
-    {
-        troops++;
-        armySizeText.text = troops.ToString();
-    }
 
 }

@@ -11,25 +11,16 @@ public class GameManager : MonoBehaviour
         EHLIMEDDAH,
         KAZZAK,
     }
-
-
-
-
-
     public static GameManager Instance;
 
     public List<GameObject> selectedObjects = new List<GameObject>();
     public List<GameObject> Settlements = new List<GameObject>();
     public List<GameObject> NPCSoldiers = new List<GameObject>();
 
-   
-
     private void Awake() 
     {
         Instance = this;
     }
-
-
 
     public void ClearSelectedObjects()
     {
