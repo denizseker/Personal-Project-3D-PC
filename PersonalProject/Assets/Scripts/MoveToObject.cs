@@ -8,7 +8,7 @@ public class MoveToObject : MonoBehaviour
     [SerializeField] private GameObject selectedEffect;
 
     private GameObject player;
-    private ChaseAndCatch chaseAndCatch;
+    private NPCAI chaseAndCatch;
     private GameObject parent;
 
     public bool isSelected = false;
@@ -17,7 +17,7 @@ public class MoveToObject : MonoBehaviour
         parent = transform.parent.gameObject;
         player = GameObject.FindGameObjectWithTag("Player");
         //town ise null olacak.
-        chaseAndCatch = parent.GetComponentInChildren<ChaseAndCatch>();
+        chaseAndCatch = parent.GetComponentInChildren<NPCAI>();
 
         
     }
@@ -33,7 +33,7 @@ public class MoveToObject : MonoBehaviour
         selectedEffect.SetActive(true);
         isSelected = true;
         //Clicking to town
-        if (isSelected && parent.GetComponentInChildren<ChaseAndCatch>() == null)
+        if (isSelected && parent.GetComponentInChildren<NPCAI>() == null)
         {
             NavMeshAgent playerAgent = player.GetComponent<NavMeshAgent>();
             Collider col = GetComponentInParent<Collider>();
@@ -45,7 +45,7 @@ public class MoveToObject : MonoBehaviour
     private void Update()
     {
         //If clicked object is enemy we are updating destination for follow.
-        if (parent.GetComponentInChildren<ChaseAndCatch>() != null)
+        if (parent.GetComponentInChildren<NPCAI>() != null)
         {
             if (isSelected && !chaseAndCatch.isCatched)
             {

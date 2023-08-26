@@ -61,8 +61,8 @@ public class CanvasControllerSettlement : MonoBehaviour
     }
     private void UpdateTextAndScale()
     {
-        titleValue.text = settlement.Name;
-        rulerValue.text = settlement.RullerClan.ToString();
+        titleValue.text = settlement.settlementName;
+        rulerValue.text = settlement.clan.ToString();
         powerValue.text = settlement.Power.ToString();
         wallValue.text = settlement.WallLevel.ToString();
         economyValue.text = settlement.Economy;

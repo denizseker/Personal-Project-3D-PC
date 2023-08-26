@@ -5,8 +5,8 @@ using UnityEngine;
 public class Settlement : MonoBehaviour
 {
 
-    public string Name;
-    public GameManager.Clans RullerClan;
+    public string settlementName;
+    public GameManager.Clans clan;
     public int Defenders;
     public int Power;
     public string Economy;
@@ -18,6 +18,5 @@ public class Settlement : MonoBehaviour
         GameManager.Instance.Settlements.Add(gameObject);
         
     }
-
 
 }

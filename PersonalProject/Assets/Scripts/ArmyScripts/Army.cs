@@ -13,8 +13,6 @@ public class Army : MonoBehaviour
     public Soldier Cavalary = new Soldier(90, 15, 675, 0, 225, SoldierLevel.Cavalary);
     public Soldier EliteCavalary = new Soldier(150, 25, 2025, 0, 675, SoldierLevel.EliteCavalary);
 
-
-
     private void Awake()
     {
         //Adding troops to army.
@@ -26,12 +24,10 @@ public class Army : MonoBehaviour
     }
 
 
-
     public void BattleReport()
     {
 
     }
-
 
     public int GetArmySize()
     {
@@ -44,7 +40,6 @@ public class Army : MonoBehaviour
         return armySize;
     }
 
-
     public void GetArmyList()
     {
         Debug.Log("Peasent : " + PeasentRecruit.amount);
@@ -54,4 +49,5 @@ public class Army : MonoBehaviour
         Debug.Log("Elitecavalary : " + EliteCavalary.amount);
     }
 
+    
 }

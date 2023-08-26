@@ -22,7 +22,7 @@ public class Soldier
     public int exp;
     public SoldierLevel soldierLevel;
 
-
+    //Instantiating at army script with default values
     public Soldier(int _health,int _attack,int _expLimit,int _amount,int _exp,SoldierLevel _soldierLevel)
     {
         health = _health;
@@ -33,7 +33,7 @@ public class Soldier
         soldierLevel = _soldierLevel;
     }
 
-    //calculate how many units will level up with inComingExp and return leveledup unit count.
+    //calculate how many units will level up with inComingExp and return leveledUpUnit count.
     public int ShareExp(int _inComingExp)
     {
         int expNeedForLevelUp = expLimit - exp;
