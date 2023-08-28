@@ -9,17 +9,13 @@ public class MoveToObject : MonoBehaviour
 
     private GameObject player;
     private NPCAI chaseAndCatch;
-    private GameObject parent;
 
     public bool isSelected = false;
     private void Awake()
     {
-        parent = transform.parent.gameObject;
         player = GameObject.FindGameObjectWithTag("Player");
         //town ise null olacak.
-        chaseAndCatch = parent.GetComponentInChildren<NPCAI>();
-
-        
+        chaseAndCatch = GetComponentInChildren<NPCAI>();
     }
 
     //Clicking to enemy or town
@@ -29,11 +25,10 @@ public class MoveToObject : MonoBehaviour
         GameManager.Instance.ClearSelectedObjects();
         GameManager.Instance.selectedObjects.Add(selectedEffect);
 
-
         selectedEffect.SetActive(true);
         isSelected = true;
         //Clicking to town
-        if (isSelected && parent.GetComponentInChildren<NPCAI>() == null)
+        if (isSelected && GetComponentInChildren<NPCAI>() == null)
         {
             NavMeshAgent playerAgent = player.GetComponent<NavMeshAgent>();
             Collider col = GetComponentInParent<Collider>();
@@ -41,15 +36,23 @@ public class MoveToObject : MonoBehaviour
         }
     }
 
+    private void OnMouseOver()
+    {
+        selectedEffect.SetActive(true);
+    }
+    private void OnMouseExit()
+    {
+        if(!isSelected) selectedEffect.SetActive(false);
 
+    }
     private void Update()
     {
         //If clicked object is enemy we are updating destination for follow.
-        if (parent.GetComponentInChildren<NPCAI>() != null)
+        if (GetComponentInChildren<NPCAI>() != null)
         {
             if (isSelected && !chaseAndCatch.isCatched)
             {
-                player.GetComponent<NavMeshAgent>().SetDestination(transform.parent.transform.position);
+                player.GetComponent<NavMeshAgent>().SetDestination(transform.position);
             }
         }
     }

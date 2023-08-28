@@ -1606,7 +1606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   clan: 1
-  soldierName: Sir Sef0
+  npcName: 
   troops: 75
   settlement: {fileID: 0}
   intrectedSoldierName: 
@@ -1781,7 +1781,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4459086696635541617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e6cfc0f95843a7488a34b9b06b4f7fd, type: 3}
+  m_Script: {fileID: 11500000, guid: b34c7d1d30a36c945844746b7499829c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isCatched: 0

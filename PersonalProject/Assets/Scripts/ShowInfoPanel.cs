@@ -10,9 +10,9 @@ public class ShowInfoPanel : MonoBehaviour
     private Settlement settlement;
     private void Awake()
     {
-        if(GetComponent<Army>() != null) army = GetComponent<Army>();
-        if(GetComponent<PlayerManager>() != null) playerManager = GetComponent<PlayerManager>();
-        if(GetComponent<NPCManager>() != null) npcManager = GetComponent<NPCManager>();
+        if (GetComponent<Army>() != null) army = GetComponent<Army>();
+        if (GetComponent<PlayerManager>() != null) playerManager = GetComponent<PlayerManager>();
+        if (GetComponent<NPCManager>() != null) npcManager = GetComponent<NPCManager>();
         if (GetComponent<Settlement>() != null) settlement = GetComponent<Settlement>();
 
     }
@@ -20,23 +20,24 @@ public class ShowInfoPanel : MonoBehaviour
     private void OnMouseEnter()
     {
         //Mouse over on player
-        if(playerManager != null)
+        if (playerManager != null)
         {
-            UIManager.Instance.UpdateInfoPanel(playerManager.playerName, playerManager.clan, army.GetArmySize(), army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount);
+            UIManager.Instance.UpdateInfoPanel(playerManager.playerName, playerManager.clan, army.GetArmySize(), army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount,gameObject);
         }
         //Mouse over on npc
         else if (npcManager != null)
         {
-            UIManager.Instance.UpdateInfoPanel(npcManager.npcName, npcManager.clan, army.GetArmySize(), army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount);
+            UIManager.Instance.UpdateInfoPanel(npcManager.npcName, npcManager.clan, army.GetArmySize(), army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject);
         }
         //Mouse over on settlement
         else if (settlement != null)
         {
-            UIManager.Instance.UpdateInfoPanel(settlement.settlementName, settlement.clan, army.GetArmySize(), army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount);
+            UIManager.Instance.UpdateInfoPanel(settlement.settlementName, settlement.clan, army.GetArmySize(), army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject);
         }
+
+        //Activate info panel
         UIManager.Instance.UI_soldierPanel.gameObject.SetActive(true);
         UIManager.Instance.isPanelActive = true;
-
 
     }
 
@@ -44,6 +45,7 @@ public class ShowInfoPanel : MonoBehaviour
 
     private void OnMouseExit()
     {
+        //deactivate info panel
         UIManager.Instance.UI_soldierPanel.gameObject.SetActive(false);
         UIManager.Instance.isPanelActive = false;
     }
