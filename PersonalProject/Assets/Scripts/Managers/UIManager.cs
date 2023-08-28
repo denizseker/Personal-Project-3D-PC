@@ -23,9 +23,24 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text cavalaryText;
     [SerializeField] private TMP_Text eliteCavalaryText;
 
+    public List<GameObject> selectedObjects = new List<GameObject>();
+
     private void Awake()
     {
         Instance = this;
+    }
+
+    //Player can click 1 object at same time.
+    public void ClearSelectedObjects()
+    {
+        //If we have a clicked object already
+        if (Instance.selectedObjects.Count == 1)
+        {
+            Instance.selectedObjects[0].GetComponent<MouseInteraction>().ringEffect.SetActive(false);
+            Instance.selectedObjects[0].GetComponent<MouseInteraction>().isSelected = false;
+            Instance.selectedObjects.Clear();
+
+        }
     }
 
     private void Update()

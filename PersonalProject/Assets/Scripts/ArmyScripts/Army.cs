@@ -6,12 +6,16 @@ using UnityEngine;
 public class Army : MonoBehaviour
 {
     //Creating default army with 0 troops.
+    [Header("Army")]
     public List<Soldier> armyList = new List<Soldier>();
+    [Header("SoldiersInArmy")]
     public Soldier PeasentRecruit = new Soldier(20, 2, 25, 0, 0, SoldierLevel.PeasentRecruit);
     public Soldier SwordsMan = new Soldier(35, 5, 75, 0, 25, SoldierLevel.SwordsMan);
     public Soldier HorseMan = new Soldier(60, 8, 225, 0, 75, SoldierLevel.HorseMan);
     public Soldier Cavalary = new Soldier(90, 15, 675, 0, 225, SoldierLevel.Cavalary);
     public Soldier EliteCavalary = new Soldier(150, 25, 2025, 0, 675, SoldierLevel.EliteCavalary);
+
+    public int armyTotalTroops;
 
     private void Awake()
     {
@@ -21,6 +25,7 @@ public class Army : MonoBehaviour
         armyList.Add(HorseMan);
         armyList.Add(Cavalary);
         armyList.Add(EliteCavalary);
+        GetArmySize();
     }
 
 
@@ -29,7 +34,7 @@ public class Army : MonoBehaviour
 
     }
 
-    public int GetArmySize()
+    public void GetArmySize()
     {
         int armySize = 0;
 
@@ -37,7 +42,7 @@ public class Army : MonoBehaviour
         {
             armySize += armyList[i].amount;
         }
-        return armySize;
+        armyTotalTroops = armySize;
     }
 
     public void GetArmyList()

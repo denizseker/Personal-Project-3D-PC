@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
                 agent.destination = hit.point;
 
                 //User clicked terrain for move so we are clearing selected objects.
-                GameManager.Instance.ClearSelectedObjects();
+                UIManager.Instance.ClearSelectedObjects();
 
                 if (clickEffect != null)
                 { Instantiate(clickEffect, hit.point + new Vector3(0, 0.1f, 0), clickEffect.transform.rotation); }

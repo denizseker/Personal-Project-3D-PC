@@ -3,8 +3,8 @@ using UnityEngine;
 public class ReSize : MonoBehaviour
 {
     private Camera mainCamera; // Ana kamera referansý
-    private float minScale = 1f; // Minimum ölçek deðeri
-    private float maxScale = 3f; // Maksimum ölçek deðeri
+    [SerializeField] private float minScale = 1f; // Minimum ölçek deðeri
+    [SerializeField] private float maxScale = 3f; // Maksimum ölçek deðeri
     public float baseDistance = 30f; // Panelin baz boyutuna karþýlýk gelen uzaklýk
 
     private Transform panelTransform;
