@@ -30,20 +30,22 @@ public class MouseInteraction : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        //Sending infos to the UI panel.
+
         //Mouse over on player
         if (playerManager != null)
         {
-            UIManager.Instance.UpdateInfoPanel(playerManager.playerName, playerManager.clan, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount,gameObject);
+            //UIManager.Instance.UpdateInfoPanel(playerManager.playerName, playerManager.clan, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject);
         }
         //Mouse over on npc
         else if (npcManager != null)
         {
-            UIManager.Instance.UpdateInfoPanel(npcManager.npcName, npcManager.clan, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject);
+            UIManager.Instance.UpdateInfoPanel(npcManager.npcName, npcManager.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject);
         }
         //Mouse over on settlement
         else if (settlement != null)
         {
-            UIManager.Instance.UpdateInfoPanel(settlement.settlementName, settlement.clan, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject);
+            UIManager.Instance.UpdateInfoPanel(settlement.settlementName, settlement.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject);
         }
 
         //Activate info panel
@@ -96,6 +98,4 @@ public class MouseInteraction : MonoBehaviour
             }
         }
     }
-
-
 }

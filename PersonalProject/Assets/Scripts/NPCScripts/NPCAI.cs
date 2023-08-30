@@ -70,6 +70,7 @@ public class NPCAI : MonoBehaviour
         {
             NPCManager targetSoldier = other.transform.parent.GetComponent<NPCManager>();
 
+
             //if detected soldier is NPC
             if (other.transform.parent.tag == "NPC" && npcManager.clan != targetSoldier.clan)
             {

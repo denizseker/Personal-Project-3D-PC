@@ -102,11 +102,11 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void UpdateInfoPanel(string _name, GameManager.Clans _clan, int _troops, int _peasentrecruit, int _swordsman, int _horseman, int _cavalary, int _elitecavalary,GameObject _object)
+    public void UpdateInfoPanel(string _name, string _clan, int _troops, int _peasentrecruit, int _swordsman, int _horseman, int _cavalary, int _elitecavalary,GameObject _object)
     {
         Instance.obje = _object;
         Instance.titleText.text = _name;
-        Instance.clanText.text = _clan.ToString();
+        Instance.clanText.text = _clan;
         Instance.troopsText.text = "(" + _troops.ToString() + ")";
         Instance.peasentRecruitText.text = _peasentrecruit.ToString();
         Instance.swordsManText.text = _swordsman.ToString();

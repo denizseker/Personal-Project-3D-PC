@@ -14,7 +14,7 @@ public class NPCManager : MonoBehaviour
     }
 
     //Soldiers current state.
-    public CurrentState currentState = CurrentState.Idle;
+    [HideInInspector] public CurrentState currentState = CurrentState.Idle;
 
     const string IDLE = "Idle";
     const string RUN = "Run";
@@ -22,7 +22,10 @@ public class NPCManager : MonoBehaviour
     NavMeshAgent agent;
 
     //Soldier values
-    public GameManager.Clans clan;
+    public ClanManager.ENUM_Clan enumClan; //enum clan for dropdown list at inspector.
+    [HideInInspector] public Clan clan; //real clan value
+
+
     public string npcName;
     public int troops;
 
@@ -40,7 +43,20 @@ public class NPCManager : MonoBehaviour
         animator = GetComponent<Animator>();
         Npc_AI = GetComponentInChildren<NPCAI>();
         patrolTown = settlement.gameObject;
+        GetClanWithEnum();
     }
+
+    private void GetClanWithEnum() 
+    {
+        if (enumClan == ClanManager.ENUM_Clan.APHALUX) clan = ClanManager.Instance.Aphalux;
+        else if (enumClan == ClanManager.ENUM_Clan.DARTRONG) clan = ClanManager.Instance.Dartrong;
+        else if (enumClan == ClanManager.ENUM_Clan.SHUNEM) clan = ClanManager.Instance.Shunem;
+        else if (enumClan == ClanManager.ENUM_Clan.SOLVENNA) clan = ClanManager.Instance.Solvenna;
+        else if (enumClan == ClanManager.ENUM_Clan.VALANDOR) clan = ClanManager.Instance.Valandor;
+        else if (enumClan == ClanManager.ENUM_Clan.WUTANG) clan = ClanManager.Instance.Wutang;
+        else if (enumClan == ClanManager.ENUM_Clan.BARBARIAN) clan = ClanManager.Instance.Barbarian;
+    }
+
 
     private void Update()
     {
