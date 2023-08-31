@@ -39,7 +39,6 @@ public class UIManager : MonoBehaviour
             Instance.selectedObjects[0].GetComponent<MouseInteraction>().ringEffect.SetActive(false);
             Instance.selectedObjects[0].GetComponent<MouseInteraction>().isSelected = false;
             Instance.selectedObjects.Clear();
-
         }
     }
 
@@ -113,6 +112,5 @@ public class UIManager : MonoBehaviour
         Instance.horseManText.text = _horseman.ToString();
         Instance.cavalaryText.text = _cavalary.ToString();
         Instance.eliteCavalaryText.text = _elitecavalary.ToString();
-
     }
 }

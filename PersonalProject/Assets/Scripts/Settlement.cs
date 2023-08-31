@@ -8,7 +8,7 @@ public class Settlement : MonoBehaviour
     public string settlementName;
     public ClanManager.ENUM_Clan enumClan;
     [HideInInspector] public Clan clan;
-    public bool isHavePatrol;
+    [HideInInspector] public bool isHavePatrol;
 
     private void Awake()
     {
@@ -19,6 +19,7 @@ public class Settlement : MonoBehaviour
     {
         GameManager.Instance.Settlements.Add(gameObject);
         
+
     }
     private void GetClanWithEnum()
     {

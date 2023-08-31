@@ -35,7 +35,7 @@ public class MouseInteraction : MonoBehaviour
         //Mouse over on player
         if (playerManager != null)
         {
-            //UIManager.Instance.UpdateInfoPanel(playerManager.playerName, playerManager.clan, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject);
+            UIManager.Instance.UpdateInfoPanel(playerManager.playerName, playerManager.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject);
         }
         //Mouse over on npc
         else if (npcManager != null)

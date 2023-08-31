@@ -9,17 +9,13 @@ public class PlayerManager : MonoBehaviour
     private Army army;
 
     public string playerName = "Sir Eternal";
-    public GameManager.Clans clan = GameManager.Clans.None;
-
-    [HideInInspector] public Clan denemeClan;
+    [HideInInspector] public Clan clan;
 
 
     private void Awake()
     {
         army = GetComponent<Army>();
-
-        denemeClan = ClanManager.Instance.Wutang;
-
+        clan = ClanManager.Instance.Barbarian;
     }
 
 

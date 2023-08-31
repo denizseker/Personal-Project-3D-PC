@@ -8,108 +8,208 @@ public class NPCAI : MonoBehaviour
 {
     private NavMeshAgent agent;
     private NPCManager npcManager;
+    private Army army;
     public bool isCatched = false;
+    public bool isChasing = false;
+    public bool isRunning = false;
 
+    public GameObject targetSoldier;
+    private Army targetSoldierArmy;
     private void Awake()
     {
         agent = GetComponentInParent<NavMeshAgent>();
         npcManager = GetComponentInParent<NPCManager>();
+        army = GetComponentInParent<Army>();
     }
 
-    private void Chase(Collider other)
+    private void Chase(GameObject targetSoldier)
     {
-        //if soldier running from someone, it cant chase anyone just can run.
-        if(npcManager.currentState != NPCManager.CurrentState.RunningFrom)
+        npcManager.currentState = NPCManager.CurrentState.Catching;
+        agent.SetDestination(targetSoldier.transform.position);
+        float distance = Vector3.Distance(transform.position, targetSoldier.transform.position);
+        if (distance < 5)
         {
-            npcManager.currentState = NPCManager.CurrentState.Catching;
-            agent.SetDestination(other.transform.position);
-            float distance = Vector3.Distance(transform.position, other.transform.position);
-            if (distance < 5)
-            {
-                Catch(other);
-            }
+            Catch(targetSoldier);
         }
-        
     }
-    private void StopChase(Collider other)
+    private void StopChase(GameObject targetSoldier)
     {
-        isCatched = false;
         agent.ResetPath();
         npcManager.intrectedSoldierName = "";
         npcManager.GoPatrol();
         npcManager.currentState = NPCManager.CurrentState.Patroling;
+        isRunning = false;
+        isChasing = false;
+        isCatched = false;
     }
 
-    public void Catch(Collider other)
+    public void Catch(GameObject targetSoldier)
     {
-        NavMeshAgent targetAgent = other.GetComponentInParent<NavMeshAgent>();
+        Debug.Log("Catch");
+        NPCAI targetAI = targetSoldier.GetComponent<NPCAI>();
+        NavMeshAgent targetAgent = targetSoldier.GetComponent<NavMeshAgent>();
+
+        targetAgent.ResetPath();
         agent.ResetPath();
+
         npcManager.currentState = NPCManager.CurrentState.Idle;
         isCatched = true;
-        targetAgent.ResetPath();
+        isChasing = false;
+        isRunning = false;
     }
 
-    private void RunFromEnemy(Collider other)
+    private void RunFromEnemy(GameObject targetSoldier)
     {
         npcManager.currentState = NPCManager.CurrentState.RunningFrom;
-
-        Vector3 dirToPlayer = transform.position - other.transform.position;
-        Vector3 runPos = transform.position + dirToPlayer;
+        Vector3 dirToTargetSoldier = transform.position - targetSoldier.transform.position;
+        Vector3 runPos = transform.position + dirToTargetSoldier;
         agent.SetDestination(runPos);
-        float distance = Vector3.Distance(transform.position, other.transform.position);
+        float distance = Vector3.Distance(transform.position, targetSoldier.transform.position);
         if (distance < 5)
         {
-            Catch(other);
+            Debug.Log("RunCatch");
+            Catch(targetSoldier);
         }
     }
-
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         //if soldiers detect an other soldier.
-        if (other.tag == "DetectArea")
+        if (other.tag == "DetectArea" && !isRunning && !isChasing && !isCatched)
         {
-            NPCManager targetSoldier = other.transform.parent.GetComponent<NPCManager>();
-
-
             //if detected soldier is NPC
-            if (other.transform.parent.tag == "NPC" && npcManager.clan != targetSoldier.clan)
+            if (other.transform.parent.gameObject.tag == "NPC" && npcManager.clan != other.GetComponentInParent<NPCManager>().clan)
             {
-                npcManager.intrectedSoldierName = targetSoldier.npcName;
+                targetSoldier = other.transform.parent.gameObject;
+                targetSoldierArmy = targetSoldier.GetComponent<Army>();
+                npcManager.intrectedSoldierName = targetSoldier.GetComponent<NPCManager>().npcName;
 
-                if (!isCatched && targetSoldier.troops <= npcManager.troops)
+                if (targetSoldierArmy.armyTotalTroops <= army.armyTotalTroops)
                 {
-                    Chase(other);
+                    isChasing = true;
+                    //Chase(targetSoldier);
                 }
-                else if (!isCatched && targetSoldier.troops > npcManager.troops)
+                else if (targetSoldierArmy.armyTotalTroops > army.armyTotalTroops)
                 {
-                    RunFromEnemy(other);
+                    isRunning = true;
+                    //RunFromEnemy(targetSoldier);
                 }
                 else { return; }
             }
             //if detected soldier is PLAYER
-            else if (other.transform.parent.tag == "Player")
+            else if (other.transform.parent.gameObject.tag == "Player")
             {
-                PlayerManager Player = other.transform.parent.GetComponent<PlayerManager>();
+                targetSoldier = other.transform.parent.gameObject;
+                targetSoldierArmy = targetSoldier.GetComponent<Army>();
+                npcManager.intrectedSoldierName = targetSoldier.GetComponent<PlayerManager>().playerName;
 
-                npcManager.intrectedSoldierName = Player.playerName;
-
-                if (!isCatched && Player.troops <= npcManager.troops)
+                if (!isCatched && targetSoldierArmy.armyTotalTroops <= army.armyTotalTroops)
                 {
-
-                    Chase(other);
+                    isChasing = true;
+                    //Chase(targetSoldier);
                 }
-                else if (!isCatched && Player.troops > npcManager.troops)
+                else if (!isCatched && targetSoldierArmy.armyTotalTroops > army.armyTotalTroops)
                 {
-                    RunFromEnemy(other);
+                    isRunning = true;
+                    //RunFromEnemy(targetSoldier);
                 }
                 else { return; }
             }
         }
     }
 
+    private void Update()
+    {
+        if (isRunning && !isCatched)
+        {
+            RunFromEnemy(targetSoldier);
+        }
+        else if (isChasing && !isCatched)
+        {
+            Chase(targetSoldier);
+        }
+
+        if (Input.GetKeyDown("v"))
+        {
+            Debug.Log(ClanManager.Instance.isEnemy(npcManager.clan,targetSoldier.GetComponent<NPCManager>().clan));
+        }
+
+    }
+
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    //if soldiers detect an other soldier.
+    //    if (other.tag == "DetectArea")
+    //    {
+    //        GameObject targetSoldier = other.transform.parent.gameObject;
+    //        Army targetSoldierArmy = targetSoldier.GetComponent<Army>();
+
+    //        //if detected soldier is NPC
+    //        if (targetSoldier.tag == "NPC" && npcManager.clan != targetSoldier.GetComponent<NPCManager>().clan)
+    //        {
+    //            npcManager.intrectedSoldierName = targetSoldier.GetComponent<NPCManager>().npcName;
+
+    //            if (!isCatched && targetSoldierArmy.armyTotalTroops <= army.armyTotalTroops)
+    //            {
+    //                Chase(targetSoldier);
+    //            }
+    //            else if (!isCatched && targetSoldierArmy.armyTotalTroops > army.armyTotalTroops)
+    //            {
+    //                RunFromEnemy(targetSoldier);
+    //            }
+    //            else { return; }
+    //        }
+    //        //if detected soldier is PLAYER
+    //        else if (targetSoldier.tag == "Player")
+    //        {
+    //            npcManager.intrectedSoldierName = targetSoldier.GetComponent<PlayerManager>().playerName;
+
+    //            if (!isCatched && targetSoldierArmy.armyTotalTroops <= army.armyTotalTroops)
+    //            {
+
+    //                Chase(targetSoldier);
+    //            }
+    //            else if (!isCatched && targetSoldierArmy.armyTotalTroops > army.armyTotalTroops)
+    //            {
+    //                RunFromEnemy(targetSoldier);
+    //            }
+    //            else { return; }
+    //        }
+    //    }
+    //}
+
+
     private void OnTriggerExit(Collider other)
     {
-        if((other.transform.parent.tag == "Player" || other.transform.parent.tag == "NPC" && npcManager.clan != other.transform.parent.GetComponent<NPCManager>().clan)) StopChase(other);
+        if (other.tag == "DetectArea")
+        {
+            //Debug.Log(other.GetComponent<NPCAI>().targetSoldier);
 
+            if (other.GetComponent<NPCAI>().targetSoldier != transform.parent.gameObject)
+            {
+                StopChase(targetSoldier);
+            }
+
+            if(!isRunning && !isChasing && !isCatched)
+            {
+                //base soldier object
+                GameObject targetSoldier = other.transform.parent.gameObject;
+
+                if (targetSoldier.tag == "NPC")
+                {
+                    if (npcManager.clan != other.transform.parent.GetComponent<NPCManager>().clan)
+                    {
+                        StopChase(targetSoldier);
+                    }
+                }
+                else if (targetSoldier.tag == "Player")
+                {
+                    if (npcManager.clan != other.transform.parent.GetComponent<PlayerManager>().clan)
+                    {
+                        StopChase(targetSoldier);
+                    }
+                }
+            }
+            
+        }
     }
 }

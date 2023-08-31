@@ -16,7 +16,6 @@ public class GetInfoForTag : MonoBehaviour
     private void Start()
     {
         UpdateNameTag();
-        
     }
 
     public void UpdateNameTag()

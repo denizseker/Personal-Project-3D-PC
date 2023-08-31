@@ -9,8 +9,8 @@ public class Fps : MonoBehaviour
     {
         // Make the game run as fast as possible
         Application.targetFrameRate = -1;
-        // Limit the framerate to 200
-        Application.targetFrameRate = 240;
+        // Limit the framerate to 500
+        Application.targetFrameRate = 500;
 
     }
 
