@@ -8,9 +8,10 @@ public class NPCManager : MonoBehaviour
     public enum CurrentState
     {
         Idle,
-        Catching,
+        Chasing,
         Patroling,
         RunningFrom,
+        InInteraction,
     }
 
     //Soldiers current state.
@@ -29,19 +30,14 @@ public class NPCManager : MonoBehaviour
     public string npcName;
     public int troops;
 
-    //NPC AI
-    private NPCAI Npc_AI;
-
     public Settlement settlement;
     private GameObject patrolTown;
-    public string intrectedSoldierName;
     private Vector3 patrolPoint;
     private bool drawLineandPoint;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        Npc_AI = GetComponentInChildren<NPCAI>();
         patrolTown = settlement.gameObject;
         GetClanWithEnum();
     }
@@ -64,7 +60,7 @@ public class NPCManager : MonoBehaviour
         //if AI have town for patroling.
         if(patrolTown != null)
         {
-            GoPatrol();
+            //GoPatrol();
         }
     }
 
@@ -76,23 +72,18 @@ public class NPCManager : MonoBehaviour
         }
         else
         {
-            currentState = CurrentState.Idle;
             animator.Play(IDLE);
         }
     }
 
     public void GoPatrol()
     {
-        if (!agent.hasPath && !Npc_AI.isCatched)
-        {
-            patrolPoint = patrolTown.GetComponentInChildren<GetPatrolPoint>().GetPatrolPostition();
-            agent.destination = patrolPoint;
-            drawLineandPoint = true;
-            currentState = CurrentState.Patroling;
-        }
+        Debug.Log("Go Patrol");
+        patrolPoint = patrolTown.GetComponentInChildren<GetPatrolPoint>().GetPatrolPostition();
+        agent.destination = patrolPoint;
+        drawLineandPoint = true;
+        currentState = CurrentState.Patroling;
     }
-
-
 
     private void OnDrawGizmos()
     {
@@ -102,7 +93,6 @@ public class NPCManager : MonoBehaviour
             Gizmos.DrawSphere(patrolPoint, 2f);
             Gizmos.DrawLine(transform.position, patrolPoint);
         }
-        
     }
 
 

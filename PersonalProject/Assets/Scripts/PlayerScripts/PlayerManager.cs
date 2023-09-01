@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
-    public int troops;
     private Army army;
-
+    public Clan clan;
     public string playerName = "Sir Eternal";
-    [HideInInspector] public Clan clan;
+
+
+    [HideInInspector] public GameObject targetSoldier;
+    [HideInInspector] public NPCManager.CurrentState currentState = NPCManager.CurrentState.Idle;
+    
 
 
     private void Awake()

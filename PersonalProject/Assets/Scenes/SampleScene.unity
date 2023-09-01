@@ -1235,7 +1235,7 @@ PrefabInstance:
     - target: {fileID: 8253799548290285062, guid: 7e4fb85ec4a202e49b13bf0672dc2f51,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.918207
+      value: -46.39
       objectReference: {fileID: 0}
     - target: {fileID: 8253799548290285062, guid: 7e4fb85ec4a202e49b13bf0672dc2f51,
         type: 3}
@@ -1245,7 +1245,7 @@ PrefabInstance:
     - target: {fileID: 8253799548290285062, guid: 7e4fb85ec4a202e49b13bf0672dc2f51,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 38.098984
+      value: 26.47
       objectReference: {fileID: 0}
     - target: {fileID: 8253799548290285062, guid: 7e4fb85ec4a202e49b13bf0672dc2f51,
         type: 3}
@@ -1282,10 +1282,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8773208173494363303, guid: 7e4fb85ec4a202e49b13bf0672dc2f51,
+        type: 3}
+      propertyPath: PeasentRecruit.amount
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8773208173494363323, guid: 7e4fb85ec4a202e49b13bf0672dc2f51,
         type: 3}
       propertyPath: enumClan
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8773208173494363323, guid: 7e4fb85ec4a202e49b13bf0672dc2f51,
         type: 3}
@@ -1296,6 +1301,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8773208173494363325, guid: 7e4fb85ec4a202e49b13bf0672dc2f51,
+        type: 3}
+      propertyPath: m_Speed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e4fb85ec4a202e49b13bf0672dc2f51, type: 3}
@@ -2218,6 +2228,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8773208173494363303, guid: 7e4fb85ec4a202e49b13bf0672dc2f51,
+        type: 3}
+      propertyPath: PeasentRecruit.amount
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8773208173494363323, guid: 7e4fb85ec4a202e49b13bf0672dc2f51,
         type: 3}
       propertyPath: enumClan
@@ -2232,6 +2247,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8773208173494363325, guid: 7e4fb85ec4a202e49b13bf0672dc2f51,
+        type: 3}
+      propertyPath: m_Speed
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e4fb85ec4a202e49b13bf0672dc2f51, type: 3}
@@ -5128,7 +5148,7 @@ PrefabInstance:
     - target: {fileID: 9098733800788831018, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.9
+      value: 116.4
       objectReference: {fileID: 0}
     - target: {fileID: 9098733800788831018, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
@@ -5138,7 +5158,7 @@ PrefabInstance:
     - target: {fileID: 9098733800788831018, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.5
+      value: 110.9
       objectReference: {fileID: 0}
     - target: {fileID: 9098733800788831018, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}

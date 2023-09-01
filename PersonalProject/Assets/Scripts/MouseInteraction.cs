@@ -92,7 +92,7 @@ public class MouseInteraction : MonoBehaviour
         //If clicked object is enemy we are updating destination for follow.
         if (GetComponentInChildren<NPCAI>() != null)
         {
-            if (isSelected && !NPCAI.isCatched)
+            if (isSelected)
             {
                 player.GetComponent<NavMeshAgent>().SetDestination(transform.position);
             }

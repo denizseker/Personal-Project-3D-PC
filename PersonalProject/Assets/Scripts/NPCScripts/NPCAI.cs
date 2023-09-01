@@ -9,12 +9,12 @@ public class NPCAI : MonoBehaviour
     private NavMeshAgent agent;
     private NPCManager npcManager;
     private Army army;
-    public bool isCatched = false;
-    public bool isChasing = false;
-    public bool isRunning = false;
 
     public GameObject targetSoldier;
     private Army targetSoldierArmy;
+    private NPCManager targetSoldierNPCManager;
+    private PlayerManager targetSoldierPlayerManager;
+
     private void Awake()
     {
         agent = GetComponentInParent<NavMeshAgent>();
@@ -24,7 +24,6 @@ public class NPCAI : MonoBehaviour
 
     private void Chase(GameObject targetSoldier)
     {
-        npcManager.currentState = NPCManager.CurrentState.Catching;
         agent.SetDestination(targetSoldier.transform.position);
         float distance = Vector3.Distance(transform.position, targetSoldier.transform.position);
         if (distance < 5)
@@ -32,184 +31,156 @@ public class NPCAI : MonoBehaviour
             Catch(targetSoldier);
         }
     }
-    private void StopChase(GameObject targetSoldier)
+    private void StopEveryThing()
     {
+        ClearTarget();
         agent.ResetPath();
-        npcManager.intrectedSoldierName = "";
         npcManager.GoPatrol();
         npcManager.currentState = NPCManager.CurrentState.Patroling;
-        isRunning = false;
-        isChasing = false;
-        isCatched = false;
     }
 
     public void Catch(GameObject targetSoldier)
     {
         Debug.Log("Catch");
-        NPCAI targetAI = targetSoldier.GetComponent<NPCAI>();
         NavMeshAgent targetAgent = targetSoldier.GetComponent<NavMeshAgent>();
 
         targetAgent.ResetPath();
         agent.ResetPath();
 
-        npcManager.currentState = NPCManager.CurrentState.Idle;
-        isCatched = true;
-        isChasing = false;
-        isRunning = false;
+        npcManager.currentState = NPCManager.CurrentState.InInteraction;
+        if (targetSoldierNPCManager != null) targetSoldierNPCManager.currentState = NPCManager.CurrentState.InInteraction;
+        if (targetSoldierPlayerManager != null) targetSoldierPlayerManager.currentState = NPCManager.CurrentState.InInteraction;
     }
 
     private void RunFromEnemy(GameObject targetSoldier)
     {
-        npcManager.currentState = NPCManager.CurrentState.RunningFrom;
         Vector3 dirToTargetSoldier = transform.position - targetSoldier.transform.position;
         Vector3 runPos = transform.position + dirToTargetSoldier;
         agent.SetDestination(runPos);
-        float distance = Vector3.Distance(transform.position, targetSoldier.transform.position);
-        if (distance < 5)
+        //Running npc will check remaining distance/catch only if player chasing him. Other wise always catcher will check this.
+        if(targetSoldierPlayerManager != null)
         {
-            Debug.Log("RunCatch");
-            Catch(targetSoldier);
+            float distance = Vector3.Distance(transform.position, targetSoldier.transform.position);
+            if (distance < 5)
+            {
+                Catch(targetSoldier);
+            }
         }
+        
     }
     private void OnTriggerEnter(Collider other)
     {
-        //if soldiers detect an other soldier.
-        if (other.tag == "DetectArea" && !isRunning && !isChasing && !isCatched)
+        //if soldiers detect an other soldier. But this soldier must be idling or patroling.
+        if (other.tag == "DetectArea" && (npcManager.currentState == NPCManager.CurrentState.Idle || npcManager.currentState == NPCManager.CurrentState.Patroling))
         {
-            //if detected soldier is NPC
-            if (other.transform.parent.gameObject.tag == "NPC" && npcManager.clan != other.GetComponentInParent<NPCManager>().clan)
-            {
-                targetSoldier = other.transform.parent.gameObject;
-                targetSoldierArmy = targetSoldier.GetComponent<Army>();
-                npcManager.intrectedSoldierName = targetSoldier.GetComponent<NPCManager>().npcName;
 
+            Debug.Log("Saw someone");
+            //setting target variables
+            targetSoldier = other.transform.parent.gameObject;
+            targetSoldierArmy = targetSoldier.GetComponent<Army>();
+            if(targetSoldier.GetComponent<NPCManager>() != null) targetSoldierNPCManager = targetSoldier.GetComponent<NPCManager>();
+            if(targetSoldier.GetComponent<PlayerManager>() != null) targetSoldierPlayerManager = targetSoldier.GetComponent<PlayerManager>();
+
+            //if detected soldier is NPC and enemy
+            if (targetSoldier.tag == "NPC" && ClanManager.Instance.isEnemy(npcManager.clan,targetSoldierNPCManager.clan))
+            {
+                Debug.Log("Its enemy NPC");
                 if (targetSoldierArmy.armyTotalTroops <= army.armyTotalTroops)
                 {
-                    isChasing = true;
+                    Debug.Log("Im chasing");
+                    npcManager.currentState = NPCManager.CurrentState.Chasing;
                     //Chase(targetSoldier);
                 }
                 else if (targetSoldierArmy.armyTotalTroops > army.armyTotalTroops)
                 {
-                    isRunning = true;
+                    Debug.Log("Im running");
+                    npcManager.currentState = NPCManager.CurrentState.RunningFrom;
                     //RunFromEnemy(targetSoldier);
                 }
-                else { return; }
-            }
-            //if detected soldier is PLAYER
-            else if (other.transform.parent.gameObject.tag == "Player")
-            {
-                targetSoldier = other.transform.parent.gameObject;
-                targetSoldierArmy = targetSoldier.GetComponent<Army>();
-                npcManager.intrectedSoldierName = targetSoldier.GetComponent<PlayerManager>().playerName;
-
-                if (!isCatched && targetSoldierArmy.armyTotalTroops <= army.armyTotalTroops)
+                else 
                 {
-                    isChasing = true;
+                    ClearTarget();
+                }
+            }
+            //if detected soldier is PLAYER and enemy
+            else if (targetSoldier.tag == "Player" && ClanManager.Instance.isEnemy(npcManager.clan, targetSoldierPlayerManager.clan))
+            {
+                //if player is weak
+                if (targetSoldierArmy.armyTotalTroops <= army.armyTotalTroops)
+                {
+                    npcManager.currentState = NPCManager.CurrentState.Chasing;
+                    targetSoldierPlayerManager.targetSoldier = transform.parent.gameObject;
                     //Chase(targetSoldier);
                 }
-                else if (!isCatched && targetSoldierArmy.armyTotalTroops > army.armyTotalTroops)
+                //if npc is weak
+                else if (targetSoldierArmy.armyTotalTroops > army.armyTotalTroops)
                 {
-                    isRunning = true;
+                    npcManager.currentState = NPCManager.CurrentState.RunningFrom;
+                    targetSoldierPlayerManager.targetSoldier = transform.parent.gameObject;
                     //RunFromEnemy(targetSoldier);
                 }
-                else { return; }
+                else 
+                {
+                    ClearTarget();
+                }
             }
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        //if any soldier exit from detectarea this must be not at interaction.
+        if (other.tag == "DetectArea" && npcManager.currentState != NPCManager.CurrentState.InInteraction)
+        {
+            Debug.Log("Exited");
+
+            GameObject targetSoldier = other.transform.parent.gameObject;
+
+            bool isNpc = false;
+
+            if (targetSoldier.GetComponent<NPCManager>() != null)
+            {
+                Debug.Log("Its npc");
+                isNpc = true;
+            }
+
+            //if npc and its not chasing this.
+            if (isNpc && targetSoldier.GetComponentInChildren<NPCAI>().targetSoldier != transform.parent.gameObject)
+            {
+                StopEveryThing();
+            }
+            //if player
+            else if (!isNpc && targetSoldier.GetComponentInChildren<PlayerManager>().targetSoldier != transform.parent.gameObject)
+            {
+                StopEveryThing();
+            }
+        }
+    }
+
+    private void ClearTarget()
+    {
+        Debug.Log("Cleared target");
+        targetSoldier = null;
+        targetSoldierArmy = null;
+        targetSoldierNPCManager = null;
+        targetSoldierPlayerManager = null;
     }
 
     private void Update()
     {
-        if (isRunning && !isCatched)
+        if(npcManager.currentState == NPCManager.CurrentState.Patroling)
+        {
+
+        }
+        else if (npcManager.currentState == NPCManager.CurrentState.RunningFrom)
         {
             RunFromEnemy(targetSoldier);
         }
-        else if (isChasing && !isCatched)
+        else if (npcManager.currentState == NPCManager.CurrentState.Chasing)
         {
             Chase(targetSoldier);
         }
-
-        if (Input.GetKeyDown("v"))
-        {
-            Debug.Log(ClanManager.Instance.isEnemy(npcManager.clan,targetSoldier.GetComponent<NPCManager>().clan));
-        }
-
     }
 
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    //if soldiers detect an other soldier.
-    //    if (other.tag == "DetectArea")
-    //    {
-    //        GameObject targetSoldier = other.transform.parent.gameObject;
-    //        Army targetSoldierArmy = targetSoldier.GetComponent<Army>();
-
-    //        //if detected soldier is NPC
-    //        if (targetSoldier.tag == "NPC" && npcManager.clan != targetSoldier.GetComponent<NPCManager>().clan)
-    //        {
-    //            npcManager.intrectedSoldierName = targetSoldier.GetComponent<NPCManager>().npcName;
-
-    //            if (!isCatched && targetSoldierArmy.armyTotalTroops <= army.armyTotalTroops)
-    //            {
-    //                Chase(targetSoldier);
-    //            }
-    //            else if (!isCatched && targetSoldierArmy.armyTotalTroops > army.armyTotalTroops)
-    //            {
-    //                RunFromEnemy(targetSoldier);
-    //            }
-    //            else { return; }
-    //        }
-    //        //if detected soldier is PLAYER
-    //        else if (targetSoldier.tag == "Player")
-    //        {
-    //            npcManager.intrectedSoldierName = targetSoldier.GetComponent<PlayerManager>().playerName;
-
-    //            if (!isCatched && targetSoldierArmy.armyTotalTroops <= army.armyTotalTroops)
-    //            {
-
-    //                Chase(targetSoldier);
-    //            }
-    //            else if (!isCatched && targetSoldierArmy.armyTotalTroops > army.armyTotalTroops)
-    //            {
-    //                RunFromEnemy(targetSoldier);
-    //            }
-    //            else { return; }
-    //        }
-    //    }
-    //}
-
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "DetectArea")
-        {
-            //Debug.Log(other.GetComponent<NPCAI>().targetSoldier);
-
-            if (other.GetComponent<NPCAI>().targetSoldier != transform.parent.gameObject)
-            {
-                StopChase(targetSoldier);
-            }
-
-            if(!isRunning && !isChasing && !isCatched)
-            {
-                //base soldier object
-                GameObject targetSoldier = other.transform.parent.gameObject;
-
-                if (targetSoldier.tag == "NPC")
-                {
-                    if (npcManager.clan != other.transform.parent.GetComponent<NPCManager>().clan)
-                    {
-                        StopChase(targetSoldier);
-                    }
-                }
-                else if (targetSoldier.tag == "Player")
-                {
-                    if (npcManager.clan != other.transform.parent.GetComponent<PlayerManager>().clan)
-                    {
-                        StopChase(targetSoldier);
-                    }
-                }
-            }
-            
-        }
-    }
+    
 }
