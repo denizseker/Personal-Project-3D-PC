@@ -6521,7 +6521,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 10
+  m_Speed: 15
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 600
@@ -6561,15 +6561,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   enumClan: 0
-  clan:
-    clanName: 
-    clanLogo: {fileID: 0}
-    members: []
-    settlements: []
   npcName: Sir Godsea
   troops: 75
   settlement: {fileID: 0}
-  intrectedSoldierName: 
 --- !u!114 &8773208173494363303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6587,7 +6581,7 @@ MonoBehaviour:
     health: 20
     attack: 2
     expLimit: 25
-    amount: 12
+    amount: 25
     exp: 0
     soldierLevel: 0
   SwordsMan:
@@ -6807,7 +6801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34c7d1d30a36c945844746b7499829c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCatched: 0
+  targetSoldier: {fileID: 0}
 --- !u!136 &5536327235914290130
 CapsuleCollider:
   m_ObjectHideFlags: 0

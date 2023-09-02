@@ -13,14 +13,10 @@ public class Settlement : MonoBehaviour
     private void Awake()
     {
         GetClanWithEnum();
+        gameObject.name = (string.Format("[{0}] [{1}]", clan.clanName, settlementName));
+        clan.AddSettlement(gameObject);
     }
 
-    private void Start()
-    {
-        GameManager.Instance.Settlements.Add(gameObject);
-        
-
-    }
     private void GetClanWithEnum()
     {
         if (enumClan == ClanManager.ENUM_Clan.APHALUX) clan = ClanManager.Instance.Aphalux;

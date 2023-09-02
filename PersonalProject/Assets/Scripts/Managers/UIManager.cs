@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private TMP_Text clanText;
+    [SerializeField] private TMP_Text speedText;
     [SerializeField] private TMP_Text troopsText;
     [SerializeField] private TMP_Text peasentRecruitText;
     [SerializeField] private TMP_Text swordsManText;
@@ -23,7 +24,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text cavalaryText;
     [SerializeField] private TMP_Text eliteCavalaryText;
 
-    public List<GameObject> selectedObjects = new List<GameObject>();
+    [HideInInspector] public List<GameObject> selectedObjects = new List<GameObject>();
 
     private void Awake()
     {
@@ -101,11 +102,12 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void UpdateInfoPanel(string _name, string _clan, int _troops, int _peasentrecruit, int _swordsman, int _horseman, int _cavalary, int _elitecavalary,GameObject _object)
+    public void UpdateInfoPanel(string _name, string _clan, int _troops, int _peasentrecruit, int _swordsman, int _horseman, int _cavalary, int _elitecavalary, GameObject _object, float _speed)
     {
         Instance.obje = _object;
         Instance.titleText.text = _name;
         Instance.clanText.text = _clan;
+        Instance.speedText.text = _speed.ToString();
         Instance.troopsText.text = "(" + _troops.ToString() + ")";
         Instance.peasentRecruitText.text = _peasentrecruit.ToString();
         Instance.swordsManText.text = _swordsman.ToString();

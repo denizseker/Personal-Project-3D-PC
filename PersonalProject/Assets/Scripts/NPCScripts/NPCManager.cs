@@ -15,7 +15,7 @@ public class NPCManager : MonoBehaviour
     }
 
     //Soldiers current state.
-    [HideInInspector] public CurrentState currentState = CurrentState.Idle;
+    [HideInInspector] public CurrentState currentState;
 
     const string IDLE = "Idle";
     const string RUN = "Run";
@@ -28,18 +28,22 @@ public class NPCManager : MonoBehaviour
 
 
     public string npcName;
-    public int troops;
-
-    public Settlement settlement;
-    private GameObject patrolTown;
-    private Vector3 patrolPoint;
-    private bool drawLineandPoint;
+    public Settlement patrolSettlement;
+    [HideInInspector] public float speed = 10f;
+    //NPCAI using those.
+    [HideInInspector] public GameObject patrolTown;
+    [HideInInspector] public Vector3 patrolPoint;
+    [HideInInspector] public bool drawLineandPoint;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        patrolTown = settlement.gameObject;
+        patrolTown = patrolSettlement.gameObject;
         GetClanWithEnum();
+        currentState = CurrentState.Patroling;
+        gameObject.name = (string.Format("[{0}] [{1}]", clan.clanName, npcName));
+        clan.AddMember(gameObject);
+        agent.speed = speed;
     }
 
     private void GetClanWithEnum() 
@@ -57,11 +61,7 @@ public class NPCManager : MonoBehaviour
     private void Update()
     {
         SetAnimations();
-        //if AI have town for patroling.
-        if(patrolTown != null)
-        {
-            //GoPatrol();
-        }
+
     }
 
     void SetAnimations()
@@ -76,18 +76,9 @@ public class NPCManager : MonoBehaviour
         }
     }
 
-    public void GoPatrol()
-    {
-        Debug.Log("Go Patrol");
-        patrolPoint = patrolTown.GetComponentInChildren<GetPatrolPoint>().GetPatrolPostition();
-        agent.destination = patrolPoint;
-        drawLineandPoint = true;
-        currentState = CurrentState.Patroling;
-    }
-
     private void OnDrawGizmos()
     {
-        if (patrolPoint != null && drawLineandPoint)
+        if (drawLineandPoint)
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawSphere(patrolPoint, 2f);
@@ -95,6 +86,13 @@ public class NPCManager : MonoBehaviour
         }
     }
 
+    public void GetPatrolPositionForDrawing(Vector3 _patrolpoint,bool _isOpen)
+    {
+
+        patrolPoint = _patrolpoint;
+        drawLineandPoint = _isOpen;
+
+    }
 
     ////Enemy AI Soldier movement
     //public void GetPatrolTown()
@@ -112,7 +110,7 @@ public class NPCManager : MonoBehaviour
     //            {
     //                if (!GameManager.Instance.Settlements[i].GetComponent<Settlement>().isHavePatrol)
     //                {
-                        
+
     //                    patrolTown = GameManager.Instance.Settlements[i];
     //                    patrolTown.GetComponent<Settlement>().isHavePatrol = true;
     //                    Debug.Log(patrolTown.name + " patrol is " + gameObject.name);

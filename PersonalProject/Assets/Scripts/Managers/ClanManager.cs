@@ -57,8 +57,6 @@ public class ClanManager : MonoBehaviour
         Instance.clanList.Add(Dartrong);
         Instance.clanList.Add(Solvenna);
         Instance.clanList.Add(Valandor);
-
-
         Instance.clanList.Add(Barbarian);
     }
 

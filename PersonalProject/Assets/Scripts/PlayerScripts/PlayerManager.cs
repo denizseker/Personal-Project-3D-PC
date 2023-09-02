@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
     public string playerName = "Sir Eternal";
 
 
+
     [HideInInspector] public GameObject targetSoldier;
     [HideInInspector] public NPCManager.CurrentState currentState = NPCManager.CurrentState.Idle;
     
@@ -26,11 +27,6 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("g"))
-        {
 
-            Debug.Log(army.PeasentRecruit.ShareExp(300));
-            
-        }
     }
 }

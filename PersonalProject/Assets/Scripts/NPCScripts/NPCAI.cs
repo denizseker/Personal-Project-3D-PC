@@ -35,7 +35,6 @@ public class NPCAI : MonoBehaviour
     {
         ClearTarget();
         agent.ResetPath();
-        npcManager.GoPatrol();
         npcManager.currentState = NPCManager.CurrentState.Patroling;
     }
 
@@ -57,7 +56,7 @@ public class NPCAI : MonoBehaviour
         Vector3 dirToTargetSoldier = transform.position - targetSoldier.transform.position;
         Vector3 runPos = transform.position + dirToTargetSoldier;
         agent.SetDestination(runPos);
-        //Running npc will check remaining distance/catch only if player chasing him. Other wise always catcher will check this.
+        //Running npc will check remaining distance/catch only if player chasing him. Otherwise always catcher will check this.
         if(targetSoldierPlayerManager != null)
         {
             float distance = Vector3.Distance(transform.position, targetSoldier.transform.position);
@@ -157,6 +156,18 @@ public class NPCAI : MonoBehaviour
         }
     }
 
+    public void GoPatrolTown()
+    {
+        if (!agent.hasPath)
+        {
+            GameObject patrolTown = npcManager.patrolTown;
+            Vector3 patrolPoint = patrolTown.GetComponentInChildren<GetPatrolPoint>().GetPatrolPostition();
+            agent.destination = patrolPoint;
+            npcManager.GetPatrolPositionForDrawing(patrolPoint,true);
+            npcManager.currentState = NPCManager.CurrentState.Patroling;
+        }
+    }
+
     private void ClearTarget()
     {
         Debug.Log("Cleared target");
@@ -168,9 +179,9 @@ public class NPCAI : MonoBehaviour
 
     private void Update()
     {
-        if(npcManager.currentState == NPCManager.CurrentState.Patroling)
+        if (npcManager.currentState == NPCManager.CurrentState.Patroling)
         {
-
+            GoPatrolTown();
         }
         else if (npcManager.currentState == NPCManager.CurrentState.RunningFrom)
         {
@@ -182,5 +193,5 @@ public class NPCAI : MonoBehaviour
         }
     }
 
-    
+
 }
