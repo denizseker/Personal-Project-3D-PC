@@ -29,7 +29,7 @@ public class NPCManager : MonoBehaviour
 
     public string npcName;
     public Settlement patrolSettlement;
-    [HideInInspector] public float speed = 10f;
+    [HideInInspector] public float speed;
     //NPCAI using those.
     [HideInInspector] public GameObject patrolTown;
     [HideInInspector] public Vector3 patrolPoint;
@@ -43,7 +43,7 @@ public class NPCManager : MonoBehaviour
         currentState = CurrentState.Patroling;
         gameObject.name = (string.Format("[{0}] [{1}]", clan.clanName, npcName));
         clan.AddMember(gameObject);
-        agent.speed = speed;
+        speed = agent.speed;
     }
 
     private void GetClanWithEnum() 

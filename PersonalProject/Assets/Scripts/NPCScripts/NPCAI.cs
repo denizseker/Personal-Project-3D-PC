@@ -67,13 +67,13 @@ public class NPCAI : MonoBehaviour
         }
         
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         //if soldiers detect an other soldier. But this soldier must be idling or patroling.
         if (other.tag == "DetectArea" && (npcManager.currentState == NPCManager.CurrentState.Idle || npcManager.currentState == NPCManager.CurrentState.Patroling))
         {
 
-            Debug.Log("Saw someone");
+            //Debug.Log("Saw someone");
             //setting target variables
             targetSoldier = other.transform.parent.gameObject;
             targetSoldierArmy = targetSoldier.GetComponent<Army>();
@@ -81,26 +81,27 @@ public class NPCAI : MonoBehaviour
             if(targetSoldier.GetComponent<PlayerManager>() != null) targetSoldierPlayerManager = targetSoldier.GetComponent<PlayerManager>();
 
             //if detected soldier is NPC and enemy
-            if (targetSoldier.tag == "NPC" && ClanManager.Instance.isEnemy(npcManager.clan,targetSoldierNPCManager.clan))
+            if (targetSoldier.tag == "NPC" && ClanManager.Instance.isEnemy(npcManager.clan, targetSoldierNPCManager.clan))
             {
-                Debug.Log("Its enemy NPC");
+                //Debug.Log("Its enemy NPC");
                 if (targetSoldierArmy.armyTotalTroops <= army.armyTotalTroops)
                 {
-                    Debug.Log("Im chasing");
+                    //Debug.Log("Im chasing");
                     npcManager.currentState = NPCManager.CurrentState.Chasing;
                     //Chase(targetSoldier);
                 }
                 else if (targetSoldierArmy.armyTotalTroops > army.armyTotalTroops)
                 {
-                    Debug.Log("Im running");
+                    //Debug.Log("Im running");
                     npcManager.currentState = NPCManager.CurrentState.RunningFrom;
                     //RunFromEnemy(targetSoldier);
                 }
-                else 
+                else
                 {
                     ClearTarget();
                 }
             }
+            
             //if detected soldier is PLAYER and enemy
             else if (targetSoldier.tag == "Player" && ClanManager.Instance.isEnemy(npcManager.clan, targetSoldierPlayerManager.clan))
             {
@@ -118,11 +119,17 @@ public class NPCAI : MonoBehaviour
                     targetSoldierPlayerManager.targetSoldier = transform.parent.gameObject;
                     //RunFromEnemy(targetSoldier);
                 }
-                else 
+                else
                 {
                     ClearTarget();
                 }
             }
+            else
+            {
+                ClearTarget();
+            }
+
+
         }
     }
 
@@ -150,6 +157,10 @@ public class NPCAI : MonoBehaviour
             }
             //if player
             else if (!isNpc && targetSoldier.GetComponentInChildren<PlayerManager>().targetSoldier != transform.parent.gameObject)
+            {
+                StopEveryThing();
+            }
+            else if (isNpc && targetSoldier.GetComponentInChildren<NPCAI>().targetSoldier == transform.parent.gameObject)
             {
                 StopEveryThing();
             }

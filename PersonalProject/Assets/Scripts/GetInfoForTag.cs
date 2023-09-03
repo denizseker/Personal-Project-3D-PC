@@ -11,9 +11,14 @@ public class GetInfoForTag : MonoBehaviour
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private Image clanLogo;
     [SerializeField] private TMP_Text troops;
+    [SerializeField] private TMP_Text state;
 
 
     private void Start()
+    {
+        //UpdateNameTag();
+    }
+    private void Update()
     {
         UpdateNameTag();
     }
@@ -37,6 +42,7 @@ public class GetInfoForTag : MonoBehaviour
             nameText.text = npcManager.npcName;
             clanLogo.sprite = npcManager.clan.clanLogo;
             troops.text = GetComponentInParent<Army>().armyTotalTroops.ToString();
+            state.text = npcManager.currentState.ToString();
         }
         //if script in player
         //else if(GetComponentInParent<PlayerManager>() != null)
