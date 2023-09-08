@@ -15,7 +15,6 @@ public class ReSize : MonoBehaviour
         // Scriptin eklendiði GameObject'in Transform bileþenini al
         panelTransform = transform;
     }
-
     private void Update()
     {
         // Panel ile kamera arasýndaki mevcut uzaklýðý hesapla
