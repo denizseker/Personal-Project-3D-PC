@@ -6514,6 +6514,7 @@ MonoBehaviour:
   nameText: {fileID: 6500536131680096651}
   clanLogo: {fileID: 6500536132711087171}
   troops: {fileID: 6500536132819043969}
+  state: {fileID: 0}
 --- !u!1 &6500536132711087197
 GameObject:
   m_ObjectHideFlags: 0
@@ -7351,11 +7352,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settlementName: JADOLI
   enumClan: 0
-  clan:
-    clanName: 
-    clanLogo: {fileID: 0}
-    members: []
-    settlements: []
   isHavePatrol: 0
 --- !u!114 &8729406280781208759
 MonoBehaviour:

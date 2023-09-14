@@ -35,11 +35,11 @@ public class GetInfoForTag : MonoBehaviour
             troops.text = GetComponentInParent<Army>().armyTotalTroops.ToString();
         }
         //if script in npc
-        else if (GetComponentInParent<NPCManager>() != null)
+        else if (GetComponentInParent<NPC>() != null)
         {
-            NPCManager npcManager = GetComponentInParent<NPCManager>();
+            NPC npcManager = GetComponentInParent<NPC>();
 
-            nameText.text = npcManager.npcName;
+            nameText.text = npcManager.characterName;
             clanLogo.sprite = npcManager.clan.clanLogo;
             troops.text = GetComponentInParent<Army>().armyTotalTroops.ToString();
             state.text = npcManager.currentState.ToString();

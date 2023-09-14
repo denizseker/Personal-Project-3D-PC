@@ -13,7 +13,8 @@ public class ClanManager : MonoBehaviour
         DARTRONG,
         SOLVENNA,
         VALANDOR,
-        BARBARIAN
+        BARBARIAN,
+        NONE
     }
 
     public static ClanManager Instance;
@@ -36,6 +37,7 @@ public class ClanManager : MonoBehaviour
     public Clan Solvenna = new Clan("SOLVENNA", null);
     public Clan Valandor = new Clan("VALANDOR", null);
     public Clan Barbarian = new Clan("BARBARIAN", null);
+    public Clan None = new Clan("NONE", null);
 
     public Sprite ShunemLogo;
     public Sprite WutangLogo;
@@ -44,6 +46,7 @@ public class ClanManager : MonoBehaviour
     public Sprite SolvennaLogo;
     public Sprite ValandorLogo;
     public Sprite BarbarianLogo;
+    public Sprite NoneLogo;
 
     private void Awake()
     {
@@ -58,9 +61,8 @@ public class ClanManager : MonoBehaviour
         Instance.clanList.Add(Solvenna);
         Instance.clanList.Add(Valandor);
         Instance.clanList.Add(Barbarian);
+        Instance.clanList.Add(None);
     }
-
-
     private void Start()
     {
         DeclareWar(Wutang, Dartrong);
@@ -86,6 +88,7 @@ public class ClanManager : MonoBehaviour
         Solvenna.clanLogo = SolvennaLogo;
         Valandor.clanLogo = ValandorLogo;
         Barbarian.clanLogo = BarbarianLogo;
+        None.clanLogo = NoneLogo;
     }
 
     //Looking for clan in enemy clans, and returning found or not.

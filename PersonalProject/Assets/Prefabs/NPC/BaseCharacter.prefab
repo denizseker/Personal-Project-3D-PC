@@ -6590,7 +6590,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8434928208128504208}
-  m_LocalRotation: {x: -0, y: -0.31277046, z: -0, w: 0.9498288}
+  m_LocalRotation: {x: 0, y: -0.31277424, z: 0, w: 0.9498275}
   m_LocalPosition: {x: 0, y: -16.670937, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6657,7 +6657,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &8011216024185143521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6670,14 +6670,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb9ac37d6c277345beb6aba59342a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  troops: 110
   playerName: Sir Eternal
-  clan: 4
-  denemeClan:
-    clanName: 
-    clanLogo: {fileID: 0}
-    members: []
-    settlements: []
+  targetSoldier: {fileID: 0}
+  currentState: 0
 --- !u!114 &8777387383924167521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6709,14 +6704,14 @@ MonoBehaviour:
     health: 20
     attack: 2
     expLimit: 25
-    amount: 15
+    amount: 100
     exp: 0
     soldierLevel: 0
   SwordsMan:
     health: 35
     attack: 5
     expLimit: 75
-    amount: 0
+    amount: 55
     exp: 25
     soldierLevel: 1
   HorseMan:
