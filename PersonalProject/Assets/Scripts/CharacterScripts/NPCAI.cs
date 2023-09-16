@@ -8,7 +8,7 @@ public class NPCAI : MonoBehaviour
 {
 
     private NPC NPC;
-
+    [SerializeField] private GameObject warHappening;
 
     private void Awake()
     {
@@ -19,25 +19,53 @@ public class NPCAI : MonoBehaviour
     {
         NPC.agent.SetDestination(_targetCharacter.transform.position);
         float distance = Vector3.Distance(transform.position, _targetCharacter.transform.position);
-        if (distance < 5)
+        if (distance < 7)
         {
             Catch(_targetCharacter);
         }
     }
-    private void StopEveryThing()
+    public void StopFleeingAndChasing()
     {
-        ClearTarget();
+        NPC.interactedCharacter = null;
         NPC.agent.ResetPath();
+        NPC.currentState = Character.CurrentState.Patroling;
+    }
+    private void StopEveryThing(Character _targetCharacter)
+    {
+        ClearTarget(_targetCharacter);
+
+        NPC.agent.ResetPath();
+        _targetCharacter.agent.ResetPath();
+
+        _targetCharacter.currentState = Character.CurrentState.Patroling;
         NPC.currentState = Character.CurrentState.Patroling;
     }
 
     public void Catch(Character _targetCharacter)
     {
+        Debug.Log("Catch");
+        //Setting targets
+        NPC.interactedCharacter = _targetCharacter;
+        _targetCharacter.interactedCharacter = NPC;
+
+        //Stopping agents
+        NPC.agent.isStopped = true;
+        _targetCharacter.agent.isStopped = true;
+        //Resetting agents path
         _targetCharacter.agent.ResetPath();
         NPC.agent.ResetPath();
-
+        //Setting characters states
         NPC.currentState = Character.CurrentState.InInteraction;
         _targetCharacter.currentState = Character.CurrentState.InInteraction;
+        //setting off characters collider.
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
+        _targetCharacter.gameObject.GetComponentInChildren<NPCAI>().gameObject.GetComponent<CapsuleCollider>().enabled = false;
+        //instantiating warhappening object at middle of 2 characters
+        Vector3 middleOfCharacters = Vector3.Lerp(transform.position, _targetCharacter.transform.position, 0.75f);
+        var warHappeningObj = Instantiate(warHappening, middleOfCharacters, transform.rotation);
+        warHappeningObj.GetComponent<WarHandler>().StartFight(NPC,_targetCharacter);
+
+        
     }
 
     private void RunFromEnemy(Character _targetCharacter)
@@ -47,15 +75,19 @@ public class NPCAI : MonoBehaviour
         NPC.agent.SetDestination(runPos);
         //Running npc will check remaining distance/catch only if player chasing him. Otherwise always catcher will check this.
         float distance = Vector3.Distance(transform.position, _targetCharacter.transform.position);
-        if (distance < 5)
+        if (_targetCharacter.GetType() == typeof(Player))
         {
-            Catch(_targetCharacter);
+            if (distance < 7)
+            {
+                Catch(_targetCharacter);
+            }
         }
+            
     }
     private void OnTriggerEnter(Collider other)
     {
         //if character detect another character.
-        if (other.tag == "DetectArea")
+        if (other.tag == "DetectArea" && NPC.currentState != Character.CurrentState.InInteraction)
         {
             Character interactedCharacter = other.GetComponentInParent<Character>();
             //Targetcharacter is enemy.
@@ -69,6 +101,10 @@ public class NPCAI : MonoBehaviour
                     {
                         NPC.currentState = Character.CurrentState.Chasing;
                     }
+                    else
+                    {
+                        return;
+                    }
 
                 }
                 //this army is smaller then opponent army
@@ -76,7 +112,7 @@ public class NPCAI : MonoBehaviour
                 {
                     NPC.currentState = Character.CurrentState.Fleeing;
                 }
-                //setting this character's intractedcharacter. Both AI will do that for himself
+                //setting this character's interactedcharacter. Both AI will do that for himself
                 NPC.interactedCharacter = interactedCharacter;
 
                 //if interactedcharacter is player AI should set our target.
@@ -95,9 +131,23 @@ public class NPCAI : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "DetectArea")
+        //if this exit any character area and have a interactedcharacter already and not in interaction with someone
+        if(other.tag == "DetectArea" && NPC.interactedCharacter != null && NPC.currentState != Character.CurrentState.InInteraction)
         {
-            StopEveryThing();
+            Character interactedCharacter = other.GetComponentInParent<Character>();
+
+            //if interactedcharacter is interact with this too. (chase or fleeing)
+            if (interactedCharacter.interactedCharacter == NPC)
+            {
+                StopFleeingAndChasing();
+                interactedCharacter.GetComponentInChildren<NPCAI>().StopFleeingAndChasing();
+            }
+            //if interacted character not chasing this but this is fleeing.
+            else if (interactedCharacter.interactedCharacter != NPC && NPC.currentState == Character.CurrentState.Fleeing)
+            {
+                StopFleeingAndChasing();
+            }
+            
         }
     }
 
@@ -113,10 +163,10 @@ public class NPCAI : MonoBehaviour
         }
     }
 
-    private void ClearTarget()
+    private void ClearTarget(Character _targetCharacter)
     {
-        Debug.Log("Cleared target");
         NPC.interactedCharacter = null;
+        _targetCharacter.interactedCharacter = null;
     }
 
     private void Update()

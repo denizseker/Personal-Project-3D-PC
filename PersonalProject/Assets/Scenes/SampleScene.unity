@@ -6597,6 +6597,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34c7d1d30a36c945844746b7499829c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  warHappening: {fileID: 7073665704879878613, guid: fe8473132687dab478e3f9c40aa4a238,
+    type: 3}
 --- !u!54 &439152172
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6890,7 +6892,7 @@ MonoBehaviour:
   army: {fileID: 0}
   speed: 0
   interactedCharacter: {fileID: 0}
-  characterName: Sir Godsea
+  characterName: Sir Tela
   enumClan: 6
   patrolSettlement: {fileID: 2527539637853199777}
   patrolTown: {fileID: 0}
@@ -6920,7 +6922,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 12
+  m_Speed: 20
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 600
@@ -18402,6 +18404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34c7d1d30a36c945844746b7499829c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  warHappening: {fileID: 0}
 --- !u!4 &5536327236122287903
 Transform:
   m_ObjectHideFlags: 0
@@ -18936,7 +18939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8773208173670639732}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -116.6, y: -16.670948, z: 51.612144}
+  m_LocalPosition: {x: -129.05, y: -16.670948, z: 28.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19262,7 +19265,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 9
+  m_Speed: 15
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 600
