@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
         Idle,
         Chasing,
         Patroling,
-        RunningFrom,
+        Fleeing,
         InInteraction,
         Free,
     }

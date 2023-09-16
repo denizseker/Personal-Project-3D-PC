@@ -43,6 +43,7 @@ public class GetInfoForTag : MonoBehaviour
             clanLogo.sprite = npcManager.clan.clanLogo;
             troops.text = GetComponentInParent<Army>().armyTotalTroops.ToString();
             state.text = npcManager.currentState.ToString();
+            if (npcManager.interactedCharacter != null) state.text += " " + npcManager.interactedCharacter.characterName;
         }
         //if script in player
         //else if(GetComponentInParent<PlayerManager>() != null)

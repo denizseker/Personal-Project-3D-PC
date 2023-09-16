@@ -9,8 +9,6 @@ public class NPCAI : MonoBehaviour
 
     private NPC NPC;
 
-    public Character targetCharacter;
-
 
     private void Awake()
     {
@@ -53,19 +51,39 @@ public class NPCAI : MonoBehaviour
         {
             Catch(_targetCharacter);
         }
-
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         //if character detect another character.
         if (other.tag == "DetectArea")
         {
             Character interactedCharacter = other.GetComponentInParent<Character>();
-
             //Targetcharacter is enemy.
             if (ClanManager.Instance.isEnemy(NPC.clan, interactedCharacter.clan))
             {
-                
+                //this army is bigger then opponent army
+                if(NPC.army.armyTotalTroops >= interactedCharacter.army.armyTotalTroops)
+                {
+                    //if this character not fleeing, it can chase.
+                    if(NPC.currentState != Character.CurrentState.Fleeing)
+                    {
+                        NPC.currentState = Character.CurrentState.Chasing;
+                    }
+
+                }
+                //this army is smaller then opponent army
+                else
+                {
+                    NPC.currentState = Character.CurrentState.Fleeing;
+                }
+                //setting this character's intractedcharacter. Both AI will do that for himself
+                NPC.interactedCharacter = interactedCharacter;
+
+                //if interactedcharacter is player AI should set our target.
+                if(interactedCharacter.GetType() == typeof(Player))
+                {
+                    interactedCharacter.interactedCharacter = interactedCharacter;
+                }
             }
             //Targetcharacter is not enemy.
             else
@@ -77,7 +95,10 @@ public class NPCAI : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        
+        if(other.tag == "DetectArea")
+        {
+            StopEveryThing();
+        }
     }
 
     public void GoPatrolTown()
@@ -95,7 +116,7 @@ public class NPCAI : MonoBehaviour
     private void ClearTarget()
     {
         Debug.Log("Cleared target");
-        targetCharacter = null;
+        NPC.interactedCharacter = null;
     }
 
     private void Update()
@@ -104,13 +125,13 @@ public class NPCAI : MonoBehaviour
         {
             GoPatrolTown();
         }
-        else if (NPC.currentState == Character.CurrentState.RunningFrom)
+        else if (NPC.currentState == Character.CurrentState.Fleeing)
         {
-            RunFromEnemy(targetCharacter);
+            RunFromEnemy(NPC.interactedCharacter);
         }
         else if (NPC.currentState == Character.CurrentState.Chasing)
         {
-            Chase(targetCharacter);
+            Chase(NPC.interactedCharacter);
         }
     }
 
