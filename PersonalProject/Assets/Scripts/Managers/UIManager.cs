@@ -8,12 +8,16 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     public RectTransform UI_soldierPanel;
+    public RectTransform UI_warHandlerPanel;
     public float offsetXPercentage = 0.07f; // Horizontally
     public float offsetYPercentage = -0.18f; // Vertically
 
-    public bool isPanelActive = false;
+    public bool isInfoPanelActive = false;
+    public bool isWarHandlerPanelActive = false;
     private GameObject obje;
 
+
+    //Values for infopanel
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private TMP_Text clanText;
     [SerializeField] private TMP_Text speedText;
@@ -23,6 +27,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text horseManText;
     [SerializeField] private TMP_Text cavalaryText;
     [SerializeField] private TMP_Text eliteCavalaryText;
+
+
+    //Values for warpanel
+    [SerializeField] private TMP_Text timeText;
 
     [HideInInspector] public List<GameObject> selectedObjects = new List<GameObject>();
 
@@ -73,7 +81,7 @@ public class UIManager : MonoBehaviour
         //}
 
         //Panel attached to Object.
-        if (Instance.isPanelActive)
+        if (Instance.isInfoPanelActive)
         {
             Vector3 panelPosition = Camera.main.WorldToScreenPoint(Instance.obje.transform.position);
 
@@ -98,6 +106,31 @@ public class UIManager : MonoBehaviour
 
             Instance.UI_soldierPanel.position = panelPosition;
         }
+        if (Instance.isWarHandlerPanelActive)
+        {
+            Vector3 panelPosition = Camera.main.WorldToScreenPoint(Instance.obje.transform.position);
+
+            //Adjusting panel position to mouse position for different resolation
+            float offsetWidth = Screen.width * (Instance.offsetXPercentage + 0.06f);
+            float offsetHeight = Screen.height * (Instance.offsetYPercentage - 0.04f);
+
+            panelPosition.x += offsetWidth;
+            panelPosition.y += offsetHeight;
+
+            // Adjusting the panel position to not exceed the screen boundaries.
+            float panelHalfWidth = Instance.UI_soldierPanel.sizeDelta.x * 0.4f;
+            float panelHalfHeight = Instance.UI_soldierPanel.sizeDelta.y * 0.4f;
+
+            float minX = panelHalfWidth;
+            float maxX = Screen.width - panelHalfWidth;
+            float minY = panelHalfHeight;
+            float maxY = Screen.height - panelHalfHeight;
+
+            panelPosition.x = Mathf.Clamp(panelPosition.x, minX, maxX);
+            panelPosition.y = Mathf.Clamp(panelPosition.y, minY, maxY);
+
+            Instance.UI_warHandlerPanel.position = panelPosition;
+        }
 
     }
 
@@ -114,5 +147,10 @@ public class UIManager : MonoBehaviour
         Instance.horseManText.text = _horseman.ToString();
         Instance.cavalaryText.text = _cavalary.ToString();
         Instance.eliteCavalaryText.text = _elitecavalary.ToString();
+    }
+    public void UpdateWarPanel(GameObject _object,string _time)
+    {
+        Instance.obje = _object;
+        Instance.timeText.text = _time;
     }
 }

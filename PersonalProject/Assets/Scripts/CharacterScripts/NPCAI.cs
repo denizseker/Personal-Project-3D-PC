@@ -57,9 +57,12 @@ public class NPCAI : MonoBehaviour
         //Setting characters states
         NPC.currentState = Character.CurrentState.InInteraction;
         _targetCharacter.currentState = Character.CurrentState.InInteraction;
-        //setting off characters collider.
+        //setting off characters colliders. so warhappening object will handle collisions.
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
-        _targetCharacter.gameObject.GetComponentInChildren<NPCAI>().gameObject.GetComponent<CapsuleCollider>().enabled = false;
+        gameObject.transform.parent.GetComponent<CapsuleCollider>().enabled = false;
+        _targetCharacter.GetComponent<CapsuleCollider>().enabled = false;
+        _targetCharacter.gameObject.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = false;
+
         //instantiating warhappening object at middle of 2 characters
         Vector3 middleOfCharacters = Vector3.Lerp(transform.position, _targetCharacter.transform.position, 0.75f);
         var warHappeningObj = Instantiate(warHappening, middleOfCharacters, transform.rotation);
