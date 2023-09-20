@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class WarHandler : MonoBehaviour
 {
-
-    private List<Character> party1 = new List<Character>();
-    private List<Character> party2 = new List<Character>();
+    //Those variables will add for for bigger army fights
+    //private List<Character> party1 = new List<Character>();
+    //private List<Character> party2 = new List<Character>();
+    public Character character1;
+    public Character character2;
     public bool isBattleStarted = false;
     public float pastTime;
     public float startTime;
@@ -34,9 +36,9 @@ public class WarHandler : MonoBehaviour
     {
         startTime = Time.time;
         isBattleStarted = true;
+        character1 = _character1;
+        character2 = _character2;
         //Adding participant to the lists.
-        party1.Add(_character1);
-        party2.Add(_character2);
     }
 
 

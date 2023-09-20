@@ -62,10 +62,10 @@ public class NPCAI : MonoBehaviour
         gameObject.transform.parent.GetComponent<CapsuleCollider>().enabled = false;
         _targetCharacter.GetComponent<CapsuleCollider>().enabled = false;
         _targetCharacter.gameObject.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = false;
-
         //instantiating warhappening object at middle of 2 characters
         Vector3 middleOfCharacters = Vector3.Lerp(transform.position, _targetCharacter.transform.position, 0.75f);
         var warHappeningObj = Instantiate(warHappening, middleOfCharacters, transform.rotation);
+        //Sending 2 character who is will be in fight.
         warHappeningObj.GetComponent<WarHandler>().StartFight(NPC,_targetCharacter);
 
         
