@@ -106,6 +106,7 @@ public class UIManager : MonoBehaviour
 
             Instance.UI_soldierPanel.position = panelPosition;
         }
+
         if (Instance.isWarHandlerPanelActive)
         {
             Vector3 panelPosition = Camera.main.WorldToScreenPoint(Instance.obje.transform.position);

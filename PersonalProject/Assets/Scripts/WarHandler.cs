@@ -21,10 +21,10 @@ public class WarHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Calculating past time and making it string.
         if (isBattleStarted)
         {
             pastTime = Time.time - startTime;
-            //Debug.Log(pastTime.ToString("F0"));
             pastTimeString = Mathf.Floor(pastTime / 60).ToString("00") + ":" + Mathf.FloorToInt(pastTime % 60).ToString("00");
         }
     }
@@ -34,6 +34,9 @@ public class WarHandler : MonoBehaviour
     {
         startTime = Time.time;
         isBattleStarted = true;
+        //Adding participant to the lists.
+        party1.Add(_character1);
+        party2.Add(_character2);
     }
 
 

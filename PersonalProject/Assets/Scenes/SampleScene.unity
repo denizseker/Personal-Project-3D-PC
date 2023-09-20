@@ -7956,7 +7956,7 @@ MonoBehaviour:
   army: {fileID: 0}
   speed: 0
   interactedCharacter: {fileID: 0}
-  characterName: Sir Godsea
+  characterName: Sir Murat
   enumClan: 6
   patrolSettlement: {fileID: 2527539637853199777}
   patrolTown: {fileID: 0}
@@ -15025,7 +15025,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484515303}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15058,7 +15058,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 150, y: -205}
   m_SizeDelta: {x: 260.16907, y: 386.3683}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1484515305
@@ -26792,7 +26792,7 @@ MonoBehaviour:
   army: {fileID: 0}
   speed: 0
   interactedCharacter: {fileID: 0}
-  characterName: Sir Tela
+  characterName: Sir Sayha
   enumClan: 0
   patrolSettlement: {fileID: 2527539637853199777}
   patrolTown: {fileID: 0}
