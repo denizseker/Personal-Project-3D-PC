@@ -10,10 +10,11 @@ public class WarHandler : MonoBehaviour
     public Character character1;
     public Character character2;
     public bool isBattleStarted = false;
-    public float pastTime;
+    public float pastTime = 0;
     public float startTime;
     public string pastTimeString;
 
+    private WaitForSeconds attackFrequency = new WaitForSeconds(3);
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,19 @@ public class WarHandler : MonoBehaviour
             pastTime = Time.time - startTime;
             pastTimeString = Mathf.Floor(pastTime / 60).ToString("00") + ":" + Mathf.FloorToInt(pastTime % 60).ToString("00");
         }
+
     }
+
+    
+    private IEnumerator WarGoingOn()
+    {
+        while (true)
+        {
+            Debug.Log("Attack");
+            yield return attackFrequency;
+        }
+    }
+
 
 
     public void StartFight(Character _character1,Character _character2)
@@ -38,7 +51,8 @@ public class WarHandler : MonoBehaviour
         isBattleStarted = true;
         character1 = _character1;
         character2 = _character2;
-        //Adding participant to the lists.
+        StartCoroutine(WarGoingOn());
+        
     }
 
 

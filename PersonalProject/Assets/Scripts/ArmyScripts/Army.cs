@@ -13,7 +13,7 @@ public class Army : MonoBehaviour
     public Soldier SwordsMan = new Soldier(35, 5, 75, 0, 25, SoldierLevel.SwordsMan);
     public Soldier HorseMan = new Soldier(60, 8, 225, 0, 75, SoldierLevel.HorseMan);
     public Soldier Cavalary = new Soldier(90, 15, 675, 0, 225, SoldierLevel.Cavalary);
-    public Soldier EliteCavalary = new Soldier(150, 25, 2025, 0, 675, SoldierLevel.EliteCavalary);
+    public Soldier EliteCavalary = new Soldier(200, 25, 2025, 0, 675, SoldierLevel.EliteCavalary);
 
     public int armyTotalTroops;
 

@@ -57,12 +57,12 @@ namespace CameraControl {
 					_currentSpeed = _normalSpeed;
 				}
 
-				Vector3 nextTargetPosition = _targetPosition + (_input * _currentSpeed * Time.deltaTime);
+				Vector3 nextTargetPosition = _targetPosition + (_input * _currentSpeed * Time.unscaledDeltaTime);
 
 				if (IsInBounds(nextTargetPosition)) _targetPosition = nextTargetPosition;
 
 				_targetPosition.y = defaultPosY;
-				transform.position = Vector3.Lerp(transform.position, _targetPosition, _smoothing * Time.deltaTime);
+				transform.position = Vector3.Lerp(transform.position, _targetPosition, _smoothing * Time.unscaledDeltaTime);
 			}
 			
 		}
@@ -79,7 +79,7 @@ namespace CameraControl {
 			if (isCameraLockedToPlayer)
             {
 				Vector3 playerPos = new Vector3(player.transform.position.x,defaultPosY,player.transform.position.z);
-				transform.position = Vector3.Lerp(transform.position, playerPos, Time.deltaTime * 10f);
+				transform.position = Vector3.Lerp(transform.position, playerPos, Time.unscaledDeltaTime * 10f);
 			}
 
 		}

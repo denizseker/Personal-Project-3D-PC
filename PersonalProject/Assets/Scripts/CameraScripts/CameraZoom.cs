@@ -24,7 +24,7 @@ namespace CameraControl {
 		private void Zoom() {
 			Vector3 nextTargetPosition = _targetPosition + _cameraDirection * (_input * _speed);
 			if(IsInBounds(nextTargetPosition)) _targetPosition = nextTargetPosition;
-			_cameraHolder.localPosition = Vector3.Lerp(_cameraHolder.localPosition, _targetPosition, Time.deltaTime * _smoothing);
+			_cameraHolder.localPosition = Vector3.Lerp(_cameraHolder.localPosition, _targetPosition, Time.unscaledDeltaTime * _smoothing);
 		}
 
 		private bool IsInBounds(Vector3 position) {

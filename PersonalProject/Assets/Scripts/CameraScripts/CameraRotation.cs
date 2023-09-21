@@ -43,8 +43,8 @@ namespace CameraControl {
                 _targetAngleX = 45;
             }
 
-            _currentAngleY = Mathf.Lerp(_currentAngleY, _targetAngleY, Time.deltaTime * _smoothing);
-            _currentAngleX = Mathf.Lerp(_currentAngleX, _targetAngleX, Time.deltaTime * _smoothing);
+            _currentAngleY = Mathf.Lerp(_currentAngleY, _targetAngleY, Time.unscaledDeltaTime * _smoothing);
+            _currentAngleX = Mathf.Lerp(_currentAngleX, _targetAngleX, Time.unscaledDeltaTime * _smoothing);
 
             transform.rotation = Quaternion.AngleAxis(_currentAngleY, Vector3.up) * Quaternion.AngleAxis(_currentAngleX, Vector3.left);
 

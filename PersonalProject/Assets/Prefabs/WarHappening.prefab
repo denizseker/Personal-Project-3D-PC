@@ -4981,6 +4981,7 @@ MonoBehaviour:
   character2: {fileID: 0}
   isBattleStarted: 0
   pastTime: 0
+  pastTimeForAttack: 0
   startTime: 0
   pastTimeString: 
 --- !u!114 &-5994557942432388061
@@ -5086,7 +5087,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e3c3adb82d56f60469173013c46fa1f0, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0

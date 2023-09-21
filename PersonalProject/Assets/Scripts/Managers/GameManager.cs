@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-   
+    private void Update()
+    {
+        if (Input.GetKeyDown("p"))
+        {
+            Time.timeScale = 2f;
+        }
+    }
 
 }

@@ -6636,7 +6636,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312020755}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.7, y: -7.05, z: 0}
+  m_LocalPosition: {x: -64.6, y: -7.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7880,7 +7880,7 @@ MonoBehaviour:
   army: {fileID: 0}
   speed: 0
   interactedCharacter: {fileID: 0}
-  characterName: Lord Godsea
+  characterName: k1ngkonk_
   enumClan: 6
   patrolSettlement: {fileID: 2527539637853199777}
   patrolTown: {fileID: 0}
@@ -19845,7 +19845,7 @@ PrefabInstance:
     - target: {fileID: 9098733800788831018, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.9
+      value: -57.5
       objectReference: {fileID: 0}
     - target: {fileID: 9098733800788831018, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
@@ -19855,7 +19855,7 @@ PrefabInstance:
     - target: {fileID: 9098733800788831018, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.3
+      value: 20.7
       objectReference: {fileID: 0}
     - target: {fileID: 9098733800788831018, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
@@ -26181,7 +26181,7 @@ MonoBehaviour:
   army: {fileID: 0}
   speed: 0
   interactedCharacter: {fileID: 0}
-  characterName: Sir Tela
+  characterName: BaSiTGaMinG
   enumClan: 0
   patrolSettlement: {fileID: 2527539637853199777}
   patrolTown: {fileID: 0}
