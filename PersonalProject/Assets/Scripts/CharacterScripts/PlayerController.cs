@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -34,6 +35,11 @@ public class PlayerController : MonoBehaviour
     void ClickToMove()
     {
         RaycastHit hit;
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            Debug.Log("Click UI");
+        }
+
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 2000))
         {
             //only trigger on terrain click.

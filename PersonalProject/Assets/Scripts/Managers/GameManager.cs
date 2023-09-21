@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Settlements = new List<GameObject>();
     public List<GameObject> NPCSoldiers = new List<GameObject>();
 
+
+
     private void Awake() 
     {
         Instance = this;
@@ -15,10 +17,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("p"))
-        {
-            Time.timeScale = 2f;
-        }
+
     }
 
 }
