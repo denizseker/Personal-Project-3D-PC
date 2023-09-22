@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
-public class MouseInteraction : MonoBehaviour
+public class MouseInteraction : MonoBehaviour , IPointerClickHandler
 {
     private Army army;
     private Player playerManager;
@@ -117,5 +118,10 @@ public class MouseInteraction : MonoBehaviour
                 player.GetComponent<NavMeshAgent>().SetDestination(transform.position);
             }
         }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        //Debug.Log("Click on Object");
     }
 }

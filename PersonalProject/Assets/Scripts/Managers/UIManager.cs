@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,8 +16,8 @@ public class UIManager : MonoBehaviour
     public bool isInfoPanelActive = false;
     public bool isWarHandlerPanelActive = false;
     private GameObject obje;
-
-
+    [SerializeField] private TMP_Text timeScaleText;
+    [SerializeField] private TMP_Text InGameHourText;
     //Values for infopanel
     [Header("Info Panel")]
     [SerializeField] private TMP_Text titleText;
@@ -168,10 +169,27 @@ public class UIManager : MonoBehaviour
 
             Instance.UI_warHandlerPanel.position = panelPosition;
         }
-
     }
 
-
+    //UI bottom panel timescale update
+    public void UpdateTimeScaleText()
+    {
+        timeScaleText.text = Time.timeScale + "x";
+    }
+    //UI Bottom panel date update
+    public void UpdateDateText()
+    {
+        if(TimeManager.Instance.InGameHour < 10)
+        {
+            Instance.InGameHourText.text = "0" + TimeManager.Instance.InGameHour + ":00";
+        }  
+        else
+        {
+            Instance.InGameHourText.text = TimeManager.Instance.InGameHour + ":00";
+        }
+            
+        TimeManager.Instance.DateText.text = TimeManager.Instance.currentSeason + "  " + TimeManager.Instance.InGameDay + ",  " + TimeManager.Instance.InGameYear;
+    }
     public void UpdateInfoPanel(string _name, string _clan, int _troops, int _peasentrecruit, int _swordsman, int _horseman, int _cavalary, int _elitecavalary, GameObject _object, float _speed)
     {
         Instance.obje = _object;

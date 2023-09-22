@@ -35,39 +35,39 @@ public class PlayerController : MonoBehaviour
     void ClickToMove()
     {
         RaycastHit hit;
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            Debug.Log("Click UI");
-        }
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 2000))
+        //If mouse not over on UI elements.
+        if (!EventSystem.current.IsPointerOverGameObject() && !TimeManager.Instance.isGameStopped)
         {
-            //only trigger on terrain click.
-            if(hit.collider.gameObject.layer == 6)
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 2000))
             {
-                //Agent moving to hit point
+                //only trigger on terrain click.
+                if (hit.collider.gameObject.layer == 6)
+                {
+                    //Agent moving to hit point
 
-                agent.destination = hit.point;
+                    agent.destination = hit.point;
 
-                //User clicked terrain for move so we are clearing selected objects.
-                UIManager.Instance.ClearSelectedObjects();
+                    //User clicked terrain for move so we are clearing selected objects.
+                    UIManager.Instance.ClearSelectedObjects();
 
-                if (clickEffect != null)
-                { Instantiate(clickEffect, hit.point + new Vector3(0, 0.1f, 0), clickEffect.transform.rotation); }
+                    if (clickEffect != null)
+                    { Instantiate(clickEffect, hit.point + new Vector3(0, 0.1f, 0), clickEffect.transform.rotation); }
+                }
             }
-
         }
+
+            
     }
-
-    void OnEnable()
-    { input.Enable(); }
-
-    void OnDisable()
-    { input.Disable(); }
 
     void Update()
     {
         SetAnimations();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            ClickToMove();
+        }
     }
 
 
@@ -83,6 +83,4 @@ public class PlayerController : MonoBehaviour
             animator.Play(IDLE);
         }
     }
-
-
 }

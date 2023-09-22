@@ -20,14 +20,14 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.47058564, g: 0.47470668, b: 0.7075472, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.8
-  m_AmbientMode: 0
+  m_AmbientIntensity: 8
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: ebf53236796981645ac01dd8916aa5b0, type: 2}
-  m_HaloStrength: 0.525
+  m_HaloStrength: 0.264
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 0.711
+  m_ReflectionIntensity: 0.661
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 410087040}
-  m_IndirectSpecularColor: {r: 0.106539674, g: 0.11225314, b: 0.10131768, a: 0.711}
+  m_IndirectSpecularColor: {r: 0.000013747303, g: 0.000000024979224, b: 0, a: 0.661}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 21611059}
   - component: {fileID: 21611061}
   - component: {fileID: 21611060}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Participant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 27760217}
   - component: {fileID: 27760219}
   - component: {fileID: 27760218}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsAlive (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,6 @@ GameObject:
   m_Component:
   - component: {fileID: 87871876}
   - component: {fileID: 87871875}
-  - component: {fileID: 87871877}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -545,18 +544,6 @@ Transform:
   m_Father: {fileID: 1852986661}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &87871877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87871874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d76e9575c4e85db4cba2a8563604e520, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &103182579
 GameObject:
   m_ObjectHideFlags: 0
@@ -5470,7 +5457,7 @@ GameObject:
   - component: {fileID: 126869941}
   - component: {fileID: 126869943}
   - component: {fileID: 126869942}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Army
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5885,6 +5872,141 @@ MonoBehaviour:
   ValandorLogo: {fileID: 21300000, guid: b6aac09ae0131164c8595d92f0f24091, type: 3}
   BarbarianLogo: {fileID: 21300000, guid: efbb0c727f11a364dba93914e1e28d8f, type: 3}
   NoneLogo: {fileID: 21300000, guid: 1e5a2f5f63e2d83498213923eebc4863, type: 3}
+--- !u!1 &205751091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 205751092}
+  - component: {fileID: 205751094}
+  - component: {fileID: 205751093}
+  m_Layer: 0
+  m_Name: TimeScale
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &205751092
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205751091}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1243756056}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 42.1}
+  m_SizeDelta: {x: 46.54, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &205751093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205751091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 1x
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 30
+  m_fontSizeBase: 30
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &205751094
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205751091}
+  m_CullTransparentMesh: 1
 --- !u!1 &245831320
 GameObject:
   m_ObjectHideFlags: 0
@@ -5896,7 +6018,7 @@ GameObject:
   - component: {fileID: 245831321}
   - component: {fileID: 245831323}
   - component: {fileID: 245831322}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Divider (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5972,7 +6094,7 @@ GameObject:
   - component: {fileID: 261098968}
   - component: {fileID: 261098970}
   - component: {fileID: 261098969}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsAlive (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6107,7 +6229,7 @@ GameObject:
   - component: {fileID: 271688593}
   - component: {fileID: 271688595}
   - component: {fileID: 271688594}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6242,7 +6364,7 @@ GameObject:
   - component: {fileID: 283559375}
   - component: {fileID: 283559377}
   - component: {fileID: 283559376}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: AlivePNG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6318,7 +6440,7 @@ GameObject:
   - component: {fileID: 300975592}
   - component: {fileID: 300975594}
   - component: {fileID: 300975593}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PeasentRecruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6485,7 +6607,7 @@ GameObject:
   - component: {fileID: 304192523}
   - component: {fileID: 304192525}
   - component: {fileID: 304192524}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6636,7 +6758,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312020755}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -64.6, y: -7.05, z: 0}
+  m_LocalPosition: {x: -52.6, y: 3.1, z: -27.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6865,7 +6987,7 @@ GameObject:
   - component: {fileID: 324369773}
   - component: {fileID: 324369775}
   - component: {fileID: 324369774}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Divider (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6942,6 +7064,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6988,7 +7111,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 215
+    m_Bits: 471
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -7054,6 +7177,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49b4cc203aa6414fae5c798d1d0e7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &336691089
 GameObject:
   m_ObjectHideFlags: 0
@@ -7283,14 +7422,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalRotation: {x: -0.86602545, y: 0, z: 0, w: 0.49999994}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1242202669}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -120, y: 0, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7322,7 +7461,7 @@ GameObject:
   - component: {fileID: 438817791}
   - component: {fileID: 438817793}
   - component: {fileID: 438817792}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PeasentRecruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7618,7 +7757,7 @@ GameObject:
   - component: {fileID: 441047242}
   - component: {fileID: 441047244}
   - component: {fileID: 441047243}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Divider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7694,7 +7833,7 @@ GameObject:
   - component: {fileID: 450239838}
   - component: {fileID: 450239840}
   - component: {fileID: 450239839}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: DeathPNG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7780,7 +7919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &455822578
 Transform:
   m_ObjectHideFlags: 0
@@ -7880,7 +8019,7 @@ MonoBehaviour:
   army: {fileID: 0}
   speed: 0
   interactedCharacter: {fileID: 0}
-  characterName: k1ngkonk_
+  characterName: Sir Tela
   enumClan: 6
   patrolSettlement: {fileID: 2527539637853199777}
   patrolTown: {fileID: 0}
@@ -7953,7 +8092,7 @@ GameObject:
   - component: {fileID: 458450012}
   - component: {fileID: 458450014}
   - component: {fileID: 458450013}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SwordsMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8199,7 +8338,7 @@ GameObject:
   - component: {fileID: 483923944}
   - component: {fileID: 483923946}
   - component: {fileID: 483923945}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8334,7 +8473,7 @@ GameObject:
   - component: {fileID: 484419665}
   - component: {fileID: 484419667}
   - component: {fileID: 484419666}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Party2Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8470,7 +8609,7 @@ GameObject:
   - component: {fileID: 545491471}
   - component: {fileID: 545491473}
   - component: {fileID: 545491472}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: EliteCavalary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8605,7 +8744,7 @@ GameObject:
   - component: {fileID: 550621378}
   - component: {fileID: 550621380}
   - component: {fileID: 550621379}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Party1Divider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8670,6 +8809,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550621377}
   m_CullTransparentMesh: 1
+--- !u!1 &571112804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 571112805}
+  - component: {fileID: 571112806}
+  m_Layer: 0
+  m_Name: TimeButtons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &571112805
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571112804}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1622538386}
+  - {fileID: 848751990}
+  - {fileID: 1501760792}
+  - {fileID: 1604194688}
+  m_Father: {fileID: 790415504}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 23.599945}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &571112806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571112804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d8b6e6c02974848a12c8182c075bd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImageList:
+  - {fileID: 1622538388}
+  - {fileID: 848751992}
+  - {fileID: 1501760794}
+  - {fileID: 1604194690}
 --- !u!1 &583372441
 GameObject:
   m_ObjectHideFlags: 0
@@ -8681,7 +8878,7 @@ GameObject:
   - component: {fileID: 583372442}
   - component: {fileID: 583372444}
   - component: {fileID: 583372443}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsAlive (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8814,7 +9011,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 621907830}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Party1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8860,7 +9057,7 @@ GameObject:
   - component: {fileID: 651511806}
   - component: {fileID: 651511808}
   - component: {fileID: 651511807}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HorseMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9029,8 +9226,8 @@ GameObject:
   - component: {fileID: 790415504}
   - component: {fileID: 790415506}
   - component: {fileID: 790415505}
-  m_Layer: 5
-  m_Name: BackGround
+  m_Layer: 0
+  m_Name: BottomUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9047,7 +9244,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1227938499}
+  - {fileID: 1243756056}
+  - {fileID: 571112805}
   m_Father: {fileID: 879434304}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9105,7 +9305,7 @@ GameObject:
   - component: {fileID: 807458760}
   - component: {fileID: 807458762}
   - component: {fileID: 807458761}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ParticiValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9240,7 +9440,7 @@ GameObject:
   - component: {fileID: 812047924}
   - component: {fileID: 812047926}
   - component: {fileID: 812047925}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsDeath (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9518,7 +9718,7 @@ GameObject:
   - component: {fileID: 837461157}
   - component: {fileID: 837461159}
   - component: {fileID: 837461158}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsAlive (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9654,7 +9854,7 @@ GameObject:
   - component: {fileID: 848751993}
   - component: {fileID: 848751992}
   - component: {fileID: 848751991}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: 1x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9668,17 +9868,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 848751989}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 879434304}
-  m_RootOrder: 2
+  m_Father: {fileID: 571112805}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 151.1, y: -24.1}
+  m_AnchoredPosition: {x: 151.1001, y: -24.099909}
   m_SizeDelta: {x: 40, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &848751991
@@ -9725,14 +9925,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1498100309}
-        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
-        m_MethodName: SetTimeScale
+      - m_Target: {fileID: 571112806}
+        m_TargetAssemblyTypeName: TimeButtonHandler, Assembly-CSharp
+        m_MethodName: ButtonPressed
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1498100309}
+        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
+        m_MethodName: CheckGameSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -9750,7 +9962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.927565, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9936,7 +10148,7 @@ GameObject:
   - component: {fileID: 866128835}
   - component: {fileID: 866128837}
   - component: {fileID: 866128836}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Divider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10010,7 +10222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 879434304}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: MainUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10030,18 +10242,14 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 790415504}
-  - {fileID: 1622538386}
-  - {fileID: 848751990}
-  - {fileID: 1501760792}
-  - {fileID: 1604194688}
-  - {fileID: 1227938499}
+  - {fileID: 1285309465}
   m_Father: {fileID: 1273154156}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -489.5}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: -934, y: -980}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &904957970
 GameObject:
@@ -10118,7 +10326,7 @@ GameObject:
   - component: {fileID: 926396857}
   - component: {fileID: 926396859}
   - component: {fileID: 926396858}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsDeath (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10379,7 +10587,7 @@ GameObject:
   - component: {fileID: 980023150}
   - component: {fileID: 980023152}
   - component: {fileID: 980023151}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsDeath (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10514,7 +10722,7 @@ GameObject:
   - component: {fileID: 981859227}
   - component: {fileID: 981859229}
   - component: {fileID: 981859228}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ParticiValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10649,7 +10857,7 @@ GameObject:
   - component: {fileID: 995652958}
   - component: {fileID: 995652960}
   - component: {fileID: 995652959}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsAlive (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11352,7 +11560,7 @@ GameObject:
   - component: {fileID: 1109769043}
   - component: {fileID: 1109769045}
   - component: {fileID: 1109769044}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Divider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11428,7 +11636,7 @@ GameObject:
   - component: {fileID: 1126349444}
   - component: {fileID: 1126349446}
   - component: {fileID: 1126349445}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsAlive (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11563,7 +11771,7 @@ GameObject:
   - component: {fileID: 1142658397}
   - component: {fileID: 1142658399}
   - component: {fileID: 1142658398}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Party1Divider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11713,7 +11921,7 @@ GameObject:
   - component: {fileID: 1149167065}
   - component: {fileID: 1149167067}
   - component: {fileID: 1149167066}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ClanValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11880,7 +12088,7 @@ GameObject:
   - component: {fileID: 1157885840}
   - component: {fileID: 1157885842}
   - component: {fileID: 1157885841}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Party1Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12050,7 +12258,7 @@ GameObject:
   - component: {fileID: 1172588593}
   - component: {fileID: 1172588595}
   - component: {fileID: 1172588594}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Owner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12217,7 +12425,7 @@ GameObject:
   - component: {fileID: 1186442505}
   - component: {fileID: 1186442507}
   - component: {fileID: 1186442506}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Cavalary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12354,7 +12562,7 @@ GameObject:
   - component: {fileID: 1227938499}
   - component: {fileID: 1227938501}
   - component: {fileID: 1227938500}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Date
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12373,12 +12581,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 879434304}
-  m_RootOrder: 5
+  m_Father: {fileID: 790415504}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -210.6, y: -23.5}
+  m_AnchoredPosition: {x: -210.6, y: 0.099990845}
   m_SizeDelta: {x: 105.2, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1227938500
@@ -12489,7 +12697,7 @@ GameObject:
   - component: {fileID: 1229684562}
   - component: {fileID: 1229684564}
   - component: {fileID: 1229684563}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsDeath (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12656,7 +12864,7 @@ GameObject:
   - component: {fileID: 1239615305}
   - component: {fileID: 1239615307}
   - component: {fileID: 1239615306}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SpeedValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12816,6 +13024,84 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1243756055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1243756056}
+  - component: {fileID: 1243756058}
+  - component: {fileID: 1243756057}
+  m_Layer: 0
+  m_Name: Clock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1243756056
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243756055}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 205751092}
+  - {fileID: 1844863110}
+  m_Father: {fileID: 790415504}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 32.8}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1243756057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243756055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 2aa2b49c628974a4080308276cb2621a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1243756058
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243756055}
+  m_CullTransparentMesh: 1
 --- !u!1 &1259897554
 GameObject:
   m_ObjectHideFlags: 0
@@ -12974,7 +13260,7 @@ GameObject:
   - component: {fileID: 1273154159}
   - component: {fileID: 1273154158}
   - component: {fileID: 1273154157}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13016,7 +13302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
+  m_IgnoreReversedGraphics: 0
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
@@ -13107,7 +13393,7 @@ GameObject:
   - component: {fileID: 1277077683}
   - component: {fileID: 1277077685}
   - component: {fileID: 1277077684}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Cavalary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13233,6 +13519,141 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277077682}
   m_CullTransparentMesh: 1
+--- !u!1 &1285309464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1285309465}
+  - component: {fileID: 1285309467}
+  - component: {fileID: 1285309466}
+  m_Layer: 0
+  m_Name: FPS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1285309465
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285309464}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 879434304}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -367, y: 954.4999}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1285309466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285309464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: New Text
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 25
+  m_fontSizeBase: 25
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1285309467
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285309464}
+  m_CullTransparentMesh: 1
 --- !u!1 &1299777633
 GameObject:
   m_ObjectHideFlags: 0
@@ -13276,7 +13697,7 @@ GameObject:
   - component: {fileID: 1308121453}
   - component: {fileID: 1308121455}
   - component: {fileID: 1308121454}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsAlive (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13489,7 +13910,7 @@ GameObject:
   - component: {fileID: 1316954465}
   - component: {fileID: 1316954467}
   - component: {fileID: 1316954466}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsDeath (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13744,7 +14165,7 @@ GameObject:
   - component: {fileID: 1352690185}
   - component: {fileID: 1352690187}
   - component: {fileID: 1352690186}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13820,7 +14241,7 @@ GameObject:
   - component: {fileID: 1355880871}
   - component: {fileID: 1355880873}
   - component: {fileID: 1355880872}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsDeath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13955,7 +14376,7 @@ GameObject:
   - component: {fileID: 1375127520}
   - component: {fileID: 1375127522}
   - component: {fileID: 1375127521}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PeasentRecruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14092,7 +14513,7 @@ GameObject:
   - component: {fileID: 1394316942}
   - component: {fileID: 1394316944}
   - component: {fileID: 1394316943}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: EliteCavalaryValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14227,7 +14648,7 @@ GameObject:
   - component: {fileID: 1411012659}
   - component: {fileID: 1411012661}
   - component: {fileID: 1411012660}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsDeath (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14362,7 +14783,7 @@ GameObject:
   - component: {fileID: 1422751590}
   - component: {fileID: 1422751592}
   - component: {fileID: 1422751591}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SwordsMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14496,6 +14917,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1430246793}
   - component: {fileID: 1430246794}
+  - component: {fileID: 1430246795}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -14536,6 +14958,8 @@ MonoBehaviour:
   offsetYPercentage: -0.18
   isInfoPanelActive: 0
   isWarHandlerPanelActive: 0
+  timeScaleText: {fileID: 205751093}
+  InGameHourText: {fileID: 1844863111}
   titleText: {fileID: 271688594}
   clanText: {fileID: 1149167066}
   speedText: {fileID: 1239615306}
@@ -14575,6 +14999,20 @@ MonoBehaviour:
   party2_participantText: {fileID: 981859228}
   timeText: {fileID: 1602899982}
   selectedObjects: []
+--- !u!114 &1430246795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430246792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76e9575c4e85db4cba2a8563604e520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fpsText: {fileID: 1285309466}
+  _hudRefreshRate: 0.5
 --- !u!1 &1440696234
 GameObject:
   m_ObjectHideFlags: 0
@@ -14586,7 +15024,7 @@ GameObject:
   - component: {fileID: 1440696235}
   - component: {fileID: 1440696237}
   - component: {fileID: 1440696236}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SwordsMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14723,7 +15161,7 @@ GameObject:
   - component: {fileID: 1458345870}
   - component: {fileID: 1458345872}
   - component: {fileID: 1458345871}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Divider (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14799,7 +15237,7 @@ GameObject:
   - component: {fileID: 1471292706}
   - component: {fileID: 1471292708}
   - component: {fileID: 1471292707}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PeasentRecruitValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14966,7 +15404,7 @@ GameObject:
   - component: {fileID: 1471883118}
   - component: {fileID: 1471883120}
   - component: {fileID: 1471883119}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Cavalary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15133,7 +15571,7 @@ GameObject:
   - component: {fileID: 1484515304}
   - component: {fileID: 1484515306}
   - component: {fileID: 1484515305}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: InfoPanel
   m_TagString: InfoPanel
   m_Icon: {fileID: 0}
@@ -15230,7 +15668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1485624998}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Party2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15276,7 +15714,7 @@ GameObject:
   - component: {fileID: 1486585066}
   - component: {fileID: 1486585068}
   - component: {fileID: 1486585067}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HorseManValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15411,7 +15849,7 @@ GameObject:
   - component: {fileID: 1487978094}
   - component: {fileID: 1487978096}
   - component: {fileID: 1487978095}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: DeathPNG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15487,7 +15925,7 @@ GameObject:
   - component: {fileID: 1488203980}
   - component: {fileID: 1488203982}
   - component: {fileID: 1488203981}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsDeath (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15657,10 +16095,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSeason: 0
   pastTime: 0
-  DayInRealTimeSecond: 96
+  HourInRealTimeSecond: 4
   InGameDay: 1
   InGameMonth: 1
   InGameYear: 1152
+  InGameHour: 8
+  isGameStopped: 0
   sun: {fileID: 410087039}
   DateText: {fileID: 1227938500}
 --- !u!1 &1501760791
@@ -15675,8 +16115,8 @@ GameObject:
   - component: {fileID: 1501760795}
   - component: {fileID: 1501760794}
   - component: {fileID: 1501760793}
-  m_Layer: 5
-  m_Name: 4
+  m_Layer: 0
+  m_Name: 2x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15689,17 +16129,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501760791}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 879434304}
-  m_RootOrder: 3
+  m_Father: {fileID: 571112805}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 196.10002, y: -24.099949}
+  m_AnchoredPosition: {x: 196.10007, y: -24.099949}
   m_SizeDelta: {x: 40, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1501760793
@@ -15746,14 +16186,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1498100309}
-        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
-        m_MethodName: SetTimeScale
+      - m_Target: {fileID: 571112806}
+        m_TargetAssemblyTypeName: TimeButtonHandler, Assembly-CSharp
+        m_MethodName: ButtonPressed
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1498100309}
+        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
+        m_MethodName: CheckGameSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -15807,7 +16259,7 @@ GameObject:
   - component: {fileID: 1505302596}
   - component: {fileID: 1505302598}
   - component: {fileID: 1505302597}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsDeath (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15942,7 +16394,7 @@ GameObject:
   - component: {fileID: 1522774816}
   - component: {fileID: 1522774818}
   - component: {fileID: 1522774817}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SwordsManValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16111,7 +16563,7 @@ GameObject:
   - component: {fileID: 1541454602}
   - component: {fileID: 1541454604}
   - component: {fileID: 1541454603}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsAlive (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16246,7 +16698,7 @@ GameObject:
   - component: {fileID: 1546233912}
   - component: {fileID: 1546233914}
   - component: {fileID: 1546233913}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Army
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16420,7 +16872,7 @@ GameObject:
   - component: {fileID: 1567311907}
   - component: {fileID: 1567311909}
   - component: {fileID: 1567311908}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: MiddleDivider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16496,7 +16948,7 @@ GameObject:
   - component: {fileID: 1576104387}
   - component: {fileID: 1576104389}
   - component: {fileID: 1576104388}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsDeath (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16631,7 +17083,7 @@ GameObject:
   - component: {fileID: 1584238973}
   - component: {fileID: 1584238975}
   - component: {fileID: 1584238974}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsDeath (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16844,7 +17296,7 @@ GameObject:
   - component: {fileID: 1602899981}
   - component: {fileID: 1602899983}
   - component: {fileID: 1602899982}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Time
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16980,8 +17432,8 @@ GameObject:
   - component: {fileID: 1604194691}
   - component: {fileID: 1604194690}
   - component: {fileID: 1604194689}
-  m_Layer: 5
-  m_Name: 8
+  m_Layer: 0
+  m_Name: 3x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16994,13 +17446,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604194687}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 879434304}
-  m_RootOrder: 4
+  m_Father: {fileID: 571112805}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17051,14 +17503,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1498100309}
-        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
-        m_MethodName: SetTimeScale
+      - m_Target: {fileID: 571112806}
+        m_TargetAssemblyTypeName: TimeButtonHandler, Assembly-CSharp
+        m_MethodName: ButtonPressed
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 8
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1498100309}
+        m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
+        m_MethodName: CheckGameSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -17112,7 +17576,7 @@ GameObject:
   - component: {fileID: 1619186866}
   - component: {fileID: 1619186868}
   - component: {fileID: 1619186867}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: EliteCavalary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17249,7 +17713,7 @@ GameObject:
   - component: {fileID: 1621105217}
   - component: {fileID: 1621105219}
   - component: {fileID: 1621105218}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsAlive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17385,7 +17849,7 @@ GameObject:
   - component: {fileID: 1622538389}
   - component: {fileID: 1622538388}
   - component: {fileID: 1622538387}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Stop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17399,13 +17863,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622538385}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 879434304}
-  m_RootOrder: 1
+  m_Father: {fileID: 571112805}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17456,10 +17920,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 571112806}
+        m_TargetAssemblyTypeName: TimeButtonHandler, Assembly-CSharp
+        m_MethodName: ButtonPressed
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1498100309}
         m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
-        m_MethodName: SetTimeScale
-        m_Mode: 3
+        m_MethodName: CheckGameSpeed
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17517,7 +17993,7 @@ GameObject:
   - component: {fileID: 1666783217}
   - component: {fileID: 1666783219}
   - component: {fileID: 1666783218}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsAlive (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17652,7 +18128,7 @@ GameObject:
   - component: {fileID: 1693732367}
   - component: {fileID: 1693732369}
   - component: {fileID: 1693732368}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HorseMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17932,7 +18408,7 @@ GameObject:
   - component: {fileID: 1788507123}
   - component: {fileID: 1788507125}
   - component: {fileID: 1788507124}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Participant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18069,7 +18545,7 @@ GameObject:
   - component: {fileID: 1812611192}
   - component: {fileID: 1812611194}
   - component: {fileID: 1812611193}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: CavalaryValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18204,7 +18680,7 @@ GameObject:
   - component: {fileID: 1814749886}
   - component: {fileID: 1814749888}
   - component: {fileID: 1814749887}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Information
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18339,7 +18815,7 @@ GameObject:
   - component: {fileID: 1836590616}
   - component: {fileID: 1836590618}
   - component: {fileID: 1836590617}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: HorseMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18465,6 +18941,141 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836590615}
   m_CullTransparentMesh: 1
+--- !u!1 &1844863109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1844863110}
+  - component: {fileID: 1844863112}
+  - component: {fileID: 1844863111}
+  m_Layer: 0
+  m_Name: InGameHour
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1844863110
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844863109}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1243756056}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -41}
+  m_SizeDelta: {x: 88.95, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1844863111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844863109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 00:00
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 30
+  m_fontSizeBase: 30
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1844863112
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844863109}
+  m_CullTransparentMesh: 1
 --- !u!1 &1847116883
 GameObject:
   m_ObjectHideFlags: 0
@@ -18476,7 +19087,7 @@ GameObject:
   - component: {fileID: 1847116884}
   - component: {fileID: 1847116886}
   - component: {fileID: 1847116885}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: AlivePNG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18688,7 +19299,7 @@ GameObject:
   - component: {fileID: 1875987673}
   - component: {fileID: 1875987675}
   - component: {fileID: 1875987674}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsDeath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18886,7 +19497,7 @@ GameObject:
   - component: {fileID: 1939004567}
   - component: {fileID: 1939004569}
   - component: {fileID: 1939004568}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: WarPanel
   m_TagString: InfoPanel
   m_Icon: {fileID: 0}
@@ -18967,7 +19578,7 @@ GameObject:
   - component: {fileID: 1951239411}
   - component: {fileID: 1951239413}
   - component: {fileID: 1951239412}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Divider (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19043,7 +19654,7 @@ GameObject:
   - component: {fileID: 1971250083}
   - component: {fileID: 1971250085}
   - component: {fileID: 1971250084}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: EliteCavalary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19211,7 +19822,7 @@ GameObject:
   - component: {fileID: 2012463255}
   - component: {fileID: 2012463257}
   - component: {fileID: 2012463256}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Clan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19378,7 +19989,7 @@ GameObject:
   - component: {fileID: 2028578219}
   - component: {fileID: 2028578221}
   - component: {fileID: 2028578220}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Troops
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19576,7 +20187,7 @@ GameObject:
   - component: {fileID: 2059917845}
   - component: {fileID: 2059917847}
   - component: {fileID: 2059917846}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsAlive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19711,7 +20322,7 @@ GameObject:
   - component: {fileID: 2074075510}
   - component: {fileID: 2074075512}
   - component: {fileID: 2074075511}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TroopsAlive (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19877,7 +20488,7 @@ GameObject:
   - component: {fileID: 2117810269}
   - component: {fileID: 2117810271}
   - component: {fileID: 2117810270}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Divider (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27025,7 +27636,7 @@ MonoBehaviour:
   army: {fileID: 0}
   speed: 0
   interactedCharacter: {fileID: 0}
-  characterName: BaSiTGaMinG
+  characterName: Lord Godsea
   enumClan: 0
   patrolSettlement: {fileID: 2527539637853199777}
   patrolTown: {fileID: 0}
@@ -27052,7 +27663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &8773208173670639733
 NavMeshAgent:
   m_ObjectHideFlags: 0

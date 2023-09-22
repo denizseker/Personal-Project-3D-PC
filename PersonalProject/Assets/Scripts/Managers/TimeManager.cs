@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class TimeManager : MonoBehaviour
 {
@@ -14,12 +15,17 @@ public class TimeManager : MonoBehaviour
 
     public static TimeManager Instance;
 
-    public Seasons currentSeason;
-    public float pastTime;
-    public float DayInRealTimeSecond = 96;
-    public int InGameDay = 1;
-    public int InGameMonth = 1;
-    public int InGameYear = 1152;
+
+
+    [HideInInspector] public Seasons currentSeason;
+    [HideInInspector] public float pastTime;
+    [HideInInspector] public float HourInRealTimeSecond = 4;
+    [HideInInspector] public int InGameDay = 1;
+    [HideInInspector] public int InGameMonth = 1;
+    [HideInInspector] public int InGameYear = 1152;
+
+    public int InGameHour = 0;
+    public bool isGameStopped;
     public GameObject sun;
     public TMP_Text DateText;
 
@@ -27,30 +33,51 @@ public class TimeManager : MonoBehaviour
     {
         Instance = this;
         Instance.currentSeason = Seasons.Winter;
+        AdjustSunRotationAtStart(InGameHour);
+        
     }
 
-    public void UpdateUI()
+    private void Start()
     {
-        Instance.DateText.text = currentSeason + "  " + InGameDay + ",  " + InGameYear;
+        UIManager.Instance.UpdateDateText();
     }
 
-    public void SetTimeScale(int _scale)
+    public void CheckGameSpeed()
     {
-        Time.timeScale = _scale;
+        UIManager.Instance.UpdateTimeScaleText();
+        if (Time.timeScale == 0)
+        {
+            Instance.isGameStopped = true;
+        }
+        else
+        {
+            Instance.isGameStopped = false;
+        }
     }
 
+
+    public void AdjustSunRotationAtStart(int _timeOfDay)
+    {
+        //Instance.sun.transform.Rotate(-120f, 0, 0, Space.Self);
+        Instance.sun.transform.Rotate( _timeOfDay * 15f, 0, 0, Space.Self);
+    }
 
     private void Update()
     {
         Instance.pastTime += Time.deltaTime;
         Instance.sun.transform.Rotate(3.75f * Time.deltaTime, 0, 0, Space.Self);
 
-
-        if (Instance.pastTime >= 96)
+        if(Instance.pastTime >= 4)
         {
-            Instance.InGameDay += 1;
+            InGameHour += 1;
             Instance.pastTime = 0;
-            Instance.UpdateUI();
+            UIManager.Instance.UpdateDateText();
+        }
+        if (InGameHour == 24)
+        {
+            InGameHour = 0;
+            InGameDay += 1;
+            UIManager.Instance.UpdateDateText();
         }
 
         if (Instance.InGameDay == 31)
@@ -77,16 +104,12 @@ public class TimeManager : MonoBehaviour
                     break;
                     
             }
-            Instance.UpdateUI();
         }
 
         if (Instance.InGameMonth == 5)
         {
             Instance.InGameYear += 1;
             Instance.InGameMonth = 1;
-            Instance.UpdateUI();
         }
-
-       
     }
 }

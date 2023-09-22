@@ -1,31 +1,26 @@
 using UnityEngine;
-using System.Collections;
-
+using UnityEngine.UI;
+using TMPro;
+ 
 public class Fps : MonoBehaviour
 {
-    private float count;
+    [SerializeField] private TMP_Text _fpsText;
+    [SerializeField] private float _hudRefreshRate = 1f;
 
+    private float _timer;
     private void Awake()
     {
         // Make the game run as fast as possible
         Application.targetFrameRate = -1;
-        // Limit the framerate to 500
-        Application.targetFrameRate = 144;
 
     }
-
-    private IEnumerator Start()
+    private void Update()
     {
-        GUI.depth = 2;
-        while (true)
+        if (Time.unscaledTime > _timer)
         {
-            count = 1f / Time.unscaledDeltaTime;
-            yield return new WaitForSeconds(0.1f);
+            int fps = (int)(1f / Time.unscaledDeltaTime);
+            _fpsText.text = "FPS: " + fps;
+            _timer = Time.unscaledTime + _hudRefreshRate;
         }
-    }
-    
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(5, 40, 100, 25), "FPS: " + Mathf.Round(count));
     }
 }
