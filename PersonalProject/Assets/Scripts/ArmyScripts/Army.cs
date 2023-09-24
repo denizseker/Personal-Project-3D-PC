@@ -28,12 +28,6 @@ public class Army : MonoBehaviour
         GetArmySize();
     }
 
-
-    public void BattleReport()
-    {
-
-    }
-
     public void GetArmySize()
     {
         int armySize = 0;
@@ -53,6 +47,4 @@ public class Army : MonoBehaviour
         Debug.Log("Cavalary : " + Cavalary.amount);
         Debug.Log("Elitecavalary : " + EliteCavalary.amount);
     }
-
-    
 }

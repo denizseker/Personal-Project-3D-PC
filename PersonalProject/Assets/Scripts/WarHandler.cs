@@ -15,11 +15,6 @@ public class WarHandler : MonoBehaviour
     public string pastTimeString;
 
     private WaitForSeconds attackFrequency = new WaitForSeconds(3);
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
