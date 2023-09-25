@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SwordsMan
   m_EditorClassIdentifier: 
   soldierName: SwordsMan
-  soldierLevel: 0
-  health: 0
-  attack: 0
-  expLimit: 0
+  soldierLevel: 1
+  health: 550
+  attack: 15
+  expLimit: 2026
   amount: 0
-  exp: 0
+  exp: 675

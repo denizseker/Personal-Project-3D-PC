@@ -205,38 +205,38 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateWarPanel(GameObject _object, string _time, Character _character1,Character _character2)
     {
-        Instance.obje = _object;
-        Instance.timeText.text = _time;
+        //Instance.obje = _object;
+        //Instance.timeText.text = _time;
 
-        //Party1
-        party1_nameText.text = _character1.characterName;
-        party1_totalLiveText.text = _character1.army.armyTotalTroops.ToString();
-        party1_totalDeathText.text = "0";
-        party1_peasentLiveText.text = _character1.army.PeasentRecruit.amount.ToString();
-        party1_peasentDeathText.text = "0";
-        party1_swordsManLiveText.text = _character1.army.SwordsMan.amount.ToString();
-        party1_swordsManDeathText.text = "0";
-        party1_horseManLiveText.text = _character1.army.HorseMan.amount.ToString();
-        party1_horseManDeathText.text = "0";
-        party1_cavalaryLiveText.text = _character1.army.Cavalary.amount.ToString();
-        party1_cavalaryDeathText.text = "0";
-        party1_eliteCavalaryLiveText.text = _character1.army.EliteCavalary.amount.ToString();
-        party1_eliteCavalaryDeathText.text = "0";
-        party1_participantText.text = "";
-        //Party2
-        party2_nameText.text = _character2.characterName;
-        party2_totalLiveText.text = _character2.army.armyTotalTroops.ToString();
-        party2_totalDeathText.text = "0";
-        party2_peasentLiveText.text = _character2.army.PeasentRecruit.amount.ToString();
-        party2_peasentDeathText.text = "0";
-        party2_swordsManLiveText.text = _character2.army.SwordsMan.amount.ToString();
-        party2_swordsManDeathText.text = "0";
-        party2_horseManLiveText.text = _character2.army.HorseMan.amount.ToString();
-        party2_horseManDeathText.text = "0";
-        party2_cavalaryLiveText.text = _character2.army.Cavalary.amount.ToString();
-        party2_cavalaryDeathText.text = "0";
-        party2_eliteCavalaryLiveText.text = _character2.army.EliteCavalary.amount.ToString();
-        party2_eliteCavalaryDeathText.text = "0";
-        party2_participantText.text = "";
+        ////Party1
+        //party1_nameText.text = _character1.characterName;
+        //party1_totalLiveText.text = _character1.army.armyTotalTroops.ToString();
+        //party1_totalDeathText.text = "0";
+        //party1_peasentLiveText.text = _character1.army.PeasentRecruit.amount.ToString();
+        //party1_peasentDeathText.text = "0";
+        //party1_swordsManLiveText.text = _character1.army.SwordsMan.amount.ToString();
+        //party1_swordsManDeathText.text = "0";
+        //party1_horseManLiveText.text = _character1.army.HorseMan.amount.ToString();
+        //party1_horseManDeathText.text = "0";
+        //party1_cavalaryLiveText.text = _character1.army.Cavalary.amount.ToString();
+        //party1_cavalaryDeathText.text = "0";
+        //party1_eliteCavalaryLiveText.text = _character1.army.EliteCavalary.amount.ToString();
+        //party1_eliteCavalaryDeathText.text = "0";
+        //party1_participantText.text = "";
+        ////Party2
+        //party2_nameText.text = _character2.characterName;
+        //party2_totalLiveText.text = _character2.army.armyTotalTroops.ToString();
+        //party2_totalDeathText.text = "0";
+        //party2_peasentLiveText.text = _character2.army.PeasentRecruit.amount.ToString();
+        //party2_peasentDeathText.text = "0";
+        //party2_swordsManLiveText.text = _character2.army.SwordsMan.amount.ToString();
+        //party2_swordsManDeathText.text = "0";
+        //party2_horseManLiveText.text = _character2.army.HorseMan.amount.ToString();
+        //party2_horseManDeathText.text = "0";
+        //party2_cavalaryLiveText.text = _character2.army.Cavalary.amount.ToString();
+        //party2_cavalaryDeathText.text = "0";
+        //party2_eliteCavalaryLiveText.text = _character2.army.EliteCavalary.amount.ToString();
+        //party2_eliteCavalaryDeathText.text = "0";
+        //party2_participantText.text = "";
     }
 }

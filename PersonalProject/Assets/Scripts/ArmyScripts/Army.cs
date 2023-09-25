@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 public class Army : MonoBehaviour
 {
     //Creating default army with 0 troops.
     [Header("Army")]
     [HideInInspector] public List<Soldier> armyList = new List<Soldier>();
-    [Header("SoldiersInArmy")]
-    public Soldier PeasentRecruit = new Soldier(30, 1, 25, 0, 0, SoldierLevel.PeasentRecruit);
-    public Soldier SwordsMan = new Soldier(60, 2, 75, 0, 25, SoldierLevel.SwordsMan);
-    public Soldier HorseMan = new Soldier(120, 5, 225, 0, 75, SoldierLevel.HorseMan);
-    public Soldier Cavalary = new Soldier(250, 10, 675, 0, 225, SoldierLevel.Cavalary);
-    public Soldier EliteCavalary = new Soldier(550, 15, 2025, 0, 675, SoldierLevel.EliteCavalary);
+    public Soldier PeasentRecruit;
+    public Soldier SwordsMan;
+    public Soldier HorseMan;
+    public Soldier Cavalary;
+    public Soldier EliteCavalary;
 
 
-    public List<ScriptableObject> SoldierSO = new List<ScriptableObject>();
+    public List<SoldierSO> SoldierSO = new List<SoldierSO>();
 
 
     [HideInInspector] public int armyTotalTroops;
@@ -24,12 +24,7 @@ public class Army : MonoBehaviour
     private void Awake()
     {
         //Adding troops to army.
-        armyList.Add(PeasentRecruit);
-        armyList.Add(SwordsMan);
-        armyList.Add(HorseMan);
-        armyList.Add(Cavalary);
-        armyList.Add(EliteCavalary);
-        armyTotalTroops = GetArmySize();
+        CreateArmy();
     }
 
     public int GetArmySize()
@@ -67,7 +62,7 @@ public class Army : MonoBehaviour
     {
         for (int i = 0; i < armyList.Count; i++)
         {
-            if(armyList[i].amount > 0)
+            if (armyList[i].amount > 0)
             {
                 //Debug.Log("Damage yedi : " + armyList[i].soldierLevel);
 
@@ -76,7 +71,7 @@ public class Army : MonoBehaviour
                 //Killing soldier and decreasing from armytroop
                 armyList[i].amount -= diedSoldier;
                 //if that soldier type negative, setting to 0
-                if(armyList[i].amount < 0)
+                if (armyList[i].amount < 0)
                 {
                     armyList[i].amount = 0;
                 }
@@ -84,14 +79,20 @@ public class Army : MonoBehaviour
         }
     }
 
-
-    public void GetArmyList()
+    private void CreateArmy()
     {
-        Debug.Log("Peasent : " + PeasentRecruit.amount);
-        Debug.Log("Swordsman : " + SwordsMan.amount);
-        Debug.Log("Horseman : " + HorseMan.amount);
-        Debug.Log("Cavalary : " + Cavalary.amount);
-        Debug.Log("Elitecavalary : " + EliteCavalary.amount);
+        PeasentRecruit = new Soldier(30, 1, 25, 0, 0, SoldierLevel.PeasentRecruit);
+        SwordsMan = new Soldier(60, 2, 75, 25, 0, SoldierLevel.SwordsMan);
+        HorseMan = new Soldier(120, 5, 225, 75, 0, SoldierLevel.HorseMan);
+        Cavalary = new Soldier(250, 10, 675, 225, 0, SoldierLevel.Cavalary);
+        EliteCavalary = new Soldier(550, 15, 2025, 0, 0, SoldierLevel.EliteCavalary);
+
+        armyList.Add(PeasentRecruit);
+        armyList.Add(SwordsMan);
+        armyList.Add(HorseMan);
+        armyList.Add(Cavalary);
+        armyList.Add(EliteCavalary);
+        armyTotalTroops = GetArmySize();
 
     }
 }

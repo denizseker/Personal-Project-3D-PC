@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
-public class MouseInteraction : MonoBehaviour , IPointerClickHandler
+public class MouseInteraction : MonoBehaviour
 {
     private Army army;
     private Player playerManager;
@@ -118,10 +118,5 @@ public class MouseInteraction : MonoBehaviour , IPointerClickHandler
                 player.GetComponent<NavMeshAgent>().SetDestination(transform.position);
             }
         }
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        //Debug.Log("Click on Object");
     }
 }

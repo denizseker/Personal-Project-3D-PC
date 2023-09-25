@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EliteCavalary
   m_EditorClassIdentifier: 
   soldierName: EliteCavalary
-  soldierLevel: 0
-  health: 0
-  attack: 0
-  expLimit: 0
+  soldierLevel: 4
+  health: 60
+  attack: 2
+  expLimit: 75
   amount: 0
-  exp: 0
+  exp: 25

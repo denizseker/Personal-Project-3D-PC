@@ -7365,42 +7365,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56abf0c8751e875458921ba63f3365e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armyList: []
-  PeasentRecruit:
-    health: 20
-    attack: 2
-    expLimit: 25
-    amount: 5
-    exp: 0
-    soldierLevel: 0
-  SwordsMan:
-    health: 35
-    attack: 5
-    expLimit: 75
-    amount: 0
-    exp: 25
-    soldierLevel: 1
-  HorseMan:
-    health: 60
-    attack: 8
-    expLimit: 225
-    amount: 0
-    exp: 75
-    soldierLevel: 2
-  Cavalary:
-    health: 90
-    attack: 15
-    expLimit: 675
-    amount: 0
-    exp: 225
-    soldierLevel: 3
-  EliteCavalary:
-    health: 150
-    attack: 25
-    expLimit: 2025
-    amount: 0
-    exp: 675
-    soldierLevel: 4
+  peasentRecruitAmount: 0
+  swordsManAmount: 0
+  horseManAmount: 0
+  cavalaryAmount: 0
+  eliteCavalaryAmount: 0
+  SoldierSO:
+  - {fileID: 11400000, guid: 51c8a1cc797f88447b49d430e7b2ba86, type: 2}
+  - {fileID: 11400000, guid: 328e2868209ae734583a995fd1b49aa9, type: 2}
+  - {fileID: 11400000, guid: 287e7c837073944408e1191e60aef68b, type: 2}
+  - {fileID: 11400000, guid: 8bbd421930e2e2f4bb9944da261601bc, type: 2}
+  - {fileID: 11400000, guid: ba8128728d000ee439e04da7a6450577, type: 2}
   armyTotalTroops: 0
 --- !u!114 &8729406280781208758
 MonoBehaviour:

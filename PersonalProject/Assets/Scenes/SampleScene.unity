@@ -4333,21 +4333,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
-    - target: {fileID: 1493034667984823875, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: m_Speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: enumClan
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: characterName
-      value: Lord Godsea
-      objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: patrolSettlement
@@ -4355,63 +4340,28 @@ PrefabInstance:
       objectReference: {fileID: 2527539637853199777}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
-      propertyPath: Cavalary.attack
-      value: 10
+      propertyPath: cavalaryAmount
+      value: 5555555
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
-      propertyPath: Cavalary.health
-      value: 250
+      propertyPath: horseManAmount
+      value: 5555555
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
-      propertyPath: HorseMan.attack
-      value: 5
+      propertyPath: swordsManAmount
+      value: 5555555
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
-      propertyPath: HorseMan.health
-      value: 120
+      propertyPath: eliteCavalaryAmount
+      value: 5555555
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
-      propertyPath: SwordsMan.amount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: SwordsMan.attack
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: SwordsMan.health
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: EliteCavalary.attack
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: EliteCavalary.health
-      value: 550
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: PeasentRecruit.amount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: PeasentRecruit.attack
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: PeasentRecruit.health
-      value: 30
+      propertyPath: peasentRecruitAmount
+      value: 5555555
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -13773,6 +13723,31 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 355414726}
+    - target: {fileID: 4520916848439190454, guid: 5e27f8d9627c2b148951ab3ac4a32164,
+        type: 3}
+      propertyPath: cavalaryAmount
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520916848439190454, guid: 5e27f8d9627c2b148951ab3ac4a32164,
+        type: 3}
+      propertyPath: horseManAmount
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520916848439190454, guid: 5e27f8d9627c2b148951ab3ac4a32164,
+        type: 3}
+      propertyPath: swordsManAmount
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520916848439190454, guid: 5e27f8d9627c2b148951ab3ac4a32164,
+        type: 3}
+      propertyPath: eliteCavalaryAmount
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520916848439190454, guid: 5e27f8d9627c2b148951ab3ac4a32164,
+        type: 3}
+      propertyPath: peasentRecruitAmount
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 8434928208128504208, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
       propertyPath: m_Name
@@ -13919,6 +13894,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: TownFull
       objectReference: {fileID: 0}
+    - target: {fileID: 8729406280781208759, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
+        type: 3}
+      propertyPath: cavalaryAmount
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729406280781208759, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
+        type: 3}
+      propertyPath: horseManAmount
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729406280781208759, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
+        type: 3}
+      propertyPath: swordsManAmount
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729406280781208759, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
+        type: 3}
+      propertyPath: eliteCavalaryAmount
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729406280781208759, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
+        type: 3}
+      propertyPath: peasentRecruitAmount
+      value: 55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8, type: 3}
 --- !u!1001 &7888302443516464694
@@ -13938,6 +13938,41 @@ PrefabInstance:
       propertyPath: patrolSettlement
       value: 
       objectReference: {fileID: 2527539637853199777}
+    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: Cavalary
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: HorseMan
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: SwordsMan
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: EliteCavalary
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: PeasentRecruit
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: cavalaryAmount
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: horseManAmount
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: Cavalary.attack
@@ -13960,6 +13995,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
+      propertyPath: swordsManAmount
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
       propertyPath: SwordsMan.amount
       value: 15
       objectReference: {fileID: 0}
@@ -13975,6 +14015,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
+      propertyPath: eliteCavalaryAmount
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
       propertyPath: EliteCavalary.attack
       value: 15
       objectReference: {fileID: 0}
@@ -13982,6 +14027,11 @@ PrefabInstance:
         type: 3}
       propertyPath: EliteCavalary.health
       value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: peasentRecruitAmount
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -14006,7 +14056,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -134.9
+      value: -99.5
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}

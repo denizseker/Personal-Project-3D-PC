@@ -11,6 +11,5 @@ public class SoldierSO : ScriptableObject
     public int health;
     public int attack;
     public int expLimit;
-    public int amount;
     public int exp;
 }

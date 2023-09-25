@@ -12,7 +12,6 @@ public enum SoldierLevel
     EliteCavalary,
 }
 
-[System.Serializable]
 public class Soldier
 {
     public int health;
@@ -23,7 +22,7 @@ public class Soldier
     public SoldierLevel soldierLevel;
 
     //Instantiating at army script with default values
-    public Soldier(int _health,int _attack,int _expLimit,int _amount,int _exp,SoldierLevel _soldierLevel)
+    public Soldier(int _health,int _attack,int _expLimit,int _exp,int _amount,SoldierLevel _soldierLevel)
     {
         health = _health;
         attack = _attack;
@@ -32,24 +31,4 @@ public class Soldier
         exp = _exp;
         soldierLevel = _soldierLevel;
     }
-
-    //calculate how many units will level up with inComingExp and return leveledUpUnit count.
-    public int ShareExp(int _inComingExp)
-    {
-        int expNeedForLevelUp = expLimit - exp;
-
-        int leveledUpUnit = _inComingExp / expNeedForLevelUp;
-        
-        //if inComingExp was too much all unit will levelup.
-        if(leveledUpUnit > amount)
-        {
-            return amount;
-        }
-        else
-        {
-            return leveledUpUnit;
-        }  
-    }
-
-
 }
