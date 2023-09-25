@@ -33,11 +33,22 @@ public class WarHandler : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("Attack");
+            //GetArmiesPower();
             yield return attackFrequency;
         }
     }
 
+    private void GetArmiesPower()
+    {
+        Debug.Log($"Ordu1 Güç={character1.army.GetArmyPower()} | Ordu2 Güç={character2.army.GetArmyPower()}");
+        Debug.Log($"Ordu1 Can={character1.army.GetArmyHealth()} | Ordu2 Can={character2.army.GetArmyHealth()}");
+
+        int currentPowerParty1 = character1.army.GetArmyPower();
+        int currentPowerParty2 = character2.army.GetArmyPower();
+
+        character1.army.TakeDamage(currentPowerParty2);
+        character2.army.TakeDamage(currentPowerParty1);
+    }
 
 
     public void StartFight(Character _character1,Character _character2)
@@ -47,7 +58,6 @@ public class WarHandler : MonoBehaviour
         character1 = _character1;
         character2 = _character2;
         StartCoroutine(WarGoingOn());
-        
     }
 
 
