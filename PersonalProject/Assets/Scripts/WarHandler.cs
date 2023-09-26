@@ -25,10 +25,8 @@ public class WarHandler : MonoBehaviour
             pastTime = Time.time - startTime;
             pastTimeString = Mathf.Floor(pastTime / 60).ToString("00") + ":" + Mathf.FloorToInt(pastTime % 60).ToString("00");
         }
-
     }
 
-    
     private IEnumerator WarGoingOn()
     {
         while (true)
