@@ -37,6 +37,7 @@ public class Army : MonoBehaviour
         {
             armySize += armyList[i].amount;
         }
+        armyTotalTroops = armySize;
         return armySize;
     }
     public int GetArmyPower()
@@ -81,6 +82,7 @@ public class Army : MonoBehaviour
         }
     }
 
+    //Creating randomized army troops.
     private void CreateArmy()
     {
         //creating troops instance
@@ -101,7 +103,25 @@ public class Army : MonoBehaviour
         //setting troops amount with min max
         for (int i = 0; i < armyList.Count; i++)
         {
-            armyList[i].amount = Random.Range(minX-i, minY-i);
+            //High level soldier amount will be slightly lower than low level soldier amount and cannot exceed the amount of the previous one.
+            if (i == 0)
+            {
+                int pickedNumber = Random.Range(minY, minY*2);
+                if (pickedNumber < 0)
+                {
+                    pickedNumber = 0;
+                }
+                armyList[i].amount = pickedNumber;
+            }
+            else
+            {
+                int pickedNumber = Random.Range(minX - i, armyList[i - 1].amount);
+                if(pickedNumber < 0)
+                {
+                    pickedNumber = 0;
+                }
+                armyList[i].amount = pickedNumber;
+            }
         }
         //getting armysize
         int currentArmySize = GetArmySize();

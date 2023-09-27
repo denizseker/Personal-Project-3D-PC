@@ -4346,12 +4346,12 @@ PrefabInstance:
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: MaxArmySize
-      value: 105
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: MinArmySize
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -14076,12 +14076,12 @@ PrefabInstance:
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: MaxArmySize
-      value: 105
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: MinArmySize
-      value: 25
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
