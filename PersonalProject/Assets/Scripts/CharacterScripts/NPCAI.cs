@@ -43,7 +43,6 @@ public class NPCAI : MonoBehaviour
 
     public void Catch(Character _targetCharacter)
     {
-        Debug.Log("Catch");
         //Setting targets
         NPC.interactedCharacter = _targetCharacter;
         _targetCharacter.interactedCharacter = NPC;

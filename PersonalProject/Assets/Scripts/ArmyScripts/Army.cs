@@ -63,22 +63,25 @@ public class Army : MonoBehaviour
 
     public void TakeDamage(int _incomingDamage)
     {
+        //sending damage to every soldier in party
         for (int i = 0; i < armyList.Count; i++)
         {
-            if (armyList[i].amount > 0)
+            //if that soldier have more than 0
+            if(armyList[i].amount != 0)
             {
-                //Debug.Log("Damage yedi : " + armyList[i].soldierLevel);
-
-                //Calculating how many soldier will die after that damage
-                int diedSoldier = _incomingDamage / armyList[i].health;
-                //Killing soldier and decreasing from armytroop
-                armyList[i].amount -= diedSoldier;
-                //if that soldier type negative, setting to 0
-                if (armyList[i].amount < 0)
+                //calculating killable soldier
+                int killedSoldier = _incomingDamage / armyList[i].health;
+                //if cannot kill any soldier with incoming damage we are killing 1 every 2 round
+                if (killedSoldier == 0)
                 {
-                    armyList[i].amount = 0;
+                    killedSoldier = 1;
                 }
+                //decreasing the amount of that soldier if its not already lower than 0 
+                if ((armyList[i].amount - killedSoldier) > 0) armyList[i].amount -= killedSoldier;
+                else armyList[i].amount = 0;
             }
+
+            armyTotalTroops = GetArmySize();
         }
     }
 
@@ -86,11 +89,11 @@ public class Army : MonoBehaviour
     private void CreateArmy()
     {
         //creating troops instance
-        PeasentRecruit = new Soldier(SoldierSO[0].health, SoldierSO[0].attack, SoldierSO[0].expLimit, SoldierSO[0].exp,0, SoldierSO[0].soldierLevel);
-        SwordsMan = new Soldier(SoldierSO[1].health, SoldierSO[1].attack, SoldierSO[1].expLimit, SoldierSO[1].exp, 0, SoldierSO[1].soldierLevel);
-        HorseMan = new Soldier(SoldierSO[2].health, SoldierSO[2].attack, SoldierSO[2].expLimit, SoldierSO[2].exp, 0, SoldierSO[2].soldierLevel);
-        Cavalary = new Soldier(SoldierSO[3].health, SoldierSO[3].attack, SoldierSO[3].expLimit, SoldierSO[3].exp, 0, SoldierSO[3].soldierLevel);
-        EliteCavalary = new Soldier(SoldierSO[4].health, SoldierSO[4].attack, SoldierSO[4].expLimit, SoldierSO[4].exp, 0, SoldierSO[4].soldierLevel);
+        PeasentRecruit = new Soldier(SoldierSO[0].soldierName, SoldierSO[0].health, SoldierSO[0].attack, SoldierSO[0].expLimit, SoldierSO[0].exp,0, SoldierSO[0].soldierLevel);
+        SwordsMan = new Soldier(SoldierSO[1].soldierName, SoldierSO[1].health, SoldierSO[1].attack, SoldierSO[1].expLimit, SoldierSO[1].exp, 0, SoldierSO[1].soldierLevel);
+        HorseMan = new Soldier(SoldierSO[2].soldierName, SoldierSO[2].health, SoldierSO[2].attack, SoldierSO[2].expLimit, SoldierSO[2].exp, 0, SoldierSO[2].soldierLevel);
+        Cavalary = new Soldier(SoldierSO[3].soldierName, SoldierSO[3].health, SoldierSO[3].attack, SoldierSO[3].expLimit, SoldierSO[3].exp, 0, SoldierSO[3].soldierLevel);
+        EliteCavalary = new Soldier(SoldierSO[4].soldierName, SoldierSO[4].health, SoldierSO[4].attack, SoldierSO[4].expLimit, SoldierSO[4].exp, 0, SoldierSO[4].soldierLevel);
         //adding those instance to armyList
         armyList.Add(PeasentRecruit);
         armyList.Add(SwordsMan);

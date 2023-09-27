@@ -29,21 +29,31 @@ public class WarHandler : MonoBehaviour
 
     private IEnumerator WarGoingOn()
     {
+        int round = 1;
         while (true)
         {
-            //GetArmiesPower();
             yield return attackFrequency;
+            Attack(round);
+            round += 1;
+            if(character1.army.armyTotalTroops <= 0 || character2.army.armyTotalTroops <= 0)
+            {
+                Debug.Log("Savaþ bitti. Geçen Süre: " + pastTimeString);
+                break;
+            }
         }
     }
 
-    private void GetArmiesPower()
+    private void Attack(int _round)
     {
-        Debug.Log($"Ordu1 Güç={character1.army.GetArmyPower()} | Ordu2 Güç={character2.army.GetArmyPower()}");
-        Debug.Log($"Ordu1 Can={character1.army.GetArmyHealth()} | Ordu2 Can={character2.army.GetArmyHealth()}");
+        //Armies power are multiplying with round
+        int currentPowerParty1 = (character1.army.GetArmyPower()/5) * _round;
+        int currentPowerParty2 = (character2.army.GetArmyPower()/5) * _round;
 
-        int currentPowerParty1 = character1.army.GetArmyPower();
-        int currentPowerParty2 = character2.army.GetArmyPower();
 
+        //Debug.Log($"Ordu1 Güç={currentPowerParty1} | Ordu2 Güç={currentPowerParty2}");
+        //Debug.Log($"Ordu1 Can={character1.army.GetArmyHealth()} | Ordu2 Can={character2.army.GetArmyHealth()}");
+
+        //Sending armyies power as a incoming damage so the army script take damage function can handle it for splitting to soldiers
         character1.army.TakeDamage(currentPowerParty2);
         character2.army.TakeDamage(currentPowerParty1);
     }

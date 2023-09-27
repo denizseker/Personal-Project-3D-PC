@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soldierName: Cavalary
   soldierLevel: 3
-  health: 30
-  attack: 1
-  expLimit: 25
-  amount: 0
-  exp: 0
+  health: 250
+  attack: 8
+  expLimit: 225
+  exp: 675

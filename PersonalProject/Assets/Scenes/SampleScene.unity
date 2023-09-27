@@ -4336,7 +4336,7 @@ PrefabInstance:
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: characterName
-      value: Lord Tela
+      value: Lord Godsea
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -4346,12 +4346,12 @@ PrefabInstance:
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: MaxArmySize
-      value: 150
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: MinArmySize
-      value: 50
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -14051,7 +14051,7 @@ PrefabInstance:
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: characterName
-      value: Lord Sef0
+      value: Lord Timka
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -14076,12 +14076,12 @@ PrefabInstance:
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: MaxArmySize
-      value: 85
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: MinArmySize
-      value: 35
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}

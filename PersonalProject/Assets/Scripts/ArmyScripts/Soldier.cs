@@ -14,6 +14,7 @@ public enum SoldierLevel
 
 public class Soldier
 {
+    public string name;
     public int health;
     public int attack;
     public int expLimit;
@@ -22,8 +23,9 @@ public class Soldier
     public SoldierLevel soldierLevel;
 
     //Instantiating at army script with default values
-    public Soldier(int _health,int _attack,int _expLimit,int _exp,int _amount,SoldierLevel _soldierLevel)
+    public Soldier(string _name,int _health,int _attack,int _expLimit,int _exp,int _amount,SoldierLevel _soldierLevel)
     {
+        name = _name;
         health = _health;
         attack = _attack;
         expLimit = _expLimit;

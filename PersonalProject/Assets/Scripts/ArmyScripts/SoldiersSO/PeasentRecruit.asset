@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soldierName: PeasentRecruit
   soldierLevel: 0
-  health: 250
-  attack: 10
-  expLimit: 675
-  amount: 0
-  exp: 225
+  health: 30
+  attack: 1
+  expLimit: 25
+  exp: 0
