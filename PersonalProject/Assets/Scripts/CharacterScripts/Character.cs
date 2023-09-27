@@ -11,6 +11,9 @@ public class Character : MonoBehaviour
         Fleeing,
         InInteraction,
         Free,
+        Defeated,
+        InSettlement,
+        Recruiting,
     }
 
     //Soldiers current state.
@@ -46,4 +49,38 @@ public class Character : MonoBehaviour
         else if (enumClan == ClanManager.ENUM_Clan.NONE) clan = ClanManager.Instance.None;
     }
 
+    //Setting colliders to opposite
+    public void ChangeColliderState()
+    {
+        gameObject.GetComponent<CapsuleCollider>().enabled = !gameObject.GetComponent<CapsuleCollider>().enabled;
+        gameObject.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = !gameObject.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled;
+    }
+
+    public void ResetTarget()
+    {
+        interactedCharacter = null;
+    }
+
+    //This function make ghost that character but important scripts (NPCAI,NPC,PLAYER) is still working while ghost.
+    public void ChangeCharacterVisibility()
+    {
+        gameObject.GetComponent<Animator>().enabled = !gameObject.GetComponent<Animator>().enabled;
+        gameObject.GetComponent<NavMeshAgent>().enabled = !gameObject.GetComponent<NavMeshAgent>().enabled;
+        gameObject.GetComponent<CapsuleCollider>().enabled = !gameObject.GetComponent<CapsuleCollider>().enabled;
+        gameObject.GetComponent<MouseInteraction>().enabled = !gameObject.GetComponent<MouseInteraction>().enabled;
+        gameObject.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().enabled = !gameObject.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().enabled;
+        gameObject.transform.GetChild(0).gameObject.GetComponent<CapsuleCollider>().enabled = !gameObject.transform.GetChild(0).gameObject.GetComponent<CapsuleCollider>().enabled;
+        if (gameObject.transform.GetChild(1).gameObject.activeSelf)
+        {
+            gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            gameObject.transform.GetChild(2).gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            gameObject.transform.GetChild(2).gameObject.SetActive(true);
+        }
+        
+
+    }
 }

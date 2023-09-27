@@ -27,7 +27,6 @@ public class NPC : Character
     private void Update()
     {
         SetAnimations();
-
     }
 
     void SetAnimations()

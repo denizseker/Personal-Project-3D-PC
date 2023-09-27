@@ -9,6 +9,7 @@ public class Settlement : MonoBehaviour
     public ClanManager.ENUM_Clan enumClan;
     [HideInInspector] public Clan clan;
     [HideInInspector] public bool isHavePatrol;
+    public List<GameObject> characterInTown = new List<GameObject>();
 
     private void Awake()
     {

@@ -12,9 +12,5 @@ public class Player : Character
         currentState = CurrentState.Free;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 }

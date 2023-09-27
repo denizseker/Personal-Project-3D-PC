@@ -423,7 +423,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 10
+  m_Speed: 15
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 600
@@ -466,8 +466,8 @@ MonoBehaviour:
   army: {fileID: 0}
   speed: 0
   interactedCharacter: {fileID: 0}
-  characterName: Lord Godsea
-  enumClan: 6
+  characterName: Lord Exopath
+  enumClan: 2
   patrolSettlement: {fileID: 0}
   patrolTown: {fileID: 0}
   patrolPoint: {x: 0, y: 0, z: 0}
@@ -484,11 +484,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56abf0c8751e875458921ba63f3365e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  peasentRecruitAmount: 0
-  swordsManAmount: 0
-  horseManAmount: 0
-  cavalaryAmount: 0
-  eliteCavalaryAmount: 0
+  MinArmySize: 75
+  MaxArmySize: 150
   SoldierSO:
   - {fileID: 11400000, guid: 51c8a1cc797f88447b49d430e7b2ba86, type: 2}
   - {fileID: 11400000, guid: 328e2868209ae734583a995fd1b49aa9, type: 2}

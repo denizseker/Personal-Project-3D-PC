@@ -85,21 +85,8 @@ public class Army : MonoBehaviour
         }
     }
 
-    //Creating randomized army troops.
-    private void CreateArmy()
+    public void AddRandomSoldier()
     {
-        //creating troops instance
-        PeasentRecruit = new Soldier(SoldierSO[0].soldierName, SoldierSO[0].health, SoldierSO[0].attack, SoldierSO[0].expLimit, SoldierSO[0].exp,0, SoldierSO[0].soldierLevel);
-        SwordsMan = new Soldier(SoldierSO[1].soldierName, SoldierSO[1].health, SoldierSO[1].attack, SoldierSO[1].expLimit, SoldierSO[1].exp, 0, SoldierSO[1].soldierLevel);
-        HorseMan = new Soldier(SoldierSO[2].soldierName, SoldierSO[2].health, SoldierSO[2].attack, SoldierSO[2].expLimit, SoldierSO[2].exp, 0, SoldierSO[2].soldierLevel);
-        Cavalary = new Soldier(SoldierSO[3].soldierName, SoldierSO[3].health, SoldierSO[3].attack, SoldierSO[3].expLimit, SoldierSO[3].exp, 0, SoldierSO[3].soldierLevel);
-        EliteCavalary = new Soldier(SoldierSO[4].soldierName, SoldierSO[4].health, SoldierSO[4].attack, SoldierSO[4].expLimit, SoldierSO[4].exp, 0, SoldierSO[4].soldierLevel);
-        //adding those instance to armyList
-        armyList.Add(PeasentRecruit);
-        armyList.Add(SwordsMan);
-        armyList.Add(HorseMan);
-        armyList.Add(Cavalary);
-        armyList.Add(EliteCavalary);
         //calculating min maxx
         int minX = (MinArmySize / armyList.Count);
         int minY = (MaxArmySize / armyList.Count);
@@ -109,21 +96,21 @@ public class Army : MonoBehaviour
             //High level soldier amount will be slightly lower than low level soldier amount and cannot exceed the amount of the previous one.
             if (i == 0)
             {
-                int pickedNumber = Random.Range(minY, minY*2);
+                int pickedNumber = Random.Range(minY, minY * 2);
                 if (pickedNumber < 0)
                 {
                     pickedNumber = 0;
                 }
-                armyList[i].amount = pickedNumber;
+                armyList[i].amount += pickedNumber;
             }
             else
             {
                 int pickedNumber = Random.Range(minX - i, armyList[i - 1].amount);
-                if(pickedNumber < 0)
+                if (pickedNumber < 0)
                 {
                     pickedNumber = 0;
                 }
-                armyList[i].amount = pickedNumber;
+                armyList[i].amount += pickedNumber;
             }
         }
         //getting armysize
@@ -140,6 +127,25 @@ public class Army : MonoBehaviour
             int removeSoldier = currentArmySize - MaxArmySize;
             PeasentRecruit.amount -= removeSoldier;
         }
+    }
+
+
+    //Creating randomized army troops.
+    private void CreateArmy()
+    {
+        //creating troops instance
+        PeasentRecruit = new Soldier(SoldierSO[0].soldierName, SoldierSO[0].health, SoldierSO[0].attack, SoldierSO[0].expLimit, SoldierSO[0].exp,0, SoldierSO[0].soldierLevel);
+        SwordsMan = new Soldier(SoldierSO[1].soldierName, SoldierSO[1].health, SoldierSO[1].attack, SoldierSO[1].expLimit, SoldierSO[1].exp, 0, SoldierSO[1].soldierLevel);
+        HorseMan = new Soldier(SoldierSO[2].soldierName, SoldierSO[2].health, SoldierSO[2].attack, SoldierSO[2].expLimit, SoldierSO[2].exp, 0, SoldierSO[2].soldierLevel);
+        Cavalary = new Soldier(SoldierSO[3].soldierName, SoldierSO[3].health, SoldierSO[3].attack, SoldierSO[3].expLimit, SoldierSO[3].exp, 0, SoldierSO[3].soldierLevel);
+        EliteCavalary = new Soldier(SoldierSO[4].soldierName, SoldierSO[4].health, SoldierSO[4].attack, SoldierSO[4].expLimit, SoldierSO[4].exp, 0, SoldierSO[4].soldierLevel);
+        //adding those instance to armyList
+        armyList.Add(PeasentRecruit);
+        armyList.Add(SwordsMan);
+        armyList.Add(HorseMan);
+        armyList.Add(Cavalary);
+        armyList.Add(EliteCavalary);
+        AddRandomSoldier();
         armyTotalTroops = GetArmySize();
     }
 }

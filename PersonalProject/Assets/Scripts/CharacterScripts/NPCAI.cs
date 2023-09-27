@@ -30,23 +30,22 @@ public class NPCAI : MonoBehaviour
         NPC.agent.ResetPath();
         NPC.currentState = Character.CurrentState.Patroling;
     }
-    private void StopEveryThing(Character _targetCharacter)
-    {
-        ClearTarget(_targetCharacter);
+    //private void StopEveryThing(Character _targetCharacter)
+    //{
+    //    ClearTarget(_targetCharacter);
 
-        NPC.agent.ResetPath();
-        _targetCharacter.agent.ResetPath();
+    //    NPC.agent.ResetPath();
+    //    _targetCharacter.agent.ResetPath();
 
-        _targetCharacter.currentState = Character.CurrentState.Patroling;
-        NPC.currentState = Character.CurrentState.Patroling;
-    }
+    //    _targetCharacter.currentState = Character.CurrentState.Patroling;
+    //    NPC.currentState = Character.CurrentState.Patroling;
+    //}
 
     public void Catch(Character _targetCharacter)
     {
         //Setting targets
         NPC.interactedCharacter = _targetCharacter;
         _targetCharacter.interactedCharacter = NPC;
-
         //Stopping agents
         NPC.agent.isStopped = true;
         _targetCharacter.agent.isStopped = true;
@@ -57,17 +56,13 @@ public class NPCAI : MonoBehaviour
         NPC.currentState = Character.CurrentState.InInteraction;
         _targetCharacter.currentState = Character.CurrentState.InInteraction;
         //setting off characters colliders. so warhappening object will handle collisions.
-        gameObject.GetComponent<CapsuleCollider>().enabled = false;
-        gameObject.transform.parent.GetComponent<CapsuleCollider>().enabled = false;
-        _targetCharacter.GetComponent<CapsuleCollider>().enabled = false;
-        _targetCharacter.gameObject.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = false;
+        NPC.ChangeColliderState();
+        _targetCharacter.ChangeColliderState();
         //instantiating warhappening object at middle of 2 characters
         Vector3 middleOfCharacters = Vector3.Lerp(transform.position, _targetCharacter.transform.position, 0.75f);
         var warHappeningObj = Instantiate(warHappening, middleOfCharacters, transform.rotation);
         //Sending 2 character who is will be in fight.
         warHappeningObj.GetComponent<WarHandler>().StartFight(NPC,_targetCharacter);
-
-        
     }
 
     private void RunFromEnemy(Character _targetCharacter)
@@ -89,11 +84,11 @@ public class NPCAI : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //if character detect another character.
-        if (other.tag == "DetectArea" && NPC.currentState != Character.CurrentState.InInteraction)
+        if (other.tag == "DetectArea" && NPC.currentState != Character.CurrentState.InInteraction && NPC.currentState != Character.CurrentState.Defeated)
         {
             Character interactedCharacter = other.GetComponentInParent<Character>();
             //Targetcharacter is enemy.
-            if (ClanManager.Instance.isEnemy(NPC.clan, interactedCharacter.clan))
+            if (ClanManager.Instance.isEnemy(NPC.clan, interactedCharacter.clan) && interactedCharacter.currentState != Character.CurrentState.Defeated)
             {
                 //this army is bigger then opponent army
                 if(NPC.army.armyTotalTroops >= interactedCharacter.army.armyTotalTroops)
@@ -130,16 +125,15 @@ public class NPCAI : MonoBehaviour
             }
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
-        //if this exit any character area and have a interactedcharacter already and not in interaction with someone
-        if(other.tag == "DetectArea" && NPC.interactedCharacter != null && NPC.currentState != Character.CurrentState.InInteraction)
+        //if this exit any character area and have a interactedcharacter already and not in interaction with someone and not defeated
+        if(other.tag == "DetectArea" && NPC.interactedCharacter != null && NPC.currentState != Character.CurrentState.InInteraction && NPC.currentState != Character.CurrentState.Defeated)
         {
             Character interactedCharacter = other.GetComponentInParent<Character>();
 
-            //if interactedcharacter is interact with this too. (chase or fleeing)
-            if (interactedCharacter.interactedCharacter == NPC)
+            //if interactedcharacter is interact with this too. (chase or fleeing) and interacted character is not defeated
+            if (interactedCharacter.interactedCharacter == NPC && interactedCharacter.currentState != Character.CurrentState.Defeated)
             {
                 StopFleeingAndChasing();
                 interactedCharacter.GetComponentInChildren<NPCAI>().StopFleeingAndChasing();
@@ -149,8 +143,26 @@ public class NPCAI : MonoBehaviour
             {
                 StopFleeingAndChasing();
             }
-            
         }
+    }
+
+    public void RecruitSoldier()
+    {
+        Debug.Log("Recruit");
+        NPC.army.AddRandomSoldier();
+        NPC.ChangeCharacterVisibility();
+        NPC.currentState = Character.CurrentState.Patroling;
+    }
+
+    public void FleeToTown()
+    {
+        if (!NPC.agent.hasPath)
+        {
+            GameObject patrolTown = NPC.patrolTown;
+            Vector3 townPosition = patrolTown.transform.GetChild(5).transform.position;
+            NPC.agent.destination = townPosition;
+            NPC.currentState = Character.CurrentState.Defeated;
+        } 
     }
 
     public void GoPatrolTown()
@@ -165,10 +177,16 @@ public class NPCAI : MonoBehaviour
         }
     }
 
-    private void ClearTarget(Character _targetCharacter)
+    private IEnumerator RecruitArmy()
     {
-        NPC.interactedCharacter = null;
-        _targetCharacter.interactedCharacter = null;
+        while (true)
+        {
+            Debug.Log("Recruit baþladý.");
+            yield return new WaitForSeconds(10);
+            Debug.Log("Recruit bitti");
+            RecruitSoldier();
+            break;
+        }
     }
 
     private void Update()
@@ -185,7 +203,17 @@ public class NPCAI : MonoBehaviour
         {
             Chase(NPC.interactedCharacter);
         }
+        else if (NPC.currentState == Character.CurrentState.Defeated)
+        {
+            FleeToTown();
+        }
+        else if(NPC.currentState == Character.CurrentState.InSettlement)
+        {
+            if (NPC.army.armyTotalTroops < 10)
+            {
+                StartCoroutine(RecruitArmy());
+                NPC.currentState = Character.CurrentState.Recruiting;
+            }
+        }
     }
-
-
 }

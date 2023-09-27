@@ -29,15 +29,22 @@ public class WarHandler : MonoBehaviour
 
     private IEnumerator WarGoingOn()
     {
-        int round = 1;
+        int round = 1; //round counter
         while (true)
         {
             yield return attackFrequency;
             Attack(round);
             round += 1;
-            if(character1.army.armyTotalTroops <= 0 || character2.army.armyTotalTroops <= 0)
+
+            //checking if any army lose
+            if(character1.army.armyTotalTroops <= 0)
             {
-                Debug.Log("Savaþ bitti. Geçen Süre: " + pastTimeString);
+                CloseWar(character2,character1);
+                break;
+            }
+            else if (character2.army.armyTotalTroops <= 0)
+            {
+                CloseWar(character1,character2);
                 break;
             }
         }
@@ -53,12 +60,12 @@ public class WarHandler : MonoBehaviour
         //Debug.Log($"Ordu1 Güç={currentPowerParty1} | Ordu2 Güç={currentPowerParty2}");
         //Debug.Log($"Ordu1 Can={character1.army.GetArmyHealth()} | Ordu2 Can={character2.army.GetArmyHealth()}");
 
-        //Sending armyies power as a incoming damage so the army script take damage function can handle it for splitting to soldiers
+        //Sending armies power as a incoming damage so the army script take damage function can handle it for splitting to soldiers
         character1.army.TakeDamage(currentPowerParty2);
         character2.army.TakeDamage(currentPowerParty1);
     }
 
-
+    //This function is calling from NPCAI script. Initializing battle start variables.
     public void StartFight(Character _character1,Character _character2)
     {
         startTime = Time.time;
@@ -68,5 +75,16 @@ public class WarHandler : MonoBehaviour
         StartCoroutine(WarGoingOn());
     }
 
-
+    //Taking winner and loser character and setting their values
+    public void CloseWar(Character _winner,Character _loser)
+    {
+        _winner.currentState = Character.CurrentState.Patroling;
+        _loser.currentState = Character.CurrentState.Defeated;
+        _winner.ChangeColliderState();
+        _loser.ChangeColliderState();
+        _winner.ResetTarget();
+        _loser.ResetTarget();
+        isBattleStarted = false;
+        Destroy(gameObject);
+    }
 }

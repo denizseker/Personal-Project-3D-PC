@@ -6703,11 +6703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56abf0c8751e875458921ba63f3365e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  peasentRecruitAmount: 0
-  swordsManAmount: 0
-  horseManAmount: 0
-  cavalaryAmount: 0
-  eliteCavalaryAmount: 0
+  MinArmySize: 25
+  MaxArmySize: 105
   SoldierSO:
   - {fileID: 11400000, guid: 51c8a1cc797f88447b49d430e7b2ba86, type: 2}
   - {fileID: 11400000, guid: 328e2868209ae734583a995fd1b49aa9, type: 2}
