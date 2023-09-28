@@ -21,7 +21,7 @@ public class GetCharacterInSettlement : MonoBehaviour
             if(interactedCharacter.currentState == Character.CurrentState.Defeated)
             {
                 //Adding characters gameobject to settlement characterintown list.
-                settlement.characterInTown.Add(interactedCharacter.gameObject);
+                settlement.AddCharacter(interactedCharacter.gameObject);
                 interactedCharacter.currentState = Character.CurrentState.InSettlement;
                 interactedCharacter.ChangeCharacterVisibility();
             }

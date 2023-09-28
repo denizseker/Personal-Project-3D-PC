@@ -16,7 +16,6 @@ public class TimeManager : MonoBehaviour
     public static TimeManager Instance;
 
 
-
     [HideInInspector] public Seasons currentSeason;
     [HideInInspector] public float pastTime;
     [HideInInspector] public float HourInRealTimeSecond = 4;
@@ -33,7 +32,7 @@ public class TimeManager : MonoBehaviour
     {
         Instance = this;
         Instance.currentSeason = Seasons.Winter;
-        AdjustSunRotationAtStart(InGameHour);
+        AdjustSunRotationAtStart(Instance.InGameHour);
         
     }
 
@@ -69,14 +68,14 @@ public class TimeManager : MonoBehaviour
 
         if(Instance.pastTime >= 4)
         {
-            InGameHour += 1;
+            Instance.InGameHour += 1;
             Instance.pastTime = 0;
             UIManager.Instance.UpdateDateText();
         }
-        if (InGameHour == 24)
+        if (Instance.InGameHour == 24)
         {
-            InGameHour = 0;
-            InGameDay += 1;
+            Instance.InGameHour = 0;
+            Instance.InGameDay += 1;
             UIManager.Instance.UpdateDateText();
         }
 

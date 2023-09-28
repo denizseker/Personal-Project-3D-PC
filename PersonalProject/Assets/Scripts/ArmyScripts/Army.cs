@@ -71,7 +71,7 @@ public class Army : MonoBehaviour
             {
                 //calculating killable soldier
                 int killedSoldier = _incomingDamage / armyList[i].health;
-                //if cannot kill any soldier with incoming damage we are killing 1 every 2 round
+                //if cannot kill any soldier with incoming damage we are killing 1
                 if (killedSoldier == 0)
                 {
                     killedSoldier = 1;
@@ -85,7 +85,24 @@ public class Army : MonoBehaviour
         }
     }
 
-    public void AddRandomSoldier()
+    //Its collecting soldier for army;
+    public int RecruitSoldier()
+    {
+        int addedSoldier = 0;
+
+        for (int i = 0; i < armyList.Count; i++)
+        {
+
+            int x = Random.Range(1, 5);
+            addedSoldier += x;
+            Debug.Log(addedSoldier);
+            armyList[i].amount += x;
+        }
+        armyTotalTroops = GetArmySize();
+        return addedSoldier;
+    }
+
+    public void FillWithRandomSoldier()
     {
         //calculating min maxx
         int minX = (MinArmySize / armyList.Count);
@@ -145,7 +162,7 @@ public class Army : MonoBehaviour
         armyList.Add(HorseMan);
         armyList.Add(Cavalary);
         armyList.Add(EliteCavalary);
-        AddRandomSoldier();
+        FillWithRandomSoldier();
         armyTotalTroops = GetArmySize();
     }
 }

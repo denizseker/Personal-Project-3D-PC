@@ -12,14 +12,14 @@ public class NPC : Character
     public Settlement patrolSettlement;
     //NPCAI using those.
 
-    [HideInInspector] public GameObject patrolTown;
+    [HideInInspector] public GameObject town;
     [HideInInspector] public Vector3 patrolPoint;
     [HideInInspector] public bool drawLineandPoint;
     private void Awake()
     {
         Setup();
         animator = GetComponent<Animator>();
-        patrolTown = patrolSettlement.gameObject;
+        town = patrolSettlement.gameObject;
         currentState = CurrentState.Patroling;
     }
 

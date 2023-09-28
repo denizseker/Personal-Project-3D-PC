@@ -146,19 +146,11 @@ public class NPCAI : MonoBehaviour
         }
     }
 
-    public void RecruitSoldier()
-    {
-        Debug.Log("Recruit");
-        NPC.army.AddRandomSoldier();
-        NPC.ChangeCharacterVisibility();
-        NPC.currentState = Character.CurrentState.Patroling;
-    }
-
     public void FleeToTown()
     {
         if (!NPC.agent.hasPath)
         {
-            GameObject patrolTown = NPC.patrolTown;
+            GameObject patrolTown = NPC.town;
             Vector3 townPosition = patrolTown.transform.GetChild(5).transform.position;
             NPC.agent.destination = townPosition;
             NPC.currentState = Character.CurrentState.Defeated;
@@ -169,7 +161,7 @@ public class NPCAI : MonoBehaviour
     {
         if (!NPC.agent.hasPath)
         {
-            GameObject patrolTown = NPC.patrolTown;
+            GameObject patrolTown = NPC.town;
             Vector3 patrolPoint = patrolTown.GetComponentInChildren<GetPatrolPoint>().GetPatrolPostition();
             NPC.agent.destination = patrolPoint;
             NPC.GetPatrolPositionForDrawing(patrolPoint,true);
@@ -177,20 +169,29 @@ public class NPCAI : MonoBehaviour
         }
     }
 
+    private void LeaveSettlement()
+    {
+        NPC.ChangeCharacterVisibility();
+        NPC.town.GetComponent<Settlement>().RemoveCharacter(NPC.gameObject);
+    }
+
+
     private IEnumerator RecruitArmy()
     {
         while (true)
         {
-            Debug.Log("Recruit baþladý.");
-            yield return new WaitForSeconds(10);
-            Debug.Log("Recruit bitti");
-            RecruitSoldier();
+            yield return new WaitForSeconds(12);
+            //Decrasing town manpower while recruiting soldier with army script
+            NPC.town.GetComponent<Settlement>().DecreaseManPower(NPC.army.RecruitSoldier());
+            LeaveSettlement();
+            NPC.currentState = Character.CurrentState.Patroling;
             break;
         }
     }
 
     private void Update()
     {
+        //AI Logic
         if (NPC.currentState == Character.CurrentState.Patroling)
         {
             GoPatrolTown();
