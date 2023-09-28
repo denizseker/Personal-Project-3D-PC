@@ -173,6 +173,7 @@ public class NPCAI : MonoBehaviour
     {
         NPC.ChangeCharacterVisibility();
         NPC.town.GetComponent<Settlement>().RemoveCharacter(NPC.gameObject);
+        NPC.currentState = Character.CurrentState.Patroling;
     }
 
 
@@ -180,12 +181,17 @@ public class NPCAI : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(12);
+            yield return new WaitForSeconds(4);
             //Decrasing town manpower while recruiting soldier with army script
-            NPC.town.GetComponent<Settlement>().DecreaseManPower(NPC.army.RecruitSoldier());
-            LeaveSettlement();
-            NPC.currentState = Character.CurrentState.Patroling;
-            break;
+            Settlement settlement = NPC.town.GetComponent<Settlement>();
+            //Trying to recruit soldier if settlement have manpower
+            settlement.DecreaseManPower(NPC.army.RecruitSoldier(settlement.manPower));
+            //if npc recruit enough troops
+            if (NPC.army.armyTotalTroops >= NPC.army.MinArmySize)
+            {
+                LeaveSettlement();
+                break;
+            }
         }
     }
 

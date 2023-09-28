@@ -10,8 +10,8 @@ public class Fps : MonoBehaviour
     private float _timer;
     private void Awake()
     {
-        // Make the game run as fast as possible
-        Application.targetFrameRate = -1;
+        //Target FPS
+        Application.targetFrameRate = 144;
 
     }
     private void Update()

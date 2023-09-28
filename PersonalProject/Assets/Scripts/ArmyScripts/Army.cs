@@ -86,17 +86,19 @@ public class Army : MonoBehaviour
     }
 
     //Its collecting soldier for army;
-    public int RecruitSoldier()
+    public int RecruitSoldier(int _availableAmount)
     {
         int addedSoldier = 0;
 
         for (int i = 0; i < armyList.Count; i++)
         {
-
             int x = Random.Range(1, 5);
-            addedSoldier += x;
-            Debug.Log(addedSoldier);
-            armyList[i].amount += x;
+            if(_availableAmount >= x)
+            {
+                addedSoldier += x;
+                armyList[i].amount += x;
+            }
+            
         }
         armyTotalTroops = GetArmySize();
         return addedSoldier;

@@ -11,6 +11,4 @@ public class Player : Character
         Setup();
         currentState = CurrentState.Free;
     }
-
-    
 }
