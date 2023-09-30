@@ -98,5 +98,4 @@ public class Settlement : MonoBehaviour
             startCollectManPower = false;
         }
     }
-
 }

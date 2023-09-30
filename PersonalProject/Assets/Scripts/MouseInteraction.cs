@@ -38,28 +38,28 @@ public class MouseInteraction : MonoBehaviour
         //Mouse over on player
         if (playerManager != null)
         {
-            UIManager.Instance.UpdateInfoPanel(playerManager.characterName, playerManager.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject,10f);
+            UIManager.Instance.UpdateSoldierPanel(playerManager.characterName, playerManager.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject,10f);
             //Activate info panel
             UIManager.Instance.UI_soldierPanel.gameObject.SetActive(true);
-            UIManager.Instance.isInfoPanelActive = true;
+            UIManager.Instance.isSoldierPanelActive = true;
             ringEffect.SetActive(true);
         }
         //Mouse over on npc
         else if (npcManager != null)
         {
-            UIManager.Instance.UpdateInfoPanel(npcManager.characterName, npcManager.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject,npcManager.speed);
+            UIManager.Instance.UpdateSoldierPanel(npcManager.characterName, npcManager.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject,npcManager.speed);
             //Activate info panel
             UIManager.Instance.UI_soldierPanel.gameObject.SetActive(true);
-            UIManager.Instance.isInfoPanelActive = true;
+            UIManager.Instance.isSoldierPanelActive = true;
             ringEffect.SetActive(true);
         }
         //Mouse over on settlement
         else if (settlement != null)
         {
-            UIManager.Instance.UpdateInfoPanel(settlement.settlementName, settlement.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject,0f);
+            UIManager.Instance.UpdateSoldierPanel(settlement.settlementName, settlement.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject,0f);
             //Activate info panel
             UIManager.Instance.UI_soldierPanel.gameObject.SetActive(true);
-            UIManager.Instance.isInfoPanelActive = true;
+            UIManager.Instance.isSoldierPanelActive = true;
             ringEffect.SetActive(true);
         }
         else if (warHandler != null)
@@ -85,7 +85,7 @@ public class MouseInteraction : MonoBehaviour
       UIManager.Instance.UI_warHandlerPanel.gameObject.SetActive(false);
       UIManager.Instance.isWarHandlerPanelActive = false;
       UIManager.Instance.UI_soldierPanel.gameObject.SetActive(false);
-      UIManager.Instance.isInfoPanelActive = false;
+      UIManager.Instance.isSoldierPanelActive = false;
       if (!isSelected) ringEffect.SetActive(false);
     }
 

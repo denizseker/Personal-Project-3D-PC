@@ -10,16 +10,20 @@ public class UIManager : MonoBehaviour
 
     public RectTransform UI_soldierPanel;
     public RectTransform UI_warHandlerPanel;
+    public RectTransform UI_settlementPanel;
     public float offsetXPercentage = 0.07f; // Horizontally
     public float offsetYPercentage = -0.18f; // Vertically
 
-    public bool isInfoPanelActive = false;
+    public bool isSoldierPanelActive = false;
     public bool isWarHandlerPanelActive = false;
+    public bool isSettlementPanelActive = false;
+
     private GameObject obje;
     [SerializeField] private TMP_Text timeScaleText;
     [SerializeField] private TMP_Text InGameHourText;
+    
+    [Header("Soldier Panel")]
     //Values for infopanel
-    [Header("Info Panel")]
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private TMP_Text clanText;
     [SerializeField] private TMP_Text speedText;
@@ -29,6 +33,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text horseManText;
     [SerializeField] private TMP_Text cavalaryText;
     [SerializeField] private TMP_Text eliteCavalaryText;
+
+    //[Header("Settlement Panel")]
+    ////Values for settlementpanel
+    //[SerializeField] private TMP_Text titleText;
+    //[SerializeField] private TMP_Text clanText;
+    //[SerializeField] private TMP_Text speedText;
+    //[SerializeField] private TMP_Text troopsText;
+    //[SerializeField] private TMP_Text peasentRecruitText;
+    //[SerializeField] private TMP_Text swordsManText;
+    //[SerializeField] private TMP_Text horseManText;
+    //[SerializeField] private TMP_Text cavalaryText;
+    //[SerializeField] private TMP_Text eliteCavalaryText;
 
     [Header("War Panel")]
     //Values for warpanel
@@ -90,10 +106,14 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        //Panel attached to Mouse
-        //if (Instance.isPanelActive)
+
+        AdjustPanelPos(Instance.isSoldierPanelActive,Instance.UI_soldierPanel);
+        AdjustPanelPos(Instance.isWarHandlerPanelActive, Instance.UI_warHandlerPanel);
+
+        ////Panel attached to Object.
+        //if (Instance.isSoldierPanelActive)
         //{
-        //    Vector3 panelPosition = Input.mousePosition;
+        //    Vector3 panelPosition = Camera.main.WorldToScreenPoint(Instance.obje.transform.position);
 
         //    //Adjusting panel position to mouse position for different resolation
         //    float offsetWidth = Screen.width * Instance.offsetXPercentage;
@@ -117,59 +137,99 @@ public class UIManager : MonoBehaviour
         //    Instance.UI_soldierPanel.position = panelPosition;
         //}
 
+        //if (Instance.isWarHandlerPanelActive)
+        //{
+        //    Vector3 panelPosition = Camera.main.WorldToScreenPoint(Instance.obje.transform.position);
+
+        //    //Adjusting panel position to mouse position for different resolation
+        //    float offsetWidth = Screen.width * (Instance.offsetXPercentage + 0.06f);
+        //    float offsetHeight = Screen.height * (Instance.offsetYPercentage - 0.04f);
+
+        //    panelPosition.x += offsetWidth;
+        //    panelPosition.y += offsetHeight;
+
+        //    // Adjusting the panel position to not exceed the screen boundaries.
+        //    float panelHalfWidth = Instance.UI_soldierPanel.sizeDelta.x * 0.4f;
+        //    float panelHalfHeight = Instance.UI_soldierPanel.sizeDelta.y * 0.4f;
+
+        //    float minX = panelHalfWidth;
+        //    float maxX = Screen.width - panelHalfWidth;
+        //    float minY = panelHalfHeight;
+        //    float maxY = Screen.height - panelHalfHeight;
+
+        //    panelPosition.x = Mathf.Clamp(panelPosition.x, minX, maxX);
+        //    panelPosition.y = Mathf.Clamp(panelPosition.y, minY, maxY);
+
+        //    Instance.UI_warHandlerPanel.position = panelPosition;
+        //}
+
+        //if (Instance.isSettlementPanelActive)
+        //{
+        //    Vector3 panelPosition = Camera.main.WorldToScreenPoint(Instance.obje.transform.position);
+
+        //    //Adjusting panel position to mouse position for different resolation
+        //    float offsetWidth = Screen.width * Instance.offsetXPercentage;
+        //    float offsetHeight = Screen.height * Instance.offsetYPercentage;
+
+        //    panelPosition.x += offsetWidth;
+        //    panelPosition.y += offsetHeight;
+
+        //    // Adjusting the panel position to not exceed the screen boundaries.
+        //    float panelHalfWidth = Instance.UI_soldierPanel.sizeDelta.x * 0.4f;
+        //    float panelHalfHeight = Instance.UI_soldierPanel.sizeDelta.y * 0.4f;
+
+        //    float minX = panelHalfWidth;
+        //    float maxX = Screen.width - panelHalfWidth;
+        //    float minY = panelHalfHeight;
+        //    float maxY = Screen.height - panelHalfHeight;
+
+        //    panelPosition.x = Mathf.Clamp(panelPosition.x, minX, maxX);
+        //    panelPosition.y = Mathf.Clamp(panelPosition.y, minY, maxY);
+
+        //    Instance.UI_settlementPanel.position = panelPosition;
+        //}
+
+    }
+
+
+    public void AdjustPanelPos(bool _isPanelActive,RectTransform _panel)
+    {
         //Panel attached to Object.
-        if (Instance.isInfoPanelActive)
+        if (_isPanelActive)
         {
             Vector3 panelPosition = Camera.main.WorldToScreenPoint(Instance.obje.transform.position);
 
-            //Adjusting panel position to mouse position for different resolation
-            float offsetWidth = Screen.width * Instance.offsetXPercentage;
-            float offsetHeight = Screen.height * Instance.offsetYPercentage;
+            ////Adjusting panel position to mouse position for different resolation
+            //float offsetWidth = Screen.width * Instance.offsetXPercentage;
+            //float offsetHeight = Screen.height * Instance.offsetYPercentage;
 
-            panelPosition.x += offsetWidth;
-            panelPosition.y += offsetHeight;
+            //panelPosition.x += offsetWidth;
+            //panelPosition.y += offsetHeight;
 
             // Adjusting the panel position to not exceed the screen boundaries.
-            float panelHalfWidth = Instance.UI_soldierPanel.sizeDelta.x * 0.4f;
-            float panelHalfHeight = Instance.UI_soldierPanel.sizeDelta.y * 0.4f;
+            float panelHalfWidth = _panel.rect.width * 0.5f;
+            float panelHalfHeight = _panel.rect.height * 0.5f;
 
             float minX = panelHalfWidth;
             float maxX = Screen.width - panelHalfWidth;
             float minY = panelHalfHeight;
             float maxY = Screen.height - panelHalfHeight;
 
-            panelPosition.x = Mathf.Clamp(panelPosition.x, minX, maxX);
-            panelPosition.y = Mathf.Clamp(panelPosition.y, minY, maxY);
+            //float normalizedDistance = Mathf.Clamp01(panelPosition.z / 500);
+            //Debug.Log(new Vector3(_panel.localScale.x * normalizedDistance, _panel.localScale.y * normalizedDistance, _panel.localScale.z * normalizedDistance));
+            //_panel.localScale = (_panel.localScale.x * normalizedDistance) * Vector3.one;
 
-            Instance.UI_soldierPanel.position = panelPosition;
-        }
+            panelPosition = new Vector3(panelPosition.x + panelHalfWidth, panelPosition.y - panelHalfHeight, 0);
 
-        if (Instance.isWarHandlerPanelActive)
-        {
-            Vector3 panelPosition = Camera.main.WorldToScreenPoint(Instance.obje.transform.position);
-
-            //Adjusting panel position to mouse position for different resolation
-            float offsetWidth = Screen.width * (Instance.offsetXPercentage + 0.06f);
-            float offsetHeight = Screen.height * (Instance.offsetYPercentage - 0.04f);
-
-            panelPosition.x += offsetWidth;
-            panelPosition.y += offsetHeight;
-
-            // Adjusting the panel position to not exceed the screen boundaries.
-            float panelHalfWidth = Instance.UI_soldierPanel.sizeDelta.x * 0.4f;
-            float panelHalfHeight = Instance.UI_soldierPanel.sizeDelta.y * 0.4f;
-
-            float minX = panelHalfWidth;
-            float maxX = Screen.width - panelHalfWidth;
-            float minY = panelHalfHeight;
-            float maxY = Screen.height - panelHalfHeight;
+            
 
             panelPosition.x = Mathf.Clamp(panelPosition.x, minX, maxX);
             panelPosition.y = Mathf.Clamp(panelPosition.y, minY, maxY);
 
-            Instance.UI_warHandlerPanel.position = panelPosition;
+            _panel.position = new Vector3(panelPosition.x,panelPosition.y,0);
         }
     }
+
 
     //UI bottom panel timescale update
     public void UpdateTimeScaleText()
@@ -190,7 +250,7 @@ public class UIManager : MonoBehaviour
             
         TimeManager.Instance.DateText.text = TimeManager.Instance.currentSeason + "  " + TimeManager.Instance.InGameDay + ",  " + TimeManager.Instance.InGameYear;
     }
-    public void UpdateInfoPanel(string _name, string _clan, int _troops, int _peasentrecruit, int _swordsman, int _horseman, int _cavalary, int _elitecavalary, GameObject _object, float _speed)
+    public void UpdateSoldierPanel(string _name, string _clan, int _troops, int _peasentrecruit, int _swordsman, int _horseman, int _cavalary, int _elitecavalary, GameObject _object, float _speed)
     {
         Instance.obje = _object;
         Instance.titleText.text = _name;
@@ -238,5 +298,9 @@ public class UIManager : MonoBehaviour
         party2_eliteCavalaryLiveText.text = _character2.army.EliteCavalary.amount.ToString();
         party2_eliteCavalaryDeathText.text = "0";
         party2_participantText.text = "";
+    }
+    public void UpdateSettlementPanel()
+    {
+
     }
 }

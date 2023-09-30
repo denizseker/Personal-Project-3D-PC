@@ -77,8 +77,6 @@ public class ClanManager : MonoBehaviour
         DeclareWar(Solvenna, Barbarian);
     }
 
-
-
     private void SetLogo()
     {
         Shunem.clanLogo = ShunemLogo;
