@@ -106,7 +106,6 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        MouseInWhichPartOfScreen();
         AdjustPanelPos(Instance.isSoldierPanelActive,Instance.UI_soldierPanel);
         AdjustPanelPos(Instance.isWarHandlerPanelActive, Instance.UI_warHandlerPanel);
 
@@ -191,6 +190,39 @@ public class UIManager : MonoBehaviour
 
     }
 
+    //Setting panel pos with new anchored pos 
+    private void SetPanelPosWithAnchor(Vector3 _targetPos,RectTransform _panel,float _panelHalfWidth,float _panelHalfHeight)
+    {
+        int mousePosIndex = MouseInWhichPartOfScreen();
+
+        switch (mousePosIndex)
+        {
+            //Top Left
+            case 1:
+                _panel.position = new Vector3(_targetPos.x + _panelHalfWidth, _targetPos.y - _panelHalfHeight, 0);
+                break;
+            //Top Right
+            case 2:
+                _panel.position = new Vector3(_targetPos.x - _panelHalfWidth, _targetPos.y - _panelHalfHeight, 0);
+                break;
+            //Bottom Left
+            case 3:
+                _panel.position = new Vector3(_targetPos.x + _panelHalfWidth, _targetPos.y + _panelHalfHeight, 0);
+                break;
+            //Bottom right
+            case 4:
+                _panel.position = new Vector3(_targetPos.x - _panelHalfWidth, _targetPos.y + _panelHalfHeight, 0);
+                break;
+            //Out of screen
+            case 5:
+                Debug.Log("Out of screen");
+                break;
+            default:
+                print("Out of value");
+                break;
+        }
+    }
+
     private int MouseInWhichPartOfScreen()
     {
         Vector3 mousePos = Input.mousePosition;
@@ -198,25 +230,25 @@ public class UIManager : MonoBehaviour
         //Left top
         if (mousePos.x <= Screen.width / 2 && mousePos.y >= Screen.height / 2)
         {
-            Debug.Log("Sol üst");
+            //Debug.Log("Sol üst");
             return 1;
         }
         //Right top
         else if (mousePos.x >= Screen.width / 2 && mousePos.y >= Screen.height / 2)
         {
-            Debug.Log("Sað üst");
+            //Debug.Log("Sað üst");
             return 2;
         }
         //Left bottom
         else if (mousePos.x <= Screen.width / 2 && mousePos.y <= Screen.height/2)
         {
-            Debug.Log("Sol alt");
+            //Debug.Log("Sol alt");
             return 3;
         }
         //Right bottom
         else if (mousePos.x >= Screen.width / 2 && mousePos.y <= Screen.height / 2)
         {
-            Debug.Log("Sað alt");
+            //Debug.Log("Sað alt");
             return 4;
         }
         //out of screen
@@ -231,11 +263,11 @@ public class UIManager : MonoBehaviour
         //Panel attached to Object.
         if (_isPanelActive)
         {
-            //Vector3 panelPosition = Camera.main.WorldToScreenPoint(Instance.obje.transform.position);
+            Vector3 panelPosition = Camera.main.WorldToScreenPoint(Instance.obje.transform.position);
 
             //Vector3 panelPosition = Camera.main.WorldToScreenPoint(Input.mousePosition);
 
-            Vector3 panelPosition = Input.mousePosition;
+            Vector3 mousePos = Input.mousePosition;
             ////Adjusting panel position to mouse position for different resolation
             //float offsetWidth = Screen.width * Instance.offsetXPercentage;
             //float offsetHeight = Screen.height * Instance.offsetYPercentage;
@@ -256,14 +288,14 @@ public class UIManager : MonoBehaviour
             //Debug.Log(new Vector3(_panel.localScale.x * normalizedDistance, _panel.localScale.y * normalizedDistance, _panel.localScale.z * normalizedDistance));
             //_panel.localScale = (_panel.localScale.x * normalizedDistance) * Vector3.one;
 
-            panelPosition = new Vector3(panelPosition.x + panelHalfWidth, panelPosition.y - panelHalfHeight, 0);
+            //panelPosition = new Vector3(panelPosition.x + panelHalfWidth, panelPosition.y - panelHalfHeight, 0);
 
-            
+            SetPanelPosWithAnchor(panelPosition, _panel,panelHalfWidth,panelHalfHeight);
 
-            panelPosition.x = Mathf.Clamp(panelPosition.x, minX, maxX);
-            panelPosition.y = Mathf.Clamp(panelPosition.y, minY, maxY);
+            mousePos.x = Mathf.Clamp(mousePos.x, minX, maxX);
+            mousePos.y = Mathf.Clamp(mousePos.y, minY, maxY);
 
-            _panel.position = new Vector3(panelPosition.x,panelPosition.y,0);
+            //_panel.position = new Vector3(mousePos.x,mousePos.y,0);
         }
     }
 

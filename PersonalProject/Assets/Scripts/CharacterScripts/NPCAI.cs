@@ -8,6 +8,7 @@ public class NPCAI : MonoBehaviour
 {
 
     private NPC NPC;
+    public NavMeshData data;
     [SerializeField] private GameObject warHappening;
 
     private void Awake()
@@ -146,6 +147,30 @@ public class NPCAI : MonoBehaviour
         }
     }
 
+    public void GoToRandomPoint()
+    {
+        int walkableIndex = 1 << NavMesh.GetAreaFromName("Walkable");
+
+        // Generate a random point in a spherical area.
+        Vector3 randomDirection = Random.insideUnitSphere * 900;
+
+        // Ensure the Y position is at the same level as your characters.
+        randomDirection += transform.position;
+
+        // Use the NavMesh to find a valid point on the NavMesh.
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(randomDirection, out hit, 900, walkableIndex))
+        {
+            // Use hit.position as your valid random NavMesh position.
+            Vector3 randomNavMeshPosition = hit.position;
+            NPC.agent.SetDestination(randomNavMeshPosition);
+        }
+        else
+        {
+            Debug.LogWarning("Could not find a valid NavMesh position within the specified distance.");
+        }
+    }
+
     public void FleeToTown()
     {
         if (!NPC.agent.hasPath)
@@ -195,6 +220,17 @@ public class NPCAI : MonoBehaviour
         }
     }
 
+    Vector3 SetRandomDest(Bounds bounds)
+    {
+        var x = Random.Range(bounds.min.x, bounds.max.x);
+        //var y = Random.Range(bounds.min.y, bounds.max.y);
+        var z = Random.Range(bounds.min.z, bounds.max.z);
+
+        Vector3 destination = new Vector3(x, -16.67f, z);
+        return destination;
+    }
+
+
     private void Update()
     {
         //AI Logic
@@ -214,7 +250,7 @@ public class NPCAI : MonoBehaviour
         {
             FleeToTown();
         }
-        else if(NPC.currentState == Character.CurrentState.InSettlement)
+        else if (NPC.currentState == Character.CurrentState.InSettlement)
         {
             if (NPC.army.armyTotalTroops < 10)
             {

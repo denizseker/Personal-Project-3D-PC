@@ -1005,6 +1005,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170987099}
   m_CullTransparentMesh: 1
+--- !u!1 &171882053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 171882054}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &171882054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171882053}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 34.50576, y: 43.830242, z: 37.64829}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &174928799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
@@ -16810,6 +16841,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaseCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 8777387383924167520, guid: 5e27f8d9627c2b148951ab3ac4a32164,
+        type: 3}
+      propertyPath: m_Speed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 9098733800788831018, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
       propertyPath: m_RootOrder
@@ -16975,10 +17011,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
-    - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
+    - target: {fileID: 1493034667984823874, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
-      propertyPath: characterName
-      value: Lord FDB
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -17003,7 +17039,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -140.60301
+      value: -139.8
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}

@@ -66,8 +66,8 @@ public class PlayerController : MonoBehaviour
         {
             ClickToMove();
         }
-    }
 
+    }
 
     void SetAnimations()
     {

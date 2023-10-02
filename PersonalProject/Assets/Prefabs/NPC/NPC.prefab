@@ -302,6 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34c7d1d30a36c945844746b7499829c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 23800000, guid: 83ef76803c23a994caf840a11356fd63, type: 2}
   warHappening: {fileID: 7073665704879878613, guid: fe8473132687dab478e3f9c40aa4a238,
     type: 3}
 --- !u!136 &2426346247893193004
@@ -466,10 +467,10 @@ MonoBehaviour:
   army: {fileID: 0}
   speed: 0
   interactedCharacter: {fileID: 0}
-  characterName: Lord Exopath
+  characterName: Lord FDB
   enumClan: 2
   patrolSettlement: {fileID: 0}
-  patrolTown: {fileID: 0}
+  town: {fileID: 0}
   patrolPoint: {x: 0, y: 0, z: 0}
   drawLineandPoint: 0
 --- !u!114 &1493034667984823897

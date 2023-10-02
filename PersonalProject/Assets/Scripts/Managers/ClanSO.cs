@@ -9,6 +9,4 @@ public class ClanSO : ScriptableObject
 {
     public string clanName;
     public Sprite clanLogo;
-
-
 }
