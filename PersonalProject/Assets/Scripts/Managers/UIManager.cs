@@ -106,7 +106,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-
+        MouseInWhichPartOfScreen();
         AdjustPanelPos(Instance.isSoldierPanelActive,Instance.UI_soldierPanel);
         AdjustPanelPos(Instance.isWarHandlerPanelActive, Instance.UI_warHandlerPanel);
 
@@ -191,14 +191,51 @@ public class UIManager : MonoBehaviour
 
     }
 
+    private int MouseInWhichPartOfScreen()
+    {
+        Vector3 mousePos = Input.mousePosition;
+
+        //Left top
+        if (mousePos.x <= Screen.width / 2 && mousePos.y >= Screen.height / 2)
+        {
+            Debug.Log("Sol üst");
+            return 1;
+        }
+        //Right top
+        else if (mousePos.x >= Screen.width / 2 && mousePos.y >= Screen.height / 2)
+        {
+            Debug.Log("Sað üst");
+            return 2;
+        }
+        //Left bottom
+        else if (mousePos.x <= Screen.width / 2 && mousePos.y <= Screen.height/2)
+        {
+            Debug.Log("Sol alt");
+            return 3;
+        }
+        //Right bottom
+        else if (mousePos.x >= Screen.width / 2 && mousePos.y <= Screen.height / 2)
+        {
+            Debug.Log("Sað alt");
+            return 4;
+        }
+        //out of screen
+        else
+        {
+            return 5;
+        }
+    }
 
     public void AdjustPanelPos(bool _isPanelActive,RectTransform _panel)
     {
         //Panel attached to Object.
         if (_isPanelActive)
         {
-            Vector3 panelPosition = Camera.main.WorldToScreenPoint(Instance.obje.transform.position);
+            //Vector3 panelPosition = Camera.main.WorldToScreenPoint(Instance.obje.transform.position);
 
+            //Vector3 panelPosition = Camera.main.WorldToScreenPoint(Input.mousePosition);
+
+            Vector3 panelPosition = Input.mousePosition;
             ////Adjusting panel position to mouse position for different resolation
             //float offsetWidth = Screen.width * Instance.offsetXPercentage;
             //float offsetHeight = Screen.height * Instance.offsetYPercentage;

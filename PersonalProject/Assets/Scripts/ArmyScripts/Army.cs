@@ -20,7 +20,7 @@ public class Army : MonoBehaviour
     public List<SoldierSO> SoldierSO = new List<SoldierSO>();
 
     
-
+    //army total soldier amount. Should update always after change with function. Cause all UI elements and army logic is using this variable.
     [HideInInspector] public int armyTotalTroops;
 
     private void Awake()
