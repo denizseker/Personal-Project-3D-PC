@@ -21,14 +21,6 @@ public class ClanManager : MonoBehaviour
     [Header("ClanList")]
     public List<Clan> clanList = new List<Clan>();
     [Header("Clans")]
-    //Creating clans
-    //public Clan Shunem = new Clan("SHUNEM",null);
-    //public Clan Wutang = new Clan("WUTANG", null);
-    //public Clan Aphalux = new Clan("APHALUX", null);
-    //public Clan Dartrong = new Clan("DARTRONG", null);
-    //public Clan Solvenna = new Clan("SOLVENNA", null);
-    //public Clan Valandor = new Clan("VALANDOR", null);
-    //public Clan Barbarian = new Clan("BARBARIAN", null);
 
     public Clan Shunem = new Clan("SHUNEM",null);
     public Clan Wutang = new Clan("WUTANG", null);
@@ -54,27 +46,27 @@ public class ClanManager : MonoBehaviour
         //Logo
         SetLogo();
         //Adding clans to the clan list.
-        Instance.clanList.Add(Shunem);
-        Instance.clanList.Add(Wutang);
-        Instance.clanList.Add(Aphalux);
-        Instance.clanList.Add(Dartrong);
-        Instance.clanList.Add(Solvenna);
-        Instance.clanList.Add(Valandor);
-        Instance.clanList.Add(Barbarian);
-        Instance.clanList.Add(None);
+        Instance.clanList.Add(Instance.Shunem);
+        Instance.clanList.Add(Instance.Wutang);
+        Instance.clanList.Add(Instance.Aphalux);
+        Instance.clanList.Add(Instance.Dartrong);
+        Instance.clanList.Add(Instance.Solvenna);
+        Instance.clanList.Add(Instance.Valandor);
+        Instance.clanList.Add(Instance.Barbarian);
+        Instance.clanList.Add(Instance.None);
     }
     private void Start()
     {
-        DeclareWar(Wutang, Dartrong);
-        DeclareWar(Shunem, Valandor);
-        DeclareWar(Aphalux, Solvenna);
+        DeclareWar(Instance.Wutang, Instance.Dartrong);
+        DeclareWar(Instance.Shunem, Instance.Valandor);
+        DeclareWar(Instance.Aphalux, Instance.Solvenna);
 
-        DeclareWar(Wutang, Barbarian);
-        DeclareWar(Dartrong, Barbarian);
-        DeclareWar(Shunem, Barbarian);
-        DeclareWar(Valandor, Barbarian);
-        DeclareWar(Aphalux, Barbarian);
-        DeclareWar(Solvenna, Barbarian);
+        DeclareWar(Instance.Wutang, Instance.Barbarian);
+        DeclareWar(Instance.Dartrong, Instance.Barbarian);
+        DeclareWar(Instance.Shunem, Instance.Barbarian);
+        DeclareWar(Instance.Valandor, Instance.Barbarian);
+        DeclareWar(Instance.Aphalux, Instance.Barbarian);
+        DeclareWar(Instance.Solvenna, Instance.Barbarian);
     }
 
     private void SetLogo()

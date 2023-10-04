@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class WarHandler : MonoBehaviour
 {
-    //Those variables will add for for bigger army fights
-    //private List<Character> party1 = new List<Character>();
-    //private List<Character> party2 = new List<Character>();
+    public List<Character> party1 = new List<Character>();
+    public List<Character> party2 = new List<Character>();
     public Character character1;
     public Character character2;
     public bool isBattleStarted = false;
@@ -36,33 +35,82 @@ public class WarHandler : MonoBehaviour
             Attack(round);
             round += 1;
 
+            Debug.Log("Party1 :" + CheckPartyTroops(party1) + " Party2 :" +CheckPartyTroops(party2));
+
             //checking if any army lose
-            if(character1.army.armyTotalTroops <= 0)
+            if (CheckPartyTroops(party1) <= 0)
             {
-                CloseWar(character2,character1);
+                CloseWar(party2,party1);
                 break;
             }
-            else if (character2.army.armyTotalTroops <= 0)
+            else if (CheckPartyTroops(party2) <= 0)
             {
-                CloseWar(character1,character2);
+                CloseWar(party1,party2);
                 break;
             }
         }
     }
 
+    private int CheckPartyTroops(List<Character> _party)
+    {
+        int totalTroops = 0;
+
+        for (int i = 0; i < _party.Count; i++)
+        {
+            totalTroops += _party[i].army.armyTotalTroops;
+        }
+        return totalTroops;
+    }
+
+    public bool CanJoinWar(Clan _clan)
+    {
+        bool canJoinWar = false;
+
+        for (int i = 0; i < party1.Count; i++)
+        {
+            canJoinWar = ClanManager.Instance.isEnemy(_clan,party1[i].clan);
+        }
+        for (int i = 0; i < party2.Count; i++)
+        {
+            canJoinWar = ClanManager.Instance.isEnemy(_clan, party2[i].clan);
+        }
+
+        return canJoinWar;
+    }
+
+    private int ReturnPartyPower(List<Character> _party)
+    {
+        int partyPower = 0;
+
+        for (int i = 0; i < _party.Count; i++)
+        {
+            partyPower += _party[i].army.GetArmyPower();
+        }
+
+        return partyPower;
+    }
+
     private void Attack(int _round)
     {
         //Armies power are multiplying with round
-        int currentPowerParty1 = (character1.army.GetArmyPower()/5) * _round;
-        int currentPowerParty2 = (character2.army.GetArmyPower()/5) * _round;
-
+        int currentPowerParty1 = (ReturnPartyPower(party1)/5) * _round;
+        int currentPowerParty2 = (ReturnPartyPower(party2)/5) * _round;
 
         //Debug.Log($"Ordu1 Güç={currentPowerParty1} | Ordu2 Güç={currentPowerParty2}");
         //Debug.Log($"Ordu1 Can={character1.army.GetArmyHealth()} | Ordu2 Can={character2.army.GetArmyHealth()}");
 
-        //Sending armies power as a incoming damage so the army script take damage function can handle it for splitting to soldiers
-        character1.army.TakeDamage(currentPowerParty2);
-        character2.army.TakeDamage(currentPowerParty1);
+        //Sending armies power as an incoming damage so the army script take damage function can handle it for splitting to soldiers
+        SplitAttack(party1, currentPowerParty2);
+        SplitAttack(party2, currentPowerParty1);
+    }
+
+    //This function handle party attacks
+    private void SplitAttack(List<Character> _party,int _incomingDamage)
+    {
+        for (int i = 0; i < _party.Count; i++)
+        {
+            _party[i].army.TakeDamage(_incomingDamage/_party.Count);
+        }
     }
 
     //This function is calling from NPCAI script. Initializing battle start variables.
@@ -72,19 +120,57 @@ public class WarHandler : MonoBehaviour
         isBattleStarted = true;
         character1 = _character1;
         character2 = _character2;
+
+        party1.Add(_character1);
+        party2.Add(_character2);
+
         StartCoroutine(WarGoingOn());
     }
 
     //Taking winner and loser character and setting their values
-    public void CloseWar(Character _winner,Character _loser)
+    public void CloseWar(List<Character> _winnerParty,List<Character> _loserParty)
     {
-        _winner.currentState = Character.CurrentState.Patroling;
-        _loser.currentState = Character.CurrentState.Defeated;
-        _winner.ChangeColliderState();
-        _loser.ChangeColliderState();
-        _winner.ResetTarget();
-        _loser.ResetTarget();
+        SetWinnerParty(_winnerParty);
+        SetLoserParty(_loserParty);
         isBattleStarted = false;
         Destroy(gameObject);
+    }
+
+    private void SetWinnerParty(List<Character> _party)
+    {
+        for (int i = 0; i < _party.Count; i++)
+        {
+            _party[i].ResetTarget();
+            _party[i].currentState = Character.CurrentState.Patroling;
+            _party[i].ChangeColliderState();
+        }
+    }
+    private void SetLoserParty(List<Character> _party)
+    {
+        for (int i = 0; i < _party.Count; i++)
+        {
+            _party[i].ResetTarget();
+            _party[i].currentState = Character.CurrentState.Defeated;
+            _party[i].ChangeColliderState();
+        }
+    }
+    public void AddCharacterToWar(Character _character)
+    {
+        for (int i = 0; i < party1.Count; i++)
+        {
+            if(ClanManager.Instance.isEnemy(_character.clan, party1[i].clan))
+            {
+                party2.Add(_character);
+                return;
+            }
+        }
+        for (int i = 0; i < party2.Count; i++)
+        {
+            if(ClanManager.Instance.isEnemy(_character.clan, party2[i].clan))
+            {
+                party1.Add(_character);
+                return;
+            }
+        }
     }
 }

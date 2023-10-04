@@ -9,6 +9,7 @@ public class NPCAI : MonoBehaviour
 
     private NPC NPC;
     public NavMeshData data;
+    private GameObject targetDestination;
     [SerializeField] private GameObject warHappening;
 
     private void Awake()
@@ -31,16 +32,6 @@ public class NPCAI : MonoBehaviour
         NPC.agent.ResetPath();
         NPC.currentState = Character.CurrentState.Patroling;
     }
-    //private void StopEveryThing(Character _targetCharacter)
-    //{
-    //    ClearTarget(_targetCharacter);
-
-    //    NPC.agent.ResetPath();
-    //    _targetCharacter.agent.ResetPath();
-
-    //    _targetCharacter.currentState = Character.CurrentState.Patroling;
-    //    NPC.currentState = Character.CurrentState.Patroling;
-    //}
 
     public void Catch(Character _targetCharacter)
     {
@@ -125,7 +116,26 @@ public class NPCAI : MonoBehaviour
                 
             }
         }
+        //if character detect war.
+        if (other.tag == "War" && NPC.currentState != Character.CurrentState.InInteraction && NPC.currentState != Character.CurrentState.Defeated)
+        {
+
+            GameObject _warHandlerObj = other.transform.parent.gameObject;
+            WarHandler _warHandler = other.transform.parent.GetComponent<WarHandler>();
+
+            //if any of party have enemy clan
+            if (_warHandler.CanJoinWar(NPC.clan))
+            {
+                GoToWarDestination(_warHandlerObj);
+            }
+            //if any of party dont have enemy clan
+            else
+            {
+                Debug.Log("Cannot join");
+            }
+        }
     }
+
     private void OnTriggerExit(Collider other)
     {
         //if this exit any character area and have a interactedcharacter already and not in interaction with someone and not defeated
@@ -182,6 +192,38 @@ public class NPCAI : MonoBehaviour
         } 
     }
 
+
+    private void GoToWarDestination(GameObject _target)
+    {
+        if(_target != null)
+        {
+            targetDestination = _target;
+            NPC.currentState = Character.CurrentState.GoingToWar;
+            NPC.agent.SetDestination(targetDestination.transform.position);
+
+
+            float distance = Vector3.Distance(transform.position, targetDestination.transform.position);
+            if (distance < 7)
+            {
+                NPC.agent.ResetPath();
+                targetDestination = null;
+                NPC.currentState = Character.CurrentState.InInteraction;
+                JoinWar(_target);
+            }
+        }
+        else
+        {
+            NPC.currentState = Character.CurrentState.Patroling;
+        }
+        
+    }
+
+    public void JoinWar(GameObject _target)
+    {
+        WarHandler warHandler = _target.GetComponent<WarHandler>();
+        warHandler.AddCharacterToWar(NPC);
+    }
+
     public void GoPatrolTown()
     {
         if (!NPC.agent.hasPath)
@@ -220,17 +262,6 @@ public class NPCAI : MonoBehaviour
         }
     }
 
-    Vector3 SetRandomDest(Bounds bounds)
-    {
-        var x = Random.Range(bounds.min.x, bounds.max.x);
-        //var y = Random.Range(bounds.min.y, bounds.max.y);
-        var z = Random.Range(bounds.min.z, bounds.max.z);
-
-        Vector3 destination = new Vector3(x, -16.67f, z);
-        return destination;
-    }
-
-
     private void Update()
     {
         //AI Logic
@@ -257,6 +288,10 @@ public class NPCAI : MonoBehaviour
                 StartCoroutine(RecruitArmy());
                 NPC.currentState = Character.CurrentState.Recruiting;
             }
+        }
+        else if (NPC.currentState == Character.CurrentState.GoingToWar)
+        {
+            GoToWarDestination(targetDestination);
         }
     }
 }

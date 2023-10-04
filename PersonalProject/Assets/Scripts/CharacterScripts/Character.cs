@@ -14,6 +14,7 @@ public class Character : MonoBehaviour
         Defeated,
         InSettlement,
         Recruiting,
+        GoingToWar,
     }
 
     //Soldiers current state.

@@ -12,6 +12,7 @@ TagManager:
   - Town
   - DetectArea
   - NPC
+  - War
   layers:
   - Default
   - TransparentFX

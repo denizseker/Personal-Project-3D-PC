@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5794043901368683559}
   - component: {fileID: 6118400406248425736}
   m_Layer: 2
-  m_Name: ColliderObject
-  m_TagString: Untagged
+  m_Name: WarDetectArea
+  m_TagString: War
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4977,11 +4977,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a208d94ad582348838574dc56fa241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  party1: []
+  party2: []
   character1: {fileID: 0}
   character2: {fileID: 0}
   isBattleStarted: 0
   pastTime: 0
-  pastTimeForAttack: 0
   startTime: 0
   pastTimeString: 
 --- !u!114 &-5994557942432388061
