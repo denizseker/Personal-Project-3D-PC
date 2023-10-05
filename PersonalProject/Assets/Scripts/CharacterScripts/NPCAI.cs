@@ -221,6 +221,8 @@ public class NPCAI : MonoBehaviour
     public void JoinWar(GameObject _target)
     {
         WarHandler warHandler = _target.GetComponent<WarHandler>();
+        NPC.agent.ResetPath();
+        NPC.ChangeColliderState();
         warHandler.AddCharacterToWar(NPC);
     }
 

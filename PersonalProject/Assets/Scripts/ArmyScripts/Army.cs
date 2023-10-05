@@ -148,6 +148,14 @@ public class Army : MonoBehaviour
         }
     }
 
+    public void ClearArmy()
+    {
+        for (int i = 0; i < armyList.Count; i++)
+        {
+            armyList[i].amount = 0;
+        }
+        armyTotalTroops = GetArmySize();
+    }
 
     //Creating randomized army troops.
     private void CreateArmy()

@@ -4927,6 +4927,7 @@ GameObject:
   - component: {fileID: 7073665704879878612}
   - component: {fileID: -4079949732868798135}
   - component: {fileID: -5994557942432388061}
+  - component: {fileID: 8551846623743580557}
   m_Layer: 0
   m_Name: WarHappening
   m_TagString: Untagged
@@ -4999,6 +5000,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ringEffect: {fileID: 6986624173113803531}
   isSelected: 0
+--- !u!114 &8551846623743580557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7073665704879878613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56abf0c8751e875458921ba63f3365e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinArmySize: 0
+  MaxArmySize: 0
+  SoldierSO:
+  - {fileID: 11400000, guid: 51c8a1cc797f88447b49d430e7b2ba86, type: 2}
+  - {fileID: 11400000, guid: 328e2868209ae734583a995fd1b49aa9, type: 2}
+  - {fileID: 11400000, guid: 287e7c837073944408e1191e60aef68b, type: 2}
+  - {fileID: 11400000, guid: ba8128728d000ee439e04da7a6450577, type: 2}
+  - {fileID: 11400000, guid: 8bbd421930e2e2f4bb9944da261601bc, type: 2}
+  armyTotalTroops: 0
 --- !u!1 &7073665705062648248
 GameObject:
   m_ObjectHideFlags: 0

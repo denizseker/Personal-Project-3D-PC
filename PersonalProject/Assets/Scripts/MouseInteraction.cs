@@ -64,7 +64,7 @@ public class MouseInteraction : MonoBehaviour
         }
         else if (warHandler != null)
         {
-            UIManager.Instance.UpdateWarPanel(gameObject,warHandler.pastTimeString,warHandler.character1,warHandler.character2);
+            UIManager.Instance.UpdateWarPanel(gameObject,warHandler.pastTimeString,warHandler.party1,warHandler.party2);
             //Activate war panel
             UIManager.Instance.UI_warHandlerPanel.gameObject.SetActive(true);
             UIManager.Instance.isWarHandlerPanelActive = true;
@@ -77,7 +77,7 @@ public class MouseInteraction : MonoBehaviour
     private void OnMouseOver()
     {
         ringEffect.SetActive(true);
-        if(UIManager.Instance.isWarHandlerPanelActive) UIManager.Instance.UpdateWarPanel(gameObject, warHandler.pastTimeString,warHandler.character1,warHandler.character2);
+        if(UIManager.Instance.isWarHandlerPanelActive) UIManager.Instance.UpdateWarPanel(gameObject, warHandler.pastTimeString,warHandler.party1,warHandler.party2);
     }
 
     private void OnMouseExit()

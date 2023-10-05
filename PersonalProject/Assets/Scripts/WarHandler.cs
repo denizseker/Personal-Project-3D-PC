@@ -6,8 +6,7 @@ public class WarHandler : MonoBehaviour
 {
     public List<Character> party1 = new List<Character>();
     public List<Character> party2 = new List<Character>();
-    public Character character1;
-    public Character character2;
+    public Army partyArmyHolder;
     public bool isBattleStarted = false;
     public float pastTime = 0;
     public float startTime;
@@ -26,6 +25,11 @@ public class WarHandler : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        partyArmyHolder = GetComponent<Army>();
+    }
+
     private IEnumerator WarGoingOn()
     {
         int round = 1; //round counter
@@ -35,15 +39,15 @@ public class WarHandler : MonoBehaviour
             Attack(round);
             round += 1;
 
-            Debug.Log("Party1 :" + CheckPartyTroops(party1) + " Party2 :" +CheckPartyTroops(party2));
+            //Debug.Log("Party1 :" + CheckPartyTroops(party1) + " Party2 :" +CheckPartyTroops(party2));
 
             //checking if any army lose
-            if (CheckPartyTroops(party1) <= 0)
+            if (ReturnPartyTroops(party1) <= 0)
             {
                 CloseWar(party2,party1);
                 break;
             }
-            else if (CheckPartyTroops(party2) <= 0)
+            else if (ReturnPartyTroops(party2) <= 0)
             {
                 CloseWar(party1,party2);
                 break;
@@ -51,7 +55,7 @@ public class WarHandler : MonoBehaviour
         }
     }
 
-    private int CheckPartyTroops(List<Character> _party)
+    private int ReturnPartyTroops(List<Character> _party)
     {
         int totalTroops = 0;
 
@@ -62,6 +66,7 @@ public class WarHandler : MonoBehaviour
         return totalTroops;
     }
 
+    //Checking if any party have enemy
     public bool CanJoinWar(Clan _clan)
     {
         bool canJoinWar = false;
@@ -113,14 +118,27 @@ public class WarHandler : MonoBehaviour
         }
     }
 
+    //Merging party armies to partyArmyHolder. Using when sending stats to UIManager
+    public Army ReturnPartyArmy(List<Character> _party)
+    {
+        partyArmyHolder.ClearArmy();
+
+        for (int i = 0; i < _party.Count; i++)
+        {
+            for (int j = 0; j < partyArmyHolder.armyList.Count; j++)
+            {
+                partyArmyHolder.armyList[j].amount += _party[i].army.armyList[j].amount;
+            }
+        }
+        partyArmyHolder.GetArmySize();
+        return partyArmyHolder;
+    }
+
     //This function is calling from NPCAI script. Initializing battle start variables.
     public void StartFight(Character _character1,Character _character2)
     {
         startTime = Time.time;
         isBattleStarted = true;
-        character1 = _character1;
-        character2 = _character2;
-
         party1.Add(_character1);
         party2.Add(_character2);
 
