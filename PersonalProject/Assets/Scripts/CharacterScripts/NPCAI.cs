@@ -6,7 +6,8 @@ using UnityEngine.AI;
 
 public class NPCAI : MonoBehaviour
 {
-
+    private float timer;
+    private int interval = 30;
     private NPC NPC;
     public NavMeshData data;
     private GameObject targetDestination;
@@ -39,6 +40,9 @@ public class NPCAI : MonoBehaviour
         NPC.interactedCharacter = _targetCharacter;
         _targetCharacter.interactedCharacter = NPC;
         //Stopping agents
+        //setting their velocity to zero for instant stop without sliding.
+        NPC.agent.velocity = Vector3.zero;
+        _targetCharacter.agent.velocity = Vector3.zero;
         NPC.agent.isStopped = true;
         _targetCharacter.agent.isStopped = true;
         //Resetting agents path
@@ -51,7 +55,7 @@ public class NPCAI : MonoBehaviour
         NPC.ChangeColliderState();
         _targetCharacter.ChangeColliderState();
         //instantiating warhappening object at middle of 2 characters
-        Vector3 middleOfCharacters = Vector3.Lerp(transform.position, _targetCharacter.transform.position, 0.75f);
+        Vector3 middleOfCharacters = Vector3.Lerp(transform.position, _targetCharacter.transform.position, 0.5f);
         var warHappeningObj = Instantiate(warHappening, middleOfCharacters, transform.rotation);
         //Sending 2 character who is will be in fight.
         warHappeningObj.GetComponent<WarHandler>().StartFight(NPC,_targetCharacter);
@@ -201,7 +205,6 @@ public class NPCAI : MonoBehaviour
             NPC.currentState = Character.CurrentState.GoingToWar;
             NPC.agent.SetDestination(targetDestination.transform.position);
 
-
             float distance = Vector3.Distance(transform.position, targetDestination.transform.position);
             if (distance < 7)
             {
@@ -215,7 +218,6 @@ public class NPCAI : MonoBehaviour
         {
             NPC.currentState = Character.CurrentState.Patroling;
         }
-        
     }
 
     public void JoinWar(GameObject _target)
@@ -264,7 +266,8 @@ public class NPCAI : MonoBehaviour
         }
     }
 
-    private void Update()
+
+    private void AILogic()
     {
         //AI Logic
         if (NPC.currentState == Character.CurrentState.Patroling)
@@ -295,5 +298,15 @@ public class NPCAI : MonoBehaviour
         {
             GoToWarDestination(targetDestination);
         }
+    }
+
+    private void Update()
+    {
+        if (timer % interval == 0 && NPC.currentState != Character.CurrentState.InInteraction)
+        {
+            AILogic();
+            Debug.Log("Logic checked");
+        }
+        timer++;
     }
 }

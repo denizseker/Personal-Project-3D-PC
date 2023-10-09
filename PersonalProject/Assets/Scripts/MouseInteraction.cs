@@ -34,7 +34,6 @@ public class MouseInteraction : MonoBehaviour
     private void OnMouseEnter()
     {
         //Sending infos to the right UI panel.
-
         //Mouse over on player
         if (playerManager != null)
         {
@@ -88,8 +87,6 @@ public class MouseInteraction : MonoBehaviour
       UIManager.Instance.isSoldierPanelActive = false;
       if (!isSelected) ringEffect.SetActive(false);
     }
-
-
     //Clicking to enemy or town
     private void OnMouseDown()
     {
@@ -107,7 +104,6 @@ public class MouseInteraction : MonoBehaviour
             playerAgent.destination = col.ClosestPoint(playerAgent.transform.position);
         }
     }
-
     private void Update()
     {
         //If clicked object is enemy we are updating destination for follow.
