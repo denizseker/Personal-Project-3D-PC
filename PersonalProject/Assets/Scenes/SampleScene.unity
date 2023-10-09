@@ -154,7 +154,7 @@ Transform:
   - {fileID: 1507636619928380350}
   - {fileID: 22702267}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &21611058
 GameObject:
@@ -5328,7 +5328,7 @@ PrefabInstance:
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: characterName
-      value: Lord KaanAkay
+      value: Lord Etercy
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -7596,7 +7596,7 @@ PrefabInstance:
     - target: {fileID: 1493034667984823875, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_Speed
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -8104,7 +8104,7 @@ Transform:
   - {fileID: 1180548724}
   - {fileID: 410087041}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1243756055
 GameObject:
@@ -8184,6 +8184,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243756055}
   m_CullTransparentMesh: 1
+--- !u!1001 &1266658308
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1493034667984823874, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_Name
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823875, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_Speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: MinArmySize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -80.61436
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -16.670944
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -62.820587
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 094e4a2dcec2d9849865ba39ce58053f, type: 3}
 --- !u!1 &1273154155
 GameObject:
   m_ObjectHideFlags: 0
@@ -12574,7 +12653,7 @@ Transform:
   - {fileID: 174928799}
   - {fileID: 1050154827}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1557293241
 GameObject:
@@ -15354,7 +15433,7 @@ Transform:
   - {fileID: 182631864}
   - {fileID: 1498100308}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1875987672
 GameObject:
@@ -17088,6 +17167,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
+      propertyPath: characterName
+      value: Lord Filokipatisi
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
       propertyPath: patrolSettlement
       value: 
       objectReference: {fileID: 2527539637853199777}
@@ -17099,7 +17183,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -86.4
+      value: -97
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -17109,7 +17193,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -29.1
+      value: -33.3
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
