@@ -57,6 +57,9 @@ public class NPCAI : MonoBehaviour
         //instantiating warhappening object at middle of 2 characters
         Vector3 middleOfCharacters = Vector3.Lerp(transform.position, _targetCharacter.transform.position, 0.5f);
         var warHappeningObj = Instantiate(warHappening, middleOfCharacters, transform.rotation);
+        //Rotating character to warhappeningobj so they will look each other
+        NPC.gameObject.transform.LookAt(warHappeningObj.transform);
+        _targetCharacter.gameObject.transform.LookAt(warHappeningObj.transform);
         //Sending 2 character who is will be in fight.
         warHappeningObj.GetComponent<WarHandler>().StartFight(NPC,_targetCharacter);
     }
@@ -302,10 +305,10 @@ public class NPCAI : MonoBehaviour
 
     private void Update()
     {
+        //AI checking logic every x frame
         if (timer % interval == 0 && NPC.currentState != Character.CurrentState.InInteraction)
         {
             AILogic();
-            Debug.Log("Logic checked");
         }
         timer++;
     }

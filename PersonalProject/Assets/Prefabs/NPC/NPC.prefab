@@ -467,7 +467,7 @@ MonoBehaviour:
   army: {fileID: 0}
   speed: 0
   interactedCharacter: {fileID: 0}
-  characterName: "Lord TolgaKaranl\u0131ko\u011Flu"
+  characterName: Lord Filokipatisi
   enumClan: 2
   patrolSettlement: {fileID: 0}
   town: {fileID: 0}

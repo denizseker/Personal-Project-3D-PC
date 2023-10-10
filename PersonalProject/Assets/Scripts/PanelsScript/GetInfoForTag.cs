@@ -25,7 +25,7 @@ public class GetInfoForTag : MonoBehaviour
 
     public void UpdateNameTag()
     {
-        //if script in settlement
+        //if script at settlement
         if (GetComponentInParent<Settlement>() != null)
         {
             Settlement settlement = GetComponentInParent<Settlement>();
@@ -34,22 +34,16 @@ public class GetInfoForTag : MonoBehaviour
             clanLogo.sprite = settlement.clan.clanLogo;
             troops.text = GetComponentInParent<Army>().armyTotalTroops.ToString();
         }
-        //if script in npc
-        else if (GetComponentInParent<NPC>() != null)
+        //if script at character
+        else if (GetComponentInParent<Character>() != null)
         {
-            NPC npcManager = GetComponentInParent<NPC>();
+            Character character = GetComponentInParent<Character>();
 
-            nameText.text = npcManager.characterName;
-            clanLogo.sprite = npcManager.clan.clanLogo;
+            nameText.text = character.characterName;
+            clanLogo.sprite = character.clan.clanLogo;
             troops.text = GetComponentInParent<Army>().armyTotalTroops.ToString();
-            state.text = npcManager.currentState.ToString();
-            if (npcManager.interactedCharacter != null) state.text += " " + npcManager.interactedCharacter.characterName;
+            state.text = character.currentState.ToString();
+            if (character.interactedCharacter != null) state.text += " " + character.interactedCharacter.characterName;
         }
-        //if script in player
-        //else if(GetComponentInParent<PlayerManager>() != null)
-        //{
-        //    clanText.text = GetComponentInParent<PlayerManager>().clan.clanName;
-        //    clanLogo = GetComponentInParent<PlayerManager>().clan.clanLogo;
-        //}
     }
 }

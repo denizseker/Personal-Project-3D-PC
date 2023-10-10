@@ -3757,6 +3757,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484419664}
   m_CullTransparentMesh: 1
+--- !u!4 &517630690 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+    type: 3}
+  m_PrefabInstance: {fileID: 600667537}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &545491470
 GameObject:
   m_ObjectHideFlags: 0
@@ -4161,6 +4167,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583372441}
   m_CullTransparentMesh: 1
+--- !u!1001 &600667537
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1548706003}
+    m_Modifications:
+    - target: {fileID: 1493034667984823874, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_Name
+      value: NPC (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823874, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: characterName
+      value: Lord Filokipatisi
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: patrolSettlement
+      value: 
+      objectReference: {fileID: 2527539637853199777}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -89.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -16.670948
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -36.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.18517284
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.98270595
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 158.658
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 094e4a2dcec2d9849865ba39ce58053f, type: 3}
 --- !u!1 &621907829
 GameObject:
   m_ObjectHideFlags: 0
@@ -12582,6 +12672,7 @@ Transform:
   - {fileID: 8253799548212835022}
   - {fileID: 174928799}
   - {fileID: 1609490257}
+  - {fileID: 517630690}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16911,16 +17002,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 355414726}
-    - target: {fileID: 4520916848439190454, guid: 5e27f8d9627c2b148951ab3ac4a32164,
-        type: 3}
-      propertyPath: MaxArmySize
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 4520916848439190454, guid: 5e27f8d9627c2b148951ab3ac4a32164,
-        type: 3}
-      propertyPath: MinArmySize
-      value: 250
-      objectReference: {fileID: 0}
     - target: {fileID: 8434928208128504208, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
       propertyPath: m_Name
@@ -16928,8 +17009,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8777387383924167520, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
-      propertyPath: m_Speed
-      value: 100
+      propertyPath: m_Acceleration
+      value: 999
       objectReference: {fileID: 0}
     - target: {fileID: 9098733800788831018, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
@@ -17100,16 +17181,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NPC
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493034667984823874, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: characterName
-      value: Lord Filokipatisi
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
