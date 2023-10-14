@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     CustomAction input;
     NavMeshAgent agent;
 
-
     [Header("Movement")]
     [SerializeField] ParticleSystem clickEffect;
 
@@ -36,7 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
-        //If mouse not over on UI elements.
+        //If mouse not over on UI elements & game not stopped
         if (!EventSystem.current.IsPointerOverGameObject() && !TimeManager.Instance.isGameStopped)
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 2000))
@@ -58,6 +57,8 @@ public class PlayerController : MonoBehaviour
         } 
     }
 
+    
+
     void Update()
     {
         SetAnimations();
@@ -65,8 +66,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             ClickToMove();
-        }
-
+        } 
     }
 
     void SetAnimations()

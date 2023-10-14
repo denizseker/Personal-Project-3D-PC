@@ -193,7 +193,7 @@ public class NPCAI : MonoBehaviour
         if (!NPC.agent.hasPath)
         {
             GameObject patrolTown = NPC.town;
-            Vector3 townPosition = patrolTown.transform.GetChild(5).transform.position;
+            Vector3 townPosition = patrolTown.GetComponentInChildren<GetCharacterInSettlement>().transform.position;
             NPC.agent.destination = townPosition;
             NPC.currentState = Character.CurrentState.Defeated;
         } 

@@ -7426,9 +7426,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87f935ceae9e354195179c2f0c46a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settlementName: JADOLI
+  settlementName: DRAKMOR
+  manPower: 150
+  manPowerLimit: 300
   enumClan: 0
   isHavePatrol: 0
+  startCollectManPower: 0
+  isStartedCollectManPower: 0
   characterInTown: []
 --- !u!114 &8729406280781208759
 MonoBehaviour:

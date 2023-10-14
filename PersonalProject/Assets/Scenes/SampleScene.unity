@@ -7088,6 +7088,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterBlock_50m
       objectReference: {fileID: 0}
+    - target: {fileID: 1507636620937791836, guid: 7097ba7ba649e1f41bba232312bdcbd8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
 --- !u!1 &1149167064
@@ -17009,6 +17014,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8777387383924167520, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
+      propertyPath: m_Speed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8777387383924167520, guid: 5e27f8d9627c2b148951ab3ac4a32164,
+        type: 3}
       propertyPath: m_Acceleration
       value: 999
       objectReference: {fileID: 0}
@@ -17020,7 +17030,7 @@ PrefabInstance:
     - target: {fileID: 9098733800788831018, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 63.9
+      value: -62.6
       objectReference: {fileID: 0}
     - target: {fileID: 9098733800788831018, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
@@ -17030,7 +17040,7 @@ PrefabInstance:
     - target: {fileID: 9098733800788831018, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -143.7
+      value: -52.7
       objectReference: {fileID: 0}
     - target: {fileID: 9098733800788831018, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
@@ -17153,21 +17163,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TownFull
       objectReference: {fileID: 0}
-    - target: {fileID: 8729406280781208755, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
-        type: 3}
-      propertyPath: manPower
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 8729406280781208755, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
-        type: 3}
-      propertyPath: manPowerLimit
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 8729406280781208755, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
-        type: 3}
-      propertyPath: settlementName
-      value: DRAKMOR
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8, type: 3}
 --- !u!1001 &7888302443516464694
@@ -17182,11 +17177,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823874, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: patrolSettlement
       value: 
       objectReference: {fileID: 2527539637853199777}
+    - target: {fileID: 1493034667984823896, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_RootOrder
@@ -17195,7 +17200,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -102.41
+      value: -124.05
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -17205,7 +17210,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.46
+      value: -27.91
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}

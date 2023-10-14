@@ -69,8 +69,7 @@ public class MouseInteraction : MonoBehaviour
             UIManager.Instance.isWarHandlerPanelActive = true;
             ringEffect.SetActive(true);
         }
-
-        
+ 
     }
 
     private void OnMouseOver()
@@ -97,11 +96,11 @@ public class MouseInteraction : MonoBehaviour
         ringEffect.SetActive(true);
         isSelected = true;
         //Clicking to town
-        if (isSelected && GetComponentInChildren<NPCAI>() == null)
+        if (isSelected && settlement != null)
         {
             NavMeshAgent playerAgent = player.GetComponent<NavMeshAgent>();
-            Collider col = GetComponentInParent<Collider>();
-            playerAgent.destination = col.ClosestPoint(playerAgent.transform.position);
+            Vector3 townPosition = settlement.gameObject.GetComponentInChildren<GetCharacterInSettlement>().transform.position;
+            playerAgent.destination = townPosition;
         }
     }
     private void Update()

@@ -53,10 +53,16 @@ public class NPC : Character
 
     public void GetPatrolPositionForDrawing(Vector3 _patrolpoint,bool _isOpen)
     {
-
         patrolPoint = _patrolpoint;
         drawLineandPoint = _isOpen;
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.GetComponent<Character>() != null)
+        {
+            Debug.Log("Deneme");
+        }
     }
 
     ////Enemy AI Soldier movement

@@ -82,4 +82,5 @@ public class Character : MonoBehaviour
             gameObject.transform.GetChild(2).gameObject.SetActive(true);
         }
     }
+
 }
