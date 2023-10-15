@@ -18,7 +18,7 @@ public class NPC : Character
     private void Awake()
     {
         Setup();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         town = patrolSettlement.gameObject;
         currentState = CurrentState.Patroling;
     }
@@ -56,10 +56,4 @@ public class NPC : Character
         patrolPoint = _patrolpoint;
         drawLineandPoint = _isOpen;
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("NPC Triggered");
-    }
-
 }

@@ -22,7 +22,7 @@ public class Character : MonoBehaviour
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public Army army;
     [HideInInspector] public float speed;
-    [HideInInspector] public Character interactedCharacter;
+    public Character interactedCharacter;
     public string characterName;
     //Soldier values
     public ClanManager.ENUM_Clan enumClan; //enum clan for dropdown list at inspector.
@@ -53,8 +53,8 @@ public class Character : MonoBehaviour
     //Setting colliders to opposite
     public void ChangeColliderState()
     {
-        gameObject.GetComponent<CapsuleCollider>().enabled = !gameObject.GetComponent<CapsuleCollider>().enabled;
-        gameObject.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = !gameObject.transform.GetChild(0).GetComponent<CapsuleCollider>().enabled;
+        gameObject.GetComponentInChildren<DetectArea>().OnOffCollider();
+        gameObject.GetComponentInChildren<InteractArea>().OnOffCollider();
     }
 
     public void ResetTarget()

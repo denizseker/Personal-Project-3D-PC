@@ -15,17 +15,17 @@ public class NPCAI : MonoBehaviour
 
     private void Awake()
     {
-        NPC = GetComponentInParent<NPC>();
+        NPC = GetComponent<NPC>();
     }
 
     private void Chase(Character _targetCharacter)
     {
         NPC.agent.SetDestination(_targetCharacter.transform.position);
-        float distance = Vector3.Distance(transform.position, _targetCharacter.transform.position);
-        if (distance < 7)
-        {
-            Catch(_targetCharacter);
-        }
+        //float distance = Vector3.Distance(transform.position, _targetCharacter.transform.position);
+        //if (NPC.currentState == Character.CurrentState.InInteraction)
+        //{
+        //    Catch(_targetCharacter);
+        //}
     }
     public void StopFleeingAndChasing()
     {
@@ -36,6 +36,7 @@ public class NPCAI : MonoBehaviour
 
     public void Catch(Character _targetCharacter)
     {
+        Debug.Log("Catch");
         //Setting targets
         NPC.interactedCharacter = _targetCharacter;
         _targetCharacter.interactedCharacter = NPC;
@@ -61,7 +62,7 @@ public class NPCAI : MonoBehaviour
         NPC.gameObject.transform.LookAt(warHappeningObj.transform);
         _targetCharacter.gameObject.transform.LookAt(warHappeningObj.transform);
         //Sending 2 character who is will be in fight.
-        warHappeningObj.GetComponent<WarHandler>().StartFight(NPC,_targetCharacter);
+        warHappeningObj.GetComponent<WarHandler>().StartFight(NPC, _targetCharacter);
     }
 
     private void RunFromEnemy(Character _targetCharacter)
@@ -73,97 +74,97 @@ public class NPCAI : MonoBehaviour
         float distance = Vector3.Distance(transform.position, _targetCharacter.transform.position);
         if (_targetCharacter.GetType() == typeof(Player))
         {
-            if (distance < 7)
-            {
-                Catch(_targetCharacter);
-            }
+            //if (distance < 7)
+            //{
+            //    Catch(_targetCharacter);
+            //}
         }
             
     }
-    private void OnTriggerEnter(Collider other)
-    {
+    //private void OnTriggerEnter(Collider other)
+    //{
 
-        //if character detect another character.
-        if (other.tag == "DetectArea" && NPC.currentState != Character.CurrentState.InInteraction && NPC.currentState != Character.CurrentState.Defeated)
-        {
-            Character interactedCharacter = other.GetComponentInParent<Character>();
-            //Targetcharacter is enemy.
-            if (ClanManager.Instance.isEnemy(NPC.clan, interactedCharacter.clan) && interactedCharacter.currentState != Character.CurrentState.Defeated)
-            {
-                //this army is bigger then opponent army
-                if(NPC.army.armyTotalTroops >= interactedCharacter.army.armyTotalTroops)
-                {
-                    //if this character not fleeing, it can chase.
-                    if(NPC.currentState != Character.CurrentState.Fleeing)
-                    {
-                        NPC.currentState = Character.CurrentState.Chasing;
-                    }
-                    else
-                    {
-                        return;
-                    }
+    //    //if character detect another character.
+    //    if (other.tag == "DetectArea" && NPC.currentState != Character.CurrentState.InInteraction && NPC.currentState != Character.CurrentState.Defeated)
+    //    {
+    //        Character interactedCharacter = other.GetComponentInParent<Character>();
+    //        //Targetcharacter is enemy.
+    //        if (ClanManager.Instance.isEnemy(NPC.clan, interactedCharacter.clan) && interactedCharacter.currentState != Character.CurrentState.Defeated)
+    //        {
+    //            //this army is bigger then opponent army
+    //            if(NPC.army.armyTotalTroops >= interactedCharacter.army.armyTotalTroops)
+    //            {
+    //                //if this character not fleeing, it can chase.
+    //                if(NPC.currentState != Character.CurrentState.Fleeing)
+    //                {
+    //                    NPC.currentState = Character.CurrentState.Chasing;
+    //                }
+    //                else
+    //                {
+    //                    return;
+    //                }
 
-                }
-                //this army is smaller then opponent army
-                else
-                {
-                    NPC.currentState = Character.CurrentState.Fleeing;
-                }
-                //setting this character's interactedcharacter. Both AI will do that for himself
-                NPC.interactedCharacter = interactedCharacter;
+    //            }
+    //            //this army is smaller then opponent army
+    //            else
+    //            {
+    //                NPC.currentState = Character.CurrentState.Fleeing;
+    //            }
+    //            //setting this character's interactedcharacter. Both AI will do that for himself
+    //            NPC.interactedCharacter = interactedCharacter;
 
-                //if interactedcharacter is player AI should set our target.
-                if(interactedCharacter.GetType() == typeof(Player))
-                {
-                    interactedCharacter.interactedCharacter = interactedCharacter;
-                }
-            }
-            //Targetcharacter is not enemy.
-            else
-            {
+    //            //if interactedcharacter is player AI should set our target.
+    //            if(interactedCharacter.GetType() == typeof(Player))
+    //            {
+    //                interactedCharacter.interactedCharacter = interactedCharacter;
+    //            }
+    //        }
+    //        //Targetcharacter is not enemy.
+    //        else
+    //        {
                 
-            }
-        }
-        //if character detect war.
-        if (other.tag == "War" && NPC.currentState != Character.CurrentState.InInteraction && NPC.currentState != Character.CurrentState.Defeated)
-        {
+    //        }
+    //    }
+    //    //if character detect war.
+    //    if (other.tag == "War" && NPC.currentState != Character.CurrentState.InInteraction && NPC.currentState != Character.CurrentState.Defeated)
+    //    {
 
-            GameObject _warHandlerObj = other.transform.parent.gameObject;
-            WarHandler _warHandler = other.transform.parent.GetComponent<WarHandler>();
+    //        GameObject _warHandlerObj = other.transform.parent.gameObject;
+    //        WarHandler _warHandler = other.transform.parent.GetComponent<WarHandler>();
 
-            //if any of party have enemy clan
-            if (_warHandler.CanJoinWar(NPC.clan))
-            {
-                GoToWarDestination(_warHandlerObj);
-            }
-            //if any of party dont have enemy clan
-            else
-            {
-                Debug.Log("Cannot join");
-            }
-        }
-    }
+    //        //if any of party have enemy clan
+    //        if (_warHandler.CanJoinWar(NPC.clan))
+    //        {
+    //            GoToWarDestination(_warHandlerObj);
+    //        }
+    //        //if any of party dont have enemy clan
+    //        else
+    //        {
+    //            Debug.Log("Cannot join");
+    //        }
+    //    }
+    //}
 
-    private void OnTriggerExit(Collider other)
-    {
-        //if this exit any character area and have a interactedcharacter already and not in interaction with someone and not defeated
-        if(other.tag == "DetectArea" && NPC.interactedCharacter != null && NPC.currentState != Character.CurrentState.InInteraction && NPC.currentState != Character.CurrentState.Defeated)
-        {
-            Character interactedCharacter = other.GetComponentInParent<Character>();
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    //if this exit any character area and have a interactedcharacter already and not in interaction with someone and not defeated
+    //    if(other.tag == "DetectArea" && NPC.interactedCharacter != null && NPC.currentState != Character.CurrentState.InInteraction && NPC.currentState != Character.CurrentState.Defeated)
+    //    {
+    //        Character interactedCharacter = other.GetComponentInParent<Character>();
 
-            //if interactedcharacter is interact with this too. (chase or fleeing) and interacted character is not defeated
-            if (interactedCharacter.interactedCharacter == NPC && interactedCharacter.currentState != Character.CurrentState.Defeated)
-            {
-                StopFleeingAndChasing();
-                interactedCharacter.GetComponentInChildren<NPCAI>().StopFleeingAndChasing();
-            }
-            //if interacted character not chasing this but this is fleeing.
-            else if (interactedCharacter.interactedCharacter != NPC && NPC.currentState == Character.CurrentState.Fleeing)
-            {
-                StopFleeingAndChasing();
-            }
-        }
-    }
+    //        //if interactedcharacter is interact with this too. (chase or fleeing) and interacted character is not defeated
+    //        if (interactedCharacter.interactedCharacter == NPC && interactedCharacter.currentState != Character.CurrentState.Defeated)
+    //        {
+    //            StopFleeingAndChasing();
+    //            interactedCharacter.GetComponent<NPCAI>().StopFleeingAndChasing();
+    //        }
+    //        //if interacted character not chasing this but this is fleeing.
+    //        else if (interactedCharacter.interactedCharacter != NPC && NPC.currentState == Character.CurrentState.Fleeing)
+    //        {
+    //            StopFleeingAndChasing();
+    //        }
+    //    }
+    //}
 
     public void GoToRandomPoint()
     {
@@ -223,11 +224,122 @@ public class NPCAI : MonoBehaviour
         }
     }
 
-    public void InteractAreaTrigger()
+    public void InteractAreaOnTriggerEnter(Collider other)
     {
+        //Chaser will check every interact trigger
+        if(other.tag == "InteractArea")
+        {
+            //If interactedcharacter same as this character when interact area triggered
+            if (other.GetComponentInParent<Character>().interactedCharacter == NPC)
+            {
+                //if interacted character is npc and this one is chasing.
+                if(other.GetComponentInParent<NPC>() != null && NPC.currentState == Character.CurrentState.Chasing)
+                {
+                    Catch(other.GetComponentInParent<Character>());
+                }
+                //interactedcharacter is player or this is not chasing.
+                else
+                {
+                    Debug.Log("Its not npc");
+                    return;
+                }
 
+            }
+        }
     }
+    public void InteractAreaOnTriggerExit(Collider other)
+    {
+        if (other.tag == "InteractArea")
+        {
+            if(GetComponentInParent<Character>().interactedCharacter == NPC)
+            {
+                Debug.Log("Exit");
+            }
+        }
+    }
+    public void DetectAreaOnTriggerEnter(Collider other)
+    {
+        //if character detect another character.
+        if (other.tag == "DetectArea" && NPC.currentState != Character.CurrentState.InInteraction && NPC.currentState != Character.CurrentState.Defeated)
+        {
+            Character interactedCharacter = other.GetComponentInParent<Character>();
+            //Targetcharacter is enemy.
+            if (ClanManager.Instance.isEnemy(NPC.clan, interactedCharacter.clan) && interactedCharacter.currentState != Character.CurrentState.Defeated)
+            {
+                //this army is bigger then opponent army
+                if (NPC.army.armyTotalTroops >= interactedCharacter.army.armyTotalTroops)
+                {
+                    //if this character not fleeing, it can chase.
+                    if (NPC.currentState != Character.CurrentState.Fleeing)
+                    {
+                        NPC.currentState = Character.CurrentState.Chasing;
+                    }
+                    else
+                    {
+                        return;
+                    }
 
+                }
+                //this army is smaller then opponent army
+                else
+                {
+                    NPC.currentState = Character.CurrentState.Fleeing;
+                }
+                //setting this character's interactedcharacter. Both AI will do that for himself
+                NPC.interactedCharacter = interactedCharacter;
+
+                //if interactedcharacter is player AI should set our target.
+                if (interactedCharacter.GetType() == typeof(Player))
+                {
+                    interactedCharacter.interactedCharacter = interactedCharacter;
+                }
+            }
+            //Targetcharacter is not enemy.
+            else
+            {
+
+            }
+        }
+        //if character detect war.
+        if (other.tag == "War" && NPC.currentState != Character.CurrentState.InInteraction && NPC.currentState != Character.CurrentState.Defeated)
+        {
+
+            GameObject _warHandlerObj = other.transform.parent.gameObject;
+            WarHandler _warHandler = other.transform.parent.GetComponent<WarHandler>();
+
+            //if any of party have enemy clan
+            if (_warHandler.CanJoinWar(NPC.clan))
+            {
+                GoToWarDestination(_warHandlerObj);
+            }
+            //if any of party dont have enemy clan
+            else
+            {
+                Debug.Log("Cannot join");
+            }
+        }
+    }
+    public void DetectAreaOnTriggerExit(Collider other)
+    {
+        //if this exit any character area and have a interactedcharacter already and not in interaction with someone and not defeated
+        if (other.tag == "DetectArea" && NPC.interactedCharacter != null && NPC.currentState != Character.CurrentState.InInteraction && NPC.currentState != Character.CurrentState.Defeated)
+        {
+            Character interactedCharacter = other.GetComponentInParent<Character>();
+
+            //if interactedcharacter is interact with this too. (chase or fleeing) and interacted character is not defeated
+            if (interactedCharacter.interactedCharacter == NPC && interactedCharacter.currentState != Character.CurrentState.Defeated)
+            {
+                StopFleeingAndChasing();
+                interactedCharacter.GetComponent<NPCAI>().StopFleeingAndChasing();
+            }
+            //if interacted character not chasing this but this is fleeing.
+            else if (interactedCharacter.interactedCharacter != NPC && NPC.currentState == Character.CurrentState.Fleeing)
+            {
+                StopFleeingAndChasing();
+            }
+        }
+    }
+    
     public void JoinWar(GameObject _target)
     {
         WarHandler warHandler = _target.GetComponent<WarHandler>();
@@ -255,7 +367,6 @@ public class NPCAI : MonoBehaviour
         NPC.currentState = Character.CurrentState.Patroling;
     }
 
-
     private IEnumerator RecruitArmy()
     {
         while (true)
@@ -273,7 +384,6 @@ public class NPCAI : MonoBehaviour
             }
         }
     }
-
 
     private void AILogic()
     {
@@ -313,7 +423,7 @@ public class NPCAI : MonoBehaviour
         //AI checking logic every x frame
         if (timer % interval == 0 && NPC.currentState != Character.CurrentState.InInteraction)
         {
-            //AILogic();
+            AILogic();
         }
         timer++;
     }

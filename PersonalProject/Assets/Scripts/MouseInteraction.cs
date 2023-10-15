@@ -26,7 +26,7 @@ public class MouseInteraction : MonoBehaviour
         if (GetComponent<Settlement>() != null) settlement = GetComponent<Settlement>();
         if (GetComponent<WarHandler>() != null) warHandler = GetComponent<WarHandler>();
         //town ise null olacak.
-        NPCAI = GetComponentInChildren<NPCAI>();
+        NPCAI = GetComponent<NPCAI>();
         player = GameObject.FindWithTag("Player");
 
     }
@@ -106,7 +106,7 @@ public class MouseInteraction : MonoBehaviour
     private void Update()
     {
         //If clicked object is enemy we are updating destination for follow.
-        if (GetComponentInChildren<NPCAI>() != null)
+        if (GetComponent<NPCAI>() != null)
         {
             if (isSelected)
             {
