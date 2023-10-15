@@ -59,46 +59,7 @@ public class NPC : Character
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.GetComponent<Character>() != null)
-        {
-            Debug.Log("Deneme");
-        }
+        Debug.Log("NPC Triggered");
     }
-
-    ////Enemy AI Soldier movement
-    //public void GetPatrolTown()
-    //{
-    //    //If agent dont have path (patroling,catching,runningfromus) we are giving it patrol job.
-    //    if (!agent.hasPath && !Npc_AI.isCatched)
-    //    {
-    //        //Checking all available town.
-    //        for (int i = 0; i < GameManager.Instance.Settlements.Count; i++)
-    //        {
-    //            Debug.Log(gameObject.name + " looking for town.");
-
-    //            //Looking for a town owned by ally clan.
-    //            if (GameManager.Instance.Settlements[i].GetComponent<Settlement>().RullerClan == clan)
-    //            {
-    //                if (!GameManager.Instance.Settlements[i].GetComponent<Settlement>().isHavePatrol)
-    //                {
-
-    //                    patrolTown = GameManager.Instance.Settlements[i];
-    //                    patrolTown.GetComponent<Settlement>().isHavePatrol = true;
-    //                    Debug.Log(patrolTown.name + " patrol is " + gameObject.name);
-    //                    return;
-    //                }
-    //                else
-    //                {
-    //                    //Debug.Log("Have town but someone patroling already.");
-    //                }
-    //            }
-    //            else
-    //            {
-    //                //Debug.Log("Dont have clan");
-    //            }
-    //        }
-    //    }
-    //}
-
 
 }

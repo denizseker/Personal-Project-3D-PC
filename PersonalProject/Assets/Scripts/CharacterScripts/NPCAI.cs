@@ -82,6 +82,7 @@ public class NPCAI : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+
         //if character detect another character.
         if (other.tag == "DetectArea" && NPC.currentState != Character.CurrentState.InInteraction && NPC.currentState != Character.CurrentState.Defeated)
         {
@@ -199,7 +200,6 @@ public class NPCAI : MonoBehaviour
         } 
     }
 
-
     private void GoToWarDestination(GameObject _target)
     {
         if(_target != null)
@@ -221,6 +221,11 @@ public class NPCAI : MonoBehaviour
         {
             NPC.currentState = Character.CurrentState.Patroling;
         }
+    }
+
+    public void InteractAreaTrigger()
+    {
+
     }
 
     public void JoinWar(GameObject _target)
@@ -308,7 +313,7 @@ public class NPCAI : MonoBehaviour
         //AI checking logic every x frame
         if (timer % interval == 0 && NPC.currentState != Character.CurrentState.InInteraction)
         {
-            AILogic();
+            //AILogic();
         }
         timer++;
     }

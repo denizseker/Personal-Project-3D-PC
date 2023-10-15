@@ -5398,12 +5398,17 @@ PrefabInstance:
     - target: {fileID: 1493034667984823874, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823875, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_Speed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823875, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -5425,6 +5430,11 @@ PrefabInstance:
       propertyPath: patrolSettlement
       value: 
       objectReference: {fileID: 2527539637853199777}
+    - target: {fileID: 1493034667984823896, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: MaxArmySize
@@ -5503,7 +5513,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -83.6
+      value: -119.6
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -5513,7 +5523,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.35
+      value: 6.4
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -5550,10 +5560,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2426346247893193002, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426346247893193002, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426346247893193002, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2426346247893193003, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426346247893193004, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4421393809081800661, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -17180,7 +17210,7 @@ PrefabInstance:
     - target: {fileID: 1493034667984823874, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -17190,7 +17220,7 @@ PrefabInstance:
     - target: {fileID: 1493034667984823896, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -17245,6 +17275,11 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426346247893193004, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
