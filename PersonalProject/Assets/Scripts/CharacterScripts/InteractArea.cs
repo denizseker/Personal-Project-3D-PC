@@ -8,25 +8,42 @@ using UnityEngine;
 public class InteractArea : MonoBehaviour
 {
     NPCAI npcAI;
-    Collider capsuleCollider;
+    Collider col;
     private void Awake()
     {
         npcAI = GetComponentInParent<NPCAI>();
-        capsuleCollider = GetComponent<CapsuleCollider>();
+        col = GetComponent<Collider>();
     }
 
     public void OnOffCollider()
     {
-        capsuleCollider.enabled = !capsuleCollider.enabled;
+        col.enabled = !col.enabled;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        npcAI.InteractAreaOnTriggerEnter(other);
+        if(npcAI !=null) npcAI.InteractAreaOnTriggerEnter(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        npcAI.InteractAreaOnTriggerExit(other);
+        if(npcAI != null) npcAI.InteractAreaOnTriggerExit(other);
     }
+
+    //private void OnMouseEnter()
+    //{
+    //    mouseInteraction.InteractAreaOnMouseEnter();
+    //}
+    //private void OnMouseExit()
+    //{
+    //    mouseInteraction.InteractAreaOnMouseExit();
+    //}
+    //private void OnMouseOver()
+    //{
+    //    mouseInteraction.InteractAreaOnMouseOver();
+    //}
+    //private void OnMouseDown()
+    //{
+    //    mouseInteraction.InteractAreaOnMouseDown();
+    //}
 }

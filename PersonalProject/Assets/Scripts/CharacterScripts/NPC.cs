@@ -31,14 +31,19 @@ public class NPC : Character
 
     void SetAnimations()
     {
-        if (agent.hasPath)
+        //if animator parent active
+        if (animator.gameObject.activeSelf)
         {
-            animator.Play(RUN);
+            if (agent.hasPath)
+            {
+                animator.Play(RUN);
+            }
+            else
+            {
+                animator.Play(IDLE);
+            }
         }
-        else
-        {
-            animator.Play(IDLE);
-        }
+        
     }
 
     private void OnDrawGizmos()

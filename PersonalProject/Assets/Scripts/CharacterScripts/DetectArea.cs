@@ -30,4 +30,5 @@ public class DetectArea : MonoBehaviour
     {
         npcAI.DetectAreaOnTriggerExit(other);
     }
+
 }

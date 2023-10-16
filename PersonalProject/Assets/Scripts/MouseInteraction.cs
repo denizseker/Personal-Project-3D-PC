@@ -31,13 +31,82 @@ public class MouseInteraction : MonoBehaviour
 
     }
 
+    //public void InteractAreaOnMouseEnter()
+    //{
+    //    //Sending infos to the right UI panel.
+    //    //Mouse over on player
+    //    if (playerManager != null)
+    //    {
+    //        UIManager.Instance.UpdateSoldierPanel(playerManager.characterName, playerManager.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject, 10f);
+    //        //Activate info panel
+    //        UIManager.Instance.UI_soldierPanel.gameObject.SetActive(true);
+    //        UIManager.Instance.isSoldierPanelActive = true;
+    //        ringEffect.SetActive(true);
+    //    }
+    //    //Mouse over on npc
+    //    else if (npcManager != null)
+    //    {
+    //        UIManager.Instance.UpdateSoldierPanel(npcManager.characterName, npcManager.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject, npcManager.speed);
+    //        //Activate info panel
+    //        UIManager.Instance.UI_soldierPanel.gameObject.SetActive(true);
+    //        UIManager.Instance.isSoldierPanelActive = true;
+    //        ringEffect.SetActive(true);
+    //    }
+    //    //Mouse over on settlement
+    //    else if (settlement != null)
+    //    {
+    //        UIManager.Instance.UpdateSoldierPanel(settlement.settlementName, settlement.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject, 0f);
+    //        //Activate info panel
+    //        UIManager.Instance.UI_soldierPanel.gameObject.SetActive(true);
+    //        UIManager.Instance.isSoldierPanelActive = true;
+    //        ringEffect.SetActive(true);
+    //    }
+    //    else if (warHandler != null)
+    //    {
+    //        UIManager.Instance.UpdateWarPanel(gameObject, warHandler.pastTimeString, warHandler.party1, warHandler.party2);
+    //        //Activate war panel
+    //        UIManager.Instance.UI_warHandlerPanel.gameObject.SetActive(true);
+    //        UIManager.Instance.isWarHandlerPanelActive = true;
+    //        ringEffect.SetActive(true);
+    //    }
+    //}
+    //public void InteractAreaOnMouseExit()
+    //{
+    //    UIManager.Instance.UI_warHandlerPanel.gameObject.SetActive(false);
+    //    UIManager.Instance.isWarHandlerPanelActive = false;
+    //    UIManager.Instance.UI_soldierPanel.gameObject.SetActive(false);
+    //    UIManager.Instance.isSoldierPanelActive = false;
+    //    if (!isSelected) ringEffect.SetActive(false);
+    //}
+    //public void InteractAreaOnMouseOver()
+    //{
+    //    ringEffect.SetActive(true);
+    //    if (UIManager.Instance.isWarHandlerPanelActive) UIManager.Instance.UpdateWarPanel(gameObject, warHandler.pastTimeString, warHandler.party1, warHandler.party2);
+    //}
+    //public void InteractAreaOnMouseDown()
+    //{
+    //    //Resetting selected object for every town/enemy click
+    //    UIManager.Instance.ClearSelectedObjects();
+    //    UIManager.Instance.selectedObjects.Add(gameObject);
+
+    //    ringEffect.SetActive(true);
+    //    isSelected = true;
+    //    //Clicking to town
+    //    if (isSelected && settlement != null)
+    //    {
+    //        NavMeshAgent playerAgent = player.GetComponent<NavMeshAgent>();
+    //        Vector3 townPosition = settlement.gameObject.GetComponentInChildren<GetCharacterInSettlement>().transform.position;
+    //        playerAgent.destination = townPosition;
+    //    }
+    //}
+
     private void OnMouseEnter()
     {
         //Sending infos to the right UI panel.
         //Mouse over on player
         if (playerManager != null)
         {
-            UIManager.Instance.UpdateSoldierPanel(playerManager.characterName, playerManager.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject,10f);
+            UIManager.Instance.UpdateSoldierPanel(playerManager.characterName, playerManager.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject, 10f);
             //Activate info panel
             UIManager.Instance.UI_soldierPanel.gameObject.SetActive(true);
             UIManager.Instance.isSoldierPanelActive = true;
@@ -46,7 +115,7 @@ public class MouseInteraction : MonoBehaviour
         //Mouse over on npc
         else if (npcManager != null)
         {
-            UIManager.Instance.UpdateSoldierPanel(npcManager.characterName, npcManager.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject,npcManager.speed);
+            UIManager.Instance.UpdateSoldierPanel(npcManager.characterName, npcManager.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject, npcManager.speed);
             //Activate info panel
             UIManager.Instance.UI_soldierPanel.gameObject.SetActive(true);
             UIManager.Instance.isSoldierPanelActive = true;
@@ -55,7 +124,7 @@ public class MouseInteraction : MonoBehaviour
         //Mouse over on settlement
         else if (settlement != null)
         {
-            UIManager.Instance.UpdateSoldierPanel(settlement.settlementName, settlement.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject,0f);
+            UIManager.Instance.UpdateSoldierPanel(settlement.settlementName, settlement.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject, 0f);
             //Activate info panel
             UIManager.Instance.UI_soldierPanel.gameObject.SetActive(true);
             UIManager.Instance.isSoldierPanelActive = true;
@@ -63,30 +132,26 @@ public class MouseInteraction : MonoBehaviour
         }
         else if (warHandler != null)
         {
-            UIManager.Instance.UpdateWarPanel(gameObject,warHandler.pastTimeString,warHandler.party1,warHandler.party2);
+            UIManager.Instance.UpdateWarPanel(gameObject, warHandler.pastTimeString, warHandler.party1, warHandler.party2);
             //Activate war panel
             UIManager.Instance.UI_warHandlerPanel.gameObject.SetActive(true);
             UIManager.Instance.isWarHandlerPanelActive = true;
             ringEffect.SetActive(true);
         }
- 
     }
-
     private void OnMouseOver()
     {
         ringEffect.SetActive(true);
-        if(UIManager.Instance.isWarHandlerPanelActive) UIManager.Instance.UpdateWarPanel(gameObject, warHandler.pastTimeString,warHandler.party1,warHandler.party2);
+        if (UIManager.Instance.isWarHandlerPanelActive) UIManager.Instance.UpdateWarPanel(gameObject, warHandler.pastTimeString, warHandler.party1, warHandler.party2);
     }
-
     private void OnMouseExit()
     {
-      UIManager.Instance.UI_warHandlerPanel.gameObject.SetActive(false);
-      UIManager.Instance.isWarHandlerPanelActive = false;
-      UIManager.Instance.UI_soldierPanel.gameObject.SetActive(false);
-      UIManager.Instance.isSoldierPanelActive = false;
-      if (!isSelected) ringEffect.SetActive(false);
+        UIManager.Instance.UI_warHandlerPanel.gameObject.SetActive(false);
+        UIManager.Instance.isWarHandlerPanelActive = false;
+        UIManager.Instance.UI_soldierPanel.gameObject.SetActive(false);
+        UIManager.Instance.isSoldierPanelActive = false;
+        if (!isSelected) ringEffect.SetActive(false);
     }
-    //Clicking to enemy or town
     private void OnMouseDown()
     {
         //Resetting selected object for every town/enemy click
@@ -103,6 +168,12 @@ public class MouseInteraction : MonoBehaviour
             playerAgent.destination = townPosition;
         }
     }
+
+    public void OnOffCollider()
+    {
+        GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
+    }
+
     private void Update()
     {
         //If clicked object is enemy we are updating destination for follow.

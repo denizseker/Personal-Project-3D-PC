@@ -14,16 +14,16 @@ public class GetCharacterInSettlement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" || other.tag == "NPC")
+        if (other.tag == "InteractArea")
         {
-            Character interactedCharacter = other.GetComponent<Character>();
+            Character interactedCharacter = other.GetComponentInParent<Character>();
 
             if(interactedCharacter.currentState == Character.CurrentState.Defeated)
             {
                 //Adding characters gameobject to settlement characterintown list.
                 settlement.AddCharacter(interactedCharacter.gameObject);
                 interactedCharacter.currentState = Character.CurrentState.InSettlement;
-                interactedCharacter.ChangeCharacterVisibility();
+                interactedCharacter.OnOffCharacterComponentForTown(false);
             }
         }
     }

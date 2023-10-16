@@ -5385,55 +5385,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823874, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823875, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_Speed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: enumClan
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: characterName
-      value: Lord Godsea
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: patrolSettlement
       value: 
       objectReference: {fileID: 2527539637853199777}
-    - target: {fileID: 1493034667984823878, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: MaxArmySize
-      value: 150
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823897, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: MinArmySize
-      value: 85
-      objectReference: {fileID: 0}
-    - target: {fileID: 1670778198230132618, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1670778198230132618, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 1670778198230132618, guid: 094e4a2dcec2d9849865ba39ce58053f,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -5443,7 +5423,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -121.39
+      value: -123.59
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -5453,7 +5433,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.27
+      value: -26.27
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -17107,6 +17087,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823874, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: enumClan
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: characterName
+      value: Lord Etercy
+      objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: patrolSettlement
@@ -17120,7 +17115,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -124.05
+      value: -124.74
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -17130,7 +17125,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -27.91
+      value: -6.82
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}

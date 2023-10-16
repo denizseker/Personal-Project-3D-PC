@@ -240,7 +240,7 @@ public class NPCAI : MonoBehaviour
                 //interactedcharacter is player or this is not chasing.
                 else
                 {
-                    Debug.Log("Its not npc");
+                    Debug.Log("Its not npc or chaser");
                     return;
                 }
 
@@ -362,7 +362,7 @@ public class NPCAI : MonoBehaviour
 
     private void LeaveSettlement()
     {
-        NPC.ChangeCharacterVisibility();
+        NPC.OnOffCharacterComponentForTown(true);
         NPC.town.GetComponent<Settlement>().RemoveCharacter(NPC.gameObject);
         NPC.currentState = Character.CurrentState.Patroling;
     }

@@ -24,6 +24,7 @@ public class Character : MonoBehaviour
     [HideInInspector] public float speed;
     public Character interactedCharacter;
     public string characterName;
+    
     //Soldier values
     public ClanManager.ENUM_Clan enumClan; //enum clan for dropdown list at inspector.
     [HideInInspector] public Clan clan; //real clan value
@@ -55,6 +56,7 @@ public class Character : MonoBehaviour
     {
         gameObject.GetComponentInChildren<DetectArea>().OnOffCollider();
         gameObject.GetComponentInChildren<InteractArea>().OnOffCollider();
+        gameObject.GetComponentInChildren<MouseInteraction>().OnOffCollider();
     }
 
     public void ResetTarget()
@@ -63,23 +65,25 @@ public class Character : MonoBehaviour
     }
 
     //This function make ghost that character but important scripts (NPCAI,NPC,PLAYER) is still working while ghost.
-    public void ChangeCharacterVisibility()
+    public void OnOffCharacterComponentForTown(bool isActive)
     {
-        gameObject.GetComponent<Animator>().enabled = !gameObject.GetComponent<Animator>().enabled;
-        gameObject.GetComponent<NavMeshAgent>().enabled = !gameObject.GetComponent<NavMeshAgent>().enabled;
-        gameObject.GetComponent<CapsuleCollider>().enabled = !gameObject.GetComponent<CapsuleCollider>().enabled;
-        gameObject.GetComponent<MouseInteraction>().enabled = !gameObject.GetComponent<MouseInteraction>().enabled;
-        gameObject.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().enabled = !gameObject.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().enabled;
-        gameObject.transform.GetChild(0).gameObject.GetComponent<CapsuleCollider>().enabled = !gameObject.transform.GetChild(0).gameObject.GetComponent<CapsuleCollider>().enabled;
-        if (gameObject.transform.GetChild(1).gameObject.activeSelf)
+        if (!isActive)
         {
+            agent.enabled = false;
+            GetComponent<MouseInteraction>().enabled = false;
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
             gameObject.transform.GetChild(1).gameObject.SetActive(false);
             gameObject.transform.GetChild(2).gameObject.SetActive(false);
+            gameObject.transform.GetChild(3).gameObject.SetActive(false);
         }
         else
         {
+            agent.enabled = true;
+            GetComponent<MouseInteraction>().enabled = true;
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
             gameObject.transform.GetChild(1).gameObject.SetActive(true);
             gameObject.transform.GetChild(2).gameObject.SetActive(true);
+            gameObject.transform.GetChild(3).gameObject.SetActive(true);
         }
     }
 

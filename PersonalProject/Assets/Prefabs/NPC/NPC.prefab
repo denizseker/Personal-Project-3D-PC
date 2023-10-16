@@ -371,9 +371,10 @@ GameObject:
   - component: {fileID: 1493034667984823875}
   - component: {fileID: 1493034667984823877}
   - component: {fileID: 1493034667984823897}
-  - component: {fileID: 4247197210998001462}
+  - component: {fileID: 8054899437674229302}
   - component: {fileID: 1493034667984823878}
-  - component: {fileID: 1670778198230132618}
+  - component: {fileID: 1827791115134281456}
+  - component: {fileID: 5544616242452765067}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -394,9 +395,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2664579883974321884}
-  - {fileID: 2165512417402277607}
   - {fileID: 3987034972635040128}
   - {fileID: 8766221645520333145}
+  - {fileID: 2165512417402277607}
   - {fileID: 8601236966701887405}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -410,8 +411,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 1493034667984823874}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 10
+  m_Radius: 1
+  m_Speed: 15
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 600
@@ -419,7 +420,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 3.5
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
@@ -440,8 +441,8 @@ MonoBehaviour:
   army: {fileID: 0}
   speed: 0
   interactedCharacter: {fileID: 0}
-  characterName: Lord Etercy
-  enumClan: 6
+  characterName: Lord Godsea
+  enumClan: 0
   patrolSettlement: {fileID: 0}
   town: {fileID: 0}
   patrolPoint: {x: 0, y: 0, z: 0}
@@ -458,8 +459,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56abf0c8751e875458921ba63f3365e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinArmySize: 45
-  MaxArmySize: 75
+  MinArmySize: 85
+  MaxArmySize: 150
   SoldierSO:
   - {fileID: 11400000, guid: 51c8a1cc797f88447b49d430e7b2ba86, type: 2}
   - {fileID: 11400000, guid: 328e2868209ae734583a995fd1b49aa9, type: 2}
@@ -467,7 +468,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8bbd421930e2e2f4bb9944da261601bc, type: 2}
   - {fileID: 11400000, guid: ba8128728d000ee439e04da7a6450577, type: 2}
   armyTotalTroops: 0
---- !u!114 &4247197210998001462
+--- !u!114 &8054899437674229302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -496,7 +497,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ringEffect: {fileID: 5185306156252972095}
   isSelected: 0
---- !u!54 &1670778198230132618
+--- !u!65 &1827791115134281456
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493034667984823874}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7, y: 5, z: 7}
+  m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!54 &5544616242452765067
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -602,13 +616,13 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2165512417402277606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2912854361978012293}
   m_Father: {fileID: 2302328635650243832}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -744,7 +758,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 48.81, y: -2.18}
+  m_AnchoredPosition: {x: 2.58, y: -2.25}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2912854361525327435
@@ -836,7 +850,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.7199996}
+  m_AnchoredPosition: {x: 0, y: 1.92}
   m_SizeDelta: {x: 11.9, y: 1.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2912854361604208233
@@ -985,7 +999,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -47.820004, y: -2.1799994}
+  m_AnchoredPosition: {x: -3.45, y: -2.26}
   m_SizeDelta: {x: 4, y: 1.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2912854361729343171
@@ -1127,8 +1141,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -3.4}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: -2.84}
+  m_SizeDelta: {x: 10, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2912854361978012313
 MonoBehaviour:
@@ -1310,7 +1324,7 @@ GameObject:
   - component: {fileID: 3987034972635040128}
   - component: {fileID: 6673524404229081337}
   - component: {fileID: 9137531905663251264}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: InteractArea
   m_TagString: InteractArea
   m_Icon: {fileID: 0}
@@ -1324,13 +1338,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3662432596964984113}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2302328635650243832}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &6673524404229081337
 CapsuleCollider:
@@ -1456,7 +1470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.89}
+  m_AnchoredPosition: {x: 0, y: 3.24}
   m_SizeDelta: {x: 11.9, y: 1.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1630808433501734597
@@ -6581,7 +6595,7 @@ GameObject:
   - component: {fileID: 8766221645520333145}
   - component: {fileID: 9210341725755148879}
   - component: {fileID: 7542839191420282074}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DetectArea
   m_TagString: DetectArea
   m_Icon: {fileID: 0}
@@ -6595,13 +6609,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5481462844694098404}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2302328635650243832}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &9210341725755148879
 CapsuleCollider:
