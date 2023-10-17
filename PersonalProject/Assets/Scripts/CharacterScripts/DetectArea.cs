@@ -11,7 +11,7 @@ public class DetectArea : MonoBehaviour
     Collider capsuleCollider;
     private void Awake()
     {
-        npcAI = GetComponentInParent<NPCAI>();
+        if (GetComponentInParent<NPCAI>() != null) npcAI = GetComponentInParent<NPCAI>();
         capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
@@ -23,12 +23,12 @@ public class DetectArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        npcAI.DetectAreaOnTriggerEnter(other);
+        if (npcAI != null) npcAI.DetectAreaOnTriggerEnter(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        npcAI.DetectAreaOnTriggerExit(other);
+        if (npcAI != null) npcAI.DetectAreaOnTriggerExit(other);
     }
 
 }

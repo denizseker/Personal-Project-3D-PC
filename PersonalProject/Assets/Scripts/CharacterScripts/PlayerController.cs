@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         input = new CustomAction();
         AssignInputs();
     }
@@ -71,14 +71,16 @@ public class PlayerController : MonoBehaviour
 
     void SetAnimations()
     {
-        if (agent.hasPath)
+        if (animator.gameObject.activeSelf)
         {
-            animator.Play(RUN);
-        }
-        else
-        {
-
-            animator.Play(IDLE);
+            if (agent.hasPath)
+            {
+                animator.Play(RUN);
+            }
+            else
+            {
+                animator.Play(IDLE);
+            }
         }
     }
 }

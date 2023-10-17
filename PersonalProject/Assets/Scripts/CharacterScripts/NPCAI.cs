@@ -233,8 +233,9 @@ public class NPCAI : MonoBehaviour
             if (other.GetComponentInParent<Character>().interactedCharacter == NPC)
             {
                 //if interacted character is npc and this one is chasing.
-                if(other.GetComponentInParent<NPC>() != null && NPC.currentState == Character.CurrentState.Chasing)
+                if (other.GetComponentInParent<NPC>() != null && NPC.currentState == Character.CurrentState.Chasing)
                 {
+                    
                     Catch(other.GetComponentInParent<Character>());
                 }
                 //interactedcharacter is player or this is not chasing.
@@ -262,6 +263,7 @@ public class NPCAI : MonoBehaviour
         //if character detect another character.
         if (other.tag == "DetectArea" && NPC.currentState != Character.CurrentState.InInteraction && NPC.currentState != Character.CurrentState.Defeated)
         {
+            
             Character interactedCharacter = other.GetComponentInParent<Character>();
             //Targetcharacter is enemy.
             if (ClanManager.Instance.isEnemy(NPC.clan, interactedCharacter.clan) && interactedCharacter.currentState != Character.CurrentState.Defeated)
