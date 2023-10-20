@@ -1323,7 +1323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3987034972635040128}
   - component: {fileID: 6673524404229081337}
-  - component: {fileID: 9137531905663251264}
+  - component: {fileID: 6476213171235372828}
   m_Layer: 2
   m_Name: InteractArea
   m_TagString: InteractArea
@@ -1360,7 +1360,7 @@ CapsuleCollider:
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9137531905663251264
+--- !u!114 &6476213171235372828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6594,7 +6594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8766221645520333145}
   - component: {fileID: 9210341725755148879}
-  - component: {fileID: 7542839191420282074}
+  - component: {fileID: 7830710941854939147}
   m_Layer: 2
   m_Name: DetectArea
   m_TagString: DetectArea
@@ -6631,7 +6631,7 @@ CapsuleCollider:
   m_Height: 0
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7542839191420282074
+--- !u!114 &7830710941854939147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
