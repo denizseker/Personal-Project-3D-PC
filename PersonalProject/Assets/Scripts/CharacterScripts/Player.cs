@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Player : Character
 {
-    private GameObject target;
-    [HideInInspector] public bool isMoving = false;
+    public GameObject clickedTarget;
+    [HideInInspector] public bool isMovingToTarget = false;
 
     private void Awake()
     {
@@ -14,33 +14,38 @@ public class Player : Character
         currentState = CurrentState.Free;
     }
 
-    public void MoveToDestination(GameObject _target)
+    public void MoveToTarget(GameObject _target)
     {
-        isMoving = true;
-        target = _target;
-        agent.SetDestination(target.transform.position);
+        isMovingToTarget = true;
+        clickedTarget = _target;
+        agent.SetDestination(clickedTarget.transform.position);
 
-        float distance = Vector3.Distance(transform.position, target.transform.position);
-        if (distance < 7)
-        {
-            StopMoving();
-        }
+        //float distance = Vector3.Distance(transform.position, clickedTarget.transform.position);
+        //if (distance < 7)
+        //{
+        //    StopMoving();
+        //}
     }
 
+    public void ClearClickedTarget()
+    {
+        clickedTarget = null;
+        isMovingToTarget = false;
+    }
     public void StopMoving()
     {
-        isMoving = false;
-        target = null;
-        agent.ResetPath();
+        isMovingToTarget = false;
+        clickedTarget = null;
         agent.velocity = Vector3.zero;
         agent.isStopped = true;
+        agent.ResetPath();
     }
 
     private void Update()
     {
-        if (isMoving)
+        if (isMovingToTarget)
         {
-            MoveToDestination(target);
+            MoveToTarget(clickedTarget);
         }
     }
 

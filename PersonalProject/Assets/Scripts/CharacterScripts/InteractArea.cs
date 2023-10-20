@@ -11,7 +11,7 @@ public class InteractArea : MonoBehaviour
     Collider col;
     private void Awake()
     {
-        if (npcAI != null) npcAI = GetComponentInParent<NPCAI>();
+        if (GetComponentInParent<NPCAI>() != null) npcAI = GetComponentInParent<NPCAI>();
         col = GetComponent<Collider>();
     }
 

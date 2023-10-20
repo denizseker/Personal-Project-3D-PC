@@ -85,7 +85,7 @@ public class UIManager : MonoBehaviour
 
 
 
-    [HideInInspector] public List<GameObject> selectedObjects = new List<GameObject>();
+    public List<GameObject> selectedObjects = new List<GameObject>();
 
     private void Awake()
     {
@@ -93,11 +93,12 @@ public class UIManager : MonoBehaviour
     }
 
     //Player can click 1 object at same time.
-    public void ClearSelectedObjects()
+    public void ClearSelectedObjects(GameObject _playerObj)
     {
         //If we have a clicked object already
         if (Instance.selectedObjects.Count == 1)
         {
+            _playerObj.GetComponent<Player>().clickedTarget = null;
             Instance.selectedObjects[0].GetComponent<MouseInteraction>().ringEffect.SetActive(false);
             Instance.selectedObjects[0].GetComponent<MouseInteraction>().isSelected = false;
             Instance.selectedObjects.Clear();

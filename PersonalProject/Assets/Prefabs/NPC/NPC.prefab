@@ -412,7 +412,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 15
+  m_Speed: 10
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 600
@@ -441,7 +441,7 @@ MonoBehaviour:
   army: {fileID: 0}
   speed: 0
   interactedCharacter: {fileID: 0}
-  characterName: Lord Godsea
+  characterName: Lord Etercy
   enumClan: 0
   patrolSettlement: {fileID: 0}
   town: {fileID: 0}
@@ -496,6 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ringEffect: {fileID: 5185306156252972095}
+  player: {fileID: 0}
   isSelected: 0
 --- !u!65 &1827791115134281456
 BoxCollider:

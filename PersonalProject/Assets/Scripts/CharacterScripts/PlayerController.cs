@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     CustomAction input;
     NavMeshAgent agent;
+    Player character;
 
     [Header("Movement")]
     [SerializeField] ParticleSystem clickEffect;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        character = GetComponent<Player>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         input = new CustomAction();
@@ -45,10 +47,12 @@ public class PlayerController : MonoBehaviour
                 {
                     //Agent moving to hit point
 
-                    agent.destination = hit.point;
+                    agent.SetDestination(hit.point);
 
+
+                    character.ClearClickedTarget();
                     //User clicked terrain for move so we are clearing selected objects.
-                    UIManager.Instance.ClearSelectedObjects();
+                    UIManager.Instance.ClearSelectedObjects(gameObject);
 
                     if (clickEffect != null)
                     { Instantiate(clickEffect, hit.point + new Vector3(0, 0.1f, 0), clickEffect.transform.rotation); }
@@ -62,11 +66,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         SetAnimations();
-
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && character.currentState != Character.CurrentState.InInteraction)
         {
             ClickToMove();
-        } 
+        }
     }
 
     void SetAnimations()

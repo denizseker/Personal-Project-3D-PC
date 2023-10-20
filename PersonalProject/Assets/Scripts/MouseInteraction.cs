@@ -28,7 +28,6 @@ public class MouseInteraction : MonoBehaviour
         //town ise null olacak.
         NPCAI = GetComponent<NPCAI>();
         player = GameObject.FindWithTag("Player");
-
     }
 
     //public void InteractAreaOnMouseEnter()
@@ -154,18 +153,28 @@ public class MouseInteraction : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        //Resetting selected object for every town/enemy click
-        UIManager.Instance.ClearSelectedObjects();
-        UIManager.Instance.selectedObjects.Add(gameObject);
+        //Player cant click to player object, but can click to npc
+        if(gameObject.tag != "Player")
+        {
+            //Resetting selected object for every town/enemy click
+            UIManager.Instance.ClearSelectedObjects(player);
+            UIManager.Instance.selectedObjects.Add(gameObject);
+            player.GetComponent<Player>().clickedTarget = gameObject;
 
-        ringEffect.SetActive(true);
-        isSelected = true;
+            ringEffect.SetActive(true);
+            isSelected = true;
+        }
+        
         //Clicking to town
         if (isSelected && settlement != null)
         {
             NavMeshAgent playerAgent = player.GetComponent<NavMeshAgent>();
             Vector3 townPosition = settlement.gameObject.GetComponentInChildren<GetCharacterInSettlement>().transform.position;
             playerAgent.destination = townPosition;
+        }
+        if(isSelected && NPCAI != null)
+        {
+            player.GetComponent<Player>().MoveToTarget(gameObject);
         }
     }
 
@@ -176,13 +185,13 @@ public class MouseInteraction : MonoBehaviour
 
     private void Update()
     {
-        //If clicked object is enemy we are updating destination for follow.
-        if (GetComponent<NPCAI>() != null)
-        {
-            if (isSelected)
-            {
-                player.GetComponent<NavMeshAgent>().SetDestination(transform.position);
-            }
-        }
+        ////If clicked object is enemy we are updating destination for follow.
+        //if (GetComponent<NPCAI>() != null)
+        //{
+        //    if (isSelected)
+        //    {
+        //        player.GetComponent<NavMeshAgent>().SetDestination(transform.position);
+        //    }
+        //}
     }
 }
