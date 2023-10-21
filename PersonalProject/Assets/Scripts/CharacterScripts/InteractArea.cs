@@ -8,10 +8,12 @@ using UnityEngine;
 public class InteractArea : MonoBehaviour
 {
     NPCAI npcAI;
+    Player player;
     Collider col;
     private void Awake()
     {
         if (GetComponentInParent<NPCAI>() != null) npcAI = GetComponentInParent<NPCAI>();
+        if (GetComponentInParent<Player>() != null) player = GetComponentInParent<Player>();
         col = GetComponent<Collider>();
     }
 
@@ -22,29 +24,13 @@ public class InteractArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if(npcAI !=null) npcAI.InteractAreaOnTriggerEnter(other);
+        if (player != null) player.InteractAreaOnTriggerEnter(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
         if(npcAI != null) npcAI.InteractAreaOnTriggerExit(other);
+        if (player != null) player.InteractAreaOnTriggerExit(other);
     }
-
-    //private void OnMouseEnter()
-    //{
-    //    mouseInteraction.InteractAreaOnMouseEnter();
-    //}
-    //private void OnMouseExit()
-    //{
-    //    mouseInteraction.InteractAreaOnMouseExit();
-    //}
-    //private void OnMouseOver()
-    //{
-    //    mouseInteraction.InteractAreaOnMouseOver();
-    //}
-    //private void OnMouseDown()
-    //{
-    //    mouseInteraction.InteractAreaOnMouseDown();
-    //}
 }

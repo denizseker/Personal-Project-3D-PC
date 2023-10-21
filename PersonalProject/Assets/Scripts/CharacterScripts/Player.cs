@@ -13,18 +13,27 @@ public class Player : Character
         Setup();
         currentState = CurrentState.Free;
     }
+    public void InteractAreaOnTriggerEnter(Collider other)
+    {
 
+    }
+    public void InteractAreaOnTriggerExit(Collider other)
+    {
+
+    }
+    public void DetectAreaOnTriggerEnter(Collider other)
+    {
+
+    }
+    public void DetectAreaOnTriggerExit(Collider other)
+    {
+        
+    }
     public void MoveToTarget(GameObject _target)
     {
         isMovingToTarget = true;
         clickedTarget = _target;
         agent.SetDestination(clickedTarget.transform.position);
-
-        //float distance = Vector3.Distance(transform.position, clickedTarget.transform.position);
-        //if (distance < 7)
-        //{
-        //    StopMoving();
-        //}
     }
 
     public void ClearClickedTarget()
@@ -32,10 +41,9 @@ public class Player : Character
         clickedTarget = null;
         isMovingToTarget = false;
     }
-    public void StopMoving()
+    public void StopAgent()
     {
         isMovingToTarget = false;
-        clickedTarget = null;
         agent.velocity = Vector3.zero;
         agent.isStopped = true;
         agent.ResetPath();

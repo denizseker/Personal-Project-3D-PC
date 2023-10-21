@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class NPCAI : MonoBehaviour
 {
     private float timer;
-    private int interval = 30;
+    private int interval = 10;
     private NPC NPC;
     public NavMeshData data;
     private GameObject targetDestination;
@@ -21,17 +21,19 @@ public class NPCAI : MonoBehaviour
     private void Chase(Character _targetCharacter)
     {
         NPC.agent.SetDestination(_targetCharacter.transform.position);
-        //float distance = Vector3.Distance(transform.position, _targetCharacter.transform.position);
-        //if (NPC.currentState == Character.CurrentState.InInteraction)
-        //{
-        //    Catch(_targetCharacter);
-        //}
     }
-    public void StopFleeingAndChasing()
+    public void StopAgent()
+    {
+        NPC.agent.velocity = Vector3.zero;
+        NPC.agent.isStopped = true;
+        NPC.agent.ResetPath();
+    }
+    public void StopAndReset()
     {
         NPC.interactedCharacter = null;
+        NPC.agent.velocity = Vector3.zero;
+        NPC.agent.isStopped = true;
         NPC.agent.ResetPath();
-        NPC.currentState = Character.CurrentState.Patroling;
     }
 
     public void Catch(Character _targetCharacter)
@@ -52,6 +54,11 @@ public class NPCAI : MonoBehaviour
         //Setting characters states
         NPC.currentState = Character.CurrentState.InInteraction;
         _targetCharacter.currentState = Character.CurrentState.InInteraction;
+        SpawnWarHandler(_targetCharacter);
+        
+    }
+    public void SpawnWarHandler(Character _targetCharacter)
+    {
         //setting off characters colliders. so warhappening object will handle collisions.
         NPC.ChangeColliderState();
         _targetCharacter.ChangeColliderState();
@@ -224,35 +231,49 @@ public class NPCAI : MonoBehaviour
         }
     }
 
+    private bool CheckCharacterType(Character _character)
+    {
+        if (_character.GetType() == typeof(Player))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public void InteractAreaOnTriggerEnter(Collider other)
     {
-        //Chaser will check every interact trigger
         if(other.tag == "InteractArea")
         {
-            //If interactedcharacter same as this character when interact area triggered
-            if (other.GetComponentInParent<Character>().interactedCharacter == NPC)
+            Character _interactedCharacter = other.GetComponentInParent<Character>();
+            bool isPlayer = CheckCharacterType(_interactedCharacter);
+
+            //If interactedcharacter/clickedcharacter same as this character when interact area triggered
+            if (_interactedCharacter.interactedCharacter == NPC || (isPlayer && other.GetComponentInParent<Player>().clickedTarget == NPC.gameObject))
             {
-                //if interacted character is npc and this one is chasing.
-                if (other.GetComponentInParent<NPC>() != null && NPC.currentState == Character.CurrentState.Chasing)
+                //if interacted character is npc, chaser handle situation.
+                if (!isPlayer && NPC.currentState == Character.CurrentState.Chasing)
                 {
-                    
-                    Catch(other.GetComponentInParent<Character>());
+                    Catch(_interactedCharacter);
                 }
-                //interactedcharacter is player or this is not chasing.
+                //interactedcharacter is player or this npc not chasing.
                 else
                 {
-                    if(other.GetComponentInParent<Player>() != null)
+                    //NPC interact with player
+                    if(isPlayer)
                     {
-                        //NPC.agent.isStopped = true;
-                        //other.GetComponentInParent<Character>().agent.isStopped = true;
-                        Catch(other.GetComponentInParent<Character>());
-                        other.GetComponentInParent<Player>().StopMoving();
-                        Debug.Log("Its not npc or chaser");
-                        return;
-                    }
-                    
-                }
+                        Player _player = other.GetComponentInParent<Player>();
 
+                        StopAgent();
+                        _player.StopAgent();
+                        NPC.currentState = Character.CurrentState.InInteraction;
+                        _player.currentState = Character.CurrentState.InInteraction;
+                        UIManager.Instance.ToggleInteractCharacterPanel();
+                        Debug.Log("Interact with player");
+                    }
+                }
             }
         }
     }
@@ -299,10 +320,10 @@ public class NPCAI : MonoBehaviour
                 NPC.interactedCharacter = interactedCharacter;
 
                 //if interactedcharacter is player, AI should set our target.
-                if (interactedCharacter.GetType() == typeof(Player))
-                {
-                    interactedCharacter.interactedCharacter = NPC;
-                }
+                //if (interactedCharacter.GetType() == typeof(Player))
+                //{
+                //    interactedCharacter.interactedCharacter = NPC;
+                //}
             }
             //Targetcharacter is not enemy.
             else
@@ -339,13 +360,14 @@ public class NPCAI : MonoBehaviour
             //if interactedcharacter is interact with this too. (chase or fleeing) and interacted character is not defeated
             if (interactedCharacter.interactedCharacter == NPC && interactedCharacter.currentState != Character.CurrentState.Defeated)
             {
-                StopFleeingAndChasing();
-                //if(interactedCharacter.GetType() == typeof(NPC)) interactedCharacter.GetComponent<NPCAI>().StopFleeingAndChasing();
+                StopAndReset();
+                NPC.currentState = Character.CurrentState.Patroling;
             }
             //if interacted character not chasing this but this is fleeing.
             else if (interactedCharacter.interactedCharacter != NPC && NPC.currentState == Character.CurrentState.Fleeing)
             {
-                StopFleeingAndChasing();
+                StopAndReset();
+                NPC.currentState = Character.CurrentState.Patroling;
             }
 
         }
