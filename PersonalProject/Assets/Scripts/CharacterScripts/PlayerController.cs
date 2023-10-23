@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
+    [HideInInspector] public GameObject clickedTarget;
     const string IDLE = "Idle";
     const string RUN = "Run";
     Animator animator;
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     NavMeshAgent agent;
     Player character;
 
+    [HideInInspector] public bool isMovingToTarget = false;
     [SerializeField] ParticleSystem clickEffect;
 
 
@@ -45,11 +47,10 @@ public class PlayerController : MonoBehaviour
                 if (hit.collider.gameObject.layer == 6)
                 {
                     //Agent moving to hit point
-
                     agent.SetDestination(hit.point);
 
 
-                    character.ClearClickedTarget();
+                    ClearClickedTarget();
                     //User clicked terrain for move so we are clearing selected objects.
                     UIManager.Instance.ClearSelectedObjects(gameObject);
 
@@ -59,16 +60,58 @@ public class PlayerController : MonoBehaviour
             }
         } 
     }
+    public void MoveToTarget(GameObject _target)
+    {
+        isMovingToTarget = true;
+        clickedTarget = _target;
 
-    
+        if(_target.GetComponent<Settlement>() != null)
+        {
+            agent.SetDestination(_target.GetComponentInChildren<GetCharacterInSettlement>().transform.position);
+            return;
+        }
+
+        agent.SetDestination(clickedTarget.transform.position);
+    }
+    public void ClearClickedTarget()
+    {
+        clickedTarget = null;
+        isMovingToTarget = false;
+        UIManager.Instance.ClearSelectedObjects(gameObject);
+    }
+    public void StopAgent()
+    {
+        isMovingToTarget = false;
+        agent.velocity = Vector3.zero;
+        agent.isStopped = true;
+        agent.ResetPath();
+    }
 
     void Update()
     {
         SetAnimations();
         if (Input.GetMouseButtonDown(0) && character.currentState != Character.CurrentState.InInteraction)
         {
+            if (character.currentState == Character.CurrentState.InSettlement)
+            {
+                ClearClickedTarget();
+                character.LeaveSettlement();
+            }
             ClickToMove();
         }
+
+        if (isMovingToTarget && character.currentState != Character.CurrentState.InInteraction)
+        {
+            if (character.currentState == Character.CurrentState.InSettlement)
+            {
+                ClearClickedTarget();
+                character.LeaveSettlement();
+            }
+            Debug.Log("Target click");
+            MoveToTarget(clickedTarget);
+        }
+
+        
     }
 
     void SetAnimations()

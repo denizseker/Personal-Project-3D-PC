@@ -5,8 +5,8 @@ using UnityEngine;
 public class InteractManager : MonoBehaviour
 {
     public static InteractManager Instance;
-    public RectTransform UI_interactCharacterPanel;
 
+    private GameObject interactedTown;
     private GameObject interactedCharacter;
     private GameObject player;
 
@@ -19,25 +19,36 @@ public class InteractManager : MonoBehaviour
     {
         Instance.interactedCharacter = _characterObj;
         Instance.player = _player;
-        ToggleInteractCharacterPanel();
+        UIManager.Instance.ToggleInteractCharacterPanel();
     }
 
-    public void ToggleInteractCharacterPanel()
+    public void EnterWarCommand()
     {
-        //Panel inactive
-        if (Instance.UI_interactCharacterPanel.gameObject.activeSelf)
-        {
-            Instance.UI_interactCharacterPanel.gameObject.SetActive(false);
-        }
-        //Panel active
-        else
-        {
-            Instance.UI_interactCharacterPanel.gameObject.SetActive(true);
-        }
-    }
-
-    public void EnterWar()
-    {
+        Debug.Log("War");
         Instance.interactedCharacter.GetComponent<NPCAI>().SpawnWarHandler(player.GetComponent<Character>());
+    }
+
+    public void SendToThePointCommand()
+    {
+        NPCAI _interactedCharacterAI = interactedCharacter.GetComponent<NPCAI>();
+        player.GetComponent<Character>().currentState = Character.CurrentState.Free;
+        _interactedCharacterAI.LeaveInteraction();
+        _interactedCharacterAI.GoToRandomPoint();
+    }
+
+    //add offset for follow
+    public void FollowCommand()
+    {
+        NPCAI _interactedCharacterAI = interactedCharacter.GetComponent<NPCAI>();
+        player.GetComponent<Character>().currentState = Character.CurrentState.Free;
+        _interactedCharacterAI.FollowTarget(player);
+    }
+
+    public void EndInteractionCommand()
+    {
+        NPCAI _interactedCharacterAI = interactedCharacter.GetComponent<NPCAI>();
+
+        _interactedCharacterAI.LeaveInteraction();
+        player.GetComponent<Character>().currentState = Character.CurrentState.Free;
     }
 }

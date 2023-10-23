@@ -25,6 +25,19 @@ public class GetCharacterInSettlement : MonoBehaviour
                 interactedCharacter.currentState = Character.CurrentState.InSettlement;
                 interactedCharacter.OnOffCharacterComponentForTown(false);
             }
+            //if player interact
+            if(interactedCharacter.GetType() == typeof(Player))
+            {
+                //if player clicked this
+                if(interactedCharacter.GetComponent<PlayerController>().clickedTarget == settlement.gameObject)
+                {
+                    settlement.AddCharacter(interactedCharacter.gameObject);
+                    interactedCharacter.currentState = Character.CurrentState.InSettlement;
+                    interactedCharacter.town = settlement.gameObject;
+                    interactedCharacter.OnOffCharacterComponentForTown(false);
+                    interactedCharacter.GetComponent<PlayerController>().StopAgent();
+                }
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public RectTransform UI_soldierPanel;
     public RectTransform UI_warHandlerPanel;
     public RectTransform UI_settlementPanel;
+    public RectTransform UI_interactCharacterPanel;
     public float offsetXPercentage = 0.07f; // Horizontally
     public float offsetYPercentage = -0.18f; // Vertically
 
@@ -98,7 +99,7 @@ public class UIManager : MonoBehaviour
         //If we have a clicked object already
         if (Instance.selectedObjects.Count == 1)
         {
-            _playerObj.GetComponent<Player>().clickedTarget = null;
+            _playerObj.GetComponent<PlayerController>().clickedTarget = null;
             Instance.selectedObjects[0].GetComponent<MouseInteraction>().ringEffect.SetActive(false);
             Instance.selectedObjects[0].GetComponent<MouseInteraction>().isSelected = false;
             Instance.selectedObjects.Clear();
@@ -299,5 +300,17 @@ public class UIManager : MonoBehaviour
     {
 
     }
-    
+    public void ToggleInteractCharacterPanel()
+    {
+        //Panel inactive
+        if (Instance.UI_interactCharacterPanel.gameObject.activeSelf)
+        {
+            Instance.UI_interactCharacterPanel.gameObject.SetActive(false);
+        }
+        //Panel active
+        else
+        {
+            Instance.UI_interactCharacterPanel.gameObject.SetActive(true);
+        }
+    }
 }

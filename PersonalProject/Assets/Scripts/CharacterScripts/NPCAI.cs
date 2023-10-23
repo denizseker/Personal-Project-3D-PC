@@ -254,7 +254,7 @@ public class NPCAI : MonoBehaviour
             {
                 //Debug.Log("Not defeated");
                 //If interactedcharacter/clickedcharacter same as this character when interact area triggered
-                if (_interactedCharacter.interactedCharacter == NPC || (isPlayer && other.GetComponentInParent<Player>().clickedTarget == NPC.gameObject))
+                if (_interactedCharacter.interactedCharacter == NPC || (isPlayer && other.GetComponentInParent<PlayerController>().clickedTarget == NPC.gameObject))
                 {
                     //if interacted character is npc, chaser handle situation.
                     if (!isPlayer && NPC.currentState == Character.CurrentState.Chasing)
@@ -268,13 +268,14 @@ public class NPCAI : MonoBehaviour
                         if (isPlayer)
                         {
                             Player _player = other.GetComponentInParent<Player>();
+                            PlayerController _playerController = _player.GetComponent<PlayerController>();
 
                             StopAgent();
-                            _player.StopAgent();
+                            _playerController.StopAgent();
                             NPC.currentState = Character.CurrentState.InInteraction;
                             _player.currentState = Character.CurrentState.InInteraction;
                             InteractManager.Instance.TakeDataActivateInteractPanel(NPC.gameObject, _player.gameObject);
-                            _player.ClearClickedTarget();
+                            _playerController.ClearClickedTarget();
                             //Debug.Log("Interact");
                         }
                     }
@@ -398,10 +399,24 @@ public class NPCAI : MonoBehaviour
         }
     }
 
+
+    public void FollowTarget(GameObject _target)
+    {
+        targetDestination = _target;
+        NPC.currentState = Character.CurrentState.Following;
+        Vector3 targetPos = targetDestination.transform.position;
+        NPC.agent.SetDestination(targetPos);
+    }
+
     private void LeaveSettlement()
     {
         NPC.OnOffCharacterComponentForTown(true);
         NPC.town.GetComponent<Settlement>().RemoveCharacter(NPC.gameObject);
+        NPC.currentState = Character.CurrentState.Patroling;
+    }
+
+    public void LeaveInteraction()
+    {
         NPC.currentState = Character.CurrentState.Patroling;
     }
 
@@ -453,6 +468,10 @@ public class NPCAI : MonoBehaviour
         else if (NPC.currentState == Character.CurrentState.GoingToWar)
         {
             GoToWarDestination(targetDestination);
+        }
+        else if(NPC.currentState == Character.CurrentState.Following)
+        {
+            FollowTarget(targetDestination);
         }
     }
 

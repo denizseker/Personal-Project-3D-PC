@@ -12,7 +12,7 @@ public class NPC : Character
     public Settlement patrolSettlement;
     //NPCAI using those.
 
-    [HideInInspector] public GameObject town;
+    //[HideInInspector] public GameObject town;
     [HideInInspector] public Vector3 patrolPoint;
     [HideInInspector] public bool drawLineandPoint;
     private void Awake()

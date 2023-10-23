@@ -15,6 +15,7 @@ public class Character : MonoBehaviour
         InSettlement,
         Recruiting,
         GoingToWar,
+        Following,
     }
 
     //Soldiers current state.
@@ -22,6 +23,7 @@ public class Character : MonoBehaviour
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public Army army;
     [HideInInspector] public float speed;
+    [HideInInspector] public GameObject town;
     public Character interactedCharacter;
     public string characterName;
     
@@ -59,6 +61,15 @@ public class Character : MonoBehaviour
         gameObject.GetComponentInChildren<MouseInteraction>().OnOffCollider();
     }
 
+
+    public void LeaveSettlement()
+    {
+        OnOffCharacterComponentForTown(true);
+        town.GetComponent<Settlement>().RemoveCharacter(gameObject);
+        town = null;
+        currentState = CurrentState.Patroling;
+    }
+
     public void ResetTarget()
     {
         interactedCharacter = null;
@@ -69,7 +80,6 @@ public class Character : MonoBehaviour
     {
         if (!isActive)
         {
-            agent.enabled = false;
             GetComponent<MouseInteraction>().enabled = false;
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
             gameObject.transform.GetChild(1).gameObject.SetActive(false);
@@ -78,7 +88,6 @@ public class Character : MonoBehaviour
         }
         else
         {
-            agent.enabled = true;
             GetComponent<MouseInteraction>().enabled = true;
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             gameObject.transform.GetChild(1).gameObject.SetActive(true);

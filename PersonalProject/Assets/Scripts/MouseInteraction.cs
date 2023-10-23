@@ -162,7 +162,7 @@ public class MouseInteraction : MonoBehaviour
                 //Resetting selected object for every town/enemy click
                 UIManager.Instance.ClearSelectedObjects(player);
                 UIManager.Instance.selectedObjects.Add(gameObject);
-                player.GetComponent<Player>().clickedTarget = gameObject;
+                player.GetComponent<PlayerController>().clickedTarget = gameObject;
 
                 ringEffect.SetActive(true);
                 isSelected = true;
@@ -171,13 +171,12 @@ public class MouseInteraction : MonoBehaviour
             //Clicking to town
             if (isSelected && settlement != null)
             {
-                NavMeshAgent playerAgent = player.GetComponent<NavMeshAgent>();
-                Vector3 townPosition = settlement.gameObject.GetComponentInChildren<GetCharacterInSettlement>().transform.position;
-                playerAgent.destination = townPosition;
+                //GameObject townDoor = settlement.gameObject.GetComponentInChildren<GetCharacterInSettlement>().gameObject;
+                player.GetComponent<PlayerController>().MoveToTarget(gameObject);
             }
             if (isSelected && NPCAI != null)
             {
-                player.GetComponent<Player>().MoveToTarget(gameObject);
+                player.GetComponent<PlayerController>().MoveToTarget(gameObject);
             }
         }
     }
