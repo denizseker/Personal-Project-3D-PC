@@ -55,7 +55,6 @@ public class NPCAI : MonoBehaviour
         NPC.currentState = Character.CurrentState.InInteraction;
         _targetCharacter.currentState = Character.CurrentState.InInteraction;
         SpawnWarHandler(_targetCharacter);
-        
     }
     public void SpawnWarHandler(Character _targetCharacter)
     {
@@ -250,28 +249,34 @@ public class NPCAI : MonoBehaviour
             Character _interactedCharacter = other.GetComponentInParent<Character>();
             bool isPlayer = CheckCharacterType(_interactedCharacter);
 
-            //If interactedcharacter/clickedcharacter same as this character when interact area triggered
-            if (_interactedCharacter.interactedCharacter == NPC || (isPlayer && other.GetComponentInParent<Player>().clickedTarget == NPC.gameObject))
+            //if characters are not defeated already.
+            if(NPC.currentState != Character.CurrentState.Defeated || _interactedCharacter.currentState != Character.CurrentState.Defeated)
             {
-                //if interacted character is npc, chaser handle situation.
-                if (!isPlayer && NPC.currentState == Character.CurrentState.Chasing)
+                //Debug.Log("Not defeated");
+                //If interactedcharacter/clickedcharacter same as this character when interact area triggered
+                if (_interactedCharacter.interactedCharacter == NPC || (isPlayer && other.GetComponentInParent<Player>().clickedTarget == NPC.gameObject))
                 {
-                    Catch(_interactedCharacter);
-                }
-                //interactedcharacter is player or this npc not chasing.
-                else
-                {
-                    //NPC interact with player
-                    if(isPlayer)
+                    //if interacted character is npc, chaser handle situation.
+                    if (!isPlayer && NPC.currentState == Character.CurrentState.Chasing)
                     {
-                        Player _player = other.GetComponentInParent<Player>();
+                        Catch(_interactedCharacter);
+                    }
+                    //interactedcharacter is player or this npc not chasing.
+                    else
+                    {
+                        //NPC interact with player
+                        if (isPlayer)
+                        {
+                            Player _player = other.GetComponentInParent<Player>();
 
-                        StopAgent();
-                        _player.StopAgent();
-                        NPC.currentState = Character.CurrentState.InInteraction;
-                        _player.currentState = Character.CurrentState.InInteraction;
-                        UIManager.Instance.ToggleInteractCharacterPanel();
-                        Debug.Log("Interact with player");
+                            StopAgent();
+                            _player.StopAgent();
+                            NPC.currentState = Character.CurrentState.InInteraction;
+                            _player.currentState = Character.CurrentState.InInteraction;
+                            InteractManager.Instance.TakeDataActivateInteractPanel(NPC.gameObject, _player.gameObject);
+                            _player.ClearClickedTarget();
+                            //Debug.Log("Interact");
+                        }
                     }
                 }
             }

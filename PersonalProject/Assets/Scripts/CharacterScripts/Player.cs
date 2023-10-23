@@ -40,6 +40,7 @@ public class Player : Character
     {
         clickedTarget = null;
         isMovingToTarget = false;
+        UIManager.Instance.ClearSelectedObjects(gameObject);
     }
     public void StopAgent()
     {

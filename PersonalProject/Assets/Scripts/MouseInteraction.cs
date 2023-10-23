@@ -153,28 +153,32 @@ public class MouseInteraction : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        //Player cant click to player object, but can click to npc
-        if(gameObject.tag != "Player")
+        //Cant click if player InInteraction already.
+        if(player.GetComponent<Character>().currentState != Character.CurrentState.InInteraction)
         {
-            //Resetting selected object for every town/enemy click
-            UIManager.Instance.ClearSelectedObjects(player);
-            UIManager.Instance.selectedObjects.Add(gameObject);
-            player.GetComponent<Player>().clickedTarget = gameObject;
+            //Player cant click to player object, but can click to npc
+            if (gameObject.tag != "Player")
+            {
+                //Resetting selected object for every town/enemy click
+                UIManager.Instance.ClearSelectedObjects(player);
+                UIManager.Instance.selectedObjects.Add(gameObject);
+                player.GetComponent<Player>().clickedTarget = gameObject;
 
-            ringEffect.SetActive(true);
-            isSelected = true;
-        }
-        
-        //Clicking to town
-        if (isSelected && settlement != null)
-        {
-            NavMeshAgent playerAgent = player.GetComponent<NavMeshAgent>();
-            Vector3 townPosition = settlement.gameObject.GetComponentInChildren<GetCharacterInSettlement>().transform.position;
-            playerAgent.destination = townPosition;
-        }
-        if(isSelected && NPCAI != null)
-        {
-            player.GetComponent<Player>().MoveToTarget(gameObject);
+                ringEffect.SetActive(true);
+                isSelected = true;
+            }
+
+            //Clicking to town
+            if (isSelected && settlement != null)
+            {
+                NavMeshAgent playerAgent = player.GetComponent<NavMeshAgent>();
+                Vector3 townPosition = settlement.gameObject.GetComponentInChildren<GetCharacterInSettlement>().transform.position;
+                playerAgent.destination = townPosition;
+            }
+            if (isSelected && NPCAI != null)
+            {
+                player.GetComponent<Player>().MoveToTarget(gameObject);
+            }
         }
     }
 

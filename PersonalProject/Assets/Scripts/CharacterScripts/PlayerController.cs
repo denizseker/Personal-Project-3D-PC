@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     NavMeshAgent agent;
     Player character;
 
-    [Header("Movement")]
     [SerializeField] ParticleSystem clickEffect;
 
 
