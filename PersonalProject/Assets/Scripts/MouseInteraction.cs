@@ -153,8 +153,8 @@ public class MouseInteraction : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        //Cant click if player InInteraction && InSettlement already.
-        if(player.GetComponent<Character>().currentState != Character.State.InInteraction && player.GetComponent<Character>().currentState != Character.State.InSettlement)
+        //Cant click if player state is those
+        if(!player.GetComponent<Character>().IsCharacterState(Character.State.InSettlement, Character.State.InInteraction, Character.State.InWar))
         {
             //Player cant click to player object, but can click to npc
             if (gameObject.tag != "Player")

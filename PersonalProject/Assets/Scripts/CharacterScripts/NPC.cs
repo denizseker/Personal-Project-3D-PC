@@ -20,7 +20,7 @@ public class NPC : Character
         Setup();
         animator = GetComponentInChildren<Animator>();
         town = patrolSettlement.gameObject;
-        currentState = State.Patroling;
+        SetCharacterState(State.Patroling);
     }
 
 

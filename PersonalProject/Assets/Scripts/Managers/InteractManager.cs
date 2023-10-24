@@ -24,14 +24,13 @@ public class InteractManager : MonoBehaviour
 
     public void EnterWarCommand()
     {
-        Debug.Log("War");
         Instance.interactedCharacter.GetComponent<NPCAI>().SpawnWarHandler(player.GetComponent<Character>());
     }
 
     public void SendToThePointCommand()
     {
         NPCAI _interactedCharacterAI = interactedCharacter.GetComponent<NPCAI>();
-        player.GetComponent<Character>().currentState = Character.State.Free;
+        player.GetComponent<Character>().SetCharacterState(Character.State.Free);
         _interactedCharacterAI.LeaveInteraction();
         _interactedCharacterAI.GoToRandomPoint();
     }
@@ -40,7 +39,7 @@ public class InteractManager : MonoBehaviour
     public void FollowCommand()
     {
         NPCAI _interactedCharacterAI = interactedCharacter.GetComponent<NPCAI>();
-        player.GetComponent<Character>().currentState = Character.State.Free;
+        player.GetComponent<Character>().SetCharacterState(Character.State.Free);
         _interactedCharacterAI.FollowTarget(player);
     }
 
@@ -49,7 +48,7 @@ public class InteractManager : MonoBehaviour
         NPCAI _interactedCharacterAI = interactedCharacter.GetComponent<NPCAI>();
 
         _interactedCharacterAI.LeaveInteraction();
-        player.GetComponent<Character>().currentState = Character.State.Free;
+        player.GetComponent<Character>().SetCharacterState(Character.State.Free);
     }
 
     public void TakeDataActivateSettlementInteractPanel(GameObject _townObj, GameObject _playerObj)

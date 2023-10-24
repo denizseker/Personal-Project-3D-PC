@@ -48,7 +48,6 @@ public class Clan
                 }
             }
 
-            Debug.Log(closestSettlement);
             return closestSettlement;
         }
         else

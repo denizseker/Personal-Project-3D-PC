@@ -15,6 +15,7 @@ public class Character : MonoBehaviour
         InSettlement,
         Recruiting,
         GoingToWar,
+        InWar,
         Following,
     }
 
@@ -64,7 +65,7 @@ public class Character : MonoBehaviour
 
     public void EnterSettlement()
     {
-        currentState = State.InSettlement;
+        SetCharacterState(State.InSettlement);
         OnOffCharacterComponentForTown(false);
     }
 
@@ -74,21 +75,27 @@ public class Character : MonoBehaviour
         currentState = _State;
     }
 
-    //public bool CheckCharacterState(params State[] state)
-    //{
-    //    foreach (State item in state)
-    //    {
-    //        Debug.Log(item);
-    //    }
-    //    //return currentState;
-    //}
+    public bool IsCharacterState(params State[] state)
+    {
+        bool isMatch = false;
+
+        foreach (State CurrentState in state)
+        {
+            if(CurrentState == currentState)
+            {
+                isMatch = true;
+                return isMatch;
+            }
+        }
+        return isMatch;
+    }
 
     public void LeaveSettlement()
     {
         OnOffCharacterComponentForTown(true);
         town.GetComponent<Settlement>().RemoveCharacter(gameObject);
         town = null;
-        currentState = State.Patroling;
+        SetCharacterState(State.Patroling);
     }
 
     public void ResetTarget()

@@ -11,7 +11,7 @@ public class Fps : MonoBehaviour
     private void Awake()
     {
         //Target FPS
-        Application.targetFrameRate = 144;
+        Application.targetFrameRate = -1;
 
     }
     private void Update()

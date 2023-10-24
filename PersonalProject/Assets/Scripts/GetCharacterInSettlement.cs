@@ -18,7 +18,7 @@ public class GetCharacterInSettlement : MonoBehaviour
         {
             Character interactedCharacter = other.GetComponentInParent<Character>();
 
-            if(interactedCharacter.currentState == Character.State.Defeated)
+            if(interactedCharacter.IsCharacterState(Character.State.Defeated))
             {
                 //Adding characters gameobject to settlement characterintown list.
                 settlement.AddCharacter(interactedCharacter.gameObject);

@@ -91,7 +91,15 @@ public class PlayerController : MonoBehaviour
     {
         SetAnimations();
 
-        if(character.currentState != Character.State.InInteraction && character.currentState != Character.State.InSettlement)
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+
+
+        }
+
+        //Cant click if state is those
+        if(!character.IsCharacterState(Character.State.InInteraction, Character.State.InSettlement, Character.State.InWar))
         {
             if (Input.GetMouseButtonDown(0))
             {

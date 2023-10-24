@@ -52,8 +52,8 @@ public class NPCAI : MonoBehaviour
         _targetCharacter.agent.ResetPath();
         NPC.agent.ResetPath();
         //Setting characters states
-        NPC.currentState = Character.State.InInteraction;
-        _targetCharacter.currentState = Character.State.InInteraction;
+        NPC.SetCharacterState(Character.State.InInteraction);
+        _targetCharacter.SetCharacterState(Character.State.InInteraction);
         SpawnWarHandler(_targetCharacter);
     }
     public void SpawnWarHandler(Character _targetCharacter)
@@ -208,7 +208,7 @@ public class NPCAI : MonoBehaviour
             }
             Vector3 townPosition = NPC.town.GetComponentInChildren<GetCharacterInSettlement>().transform.position;
             NPC.agent.destination = townPosition;
-            NPC.currentState = Character.State.Defeated;
+            NPC.SetCharacterState(Character.State.Defeated);
         } 
     }
 
@@ -217,7 +217,7 @@ public class NPCAI : MonoBehaviour
         if(_target != null)
         {
             targetDestination = _target;
-            NPC.currentState = Character.State.GoingToWar;
+            NPC.SetCharacterState(Character.State.GoingToWar);
             NPC.agent.SetDestination(targetDestination.transform.position);
 
             float distance = Vector3.Distance(transform.position, targetDestination.transform.position);
@@ -225,13 +225,13 @@ public class NPCAI : MonoBehaviour
             {
                 NPC.agent.ResetPath();
                 targetDestination = null;
-                NPC.currentState = Character.State.InInteraction;
+                NPC.SetCharacterState(Character.State.InInteraction);
                 JoinWar(_target);
             }
         }
         else
         {
-            NPC.currentState = Character.State.Patroling;
+            NPC.SetCharacterState(Character.State.Patroling);
         }
     }
 
@@ -255,14 +255,14 @@ public class NPCAI : MonoBehaviour
             bool isPlayer = CheckCharacterType(_interactedCharacter);
 
             //if characters are not defeated already.
-            if(NPC.currentState != Character.State.Defeated || _interactedCharacter.currentState != Character.State.Defeated)
+            if(!NPC.IsCharacterState(Character.State.Defeated) || !_interactedCharacter.IsCharacterState(Character.State.Defeated))
             {
                 //Debug.Log("Not defeated");
                 //If interactedcharacter/clickedcharacter same as this character when interact area triggered
                 if (_interactedCharacter.interactedCharacter == NPC || (isPlayer && other.GetComponentInParent<PlayerController>().clickedTarget == NPC.gameObject))
                 {
                     //if interacted character is npc, chaser handle situation.
-                    if (!isPlayer && NPC.currentState == Character.State.Chasing)
+                    if (!isPlayer && !NPC.IsCharacterState(Character.State.Chasing))
                     {
                         Catch(_interactedCharacter);
                     }
@@ -277,8 +277,8 @@ public class NPCAI : MonoBehaviour
 
                             StopAgent();
                             _playerController.StopAgent();
-                            NPC.currentState = Character.State.InInteraction;
-                            _player.currentState = Character.State.InInteraction;
+                            NPC.SetCharacterState(Character.State.InInteraction);
+                            _player.SetCharacterState(Character.State.InInteraction);
                             InteractManager.Instance.TakeDataActivateCharacterInteractPanel(NPC.gameObject, _player.gameObject);
                             _playerController.ClearClickedTarget();
                             //Debug.Log("Interact");
@@ -301,20 +301,20 @@ public class NPCAI : MonoBehaviour
     public void DetectAreaOnTriggerEnter(Collider other)
     {
         //if character detect another character.
-        if (other.tag == "DetectArea" && NPC.currentState != Character.State.InInteraction && NPC.currentState != Character.State.Defeated)
+        if (other.tag == "DetectArea" && !NPC.IsCharacterState(Character.State.Defeated, Character.State.InInteraction))
         {
             
             Character interactedCharacter = other.GetComponentInParent<Character>();
             //Targetcharacter is enemy.
-            if (ClanManager.Instance.IsEnemy(NPC.clan, interactedCharacter.clan) && interactedCharacter.currentState != Character.State.Defeated)
+            if (ClanManager.Instance.IsEnemy(NPC.clan, interactedCharacter.clan) && !interactedCharacter.IsCharacterState(Character.State.Defeated))
             {
                 //this army is bigger then opponent army
                 if (NPC.army.armyTotalTroops >= interactedCharacter.army.armyTotalTroops)
                 {
                     //if this character not fleeing, it can chase.
-                    if (NPC.currentState != Character.State.Fleeing)
+                    if (!NPC.IsCharacterState(Character.State.Fleeing))
                     {
-                        NPC.currentState = Character.State.Chasing;
+                        NPC.SetCharacterState(Character.State.Chasing);
                     }
                     else
                     {
@@ -325,7 +325,7 @@ public class NPCAI : MonoBehaviour
                 //this army is smaller then opponent army
                 else
                 {
-                    NPC.currentState = Character.State.Fleeing;
+                    NPC.SetCharacterState(Character.State.Fleeing);
                 }
                 //setting this character's interactedcharacter. Both AI will do that for himself
                 NPC.interactedCharacter = interactedCharacter;
@@ -343,7 +343,7 @@ public class NPCAI : MonoBehaviour
             }
         }
         //if character detect war.
-        if (other.tag == "War" && NPC.currentState != Character.State.InInteraction && NPC.currentState != Character.State.Defeated)
+        if (other.tag == "War" && !NPC.IsCharacterState(Character.State.Defeated, Character.State.InInteraction))
         {
 
             GameObject _warHandlerObj = other.transform.parent.gameObject;
@@ -364,21 +364,21 @@ public class NPCAI : MonoBehaviour
     public void DetectAreaOnTriggerExit(Collider other)
     {
         //if this exit any character area and have a interactedcharacter already and not in interaction with someone and not defeated
-        if (other.tag == "DetectArea" && NPC.interactedCharacter != null && NPC.currentState != Character.State.InInteraction && NPC.currentState != Character.State.Defeated)
+        if (other.tag == "DetectArea" && NPC.interactedCharacter != null && !NPC.IsCharacterState(Character.State.Defeated, Character.State.InInteraction))
         {
             Character interactedCharacter = other.GetComponentInParent<Character>();
 
             //if interactedcharacter is interact with this too. (chase or fleeing) and interacted character is not defeated
-            if (interactedCharacter.interactedCharacter == NPC && interactedCharacter.currentState != Character.State.Defeated)
+            if (interactedCharacter.interactedCharacter == NPC && !interactedCharacter.IsCharacterState(Character.State.Defeated))
             {
                 StopAndReset();
-                NPC.currentState = Character.State.Patroling;
+                NPC.SetCharacterState(Character.State.Patroling);
             }
             //if interacted character not chasing this but this is fleeing.
-            else if (interactedCharacter.interactedCharacter != NPC && NPC.currentState == Character.State.Fleeing)
+            else if (interactedCharacter.interactedCharacter != NPC && NPC.IsCharacterState(Character.State.Fleeing))
             {
                 StopAndReset();
-                NPC.currentState = Character.State.Patroling;
+                NPC.SetCharacterState(Character.State.Patroling);
             }
 
         }
@@ -400,7 +400,7 @@ public class NPCAI : MonoBehaviour
             Vector3 patrolPoint = patrolTown.GetComponentInChildren<GetPatrolPoint>().GetPatrolPostition();
             NPC.agent.destination = patrolPoint;
             NPC.GetPatrolPositionForDrawing(patrolPoint,true);
-            NPC.currentState = Character.State.Patroling;
+            NPC.SetCharacterState(Character.State.Patroling);
         }
     }
 
@@ -408,7 +408,7 @@ public class NPCAI : MonoBehaviour
     public void FollowTarget(GameObject _target)
     {
         targetDestination = _target;
-        NPC.currentState = Character.State.Following;
+        NPC.SetCharacterState(Character.State.Following);
         Vector3 targetPos = targetDestination.transform.position;
         NPC.agent.SetDestination(targetPos);
     }
@@ -417,12 +417,12 @@ public class NPCAI : MonoBehaviour
     {
         NPC.OnOffCharacterComponentForTown(true);
         NPC.town.GetComponent<Settlement>().RemoveCharacter(NPC.gameObject);
-        NPC.currentState = Character.State.Patroling;
+        NPC.SetCharacterState(Character.State.Patroling);
     }
 
     public void LeaveInteraction()
     {
-        NPC.currentState = Character.State.Patroling;
+        NPC.SetCharacterState(Character.State.Patroling);
     }
 
     private IEnumerator RecruitArmy()
@@ -467,7 +467,7 @@ public class NPCAI : MonoBehaviour
             if (NPC.army.armyTotalTroops < 10)
             {
                 StartCoroutine(RecruitArmy());
-                NPC.currentState = Character.State.Recruiting;
+                NPC.SetCharacterState(Character.State.Recruiting);
             }
         }
         else if (NPC.currentState == Character.State.GoingToWar)

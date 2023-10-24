@@ -139,6 +139,9 @@ public class WarHandler : MonoBehaviour
     {
         startTime = Time.time;
         isBattleStarted = true;
+
+        _character1.SetCharacterState(Character.State.InWar);
+        _character2.SetCharacterState(Character.State.InWar);
         party1.Add(_character1);
         party2.Add(_character2);
 
@@ -159,7 +162,7 @@ public class WarHandler : MonoBehaviour
         for (int i = 0; i < _party.Count; i++)
         {
             _party[i].ResetTarget();
-            _party[i].currentState = Character.State.Patroling;
+            _party[i].SetCharacterState(Character.State.Patroling);
             _party[i].ChangeColliderState();
         }
     }
@@ -168,7 +171,7 @@ public class WarHandler : MonoBehaviour
         for (int i = 0; i < _party.Count; i++)
         {
             _party[i].ResetTarget();
-            _party[i].currentState = Character.State.Defeated;
+            _party[i].SetCharacterState(Character.State.Defeated);
             _party[i].ChangeColliderState();
         }
     }
@@ -179,6 +182,7 @@ public class WarHandler : MonoBehaviour
             if(ClanManager.Instance.IsEnemy(_character.clan, party1[i].clan))
             {
                 party2.Add(_character);
+                _character.SetCharacterState(Character.State.InWar);
                 return;
             }
         }
@@ -187,6 +191,7 @@ public class WarHandler : MonoBehaviour
             if(ClanManager.Instance.IsEnemy(_character.clan, party2[i].clan))
             {
                 party1.Add(_character);
+                _character.SetCharacterState(Character.State.InWar);
                 return;
             }
         }
