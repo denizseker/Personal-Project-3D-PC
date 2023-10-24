@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class Character : MonoBehaviour
 {
-    public enum CurrentState
+    public enum State
     {
         Idle,
         Chasing,
@@ -19,7 +19,8 @@ public class Character : MonoBehaviour
     }
 
     //Soldiers current state.
-    [HideInInspector] public CurrentState currentState;
+    [HideInInspector] public State currentState;
+    [HideInInspector] public State oldState;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public Army army;
     [HideInInspector] public float speed;
@@ -61,13 +62,33 @@ public class Character : MonoBehaviour
         gameObject.GetComponentInChildren<MouseInteraction>().OnOffCollider();
     }
 
+    public void EnterSettlement()
+    {
+        currentState = State.InSettlement;
+        OnOffCharacterComponentForTown(false);
+    }
+
+    public void SetCharacterState(State _State)
+    {
+        oldState = currentState;
+        currentState = _State;
+    }
+
+    //public bool CheckCharacterState(params State[] state)
+    //{
+    //    foreach (State item in state)
+    //    {
+    //        Debug.Log(item);
+    //    }
+    //    //return currentState;
+    //}
 
     public void LeaveSettlement()
     {
         OnOffCharacterComponentForTown(true);
         town.GetComponent<Settlement>().RemoveCharacter(gameObject);
         town = null;
-        currentState = CurrentState.Patroling;
+        currentState = State.Patroling;
     }
 
     public void ResetTarget()

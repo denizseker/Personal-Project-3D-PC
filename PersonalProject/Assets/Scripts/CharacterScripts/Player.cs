@@ -12,7 +12,7 @@ public class Player : Character
     private void Awake()
     {
         Setup();
-        currentState = CurrentState.Free;
+        currentState = State.Free;
     }
     public void InteractAreaOnTriggerEnter(Collider other)
     {

@@ -26,4 +26,35 @@ public class Clan
     {
         settlements.Add(settlement);
     }
+
+
+    public GameObject FindClosestAllySettlement(Character _character)
+    {
+        //if there is settlement
+        if(settlements.Count > 0)
+        {
+            GameObject closestSettlement;
+            float distance = Vector3.Distance(settlements[0].transform.position, _character.transform.position);
+            closestSettlement = settlements[0];
+
+            for (int i = 0; i < settlements.Count; i++)
+            {
+                float tempDistance = Vector3.Distance(settlements[i].transform.position, _character.transform.position);
+
+                if (tempDistance < distance)
+                {
+                    distance = tempDistance;
+                    closestSettlement = settlements[i];
+                }
+            }
+
+            Debug.Log(closestSettlement);
+            return closestSettlement;
+        }
+        else
+        {
+            return null;
+        }
+        
+    }
 }

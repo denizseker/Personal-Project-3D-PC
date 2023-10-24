@@ -72,8 +72,12 @@ public class Settlement : MonoBehaviour
     //Adding characters gameobject to list
     public void AddCharacter(GameObject _character)
     {
+        //Adding character to settlement character list.
         characterInTown.Add(_character);
-
+        //teleporting character to settlement town
+        _character.transform.position = GetComponentInChildren<GetCharacterInSettlement>().transform.position;
+        //setting character for town
+        _character.GetComponent<Character>().EnterSettlement();
     }
     //Removing characters gameobject from list
     public void RemoveCharacter(GameObject _character)

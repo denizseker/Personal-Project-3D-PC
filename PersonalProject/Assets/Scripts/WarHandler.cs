@@ -73,11 +73,11 @@ public class WarHandler : MonoBehaviour
 
         for (int i = 0; i < party1.Count; i++)
         {
-            canJoinWar = ClanManager.Instance.isEnemy(_clan,party1[i].clan);
+            canJoinWar = ClanManager.Instance.IsEnemy(_clan,party1[i].clan);
         }
         for (int i = 0; i < party2.Count; i++)
         {
-            canJoinWar = ClanManager.Instance.isEnemy(_clan, party2[i].clan);
+            canJoinWar = ClanManager.Instance.IsEnemy(_clan, party2[i].clan);
         }
 
         return canJoinWar;
@@ -159,7 +159,7 @@ public class WarHandler : MonoBehaviour
         for (int i = 0; i < _party.Count; i++)
         {
             _party[i].ResetTarget();
-            _party[i].currentState = Character.CurrentState.Patroling;
+            _party[i].currentState = Character.State.Patroling;
             _party[i].ChangeColliderState();
         }
     }
@@ -168,7 +168,7 @@ public class WarHandler : MonoBehaviour
         for (int i = 0; i < _party.Count; i++)
         {
             _party[i].ResetTarget();
-            _party[i].currentState = Character.CurrentState.Defeated;
+            _party[i].currentState = Character.State.Defeated;
             _party[i].ChangeColliderState();
         }
     }
@@ -176,7 +176,7 @@ public class WarHandler : MonoBehaviour
     {
         for (int i = 0; i < party1.Count; i++)
         {
-            if(ClanManager.Instance.isEnemy(_character.clan, party1[i].clan))
+            if(ClanManager.Instance.IsEnemy(_character.clan, party1[i].clan))
             {
                 party2.Add(_character);
                 return;
@@ -184,7 +184,7 @@ public class WarHandler : MonoBehaviour
         }
         for (int i = 0; i < party2.Count; i++)
         {
-            if(ClanManager.Instance.isEnemy(_character.clan, party2[i].clan))
+            if(ClanManager.Instance.IsEnemy(_character.clan, party2[i].clan))
             {
                 party1.Add(_character);
                 return;

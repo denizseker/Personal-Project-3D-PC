@@ -153,8 +153,8 @@ public class MouseInteraction : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        //Cant click if player InInteraction already.
-        if(player.GetComponent<Character>().currentState != Character.CurrentState.InInteraction)
+        //Cant click if player InInteraction && InSettlement already.
+        if(player.GetComponent<Character>().currentState != Character.State.InInteraction && player.GetComponent<Character>().currentState != Character.State.InSettlement)
         {
             //Player cant click to player object, but can click to npc
             if (gameObject.tag != "Player")
@@ -186,15 +186,4 @@ public class MouseInteraction : MonoBehaviour
         GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
     }
 
-    private void Update()
-    {
-        ////If clicked object is enemy we are updating destination for follow.
-        //if (GetComponent<NPCAI>() != null)
-        //{
-        //    if (isSelected)
-        //    {
-        //        player.GetComponent<NavMeshAgent>().SetDestination(transform.position);
-        //    }
-        //}
-    }
 }

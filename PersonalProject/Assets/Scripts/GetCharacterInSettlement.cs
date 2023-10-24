@@ -18,12 +18,10 @@ public class GetCharacterInSettlement : MonoBehaviour
         {
             Character interactedCharacter = other.GetComponentInParent<Character>();
 
-            if(interactedCharacter.currentState == Character.CurrentState.Defeated)
+            if(interactedCharacter.currentState == Character.State.Defeated)
             {
                 //Adding characters gameobject to settlement characterintown list.
                 settlement.AddCharacter(interactedCharacter.gameObject);
-                interactedCharacter.currentState = Character.CurrentState.InSettlement;
-                interactedCharacter.OnOffCharacterComponentForTown(false);
             }
             //if player interact
             if(interactedCharacter.GetType() == typeof(Player))
@@ -32,10 +30,9 @@ public class GetCharacterInSettlement : MonoBehaviour
                 if(interactedCharacter.GetComponent<PlayerController>().clickedTarget == settlement.gameObject)
                 {
                     settlement.AddCharacter(interactedCharacter.gameObject);
-                    interactedCharacter.currentState = Character.CurrentState.InSettlement;
                     interactedCharacter.town = settlement.gameObject;
-                    interactedCharacter.OnOffCharacterComponentForTown(false);
-                    interactedCharacter.GetComponent<PlayerController>().StopAgent();
+                    interactedCharacter.GetComponent<PlayerController>().ClearClickedTarget();
+                    InteractManager.Instance.TakeDataActivateSettlementInteractPanel(settlement.gameObject,interactedCharacter.gameObject);
                 }
             }
         }

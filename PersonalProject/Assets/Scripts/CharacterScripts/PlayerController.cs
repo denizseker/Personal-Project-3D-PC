@@ -90,28 +90,19 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         SetAnimations();
-        if (Input.GetMouseButtonDown(0) && character.currentState != Character.CurrentState.InInteraction)
-        {
-            if (character.currentState == Character.CurrentState.InSettlement)
-            {
-                ClearClickedTarget();
-                character.LeaveSettlement();
-            }
-            ClickToMove();
-        }
 
-        if (isMovingToTarget && character.currentState != Character.CurrentState.InInteraction)
+        if(character.currentState != Character.State.InInteraction && character.currentState != Character.State.InSettlement)
         {
-            if (character.currentState == Character.CurrentState.InSettlement)
+            if (Input.GetMouseButtonDown(0))
             {
-                ClearClickedTarget();
-                character.LeaveSettlement();
+                ClickToMove();
             }
-            Debug.Log("Target click");
-            MoveToTarget(clickedTarget);
-        }
 
-        
+            if (isMovingToTarget)
+            {
+                MoveToTarget(clickedTarget);
+            }
+        }
     }
 
     void SetAnimations()

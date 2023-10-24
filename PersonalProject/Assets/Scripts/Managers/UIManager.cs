@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public RectTransform UI_warHandlerPanel;
     public RectTransform UI_settlementPanel;
     public RectTransform UI_interactCharacterPanel;
+    public RectTransform UI_interactSettlementPanel;
     public float offsetXPercentage = 0.07f; // Horizontally
     public float offsetYPercentage = -0.18f; // Vertically
 
@@ -311,6 +312,19 @@ public class UIManager : MonoBehaviour
         else
         {
             Instance.UI_interactCharacterPanel.gameObject.SetActive(true);
+        }
+    }
+    public void ToggleInteractSettlementPanel()
+    {
+        //Panel inactive
+        if (Instance.UI_interactSettlementPanel.gameObject.activeSelf)
+        {
+            Instance.UI_interactSettlementPanel.gameObject.SetActive(false);
+        }
+        //Panel active
+        else
+        {
+            Instance.UI_interactSettlementPanel.gameObject.SetActive(true);
         }
     }
 }

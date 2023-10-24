@@ -81,7 +81,7 @@ public class ClanManager : MonoBehaviour
         None.clanLogo = NoneLogo;
     }
 
-    //Looking for clan in enemy clans, and returning found or not.
+    
     private void MakePeace(Clan _clan1,Clan _clan2)
     {
         for (int i = 0; i < _clan1.enemies.Count; i++)
@@ -121,7 +121,7 @@ public class ClanManager : MonoBehaviour
         }
     }
 
-    public bool isEnemy(Clan _clan1,Clan _clan2)
+    public bool IsEnemy(Clan _clan1,Clan _clan2)
     {
         bool isEnemy = false;
 
@@ -135,6 +135,8 @@ public class ClanManager : MonoBehaviour
         }
         return isEnemy;
     }
+
+    
 
 }
 
