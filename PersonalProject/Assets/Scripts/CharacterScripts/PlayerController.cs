@@ -94,12 +94,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-
-
+            CameraManager.Instance.MoveToObject(UIManager.Instance.selectedObjects[0]);
         }
 
+
         //Cant click if state is those
-        if(!character.IsCharacterState(Character.State.InInteraction, Character.State.InSettlement, Character.State.InWar))
+        if (!character.IsCharacterState(Character.State.InInteraction, Character.State.InSettlement, Character.State.InWar))
         {
             if (Input.GetMouseButtonDown(0))
             {

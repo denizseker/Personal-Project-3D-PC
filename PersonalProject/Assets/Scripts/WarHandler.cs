@@ -164,6 +164,11 @@ public class WarHandler : MonoBehaviour
             _party[i].ResetTarget();
             _party[i].SetCharacterState(Character.State.Patroling);
             _party[i].ChangeColliderState();
+
+            if (_party[i].GetType() == typeof(Player))
+            {
+                CameraManager.Instance.ToggleOnOffCameraInput();
+            }
         }
     }
     private void SetLoserParty(List<Character> _party)
@@ -173,6 +178,11 @@ public class WarHandler : MonoBehaviour
             _party[i].ResetTarget();
             _party[i].SetCharacterState(Character.State.Defeated);
             _party[i].ChangeColliderState();
+
+            if(_party[i].GetType() == typeof(Player))
+            {
+                CameraManager.Instance.ToggleOnOffCameraInput();
+            }
         }
     }
     public void AddCharacterToWar(Character _character)

@@ -137,6 +137,7 @@ public class MouseInteraction : MonoBehaviour
             UIManager.Instance.isWarHandlerPanelActive = true;
             ringEffect.SetActive(true);
         }
+
     }
     private void OnMouseOver()
     {
@@ -150,11 +151,12 @@ public class MouseInteraction : MonoBehaviour
         UIManager.Instance.UI_soldierPanel.gameObject.SetActive(false);
         UIManager.Instance.isSoldierPanelActive = false;
         if (!isSelected) ringEffect.SetActive(false);
+
     }
     private void OnMouseDown()
     {
         //Cant click if player state is those
-        if(!player.GetComponent<Character>().IsCharacterState(Character.State.InSettlement, Character.State.InInteraction, Character.State.InWar))
+        if (!player.GetComponent<Character>().IsCharacterState(Character.State.InSettlement, Character.State.InInteraction, Character.State.InWar))
         {
             //Player cant click to player object, but can click to npc
             if (gameObject.tag != "Player")

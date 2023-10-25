@@ -26,15 +26,26 @@ public class UIManager : MonoBehaviour
     
     [Header("Soldier Panel")]
     //Values for infopanel
-    [SerializeField] private TMP_Text titleText;
-    [SerializeField] private TMP_Text clanText;
-    [SerializeField] private TMP_Text speedText;
-    [SerializeField] private TMP_Text troopsText;
-    [SerializeField] private TMP_Text peasentRecruitText;
-    [SerializeField] private TMP_Text swordsManText;
-    [SerializeField] private TMP_Text horseManText;
-    [SerializeField] private TMP_Text cavalaryText;
-    [SerializeField] private TMP_Text eliteCavalaryText;
+    [SerializeField] private TMP_Text soldierTitleText;
+    [SerializeField] private TMP_Text soldierClanText;
+    [SerializeField] private TMP_Text soldierSpeedText;
+    [SerializeField] private TMP_Text soldierTroopsText;
+    [SerializeField] private TMP_Text soldierPeasentRecruitText;
+    [SerializeField] private TMP_Text soldierSwordsmanText;
+    [SerializeField] private TMP_Text soldierHorsemanText;
+    [SerializeField] private TMP_Text soldierCavalaryText;
+    [SerializeField] private TMP_Text soldierEliteCavalaryText;
+    [Header("Settlement Panel")]
+    //Values for infopanel
+    [SerializeField] private TMP_Text settlementTitleText;
+    [SerializeField] private TMP_Text settlementClanText;
+    [SerializeField] private TMP_Text settlementManPowerText;
+    [SerializeField] private TMP_Text settlementTroopsText;
+    [SerializeField] private TMP_Text settlementPeasentRecruitText;
+    [SerializeField] private TMP_Text settlementSwordsManText;
+    [SerializeField] private TMP_Text settlementHorseManText;
+    [SerializeField] private TMP_Text settlementCavalaryText;
+    [SerializeField] private TMP_Text settlementEliteCavalaryText;
 
     //[Header("Settlement Panel")]
     ////Values for settlementpanel
@@ -245,15 +256,15 @@ public class UIManager : MonoBehaviour
     public void UpdateSoldierPanel(string _name, string _clan, int _troops, int _peasentrecruit, int _swordsman, int _horseman, int _cavalary, int _elitecavalary, GameObject _object, float _speed)
     {
         Instance.obje = _object;
-        Instance.titleText.text = _name;
-        Instance.clanText.text = _clan;
-        Instance.speedText.text = _speed.ToString();
-        Instance.troopsText.text = "(" + _troops.ToString() + ")";
-        Instance.peasentRecruitText.text = _peasentrecruit.ToString();
-        Instance.swordsManText.text = _swordsman.ToString();
-        Instance.horseManText.text = _horseman.ToString();
-        Instance.cavalaryText.text = _cavalary.ToString();
-        Instance.eliteCavalaryText.text = _elitecavalary.ToString();
+        Instance.soldierTitleText.text = _name;
+        Instance.soldierClanText.text = _clan;
+        Instance.soldierSpeedText.text = _speed.ToString();
+        Instance.soldierTroopsText.text = "(" + _troops.ToString() + ")";
+        Instance.soldierPeasentRecruitText.text = _peasentrecruit.ToString();
+        Instance.soldierSwordsmanText.text = _swordsman.ToString();
+        Instance.soldierHorsemanText.text = _horseman.ToString();
+        Instance.soldierCavalaryText.text = _cavalary.ToString();
+        Instance.soldierEliteCavalaryText.text = _elitecavalary.ToString();
     }
     public void UpdateWarPanel(GameObject _object, string _time, List<Character> _party1,List<Character> _party2)
     {

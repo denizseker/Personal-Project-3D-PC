@@ -75,6 +75,15 @@ public class Character : MonoBehaviour
         currentState = _State;
     }
 
+
+    public void SendCharacterStateToInteractedCharacter()
+    {
+        if(interactedCharacter.interactedCharacter == this)
+        {
+            Debug.Log("YES");
+        }
+    }
+
     public bool IsCharacterState(params State[] state)
     {
         bool isMatch = false;
@@ -108,7 +117,7 @@ public class Character : MonoBehaviour
     {
         if (!isActive)
         {
-            GetComponent<MouseInteraction>().enabled = false;
+            gameObject.GetComponentInChildren<MouseInteraction>().OnOffCollider();
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
             gameObject.transform.GetChild(1).gameObject.SetActive(false);
             gameObject.transform.GetChild(2).gameObject.SetActive(false);
@@ -116,7 +125,7 @@ public class Character : MonoBehaviour
         }
         else
         {
-            GetComponent<MouseInteraction>().enabled = true;
+            gameObject.GetComponentInChildren<MouseInteraction>().OnOffCollider();
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             gameObject.transform.GetChild(1).gameObject.SetActive(true);
             gameObject.transform.GetChild(2).gameObject.SetActive(true);

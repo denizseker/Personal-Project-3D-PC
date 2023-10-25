@@ -38,7 +38,6 @@ public class NPCAI : MonoBehaviour
 
     public void Catch(Character _targetCharacter)
     {
-        Debug.Log("Catch");
         //Setting targets
         NPC.interactedCharacter = _targetCharacter;
         _targetCharacter.interactedCharacter = NPC;
@@ -258,8 +257,9 @@ public class NPCAI : MonoBehaviour
             if(!NPC.IsCharacterState(Character.State.Defeated) || !_interactedCharacter.IsCharacterState(Character.State.Defeated))
             {
                 //Debug.Log("Not defeated");
-                //If interactedcharacter/clickedcharacter same as this character when interact area triggered
-                if (_interactedCharacter.interactedCharacter == NPC || (isPlayer && other.GetComponentInParent<PlayerController>().clickedTarget == NPC.gameObject))
+
+                //If interactedcharacter same as this character when interact area triggered
+                if (_interactedCharacter.interactedCharacter == NPC)
                 {
                     //if interacted character is npc, chaser handle situation.
                     if (!isPlayer && !NPC.IsCharacterState(Character.State.Chasing))
@@ -269,22 +269,27 @@ public class NPCAI : MonoBehaviour
                     //interactedcharacter is player or this npc not chasing.
                     else
                     {
-                        //NPC interact with player
-                        if (isPlayer)
-                        {
-                            Player _player = other.GetComponentInParent<Player>();
-                            PlayerController _playerController = _player.GetComponent<PlayerController>();
-
-                            StopAgent();
-                            _playerController.StopAgent();
-                            NPC.SetCharacterState(Character.State.InInteraction);
-                            _player.SetCharacterState(Character.State.InInteraction);
-                            InteractManager.Instance.TakeDataActivateCharacterInteractPanel(NPC.gameObject, _player.gameObject);
-                            _playerController.ClearClickedTarget();
-                            //Debug.Log("Interact");
-                        }
+                        
                     }
                 }
+                if((isPlayer && other.GetComponentInParent<PlayerController>().clickedTarget == NPC.gameObject)) 
+                {
+                    //NPC interact with player
+                    if (isPlayer)
+                    {
+                        Player _player = other.GetComponentInParent<Player>();
+                        PlayerController _playerController = _player.GetComponent<PlayerController>();
+
+                        StopAgent();
+                        _playerController.StopAgent();
+                        NPC.SetCharacterState(Character.State.InInteraction);
+                        _player.SetCharacterState(Character.State.InInteraction);
+                        CameraManager.Instance.MoveToObject(_player.gameObject);
+                        InteractManager.Instance.TakeDataActivateCharacterInteractPanel(NPC.gameObject, _player.gameObject);
+                        _playerController.ClearClickedTarget();
+                    }
+                }
+                
             }
         }
     }
@@ -331,10 +336,10 @@ public class NPCAI : MonoBehaviour
                 NPC.interactedCharacter = interactedCharacter;
 
                 //if interactedcharacter is player, AI should set our target.
-                //if (interactedCharacter.GetType() == typeof(Player))
-                //{
-                //    interactedCharacter.interactedCharacter = NPC;
-                //}
+                if (interactedCharacter.GetType() == typeof(Player))
+                {
+                    interactedCharacter.interactedCharacter = NPC;
+                }
             }
             //Targetcharacter is not enemy.
             else
@@ -363,6 +368,7 @@ public class NPCAI : MonoBehaviour
     }
     public void DetectAreaOnTriggerExit(Collider other)
     {
+        Debug.Log("Exit");
         //if this exit any character area and have a interactedcharacter already and not in interaction with someone and not defeated
         if (other.tag == "DetectArea" && NPC.interactedCharacter != null && !NPC.IsCharacterState(Character.State.Defeated, Character.State.InInteraction))
         {
@@ -383,7 +389,19 @@ public class NPCAI : MonoBehaviour
 
         }
     }
-    
+    private bool IsTargetAvailable(Character _character)
+    {
+        if (_character.IsCharacterState(Character.State.InSettlement))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+
     public void JoinWar(GameObject _target)
     {
         WarHandler warHandler = _target.GetComponent<WarHandler>();
@@ -403,7 +421,6 @@ public class NPCAI : MonoBehaviour
             NPC.SetCharacterState(Character.State.Patroling);
         }
     }
-
 
     public void FollowTarget(GameObject _target)
     {
@@ -485,7 +502,7 @@ public class NPCAI : MonoBehaviour
         //AI checking logic every x frame
         if (timer % interval == 0 && NPC.currentState != Character.State.InInteraction)
         {
-            AILogic();
+            //AILogic();
         }
         timer++;
     }

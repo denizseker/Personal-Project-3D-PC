@@ -31,6 +31,7 @@ public class GetCharacterInSettlement : MonoBehaviour
                 {
                     settlement.AddCharacter(interactedCharacter.gameObject);
                     interactedCharacter.town = settlement.gameObject;
+                    CameraManager.Instance.MoveToObject(settlement.gameObject);
                     interactedCharacter.GetComponent<PlayerController>().ClearClickedTarget();
                     InteractManager.Instance.TakeDataActivateSettlementInteractPanel(settlement.gameObject,interactedCharacter.gameObject);
                 }

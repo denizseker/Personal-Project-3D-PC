@@ -437,14 +437,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  oldState: 0
   agent: {fileID: 0}
   army: {fileID: 0}
   speed: 0
+  town: {fileID: 0}
   interactedCharacter: {fileID: 0}
   characterName: Lord Etercy
   enumClan: 0
   patrolSettlement: {fileID: 0}
-  town: {fileID: 0}
   patrolPoint: {x: 0, y: 0, z: 0}
   drawLineandPoint: 0
 --- !u!114 &1493034667984823897
@@ -496,7 +497,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ringEffect: {fileID: 5185306156252972095}
-  player: {fileID: 0}
   isSelected: 0
 --- !u!65 &1827791115134281456
 BoxCollider:

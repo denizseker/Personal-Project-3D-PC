@@ -21,7 +21,12 @@ public class InteractManager : MonoBehaviour
         Instance.player = _playerObj;
         UIManager.Instance.ToggleInteractCharacterPanel();
     }
-
+    public void TakeDataActivateSettlementInteractPanel(GameObject _townObj, GameObject _playerObj)
+    {
+        Instance.interactedSettlement = _townObj;
+        Instance.player = _playerObj;
+        UIManager.Instance.ToggleInteractSettlementPanel();
+    }
     public void EnterWarCommand()
     {
         Instance.interactedCharacter.GetComponent<NPCAI>().SpawnWarHandler(player.GetComponent<Character>());
@@ -49,13 +54,6 @@ public class InteractManager : MonoBehaviour
 
         _interactedCharacterAI.LeaveInteraction();
         player.GetComponent<Character>().SetCharacterState(Character.State.Free);
-    }
-
-    public void TakeDataActivateSettlementInteractPanel(GameObject _townObj, GameObject _playerObj)
-    {
-        Instance.interactedSettlement = _townObj;
-        Instance.player = _playerObj;
-        UIManager.Instance.ToggleInteractSettlementPanel();
     }
 
     public void LeaveSettlementCommand()
