@@ -502,7 +502,7 @@ public class NPCAI : MonoBehaviour
         //AI checking logic every x frame
         if (timer % interval == 0 && NPC.currentState != Character.State.InInteraction)
         {
-            //AILogic();
+            AILogic();
         }
         timer++;
     }

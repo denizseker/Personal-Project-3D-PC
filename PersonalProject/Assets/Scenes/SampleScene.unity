@@ -6092,7 +6092,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -36.1
+      value: -122.8
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -6102,7 +6102,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.5
+      value: -20.4
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -18969,16 +18969,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TownFull
       objectReference: {fileID: 0}
-    - target: {fileID: 8729406280781208755, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
-        type: 3}
-      propertyPath: enumClan
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8729406280781208755, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
-        type: 3}
-      propertyPath: settlementName
-      value: DGENOK
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8, type: 3}
 --- !u!1001 &7888302443516464694
@@ -18996,7 +18986,7 @@ PrefabInstance:
     - target: {fileID: 1493034667984823874, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823875, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
