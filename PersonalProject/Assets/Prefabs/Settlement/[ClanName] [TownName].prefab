@@ -7825,7 +7825,7 @@ MonoBehaviour:
   isHavePatrol: 0
   startCollectManPower: 0
   isStartedCollectManPower: 0
-  inSettlementPng:
+  worldSpaceInSettlementUI:
   - {fileID: 926728697}
   - {fileID: 190119794406453636}
   - {fileID: 1741963296394941042}

@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text soldierCavalaryText;
     [SerializeField] private TMP_Text soldierEliteCavalaryText;
     [Header("Settlement Panel")]
-    //Values for infopanel
+    //Values for settlementpanel
     [SerializeField] private TMP_Text settlementTitleText;
     [SerializeField] private TMP_Text settlementClanText;
     [SerializeField] private TMP_Text settlementManPowerText;
@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text settlementHorseManText;
     [SerializeField] private TMP_Text settlementCavalaryText;
     [SerializeField] private TMP_Text settlementEliteCavalaryText;
+    [SerializeField] private CharacterPrevSlotHandler[] prevSlots;
 
     //[Header("Settlement Panel")]
     ////Values for settlementpanel
@@ -325,16 +326,38 @@ public class UIManager : MonoBehaviour
             Instance.UI_interactCharacterPanel.gameObject.SetActive(true);
         }
     }
+
+    public void ResetSettlementPanelCharPrev()
+    {
+        Settlement _settlement = InteractManager.Instance.interactedSettlement.GetComponent<Settlement>();
+        for (int i = 0; i < prevSlots.Length; i++)
+        {
+            prevSlots[i].ResetCharacter();
+            prevSlots[i].gameObject.SetActive(false);
+        }
+    }
+    public void UpdateSettlementPanelCharPrev()
+    {
+        ResetSettlementPanelCharPrev();
+        Settlement _settlement = InteractManager.Instance.interactedSettlement.GetComponent<Settlement>();
+        for (int i = 0; i < _settlement.characterInTown.Count; i++)
+        {
+            prevSlots[i].SetCharacter(_settlement.characterInTown[i].GetComponent<Character>());
+            prevSlots[i].gameObject.SetActive(true);
+        }
+    }
     public void ToggleInteractSettlementPanel()
     {
         //Panel inactive
         if (Instance.UI_interactSettlementPanel.gameObject.activeSelf)
         {
+            ResetSettlementPanelCharPrev();
             Instance.UI_interactSettlementPanel.gameObject.SetActive(false);
         }
         //Panel active
         else
         {
+            UpdateSettlementPanelCharPrev();
             Instance.UI_interactSettlementPanel.gameObject.SetActive(true);
         }
     }

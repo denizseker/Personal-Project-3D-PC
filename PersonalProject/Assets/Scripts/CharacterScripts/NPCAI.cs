@@ -453,7 +453,7 @@ public class NPCAI : MonoBehaviour
             //if npc recruit enough troops
             if (NPC.army.armyTotalTroops >= NPC.army.MinArmySize)
             {
-                LeaveSettlement();
+                NPC.LeaveSettlement();
                 break;
             }
         }

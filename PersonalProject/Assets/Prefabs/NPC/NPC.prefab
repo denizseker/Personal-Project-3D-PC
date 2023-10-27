@@ -381,7 +381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2302328635650243832
 Transform:
   m_ObjectHideFlags: 0
@@ -412,7 +412,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 10
+  m_Speed: 15
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 600
@@ -442,9 +442,10 @@ MonoBehaviour:
   army: {fileID: 0}
   speed: 0
   town: {fileID: 0}
+  charPrev: {fileID: 21300000, guid: ca916dcda015e2e4aa705c2de2e6fec5, type: 3}
   interactedCharacter: {fileID: 0}
   characterName: Lord Etercy
-  enumClan: 0
+  enumClan: 6
   patrolSettlement: {fileID: 0}
   patrolPoint: {x: 0, y: 0, z: 0}
   drawLineandPoint: 0

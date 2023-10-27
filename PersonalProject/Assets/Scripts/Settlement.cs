@@ -14,7 +14,7 @@ public class Settlement : MonoBehaviour
     [HideInInspector] public bool startCollectManPower;
     [HideInInspector] public bool isStartedCollectManPower;
 
-    [SerializeField] private GameObject[] inSettlementPng;
+    [SerializeField] private GameObject[] worldSpaceInSettlementUI;
 
     public List<GameObject> characterInTown = new List<GameObject>();
 
@@ -78,7 +78,7 @@ public class Settlement : MonoBehaviour
         //Adding character to settlement character list.
         characterInTown.Add(_character);
         //Characterintown canvas png enable
-        inSettlementPng[characterInTown.Count - 1].SetActive(true);
+        worldSpaceInSettlementUI[characterInTown.Count - 1].SetActive(true);
         //teleporting character to settlement town
         _character.transform.position = GetComponentInChildren<GetCharacterInSettlement>().transform.position;
         //setting character for town
@@ -92,7 +92,7 @@ public class Settlement : MonoBehaviour
             if(characterInTown[i] == _character)
             {
                 //disable insettlementpng for canvas
-                inSettlementPng[characterInTown.Count - 1].SetActive(false);
+                worldSpaceInSettlementUI[characterInTown.Count - 1].SetActive(false);
                 //removing character from townlist
                 characterInTown.RemoveAt(i);
                 

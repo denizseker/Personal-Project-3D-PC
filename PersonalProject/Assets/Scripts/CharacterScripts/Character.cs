@@ -26,6 +26,9 @@ public class Character : MonoBehaviour
     [HideInInspector] public Army army;
     [HideInInspector] public float speed;
     [HideInInspector] public GameObject town;
+
+    public Sprite charPrev;
+
     public Character interactedCharacter;
     public string characterName;
     
@@ -103,7 +106,17 @@ public class Character : MonoBehaviour
     {
         OnOffCharacterComponentForTown(true);
         town.GetComponent<Settlement>().RemoveCharacter(gameObject);
-        town = null;
+
+        //update settlement char prev panel if any character leave settlement while player in that settlement
+        if (UIManager.Instance.UI_interactSettlementPanel.gameObject.activeSelf)
+        {
+            //if in this settlement
+            if (InteractManager.Instance.interactedSettlement == town)
+            {
+                UIManager.Instance.UpdateSettlementPanelCharPrev();
+            }
+        }
+        //town = null;
         SetCharacterState(State.Patroling);
     }
 

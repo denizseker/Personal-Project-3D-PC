@@ -6924,13 +6924,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  oldState: 0
   agent: {fileID: 0}
   army: {fileID: 0}
   speed: 0
+  town: {fileID: 0}
+  charPrev: {fileID: 21300000, guid: c12ef65158ee2564ba16272b8ea41b12, type: 3}
   interactedCharacter: {fileID: 0}
   characterName: Sir Deniz
   enumClan: 6
-  isMoving: 0
+  clickedTarget: {fileID: 0}
+  isMovingToTarget: 0
 --- !u!114 &8777387383924167521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6943,6 +6947,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21903c11a5040e4ab2e99dbeb1b1948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickedTarget: {fileID: 0}
+  isMovingToTarget: 0
   clickEffect: {fileID: 8180891091543954884, guid: d59223d8e5f0fdf4ca86a3e44aefccd7,
     type: 3}
 --- !u!114 &4520916848439190454
@@ -7004,10 +7010,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &8550984227207866145
 GameObject:

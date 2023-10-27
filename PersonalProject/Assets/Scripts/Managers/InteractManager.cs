@@ -6,9 +6,9 @@ public class InteractManager : MonoBehaviour
 {
     public static InteractManager Instance;
 
-    private GameObject interactedSettlement;
-    private GameObject interactedCharacter;
-    private GameObject player;
+    public GameObject interactedSettlement;
+    public GameObject interactedCharacter;
+    public GameObject player;
 
     private void Awake()
     {
