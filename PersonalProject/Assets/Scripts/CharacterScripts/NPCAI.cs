@@ -368,7 +368,6 @@ public class NPCAI : MonoBehaviour
     }
     public void DetectAreaOnTriggerExit(Collider other)
     {
-        Debug.Log("Exit");
         //if this exit any character area and have a interactedcharacter already and not in interaction with someone and not defeated
         if (other.tag == "DetectArea" && NPC.interactedCharacter != null && !NPC.IsCharacterState(Character.State.Defeated, Character.State.InInteraction))
         {

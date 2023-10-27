@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 448992682}
   - component: {fileID: 1044887490815512976}
   - component: {fileID: 448992684}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TownDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7818,7 +7818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87f935ceae9e354195179c2f0c46a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settlementName: DGENOK
+  settlementName: JADOLI
   manPower: 150
   manPowerLimit: 300
   enumClan: 1
