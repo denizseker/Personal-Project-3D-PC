@@ -23,12 +23,12 @@ public class GetCharacterInSettlement : MonoBehaviour
                 //Adding characters gameobject to settlement characterintown list.
                 settlement.AddCharacter(interactedCharacter.gameObject);
                 //If panel is active mean player is in any settlement
-                if (UIManager.Instance.UI_interactSettlementPanel.gameObject.activeSelf)
+                if (UIManager.Instance.UI_inSettlementPanel.isPanelActive)
                 {
                     //if in this settlement
                     if(InteractManager.Instance.interactedSettlement == settlement.gameObject)
                     {
-                        UIManager.Instance.UpdateSettlementPanelCharPrev();
+                        UIManager.Instance.UI_inSettlementPanel.UpdateCharPrev();
                     }
                 }
             }

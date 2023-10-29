@@ -262,7 +262,7 @@ public class NPCAI : MonoBehaviour
                 if (_interactedCharacter.interactedCharacter == NPC)
                 {
                     //if interacted character is npc, chaser handle situation.
-                    if (!isPlayer && !NPC.IsCharacterState(Character.State.Chasing))
+                    if (!isPlayer && NPC.IsCharacterState(Character.State.Chasing))
                     {
                         Catch(_interactedCharacter);
                     }
@@ -348,9 +348,8 @@ public class NPCAI : MonoBehaviour
             }
         }
         //if character detect war.
-        if (other.tag == "War" && !NPC.IsCharacterState(Character.State.Defeated, Character.State.InInteraction))
+        if (other.tag == "War" && !NPC.IsCharacterState(Character.State.Defeated, Character.State.InInteraction, Character.State.InWar))
         {
-
             GameObject _warHandlerObj = other.transform.parent.gameObject;
             WarHandler _warHandler = other.transform.parent.GetComponent<WarHandler>();
 

@@ -8,57 +8,22 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    public RectTransform UI_soldierPanel;
-    public RectTransform UI_warHandlerPanel;
-    public RectTransform UI_settlementPanel;
-    public RectTransform UI_interactCharacterPanel;
-    public RectTransform UI_interactSettlementPanel;
+    public UI_CharacterInfoPanel UI_characterInfoPanel;
+    public UI_WarInfoPanel UI_warInfoPanel;
+    //public RectTransform UI_settlementPanel;
+
+    public UI_InteractCharacterPanel UI_interactCharacterPanel;
+    public UI_InSettlementPanel UI_inSettlementPanel;
     public float offsetXPercentage = 0.07f; // Horizontally
     public float offsetYPercentage = -0.18f; // Vertically
 
-    public bool isSoldierPanelActive = false;
+    private List<RectTransform> activePanels = new List<RectTransform>();
+
     public bool isWarHandlerPanelActive = false;
-    public bool isSettlementPanelActive = false;
 
     private GameObject obje;
     [SerializeField] private TMP_Text timeScaleText;
     [SerializeField] private TMP_Text InGameHourText;
-    
-    [Header("Soldier Panel")]
-    //Values for infopanel
-    [SerializeField] private TMP_Text soldierTitleText;
-    [SerializeField] private TMP_Text soldierClanText;
-    [SerializeField] private TMP_Text soldierSpeedText;
-    [SerializeField] private TMP_Text soldierTroopsText;
-    [SerializeField] private TMP_Text soldierPeasentRecruitText;
-    [SerializeField] private TMP_Text soldierSwordsmanText;
-    [SerializeField] private TMP_Text soldierHorsemanText;
-    [SerializeField] private TMP_Text soldierCavalaryText;
-    [SerializeField] private TMP_Text soldierEliteCavalaryText;
-    [Header("Settlement Panel")]
-    //Values for settlementpanel
-    [SerializeField] private TMP_Text settlementTitleText;
-    [SerializeField] private TMP_Text settlementClanText;
-    [SerializeField] private TMP_Text settlementManPowerText;
-    [SerializeField] private TMP_Text settlementTroopsText;
-    [SerializeField] private TMP_Text settlementPeasentRecruitText;
-    [SerializeField] private TMP_Text settlementSwordsManText;
-    [SerializeField] private TMP_Text settlementHorseManText;
-    [SerializeField] private TMP_Text settlementCavalaryText;
-    [SerializeField] private TMP_Text settlementEliteCavalaryText;
-    [SerializeField] private CharacterPrevSlotHandler[] prevSlots;
-
-    //[Header("Settlement Panel")]
-    ////Values for settlementpanel
-    //[SerializeField] private TMP_Text titleText;
-    //[SerializeField] private TMP_Text clanText;
-    //[SerializeField] private TMP_Text speedText;
-    //[SerializeField] private TMP_Text troopsText;
-    //[SerializeField] private TMP_Text peasentRecruitText;
-    //[SerializeField] private TMP_Text swordsManText;
-    //[SerializeField] private TMP_Text horseManText;
-    //[SerializeField] private TMP_Text cavalaryText;
-    //[SerializeField] private TMP_Text eliteCavalaryText;
 
     [Header("War Panel")]
     //Values for warpanel
@@ -95,10 +60,6 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TMP_Text timeText;
 
-
-
-
-
     public List<GameObject> selectedObjects = new List<GameObject>();
 
     private void Awake()
@@ -121,8 +82,8 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        AdjustPanelPos(Instance.isSoldierPanelActive,Instance.UI_soldierPanel);
-        AdjustPanelPos(Instance.isWarHandlerPanelActive, Instance.UI_warHandlerPanel);
+        AdjustPanelPos(Instance.UI_characterInfoPanel.isPanelActive, Instance.UI_characterInfoPanel.GetComponent<RectTransform>());
+        //AdjustPanelPos(Instance.isWarHandlerPanelActive, Instance.UI_warHandlerPanel);
     }
 
     //Setting panel pos with new anchored pos 
@@ -199,17 +160,7 @@ public class UIManager : MonoBehaviour
         if (_isPanelActive)
         {
             Vector3 panelPosition = Camera.main.WorldToScreenPoint(Instance.obje.transform.position);
-
-            //Vector3 panelPosition = Camera.main.WorldToScreenPoint(Input.mousePosition);
-
             Vector3 mousePos = Input.mousePosition;
-            ////Adjusting panel position to mouse position for different resolation
-            //float offsetWidth = Screen.width * Instance.offsetXPercentage;
-            //float offsetHeight = Screen.height * Instance.offsetYPercentage;
-
-            //panelPosition.x += offsetWidth;
-            //panelPosition.y += offsetHeight;
-
             // Adjusting the panel position to not exceed the screen boundaries.
             float panelHalfWidth = _panel.rect.width * 0.5f;
             float panelHalfHeight = _panel.rect.height * 0.5f;
@@ -219,18 +170,10 @@ public class UIManager : MonoBehaviour
             float minY = panelHalfHeight;
             float maxY = Screen.height - panelHalfHeight;
 
-            //float normalizedDistance = Mathf.Clamp01(panelPosition.z / 500);
-            //Debug.Log(new Vector3(_panel.localScale.x * normalizedDistance, _panel.localScale.y * normalizedDistance, _panel.localScale.z * normalizedDistance));
-            //_panel.localScale = (_panel.localScale.x * normalizedDistance) * Vector3.one;
-
-            //panelPosition = new Vector3(panelPosition.x + panelHalfWidth, panelPosition.y - panelHalfHeight, 0);
-
             SetPanelPosWithAnchor(panelPosition, _panel,panelHalfWidth,panelHalfHeight);
 
             mousePos.x = Mathf.Clamp(mousePos.x, minX, maxX);
             mousePos.y = Mathf.Clamp(mousePos.y, minY, maxY);
-
-            //_panel.position = new Vector3(mousePos.x,mousePos.y,0);
         }
     }
 
@@ -254,18 +197,17 @@ public class UIManager : MonoBehaviour
             
         TimeManager.Instance.DateText.text = TimeManager.Instance.currentSeason + "  " + TimeManager.Instance.InGameDay + ",  " + TimeManager.Instance.InGameYear;
     }
-    public void UpdateSoldierPanel(string _name, string _clan, int _troops, int _peasentrecruit, int _swordsman, int _horseman, int _cavalary, int _elitecavalary, GameObject _object, float _speed)
+    public void ActivateCharacterInfoPanel(Character _character)
     {
-        Instance.obje = _object;
-        Instance.soldierTitleText.text = _name;
-        Instance.soldierClanText.text = _clan;
-        Instance.soldierSpeedText.text = _speed.ToString();
-        Instance.soldierTroopsText.text = "(" + _troops.ToString() + ")";
-        Instance.soldierPeasentRecruitText.text = _peasentrecruit.ToString();
-        Instance.soldierSwordsmanText.text = _swordsman.ToString();
-        Instance.soldierHorsemanText.text = _horseman.ToString();
-        Instance.soldierCavalaryText.text = _cavalary.ToString();
-        Instance.soldierEliteCavalaryText.text = _elitecavalary.ToString();
+        Instance.obje = _character.gameObject;
+        Instance.UI_characterInfoPanel.UpdatePanel(_character);
+        Instance.UI_characterInfoPanel.gameObject.SetActive(true);
+        Instance.UI_characterInfoPanel.isPanelActive = true;
+    }
+    public void DeActivateCharacterInfoPanel()
+    {
+        Instance.UI_characterInfoPanel.gameObject.SetActive(false);
+        Instance.UI_characterInfoPanel.isPanelActive = false;
     }
     public void UpdateWarPanel(GameObject _object, string _time, List<Character> _party1,List<Character> _party2)
     {
@@ -309,56 +251,12 @@ public class UIManager : MonoBehaviour
         party2_eliteCavalaryDeathText.text = "0";
         party2_participantText.text = "";
     }
-    public void UpdateSettlementPanel()
+    public void ToggleInteractCharacterPanel(bool _isEnemy)
     {
-
-    }
-    public void ToggleInteractCharacterPanel()
-    {
-        //Panel inactive
-        if (Instance.UI_interactCharacterPanel.gameObject.activeSelf)
-        {
-            Instance.UI_interactCharacterPanel.gameObject.SetActive(false);
-        }
-        //Panel active
-        else
-        {
-            Instance.UI_interactCharacterPanel.gameObject.SetActive(true);
-        }
-    }
-
-    public void ResetSettlementPanelCharPrev()
-    {
-        Settlement _settlement = InteractManager.Instance.interactedSettlement.GetComponent<Settlement>();
-        for (int i = 0; i < prevSlots.Length; i++)
-        {
-            prevSlots[i].ResetCharacter();
-            prevSlots[i].gameObject.SetActive(false);
-        }
-    }
-    public void UpdateSettlementPanelCharPrev()
-    {
-        ResetSettlementPanelCharPrev();
-        Settlement _settlement = InteractManager.Instance.interactedSettlement.GetComponent<Settlement>();
-        for (int i = 0; i < _settlement.characterInTown.Count; i++)
-        {
-            prevSlots[i].SetCharacter(_settlement.characterInTown[i].GetComponent<Character>());
-            prevSlots[i].gameObject.SetActive(true);
-        }
+        UI_interactCharacterPanel.TogglePanel(_isEnemy);
     }
     public void ToggleInteractSettlementPanel()
     {
-        //Panel inactive
-        if (Instance.UI_interactSettlementPanel.gameObject.activeSelf)
-        {
-            ResetSettlementPanelCharPrev();
-            Instance.UI_interactSettlementPanel.gameObject.SetActive(false);
-        }
-        //Panel active
-        else
-        {
-            UpdateSettlementPanelCharPrev();
-            Instance.UI_interactSettlementPanel.gameObject.SetActive(true);
-        }
+        UI_inSettlementPanel.TogglePanel();
     }
 }

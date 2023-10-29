@@ -19,7 +19,18 @@ public class InteractManager : MonoBehaviour
     {
         Instance.interactedCharacter = _characterObj;
         Instance.player = _playerObj;
-        UIManager.Instance.ToggleInteractCharacterPanel();
+
+        Character charNpc = _characterObj.GetComponent<Character>();
+        Character charPlayer = _playerObj.GetComponent<Character>();
+
+        if (ClanManager.Instance.IsEnemy(charNpc.clan, charPlayer.clan))
+        {
+            UIManager.Instance.ToggleInteractCharacterPanel(true);
+        }
+        else
+        {
+            UIManager.Instance.ToggleInteractCharacterPanel(false);
+        }  
     }
     public void TakeDataActivateSettlementInteractPanel(GameObject _townObj, GameObject _playerObj)
     {

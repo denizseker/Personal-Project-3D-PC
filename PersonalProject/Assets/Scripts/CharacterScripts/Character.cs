@@ -108,12 +108,12 @@ public class Character : MonoBehaviour
         town.GetComponent<Settlement>().RemoveCharacter(gameObject);
 
         //update settlement char prev panel if any character leave settlement while player in that settlement
-        if (UIManager.Instance.UI_interactSettlementPanel.gameObject.activeSelf)
+        if (UIManager.Instance.UI_inSettlementPanel.isPanelActive)
         {
             //if in this settlement
             if (InteractManager.Instance.interactedSettlement == town)
             {
-                UIManager.Instance.UpdateSettlementPanelCharPrev();
+                UIManager.Instance.UI_inSettlementPanel.UpdateCharPrev();
             }
         }
         //town = null;

@@ -29,6 +29,13 @@ public class CharacterPrevSlotHandler : MonoBehaviour
 
     public void Click()
     {
-        Debug.Log("Clicked to " + character.characterName);
+        //cant click to player prev
+        if(character.GetType() != typeof(Player))
+        {
+            Character playerChar = GameManager.Instance.player.GetComponent<Character>();
+            bool isEnemy = ClanManager.Instance.IsEnemy(character.clan, playerChar.clan);
+            InteractManager.Instance.interactedCharacter = character.gameObject;
+            UIManager.Instance.ToggleInteractCharacterPanel(isEnemy);
+        }
     }
 }
