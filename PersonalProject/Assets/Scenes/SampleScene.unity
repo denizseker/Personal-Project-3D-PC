@@ -6620,7 +6620,7 @@ PrefabInstance:
     - target: {fileID: 1493034667984823874, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823875, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -12035,43 +12035,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI_characterInfoPanel: {fileID: 1484515308}
-  UI_warInfoPanel: {fileID: 0}
+  UI_warInfoPanel: {fileID: 1939004570}
   UI_interactCharacterPanel: {fileID: 1538622897}
   UI_inSettlementPanel: {fileID: 1414501288}
-  offsetXPercentage: 0.07
-  offsetYPercentage: -0.18
-  isWarHandlerPanelActive: 0
   timeScaleText: {fileID: 205751093}
   InGameHourText: {fileID: 1844863111}
-  party1_nameText: {fileID: 1157885841}
-  party1_totalLiveText: {fileID: 1621105218}
-  party1_totalDeathText: {fileID: 1875987674}
-  party1_peasentLiveText: {fileID: 261098969}
-  party1_peasentDeathText: {fileID: 1505302597}
-  party1_swordsManLiveText: {fileID: 1541454603}
-  party1_swordsManDeathText: {fileID: 1576104388}
-  party1_horseManLiveText: {fileID: 583372443}
-  party1_horseManDeathText: {fileID: 812047925}
-  party1_cavalaryLiveText: {fileID: 2074075511}
-  party1_cavalaryDeathText: {fileID: 1229684563}
-  party1_eliteCavalaryLiveText: {fileID: 27760218}
-  party1_eliteCavalaryDeathText: {fileID: 1584238974}
-  party1_participantText: {fileID: 807458761}
-  party2_nameText: {fileID: 484419666}
-  party2_totalLiveText: {fileID: 2059917846}
-  party2_totalDeathText: {fileID: 1355880872}
-  party2_peasentLiveText: {fileID: 837461158}
-  party2_peasentDeathText: {fileID: 926396858}
-  party2_swordsManLiveText: {fileID: 1666783218}
-  party2_swordsManDeathText: {fileID: 1411012660}
-  party2_horseManLiveText: {fileID: 995652959}
-  party2_horseManDeathText: {fileID: 1316954466}
-  party2_cavalaryLiveText: {fileID: 1126349445}
-  party2_cavalaryDeathText: {fileID: 980023151}
-  party2_eliteCavalaryLiveText: {fileID: 1308121454}
-  party2_eliteCavalaryDeathText: {fileID: 1488203981}
-  party2_participantText: {fileID: 981859228}
-  timeText: {fileID: 1602899982}
   selectedObjects: []
 --- !u!114 &1430246795
 MonoBehaviour:
@@ -18568,6 +18536,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6441bc7766b9b2d4eb2a3b10d5c13966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeText: {fileID: 1602899982}
+  party1_nameText: {fileID: 1157885841}
+  party1_totalLiveText: {fileID: 1621105218}
+  party1_totalDeathText: {fileID: 1875987674}
+  party1_peasentLiveText: {fileID: 261098969}
+  party1_peasentDeathText: {fileID: 1505302597}
+  party1_swordsManLiveText: {fileID: 1541454603}
+  party1_swordsManDeathText: {fileID: 1576104388}
+  party1_horseManLiveText: {fileID: 583372443}
+  party1_horseManDeathText: {fileID: 812047925}
+  party1_cavalaryLiveText: {fileID: 2074075511}
+  party1_cavalaryDeathText: {fileID: 1229684563}
+  party1_eliteCavalaryLiveText: {fileID: 27760218}
+  party1_eliteCavalaryDeathText: {fileID: 1584238974}
+  party1_participantText: {fileID: 807458761}
+  party2_nameText: {fileID: 484419666}
+  party2_totalLiveText: {fileID: 2059917846}
+  party2_totalDeathText: {fileID: 1355880872}
+  party2_peasentLiveText: {fileID: 837461158}
+  party2_peasentDeathText: {fileID: 926396858}
+  party2_swordsManLiveText: {fileID: 1666783218}
+  party2_swordsManDeathText: {fileID: 1411012660}
+  party2_horseManLiveText: {fileID: 995652959}
+  party2_horseManDeathText: {fileID: 1316954466}
+  party2_cavalaryLiveText: {fileID: 1126349445}
+  party2_cavalaryDeathText: {fileID: 980023151}
+  party2_eliteCavalaryLiveText: {fileID: 1308121454}
+  party2_eliteCavalaryDeathText: {fileID: 1488203981}
+  party2_participantText: {fileID: 981859228}
+  isPanelActive: 0
 --- !u!1 &1951239410
 GameObject:
   m_ObjectHideFlags: 0

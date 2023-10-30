@@ -14,51 +14,15 @@ public class UIManager : MonoBehaviour
 
     public UI_InteractCharacterPanel UI_interactCharacterPanel;
     public UI_InSettlementPanel UI_inSettlementPanel;
-    public float offsetXPercentage = 0.07f; // Horizontally
-    public float offsetYPercentage = -0.18f; // Vertically
+    //public float offsetXPercentage = 0.07f; // Horizontally
+    //public float offsetYPercentage = -0.18f; // Vertically
 
     private List<RectTransform> activePanels = new List<RectTransform>();
-
-    public bool isWarHandlerPanelActive = false;
 
     private GameObject obje;
     [SerializeField] private TMP_Text timeScaleText;
     [SerializeField] private TMP_Text InGameHourText;
 
-    [Header("War Panel")]
-    //Values for warpanel
-    [Header("Party1")]
-    [SerializeField] private TMP_Text party1_nameText;
-    [SerializeField] private TMP_Text party1_totalLiveText;
-    [SerializeField] private TMP_Text party1_totalDeathText;
-    [SerializeField] private TMP_Text party1_peasentLiveText;
-    [SerializeField] private TMP_Text party1_peasentDeathText;
-    [SerializeField] private TMP_Text party1_swordsManLiveText;
-    [SerializeField] private TMP_Text party1_swordsManDeathText;
-    [SerializeField] private TMP_Text party1_horseManLiveText;
-    [SerializeField] private TMP_Text party1_horseManDeathText;
-    [SerializeField] private TMP_Text party1_cavalaryLiveText;
-    [SerializeField] private TMP_Text party1_cavalaryDeathText;
-    [SerializeField] private TMP_Text party1_eliteCavalaryLiveText;
-    [SerializeField] private TMP_Text party1_eliteCavalaryDeathText;
-    [SerializeField] private TMP_Text party1_participantText;
-    [Header("Party2")]
-    [SerializeField] private TMP_Text party2_nameText;
-    [SerializeField] private TMP_Text party2_totalLiveText;
-    [SerializeField] private TMP_Text party2_totalDeathText;
-    [SerializeField] private TMP_Text party2_peasentLiveText;
-    [SerializeField] private TMP_Text party2_peasentDeathText;
-    [SerializeField] private TMP_Text party2_swordsManLiveText;
-    [SerializeField] private TMP_Text party2_swordsManDeathText;
-    [SerializeField] private TMP_Text party2_horseManLiveText;
-    [SerializeField] private TMP_Text party2_horseManDeathText;
-    [SerializeField] private TMP_Text party2_cavalaryLiveText;
-    [SerializeField] private TMP_Text party2_cavalaryDeathText;
-    [SerializeField] private TMP_Text party2_eliteCavalaryLiveText;
-    [SerializeField] private TMP_Text party2_eliteCavalaryDeathText;
-    [SerializeField] private TMP_Text party2_participantText;
-
-    [SerializeField] private TMP_Text timeText;
 
     public List<GameObject> selectedObjects = new List<GameObject>();
 
@@ -83,7 +47,7 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         AdjustPanelPos(Instance.UI_characterInfoPanel.isPanelActive, Instance.UI_characterInfoPanel.GetComponent<RectTransform>());
-        //AdjustPanelPos(Instance.isWarHandlerPanelActive, Instance.UI_warHandlerPanel);
+        AdjustPanelPos(Instance.UI_warInfoPanel.isPanelActive, Instance.UI_warInfoPanel.GetComponent<RectTransform>());
     }
 
     //Setting panel pos with new anchored pos 
@@ -209,47 +173,18 @@ public class UIManager : MonoBehaviour
         Instance.UI_characterInfoPanel.gameObject.SetActive(false);
         Instance.UI_characterInfoPanel.isPanelActive = false;
     }
-    public void UpdateWarPanel(GameObject _object, string _time, List<Character> _party1,List<Character> _party2)
+    public void ActivateWarInfoPanel(WarHandler _warHandler)
     {
-        Instance.obje = _object;
-        Instance.timeText.text = _time;
+        Instance.obje = _warHandler.gameObject;
+        Instance.UI_warInfoPanel.UpdatePanel(_warHandler);
+        Instance.UI_warInfoPanel.gameObject.SetActive(true);
+        Instance.UI_warInfoPanel.isPanelActive = true;
 
-        WarHandler _warHandler = _object.GetComponent<WarHandler>();
-
-        Army infoArmy = _warHandler.ReturnPartyArmy(_party1);
-
-        //Party1
-        party1_nameText.text = _party1[0].characterName;
-        party1_totalLiveText.text = infoArmy.armyTotalTroops.ToString();
-        party1_totalDeathText.text = "0";
-        party1_peasentLiveText.text = infoArmy.PeasentRecruit.amount.ToString();
-        party1_peasentDeathText.text = "0";
-        party1_swordsManLiveText.text = infoArmy.SwordsMan.amount.ToString();
-        party1_swordsManDeathText.text = "0";
-        party1_horseManLiveText.text = infoArmy.HorseMan.amount.ToString();
-        party1_horseManDeathText.text = "0";
-        party1_cavalaryLiveText.text = infoArmy.Cavalary.amount.ToString();
-        party1_cavalaryDeathText.text = "0";
-        party1_eliteCavalaryLiveText.text = infoArmy.EliteCavalary.amount.ToString();
-        party1_eliteCavalaryDeathText.text = "0";
-        party1_participantText.text = "";
-
-        infoArmy = _warHandler.ReturnPartyArmy(_party2);
-        //Party2
-        party2_nameText.text = _party2[0].characterName;
-        party2_totalLiveText.text = infoArmy.armyTotalTroops.ToString();
-        party2_totalDeathText.text = "0";
-        party2_peasentLiveText.text = infoArmy.PeasentRecruit.amount.ToString();
-        party2_peasentDeathText.text = "0";
-        party2_swordsManLiveText.text = infoArmy.SwordsMan.amount.ToString();
-        party2_swordsManDeathText.text = "0";
-        party2_horseManLiveText.text = infoArmy.HorseMan.amount.ToString();
-        party2_horseManDeathText.text = "0";
-        party2_cavalaryLiveText.text = infoArmy.Cavalary.amount.ToString();
-        party2_cavalaryDeathText.text = "0";
-        party2_eliteCavalaryLiveText.text = infoArmy.EliteCavalary.amount.ToString();
-        party2_eliteCavalaryDeathText.text = "0";
-        party2_participantText.text = "";
+    }
+    public void DeActivateWarInfoPanel()
+    {
+        Instance.UI_warInfoPanel.gameObject.SetActive(false);
+        Instance.UI_warInfoPanel.isPanelActive = false;
     }
     public void ToggleInteractCharacterPanel(bool _isEnemy)
     {

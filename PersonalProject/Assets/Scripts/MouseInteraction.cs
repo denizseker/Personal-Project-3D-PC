@@ -31,8 +31,8 @@ public class MouseInteraction : MonoBehaviour
         //Mouse over on character
         if (character != null)
         {
-            UIManager.Instance.ActivateCharacterInfoPanel(character);
             //Activate info panel
+            UIManager.Instance.ActivateCharacterInfoPanel(character);
             ringEffect.SetActive(true);
         }
         //Mouse over on settlement
@@ -46,23 +46,21 @@ public class MouseInteraction : MonoBehaviour
         }
         else if (warHandler != null)
         {
-            //UIManager.Instance.UpdateWarPanel(gameObject, warHandler.pastTimeString, warHandler.party1, warHandler.party2);
-            ////Activate war panel
-            //UIManager.Instance.UI_warHandlerPanel.gameObject.SetActive(true);
-            //UIManager.Instance.isWarHandlerPanelActive = true;
-            //ringEffect.SetActive(true);
+            //Activate war panel
+            UIManager.Instance.ActivateWarInfoPanel(warHandler);
+            ringEffect.SetActive(true);
         }
 
     }
     private void OnMouseOver()
     {
         ringEffect.SetActive(true);
-        if (UIManager.Instance.isWarHandlerPanelActive) UIManager.Instance.UpdateWarPanel(gameObject, warHandler.pastTimeString, warHandler.party1, warHandler.party2);
+        if (UIManager.Instance.UI_warInfoPanel.isPanelActive) UIManager.Instance.UI_warInfoPanel.UpdatePanel(warHandler);
     }
     private void OnMouseExit()
     {
         //UIManager.Instance.UI_warHandlerPanel.gameObject.SetActive(false);
-        UIManager.Instance.isWarHandlerPanelActive = false;
+        UIManager.Instance.DeActivateWarInfoPanel();
         UIManager.Instance.DeActivateCharacterInfoPanel();
         if (!isSelected) ringEffect.SetActive(false);
 
