@@ -28,25 +28,21 @@ public class MouseInteraction : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        //Mouse over on character
+        //At character
         if (character != null)
         {
-            //Activate info panel
             UIManager.Instance.ActivateCharacterInfoPanel(character);
             ringEffect.SetActive(true);
         }
-        //Mouse over on settlement
+        //At settlement
         else if (settlement != null)
         {
-            //UIManager.Instance.UpdateSoldierPanel(settlement.settlementName, settlement.clan.clanName, army.armyTotalTroops, army.PeasentRecruit.amount, army.SwordsMan.amount, army.HorseMan.amount, army.Cavalary.amount, army.EliteCavalary.amount, gameObject, 0f);
-            ////Activate info panel
-            //UIManager.Instance.UI_soldierPanel.gameObject.SetActive(true);
-            //UIManager.Instance.isSoldierInfoPanelActive = true;
-            //ringEffect.SetActive(true);
+            UIManager.Instance.ActivateSettlementInfoPanel(settlement);
+            ringEffect.SetActive(true);
         }
+        //At warhandler
         else if (warHandler != null)
         {
-            //Activate war panel
             UIManager.Instance.ActivateWarInfoPanel(warHandler);
             ringEffect.SetActive(true);
         }
@@ -56,14 +52,14 @@ public class MouseInteraction : MonoBehaviour
     {
         ringEffect.SetActive(true);
         if (UIManager.Instance.UI_warInfoPanel.isPanelActive) UIManager.Instance.UI_warInfoPanel.UpdatePanel(warHandler);
+        if (UIManager.Instance.UI_settlementInfoPanel.isPanelActive) UIManager.Instance.UI_settlementInfoPanel.UpdatePanel(settlement);
     }
     private void OnMouseExit()
     {
-        //UIManager.Instance.UI_warHandlerPanel.gameObject.SetActive(false);
+        UIManager.Instance.DeActivateSettlementInfoPanel();
         UIManager.Instance.DeActivateWarInfoPanel();
         UIManager.Instance.DeActivateCharacterInfoPanel();
         if (!isSelected) ringEffect.SetActive(false);
-
     }
     private void OnMouseDown()
     {

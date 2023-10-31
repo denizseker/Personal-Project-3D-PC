@@ -13,6 +13,7 @@ public class Settlement : MonoBehaviour
     [HideInInspector] public bool isHavePatrol;
     [HideInInspector] public bool startCollectManPower;
     [HideInInspector] public bool isStartedCollectManPower;
+    [HideInInspector] public Army army;
 
     [SerializeField] private GameObject[] worldSpaceInSettlementUI;
 
@@ -23,6 +24,7 @@ public class Settlement : MonoBehaviour
         startCollectManPower = true;
         GetClanWithEnum();
         gameObject.name = (string.Format("[{0}] [{1}]", clan.clanName, settlementName));
+        army = GetComponent<Army>();
         clan.AddSettlement(gameObject);
     }
 
@@ -99,7 +101,6 @@ public class Settlement : MonoBehaviour
             }
         }
     }
-
     private void Update()
     {
         //Starting collecting manpower
@@ -111,4 +112,12 @@ public class Settlement : MonoBehaviour
             startCollectManPower = false;
         }
     }
+
+    private void MergeArmies()
+    {
+
+    }
+
+
+
 }

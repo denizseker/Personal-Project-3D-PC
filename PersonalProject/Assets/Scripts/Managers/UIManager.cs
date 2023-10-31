@@ -10,8 +10,7 @@ public class UIManager : MonoBehaviour
 
     public UI_CharacterInfoPanel UI_characterInfoPanel;
     public UI_WarInfoPanel UI_warInfoPanel;
-    //public RectTransform UI_settlementPanel;
-
+    public UI_SettlementInfoPanel UI_settlementInfoPanel;
     public UI_InteractCharacterPanel UI_interactCharacterPanel;
     public UI_InSettlementPanel UI_inSettlementPanel;
     //public float offsetXPercentage = 0.07f; // Horizontally
@@ -48,6 +47,7 @@ public class UIManager : MonoBehaviour
     {
         AdjustPanelPos(Instance.UI_characterInfoPanel.isPanelActive, Instance.UI_characterInfoPanel.GetComponent<RectTransform>());
         AdjustPanelPos(Instance.UI_warInfoPanel.isPanelActive, Instance.UI_warInfoPanel.GetComponent<RectTransform>());
+        AdjustPanelPos(Instance.UI_settlementInfoPanel.isPanelActive, Instance.UI_settlementInfoPanel.GetComponent<RectTransform>());
     }
 
     //Setting panel pos with new anchored pos 
@@ -142,12 +142,10 @@ public class UIManager : MonoBehaviour
     }
 
 
-    //UI bottom panel timescale update
     public void UpdateTimeScaleText()
     {
         timeScaleText.text = Time.timeScale + "x";
     }
-    //UI Bottom panel date update
     public void UpdateDateText()
     {
         if(TimeManager.Instance.InGameHour < 10)
@@ -185,6 +183,18 @@ public class UIManager : MonoBehaviour
     {
         Instance.UI_warInfoPanel.gameObject.SetActive(false);
         Instance.UI_warInfoPanel.isPanelActive = false;
+    }
+    public void ActivateSettlementInfoPanel(Settlement _settlement)
+    {
+        Instance.obje = _settlement.gameObject;
+        Instance.UI_settlementInfoPanel.UpdatePanel(_settlement);
+        Instance.UI_settlementInfoPanel.gameObject.SetActive(true);
+        Instance.UI_settlementInfoPanel.isPanelActive = true;
+    }
+    public void DeActivateSettlementInfoPanel()
+    {
+        Instance.UI_settlementInfoPanel.gameObject.SetActive(false);
+        Instance.UI_settlementInfoPanel.isPanelActive = false;
     }
     public void ToggleInteractCharacterPanel(bool _isEnemy)
     {

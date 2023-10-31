@@ -387,19 +387,6 @@ public class NPCAI : MonoBehaviour
 
         }
     }
-    private bool IsTargetAvailable(Character _character)
-    {
-        if (_character.IsCharacterState(Character.State.InSettlement))
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
-
-
     public void JoinWar(GameObject _target)
     {
         WarHandler warHandler = _target.GetComponent<WarHandler>();
@@ -407,7 +394,6 @@ public class NPCAI : MonoBehaviour
         NPC.ChangeColliderState();
         warHandler.AddCharacterToWar(NPC);
     }
-
     public void GoPatrolTown()
     {
         if (!NPC.agent.hasPath)
@@ -419,7 +405,6 @@ public class NPCAI : MonoBehaviour
             NPC.SetCharacterState(Character.State.Patroling);
         }
     }
-
     public void FollowTarget(GameObject _target)
     {
         targetDestination = _target;
@@ -427,19 +412,10 @@ public class NPCAI : MonoBehaviour
         Vector3 targetPos = targetDestination.transform.position;
         NPC.agent.SetDestination(targetPos);
     }
-
-    private void LeaveSettlement()
-    {
-        NPC.OnOffCharacterComponentForTown(true);
-        NPC.town.GetComponent<Settlement>().RemoveCharacter(NPC.gameObject);
-        NPC.SetCharacterState(Character.State.Patroling);
-    }
-
     public void LeaveInteraction()
     {
         NPC.SetCharacterState(Character.State.Patroling);
     }
-
     private IEnumerator RecruitArmy()
     {
         while (true)
