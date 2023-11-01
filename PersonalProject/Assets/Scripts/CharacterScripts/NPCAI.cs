@@ -13,6 +13,18 @@ public class NPCAI : MonoBehaviour
     private GameObject targetDestination;
     [SerializeField] private GameObject warHappening;
 
+
+    public class Task
+    {
+        private GameObject target;
+        private Character.State testState;
+        public Task(GameObject _target,Character.State _testState)
+        {
+            target = _target;
+            testState = _testState;
+        }
+    }
+
     private void Awake()
     {
         NPC = GetComponent<NPC>();
