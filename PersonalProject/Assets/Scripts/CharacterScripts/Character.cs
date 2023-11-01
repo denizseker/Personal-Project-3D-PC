@@ -28,7 +28,7 @@ public class Character : MonoBehaviour
     [HideInInspector] public Army army;
     [HideInInspector] public float speed;
     [HideInInspector] public GameObject town;
-    [HideInInspector] public List<Character> characterParty = new List<Character>();
+    public List<Character> characterParty = new List<Character>();
     public Sprite charPrev;
 
     public Character interactedCharacter;
@@ -45,7 +45,9 @@ public class Character : MonoBehaviour
         GetClanWithEnum();
         gameObject.name = (string.Format("[{0}] [{1}]", clan.clanName, characterName));
         clan.AddMember(gameObject);
+        characterParty.Add(this);
         speed = agent.speed;
+        
     }
 
     private void GetClanWithEnum()

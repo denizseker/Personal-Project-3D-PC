@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class UI_InteractCharacterPanel : MonoBehaviour
 {
-
+    [SerializeField] private GameObject leaveButton;
     [SerializeField] private GameObject enterWarButton;
-    [SerializeField] private GameObject followButton;
+    [SerializeField] private GameObject giveOrderButton;
     [SerializeField] private CharacterPrevSlotHandler charPrevSlot;
     [HideInInspector] public bool isPanelActive = false;
 
@@ -35,14 +35,16 @@ public class UI_InteractCharacterPanel : MonoBehaviour
 
     public void SetPanelForEnemy(Character _character)
     {
-        followButton.SetActive(false);
+        leaveButton.SetActive(true);
+        giveOrderButton.SetActive(false);
         //if interactedcharacter is not in settlement, enable enterwar button
         if(!_character.IsCharacterState(Character.State.InSettlement)) enterWarButton.SetActive(true);
     }
     public void SetPanelForAlly(Character _character)
     {
+        leaveButton.SetActive(true);
         enterWarButton.SetActive(false);
-        followButton.SetActive(true);
+        giveOrderButton.SetActive(true);
     }
    
 
