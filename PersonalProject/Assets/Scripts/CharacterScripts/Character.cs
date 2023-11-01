@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.AI;
 
 public class Character : MonoBehaviour
@@ -26,7 +28,7 @@ public class Character : MonoBehaviour
     [HideInInspector] public Army army;
     [HideInInspector] public float speed;
     [HideInInspector] public GameObject town;
-
+    [HideInInspector] public List<Character> characterParty = new List<Character>();
     public Sprite charPrev;
 
     public Character interactedCharacter;
@@ -77,7 +79,6 @@ public class Character : MonoBehaviour
         oldState = currentState;
         currentState = _State;
     }
-
 
     public void SendCharacterStateToInteractedCharacter()
     {
