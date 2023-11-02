@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarHandler : MonoBehaviour
+public class WarHandler : MonoBehaviour , IInteractable
 {
     public List<Character> party1 = new List<Character>();
     public List<Character> party2 = new List<Character>();
@@ -205,5 +205,25 @@ public class WarHandler : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void Click()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void MouseEnter()
+    {
+        UIManager.Instance.ActivateWarInfoPanel(this);
+    }
+
+    public void MouseOver()
+    {
+        if (UIManager.Instance.UI_warInfoPanel.isPanelActive) UIManager.Instance.UI_warInfoPanel.UpdatePanel(this);
+    }
+
+    public void MouseExit()
+    {
+        UIManager.Instance.DeActivateWarInfoPanel();
     }
 }

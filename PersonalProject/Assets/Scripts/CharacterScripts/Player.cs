@@ -14,6 +14,10 @@ public class Player : Character
         Setup();
         SetCharacterState(State.Free);
     }
+    private void Start()
+    {
+        isVisible = true;
+    }
     public void InteractAreaOnTriggerEnter(Collider other)
     {
 

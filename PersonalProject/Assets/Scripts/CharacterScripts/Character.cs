@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
 
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour , IInteractable
 {
     public enum State
     {
@@ -33,6 +33,7 @@ public class Character : MonoBehaviour
 
     public Character interactedCharacter;
     public string characterName;
+    [HideInInspector] public bool isVisible = true;
     
     //Soldier values
     public ClanManager.ENUM_Clan enumClan; //enum clan for dropdown list at inspector.
@@ -149,4 +150,36 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void Click()
+    {
+        if(GetType() == typeof(Player))
+        {
+            Debug.Log("Player");
+        }
+        if(GetType() == typeof(NPC))
+        {
+            
+        }
+    }
+
+    public void MouseEnter()
+    {
+        if (isVisible)
+        {
+            UIManager.Instance.ActivateCharacterInfoPanel(this);
+        }
+    }
+
+    public void MouseOver()
+    {
+        if (isVisible)
+        {
+            if (UIManager.Instance.UI_characterInfoPanel.isPanelActive) UIManager.Instance.UI_characterInfoPanel.UpdatePanel(this);
+        }    
+    }
+
+    public void MouseExit()
+    {
+        UIManager.Instance.DeActivateCharacterInfoPanel();
+    }
 }

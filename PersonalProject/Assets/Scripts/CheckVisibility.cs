@@ -8,11 +8,12 @@ public class CheckVisibility : MonoBehaviour
 {
     [SerializeField] private GameObject canvasObj;
     [SerializeField] private GameObject modelObj;
+    private Character character;
     private FadeInOutPanel fadeScript;
     private Animator animator;
-    public bool isVisible = false;
     private void Awake()
     {
+        character = GetComponentInParent<Character>();
         animator = modelObj.GetComponent<Animator>();
         fadeScript = gameObject.transform.parent.GetComponentInChildren<FadeInOutPanel>();
     }
@@ -24,7 +25,7 @@ public class CheckVisibility : MonoBehaviour
 
     private void SetOn()
     {
-        isVisible = true;
+        character.isVisible = true;
         animator.enabled = true;
         canvasObj.SetActive(true);
         modelObj.SetActive(true);
@@ -32,12 +33,11 @@ public class CheckVisibility : MonoBehaviour
     private void SetOff()
     {
         StartCoroutine(WaitTillFadeOut());
-        
     }
 
     public void InteractAreaOnTriggerStay(Collider other)
     {
-        if (other.tag == "VisibleArea" && !isVisible)
+        if (other.tag == "VisibleArea" && !character.isVisible)
         {
             SetOn();
         }
@@ -61,8 +61,8 @@ public class CheckVisibility : MonoBehaviour
     IEnumerator WaitTillFadeOut()
     {
         fadeScript.StartFadeOut();
-        yield return new WaitForSecondsRealtime(0.5f);
-        isVisible = false;
+        yield return new WaitForSecondsRealtime(0.8f);
+        character.isVisible = false;
         animator.enabled = false;
         canvasObj.SetActive(false);
         modelObj.SetActive(false);

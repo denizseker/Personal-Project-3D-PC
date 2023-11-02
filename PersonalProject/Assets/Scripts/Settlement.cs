@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Settlement : MonoBehaviour
+public class Settlement : MonoBehaviour , IInteractable
 {
 
     public string settlementName;
@@ -118,6 +118,23 @@ public class Settlement : MonoBehaviour
 
     }
 
+    public void Click()
+    {
+        Debug.Log("Settlement");
+    }
 
+    public void MouseEnter()
+    {
+        UIManager.Instance.ActivateSettlementInfoPanel(this);
+    }
 
+    public void MouseOver()
+    {
+        if (UIManager.Instance.UI_settlementInfoPanel.isPanelActive) UIManager.Instance.UI_settlementInfoPanel.UpdatePanel(this);
+    }
+
+    public void MouseExit()
+    {
+        UIManager.Instance.DeActivateSettlementInfoPanel();
+    }
 }

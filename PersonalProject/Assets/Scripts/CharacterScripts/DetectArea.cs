@@ -23,16 +23,19 @@ public class DetectArea : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (npcAI != null) npcAI.DetectAreaOnTriggerEnter(other);
-        if (player != null) player.DetectAreaOnTriggerEnter(other);
-    }
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (npcAI != null) npcAI.DetectAreaOnTriggerEnter(other);
+    //}
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (npcAI != null) npcAI.DetectAreaOnTriggerEnter(other);
+    //}
 
     private void OnTriggerExit(Collider other)
     {
         if (npcAI != null) npcAI.DetectAreaOnTriggerExit(other);
-        if (player != null) player.DetectAreaOnTriggerExit(other);
     }
 
 }

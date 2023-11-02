@@ -350,7 +350,7 @@ public class NPCAI : MonoBehaviour
                 //if interactedcharacter is player, AI should set our target.
                 if (interactedCharacter.GetType() == typeof(Player))
                 {
-                    interactedCharacter.interactedCharacter = NPC;
+                    //interactedCharacter.interactedCharacter = NPC;
                 }
             }
             //Targetcharacter is not enemy.
@@ -485,11 +485,12 @@ public class NPCAI : MonoBehaviour
 
     private void Update()
     {
-        //AI checking logic every x frame
-        if (timer % interval == 0 && NPC.currentState != Character.State.InInteraction)
-        {
-            AILogic();
-        }
-        timer++;
+        AILogic();
+        ////AI checking logic every x frame
+        //if (timer % interval == 0 && NPC.currentState != Character.State.InInteraction)
+        //{
+
+        //}
+        //timer++;
     }
 }

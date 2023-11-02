@@ -16,9 +16,4 @@ public class GameManager : MonoBehaviour
         Instance.player = GameObject.FindWithTag("Player");
     }
 
-    private void Update()
-    {
-
-    }
-
 }

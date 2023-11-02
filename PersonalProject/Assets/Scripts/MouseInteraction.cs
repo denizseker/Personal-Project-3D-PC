@@ -10,8 +10,9 @@ public class MouseInteraction : MonoBehaviour
     private Settlement settlement;
     private WarHandler warHandler;
     public GameObject ringEffect;
-    public CheckVisibility checkVisibility;
 
+
+    private IInteractable interactable;
 
     private GameObject player;
     private NPCAI NPCAI;
@@ -19,76 +20,79 @@ public class MouseInteraction : MonoBehaviour
     public bool isSelected = false;
     private void Awake()
     {
-        if (GetComponent<Character>() != null) character = GetComponent<Character>();
-        if (GetComponent<Settlement>() != null) settlement = GetComponent<Settlement>();
-        if (GetComponent<WarHandler>() != null) warHandler = GetComponent<WarHandler>();
-        if (gameObject.GetComponentInChildren<CheckVisibility>() != null) checkVisibility = GetComponentInChildren<CheckVisibility>();
-        //town ise null olacak.
-        NPCAI = GetComponent<NPCAI>();
-        player = GameObject.FindWithTag("Player");
+        interactable = GetComponent<IInteractable>();
+
+        //if (GetComponent<Character>() != null) character = GetComponent<Character>();
+        //if (GetComponent<Settlement>() != null) settlement = GetComponent<Settlement>();
+        //if (GetComponent<WarHandler>() != null) warHandler = GetComponent<WarHandler>();
+        ////town ise null olacak.
+        //NPCAI = GetComponent<NPCAI>();
+        player = GameManager.Instance.player;
     }
 
     private void OnMouseEnter()
     {
-        if (checkVisibility.isVisible)
-        {
-            //At character
-            if (character != null)
-            {
-                UIManager.Instance.ActivateCharacterInfoPanel(character);
-                ringEffect.SetActive(true);
-            }
-            //At settlement
-            else if (settlement != null)
-            {
-                UIManager.Instance.ActivateSettlementInfoPanel(settlement);
-                ringEffect.SetActive(true);
-            }
-            //At warhandler
-            else if (warHandler != null)
-            {
-                UIManager.Instance.ActivateWarInfoPanel(warHandler);
-                ringEffect.SetActive(true);
-            }
-        }
-        
+        //if (character.isVisible)
+        //{
+        //    //At character
+        //    if (character != null)
+        //    {
+        //        UIManager.Instance.ActivateCharacterInfoPanel(character);
+        //        ringEffect.SetActive(true);
+        //    }
+        //    //At settlement
+        //    else if (settlement != null)
+        //    {
+        //        UIManager.Instance.ActivateSettlementInfoPanel(settlement);
+        //        ringEffect.SetActive(true);
+        //    }
+        //    //At warhandler
+        //    else if (warHandler != null)
+        //    {
+        //        UIManager.Instance.ActivateWarInfoPanel(warHandler);
+        //        ringEffect.SetActive(true);
+        //    }
+        //}
+        interactable.MouseEnter();
 
     }
     private void OnMouseOver()
     {
-        if (checkVisibility.isVisible)
-        {
-            Debug.Log("Still visible");
-            ringEffect.SetActive(true);
-            if (UIManager.Instance.UI_warInfoPanel.isPanelActive) UIManager.Instance.UI_warInfoPanel.UpdatePanel(warHandler);
-            if (UIManager.Instance.UI_settlementInfoPanel.isPanelActive) UIManager.Instance.UI_settlementInfoPanel.UpdatePanel(settlement);
-            if (UIManager.Instance.UI_characterInfoPanel.isPanelActive) UIManager.Instance.UI_characterInfoPanel.UpdatePanel(character);
-        }
-        else
-        {
-            UIManager.Instance.DeActivateSettlementInfoPanel();
-            UIManager.Instance.DeActivateWarInfoPanel();
-            UIManager.Instance.DeActivateCharacterInfoPanel();
-            if (!isSelected) ringEffect.SetActive(false);
-        }
+        //if (character.isVisible)
+        //{
+        //    ringEffect.SetActive(true);
+        //    if (UIManager.Instance.UI_warInfoPanel.isPanelActive) UIManager.Instance.UI_warInfoPanel.UpdatePanel(warHandler);
+        //    if (UIManager.Instance.UI_settlementInfoPanel.isPanelActive) UIManager.Instance.UI_settlementInfoPanel.UpdatePanel(settlement);
+
+        //}
+        //else
+        //{
+        //    UIManager.Instance.DeActivateSettlementInfoPanel();
+        //    UIManager.Instance.DeActivateWarInfoPanel();
+        //    UIManager.Instance.DeActivateCharacterInfoPanel();
+        //    if (!isSelected) ringEffect.SetActive(false);
+
+        //}
+        interactable.MouseOver();
 
     }
     private void OnMouseExit()
     {
-        UIManager.Instance.DeActivateSettlementInfoPanel();
-        UIManager.Instance.DeActivateWarInfoPanel();
-        UIManager.Instance.DeActivateCharacterInfoPanel();
-        if (!isSelected) ringEffect.SetActive(false);
+        //UIManager.Instance.DeActivateSettlementInfoPanel();
+        //UIManager.Instance.DeActivateWarInfoPanel();
+        //UIManager.Instance.DeActivateCharacterInfoPanel();
+        //if (!isSelected) ringEffect.SetActive(false);
+        interactable.MouseExit();
     }
     private void OnMouseDown()
     {
-        if (checkVisibility.isVisible)
+        if (character.isVisible)
         {
             //Cant click if player state is those
             if (!player.GetComponent<Character>().IsCharacterState(Character.State.InSettlement, Character.State.InInteraction, Character.State.InWar))
             {
                 //Player cant click to player object, but can click to npc
-                if (gameObject.tag != "Player")
+                if (interactable.GetType() != typeof(Player))
                 {
                     //Resetting selected object for every town/enemy click
                     UIManager.Instance.ClearSelectedObjects(player);
@@ -111,7 +115,9 @@ public class MouseInteraction : MonoBehaviour
                 }
             }
         }
-            
+
+        interactable.Click();
+
     }
 
     public void OnOffCollider()
