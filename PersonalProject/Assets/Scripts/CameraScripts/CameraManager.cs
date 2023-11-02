@@ -8,6 +8,8 @@ public class CameraManager : MonoBehaviour
     public static CameraManager Instance;
 
     public GameObject cameraRoot;
+    public Camera camUI;
+    public Camera camMain;
 
     [HideInInspector] public CameraZoom cameraZoom;
     [HideInInspector] public CameraRotation cameraRotation;

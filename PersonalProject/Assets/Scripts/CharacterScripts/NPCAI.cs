@@ -8,22 +8,22 @@ public class NPCAI : MonoBehaviour
 {
     private float timer;
     private int interval = 10;
-    private NPC NPC;
+    public NPC NPC;
     public NavMeshData data;
     private GameObject targetDestination;
     [SerializeField] private GameObject warHappening;
 
 
-    public class Task
-    {
-        private GameObject target;
-        private Character.State testState;
-        public Task(GameObject _target,Character.State _testState)
-        {
-            target = _target;
-            testState = _testState;
-        }
-    }
+    //public class Task
+    //{
+    //    private GameObject target;
+    //    private Character.State testState;
+    //    public Task(GameObject _target,Character.State _testState)
+    //    {
+    //        target = _target;
+    //        testState = _testState;
+    //    }
+    //}
 
     private void Awake()
     {

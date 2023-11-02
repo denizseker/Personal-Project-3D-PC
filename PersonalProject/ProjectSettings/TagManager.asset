@@ -14,6 +14,7 @@ TagManager:
   - NPC
   - War
   - InteractArea
+  - VisibleArea
   layers:
   - Default
   - TransparentFX

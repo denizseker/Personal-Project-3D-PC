@@ -465,6 +465,51 @@ Transform:
   m_Father: {fileID: 8921844600004713400}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3302046919524315653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6342649506767498329}
+  - component: {fileID: 7426441370629150698}
+  m_Layer: 2
+  m_Name: VisibleArea
+  m_TagString: VisibleArea
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6342649506767498329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3302046919524315653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9098733800788831018}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &7426441370629150698
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3302046919524315653}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 50
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3316398493337051633
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,7 +766,7 @@ RectTransform:
   m_Children:
   - {fileID: 4520916848733448371}
   m_Father: {fileID: 9098733800788831018}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1112,8 +1157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1977149fde3a85d4ca84e2a2141a2566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDistance: 200
-  transitionTime: 0.5
+  panelCanvasGroup: {fileID: 4520916848733448369}
+  fadeDuration: 1
 --- !u!114 &1452741627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1311,7 +1356,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9098733800788831018}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &4520916849509350049
 ParticleSystem:
@@ -6869,6 +6914,7 @@ Transform:
   - {fileID: 4669229644588599616}
   - {fileID: 4314927232101575669}
   - {fileID: 6297995663242184463}
+  - {fileID: 6342649506767498329}
   - {fileID: 4520916847547472587}
   - {fileID: 4520916849509350054}
   m_Father: {fileID: 0}

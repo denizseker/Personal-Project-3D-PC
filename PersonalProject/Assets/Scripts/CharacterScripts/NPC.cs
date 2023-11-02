@@ -23,7 +23,6 @@ public class NPC : Character
         SetCharacterState(State.Patroling);
     }
 
-
     private void Update()
     {
         SetAnimations();
@@ -43,7 +42,7 @@ public class NPC : Character
                 animator.Play(IDLE);
             }
         }
-        
+
     }
 
     private void OnDrawGizmos()

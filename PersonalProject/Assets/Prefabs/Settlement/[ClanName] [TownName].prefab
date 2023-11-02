@@ -6901,8 +6901,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1977149fde3a85d4ca84e2a2141a2566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDistance: 350
-  transitionTime: 0.5
+  panelCanvasGroup: {fileID: 6500536132147842115}
+  fadeDuration: 1
 --- !u!114 &296815956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7825,6 +7825,7 @@ MonoBehaviour:
   isHavePatrol: 0
   startCollectManPower: 0
   isStartedCollectManPower: 0
+  army: {fileID: 0}
   worldSpaceInSettlementUI:
   - {fileID: 926728697}
   - {fileID: 190119794406453636}

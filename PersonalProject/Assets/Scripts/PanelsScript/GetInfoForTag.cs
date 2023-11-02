@@ -12,11 +12,13 @@ public class GetInfoForTag : MonoBehaviour
     [SerializeField] private Image clanLogo;
     [SerializeField] private TMP_Text troops;
     [SerializeField] private TMP_Text state;
+    private Canvas canvas;
 
 
     private void Start()
     {
-        //UpdateNameTag();
+        canvas = GetComponentInParent<Canvas>();
+        canvas.worldCamera = CameraManager.Instance.camUI;
     }
     private void Update()
     {
