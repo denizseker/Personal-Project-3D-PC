@@ -10,12 +10,11 @@ public class CheckVisibility : MonoBehaviour
     [SerializeField] private GameObject modelObj;
     private FadeInOutPanel fadeScript;
     private Animator animator;
-    private bool isVisible;
+    public bool isVisible = false;
     private void Awake()
     {
         animator = modelObj.GetComponent<Animator>();
         fadeScript = gameObject.transform.parent.GetComponentInChildren<FadeInOutPanel>();
-        
     }
 
     private void Start()
