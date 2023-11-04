@@ -152,14 +152,19 @@ public class Character : MonoBehaviour , IInteractable
 
     public void Click()
     {
-        if(GetType() == typeof(Player))
+        if (isVisible)
         {
-            Debug.Log("Player");
+            if (GetType() == typeof(Player))
+            {
+                Debug.Log("Player");
+            }
+            if (GetType() == typeof(NPC))
+            {
+                InteractManager.Instance.SelectObject(gameObject);
+                InteractManager.Instance.player.GetComponent<PlayerController>().MoveToTarget(gameObject);
+            }
         }
-        if(GetType() == typeof(NPC))
-        {
-            
-        }
+        
     }
 
     public void MouseEnter()

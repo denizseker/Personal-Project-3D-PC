@@ -86,37 +86,25 @@ public class MouseInteraction : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (character.isVisible)
+        //Cant click if player state is those
+        if (!player.GetComponent<Character>().IsCharacterState(Character.State.InSettlement, Character.State.InInteraction, Character.State.InWar))
         {
-            //Cant click if player state is those
-            if (!player.GetComponent<Character>().IsCharacterState(Character.State.InSettlement, Character.State.InInteraction, Character.State.InWar))
-            {
-                //Player cant click to player object, but can click to npc
-                if (interactable.GetType() != typeof(Player))
-                {
-                    //Resetting selected object for every town/enemy click
-                    UIManager.Instance.ClearSelectedObjects(player);
-                    UIManager.Instance.selectedObjects.Add(gameObject);
-                    player.GetComponent<PlayerController>().clickedTarget = gameObject;
+            interactable.Click();
+            
 
-                    ringEffect.SetActive(true);
-                    isSelected = true;
-                }
-
-                //Clicking to town
-                if (isSelected && settlement != null)
-                {
-                    //GameObject townDoor = settlement.gameObject.GetComponentInChildren<GetCharacterInSettlement>().gameObject;
-                    player.GetComponent<PlayerController>().MoveToTarget(gameObject);
-                }
-                if (isSelected && NPCAI != null)
-                {
-                    player.GetComponent<PlayerController>().MoveToTarget(gameObject);
-                }
-            }
+            ////Clicking to town
+            //if (isSelected && settlement != null)
+            //{
+            //    //GameObject townDoor = settlement.gameObject.GetComponentInChildren<GetCharacterInSettlement>().gameObject;
+            //    player.GetComponent<PlayerController>().MoveToTarget(gameObject);
+            //}
+            //if (isSelected && NPCAI != null)
+            //{
+            //    player.GetComponent<PlayerController>().MoveToTarget(gameObject);
+            //}
         }
 
-        interactable.Click();
+        
 
     }
 

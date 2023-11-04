@@ -9,17 +9,14 @@ public class NPC : Character
     const string IDLE = "Idle";
     const string RUN = "Run";
     Animator animator;
-    public Settlement patrolSettlement;
     //NPCAI using those.
-
-    //[HideInInspector] public GameObject town;
     [HideInInspector] public Vector3 patrolPoint;
     [HideInInspector] public bool drawLineandPoint;
     private void Awake()
     {
         Setup();
         animator = GetComponentInChildren<Animator>();
-        town = patrolSettlement.gameObject;
+
         SetCharacterState(State.Patroling);
     }
 

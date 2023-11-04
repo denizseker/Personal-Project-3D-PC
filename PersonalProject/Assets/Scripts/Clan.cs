@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,6 @@ public class Clan
         clanLogo = _clanLogo;
     }
 
-
     public void AddMember(GameObject member)
     {
         members.Add(member);
@@ -26,7 +26,6 @@ public class Clan
     {
         settlements.Add(settlement);
     }
-
 
     public GameObject FindClosestAllySettlement(Character _character)
     {
@@ -52,7 +51,9 @@ public class Clan
         }
         else
         {
-            return null;
+            _character.SetCharacterState(Character.State.Free);
+            _character.GetComponent<NPCAI>().GoToRandomPoint();
+            throw new Exception("There is no ally town");
         }
         
     }

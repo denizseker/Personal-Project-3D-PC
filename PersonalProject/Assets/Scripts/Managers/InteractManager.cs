@@ -10,9 +10,33 @@ public class InteractManager : MonoBehaviour
     public GameObject interactedCharacter;
     public GameObject player;
 
+    public List<GameObject> selectedObjects = new List<GameObject>();
+
     private void Awake()
     {
         Instance = this;
+        Instance.player = GameObject.FindWithTag("Player");
+    }
+
+    public void SelectObject(GameObject _selectedObject)
+    {
+        ClearSelectedObjects();
+        Instance.selectedObjects.Add(_selectedObject);
+        Instance.player.GetComponent<PlayerController>().clickedTarget = _selectedObject;
+        _selectedObject.GetComponent<MouseInteraction>().ringEffect.SetActive(true);
+        _selectedObject.GetComponent<MouseInteraction>().isSelected = true;
+    }
+
+    public void ClearSelectedObjects()
+    {
+        //If we have a clicked object already
+        if (Instance.selectedObjects.Count > 0)
+        {
+            player.GetComponent<PlayerController>().clickedTarget = null;
+            Instance.selectedObjects[0].GetComponent<MouseInteraction>().ringEffect.SetActive(false);
+            Instance.selectedObjects[0].GetComponent<MouseInteraction>().isSelected = false;
+            Instance.selectedObjects.Clear();
+        }
     }
 
     public void TakeDataActivateCharacterInteractPanel(GameObject _characterObj, GameObject _playerObj)

@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
                     ClearClickedTarget();
                     //User clicked terrain for move so we are clearing selected objects.
-                    UIManager.Instance.ClearSelectedObjects(gameObject);
+                    InteractManager.Instance.ClearSelectedObjects();
 
                     if (clickEffect != null)
                     { Instantiate(clickEffect, hit.point + new Vector3(0, 0.1f, 0), clickEffect.transform.rotation); }
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
     {
         clickedTarget = null;
         isMovingToTarget = false;
-        UIManager.Instance.ClearSelectedObjects(gameObject);
+        InteractManager.Instance.ClearSelectedObjects();
     }
     public void StopAgent()
     {
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            CameraManager.Instance.MoveToObject(UIManager.Instance.selectedObjects[0]);
+            CameraManager.Instance.MoveToObject(InteractManager.Instance.selectedObjects[0]);
         }
 
 

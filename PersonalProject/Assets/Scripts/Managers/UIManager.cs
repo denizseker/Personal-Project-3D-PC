@@ -23,25 +23,25 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text InGameHourText;
 
 
-    public List<GameObject> selectedObjects = new List<GameObject>();
+    //public List<GameObject> selectedObjects = new List<GameObject>();
 
     private void Awake()
     {
         Instance = this;
     }
 
-    //Player can click 1 object at same time.
-    public void ClearSelectedObjects(GameObject _playerObj)
-    {
-        //If we have a clicked object already
-        if (Instance.selectedObjects.Count == 1)
-        {
-            _playerObj.GetComponent<PlayerController>().clickedTarget = null;
-            Instance.selectedObjects[0].GetComponent<MouseInteraction>().ringEffect.SetActive(false);
-            Instance.selectedObjects[0].GetComponent<MouseInteraction>().isSelected = false;
-            Instance.selectedObjects.Clear();
-        }
-    }
+
+    //public void ClearSelectedObjects(GameObject _playerObj)
+    //{
+    //    //If we have a clicked object already
+    //    if (Instance.selectedObjects.Count == 1)
+    //    {
+    //        _playerObj.GetComponent<PlayerController>().clickedTarget = null;
+    //        Instance.selectedObjects[0].GetComponent<MouseInteraction>().ringEffect.SetActive(false);
+    //        Instance.selectedObjects[0].GetComponent<MouseInteraction>().isSelected = false;
+    //        Instance.selectedObjects.Clear();
+    //    }
+    //}
 
     private void Update()
     {

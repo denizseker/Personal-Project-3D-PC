@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Settlements = new List<GameObject>();
     public List<GameObject> NPCSoldiers = new List<GameObject>();
 
+
     public GameObject player;
 
     private void Awake() 

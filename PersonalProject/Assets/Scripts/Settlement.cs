@@ -6,6 +6,8 @@ public class Settlement : MonoBehaviour , IInteractable
 {
 
     public string settlementName;
+    public GameObject npcPrefab;
+    public int numberOfNPC;
     public int manPower;
     public int manPowerLimit;
     public ClanManager.ENUM_Clan enumClan;
@@ -26,6 +28,11 @@ public class Settlement : MonoBehaviour , IInteractable
         gameObject.name = (string.Format("[{0}] [{1}]", clan.clanName, settlementName));
         army = GetComponent<Army>();
         clan.AddSettlement(gameObject);
+    }
+
+    private void Start()
+    {
+        CreateNPC();
     }
 
     private void GetClanWithEnum()
@@ -74,6 +81,18 @@ public class Settlement : MonoBehaviour , IInteractable
         }
     }
 
+
+    public void CreateNPC()
+    {
+        for (int i = 0; i < numberOfNPC; i++)
+        {
+            Vector3 insPos = gameObject.GetComponentInChildren<GetPatrolPoint>().GetPatrolPostition();
+            GameObject npc = Instantiate(npcPrefab, insPos,transform.rotation);
+            npc.GetComponent<Character>().clan = clan;
+        }
+        
+    }
+
     //Adding characters gameobject to list
     public void AddCharacter(GameObject _character)
     {
@@ -120,7 +139,8 @@ public class Settlement : MonoBehaviour , IInteractable
 
     public void Click()
     {
-        Debug.Log("Settlement");
+        InteractManager.Instance.SelectObject(gameObject);
+        InteractManager.Instance.player.GetComponent<PlayerController>().MoveToTarget(gameObject);
     }
 
     public void MouseEnter()

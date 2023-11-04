@@ -447,8 +447,8 @@ MonoBehaviour:
   charPrev: {fileID: 21300000, guid: ca916dcda015e2e4aa705c2de2e6fec5, type: 3}
   interactedCharacter: {fileID: 0}
   characterName: Lord Tugisko
-  enumClan: 1
-  patrolSettlement: {fileID: 0}
+  isVisible: 1
+  enumClan: 2
   patrolPoint: {x: 0, y: 0, z: 0}
   drawLineandPoint: 0
 --- !u!114 &1493034667984823897
@@ -463,8 +463,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56abf0c8751e875458921ba63f3365e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinArmySize: 45
-  MaxArmySize: 75
+  MinArmySize: 25
+  MaxArmySize: 115
   SoldierSO:
   - {fileID: 11400000, guid: 51c8a1cc797f88447b49d430e7b2ba86, type: 2}
   - {fileID: 11400000, guid: 328e2868209ae734583a995fd1b49aa9, type: 2}
@@ -1185,7 +1185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1977149fde3a85d4ca84e2a2141a2566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelCanvasGroup: {fileID: 2912854361978012295}
   fadeDuration: 1
 --- !u!114 &7888302444450315247
 MonoBehaviour:

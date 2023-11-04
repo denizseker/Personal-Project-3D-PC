@@ -28,10 +28,10 @@ public class DetectArea : MonoBehaviour
     //    if (npcAI != null) npcAI.DetectAreaOnTriggerEnter(other);
     //}
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (npcAI != null) npcAI.DetectAreaOnTriggerEnter(other);
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (npcAI != null) npcAI.DetectAreaOnTriggerEnter(other);
+    }
 
     private void OnTriggerExit(Collider other)
     {
