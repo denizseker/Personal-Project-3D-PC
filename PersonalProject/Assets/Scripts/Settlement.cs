@@ -32,7 +32,7 @@ public class Settlement : MonoBehaviour , IInteractable
 
     private void Start()
     {
-        CreateNPC();
+        //CreateNPC();
     }
 
     private void GetClanWithEnum()

@@ -30,9 +30,16 @@ public class CheckVisibility : MonoBehaviour
         canvasObj.SetActive(true);
         modelObj.SetActive(true);
     }
-    private void SetOff()
+    public void InstaSetOff()
     {
-        StartCoroutine(WaitTillFadeOut());
+        character.isVisible = false;
+        animator.enabled = false;
+        canvasObj.SetActive(false);
+        modelObj.SetActive(false);
+    }
+    public void SetOff()
+    {
+        //StartCoroutine(WaitTillFadeOut());
     }
 
     public void InteractAreaOnTriggerStay(Collider other)
@@ -54,7 +61,8 @@ public class CheckVisibility : MonoBehaviour
     {
         if (other.tag == "VisibleArea")
         {
-            SetOff();
+            InstaSetOff();
+            //SetOff();
         }
     }
 
@@ -62,10 +70,7 @@ public class CheckVisibility : MonoBehaviour
     {
         fadeScript.StartFadeOut();
         yield return new WaitForSecondsRealtime(0.8f);
-        character.isVisible = false;
-        animator.enabled = false;
-        canvasObj.SetActive(false);
-        modelObj.SetActive(false);
+        InstaSetOff();
     }
 
     //private void OnBecameVisible()

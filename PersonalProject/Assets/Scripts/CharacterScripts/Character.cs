@@ -48,7 +48,6 @@ public class Character : MonoBehaviour , IInteractable
         clan.AddMember(gameObject);
         characterParty.Add(this);
         speed = agent.speed;
-        
     }
 
     private void GetClanWithEnum()
