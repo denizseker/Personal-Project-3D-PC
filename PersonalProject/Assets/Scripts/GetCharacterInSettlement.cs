@@ -38,6 +38,7 @@ public class GetCharacterInSettlement : MonoBehaviour
                 //if player clicked this
                 if(interactedCharacter.GetComponent<PlayerController>().clickedTarget == settlement.gameObject)
                 {
+                    interactedCharacter.GetComponent<PlayerController>().StopAgent();
                     settlement.AddCharacter(interactedCharacter.gameObject);
                     interactedCharacter.town = settlement.gameObject;
                     CameraManager.Instance.MoveToObject(settlement.gameObject);

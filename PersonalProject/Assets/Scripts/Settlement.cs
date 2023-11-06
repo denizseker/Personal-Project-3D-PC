@@ -96,12 +96,13 @@ public class Settlement : MonoBehaviour , IInteractable
     //Adding characters gameobject to list
     public void AddCharacter(GameObject _character)
     {
+        Debug.Log(_character.gameObject.transform.position);
         //Adding character to settlement character list.
         characterInTown.Add(_character);
         //Characterintown canvas png enable
         worldSpaceInSettlementUI[characterInTown.Count - 1].SetActive(true);
         //teleporting character to settlement town
-        _character.transform.position = GetComponentInChildren<GetCharacterInSettlement>().transform.position;
+        _character.transform.position = transform.position;
         //setting character for town
         _character.GetComponent<Character>().EnterSettlement();
     }
