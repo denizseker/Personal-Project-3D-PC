@@ -39,7 +39,7 @@ public class CheckVisibility : MonoBehaviour
     }
     public void SetOff()
     {
-        //StartCoroutine(WaitTillFadeOut());
+        StartCoroutine(WaitTillFadeOut());
     }
 
     public void InteractAreaOnTriggerStay(Collider other)
@@ -61,8 +61,8 @@ public class CheckVisibility : MonoBehaviour
     {
         if (other.tag == "VisibleArea")
         {
-            InstaSetOff();
-            //SetOff();
+            //InstaSetOff();
+            SetOff();
         }
     }
 

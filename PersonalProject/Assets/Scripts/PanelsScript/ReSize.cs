@@ -19,13 +19,10 @@ public class ReSize : MonoBehaviour
     {
         // Panel ile kamera arasýndaki mevcut uzaklýðý hesapla
         float currentDistance = Vector3.Distance(panelTransform.position, mainCamera.transform.position);
-
         // Normalized bir deðer elde et
         float normalizedDistance = Mathf.Clamp01((currentDistance - baseDistance) / (maxScale * baseDistance - baseDistance));
-
         // Ölçeði hesapla
         float newScale = Mathf.Lerp(minScale, maxScale, normalizedDistance);
-
         // Ölçeði güncelle
         panelTransform.localScale = Vector3.one * newScale;
     }
