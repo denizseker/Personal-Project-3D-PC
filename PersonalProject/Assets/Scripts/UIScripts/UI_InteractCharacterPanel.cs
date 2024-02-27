@@ -7,6 +7,7 @@ public class UI_InteractCharacterPanel : MonoBehaviour
     [SerializeField] private GameObject leaveButton;
     [SerializeField] private GameObject enterWarButton;
     [SerializeField] private GameObject giveOrderButton;
+    [SerializeField] private GameObject sendToTownButton;
     [SerializeField] private CharacterPrevSlotHandler charPrevSlot;
     [HideInInspector] public bool isPanelActive = false;
 
@@ -45,6 +46,7 @@ public class UI_InteractCharacterPanel : MonoBehaviour
         leaveButton.SetActive(true);
         enterWarButton.SetActive(false);
         giveOrderButton.SetActive(true);
+        sendToTownButton.SetActive(true);
     }
    
 

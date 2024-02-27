@@ -14,16 +14,26 @@ public class NPCAI : MonoBehaviour
     [SerializeField] private GameObject warHappening;
 
 
-    //public class Task
-    //{
-    //    private GameObject target;
-    //    private Character.State testState;
-    //    public Task(GameObject _target,Character.State _testState)
-    //    {
-    //        target = _target;
-    //        testState = _testState;
-    //    }
-    //}
+    public class Task
+    {
+        //public List<Task> taskList = new List<Task>();
+        //private GameObject target;
+        //private Character.State testState;
+        //public void CreateTask(GameObject _target, Character.State _testState)
+        //{
+        //    target = _target;
+        //    testState = _testState;
+        //    taskList.Add(this);
+        //    Debug.Log(taskList[0].target.name + " " + taskList[0].testState);
+        //}
+        //public void ExecuteTask()
+        //{
+        //    if(taskList.Count > 0)
+        //    {
+
+        //    }
+        //}
+    }
 
     private void Awake()
     {
@@ -116,6 +126,22 @@ public class NPCAI : MonoBehaviour
             }
         }
         
+    }
+
+    public void GoToClosestAllyTown()
+    {
+        if (!NPC.agent.hasPath)
+        {
+            NPC.town = NPC.clan.FindClosestAllySettlement(NPC);
+            if (NPC.town == null)
+            {
+                Debug.Log("No Ally Town Available");
+                return;
+            }
+            Vector3 townPosition = NPC.town.GetComponentInChildren<GetCharacterInSettlement>().transform.position;
+            NPC.agent.destination = townPosition;
+            NPC.SetCharacterState(Character.State.GoingToSettlement);
+        }
     }
 
     public void FleeToTown()
@@ -342,6 +368,7 @@ public class NPCAI : MonoBehaviour
     }
     public void LeaveInteraction()
     {
+        StopAndReset();
         NPC.SetCharacterState(Character.State.Patroling);
     }
     private IEnumerator RecruitArmy()

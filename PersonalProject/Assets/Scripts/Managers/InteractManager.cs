@@ -67,6 +67,13 @@ public class InteractManager : MonoBehaviour
         Instance.interactedCharacter.GetComponent<NPCAI>().SpawnWarHandler(player.GetComponent<Character>());
     }
 
+    public void SendToTownCommand()
+    {
+        NPCAI _interactedCharacterAI = interactedCharacter.GetComponent<NPCAI>();
+        _interactedCharacterAI.GoToClosestAllyTown();
+        player.GetComponent<Character>().SetCharacterState(Character.State.Free);
+    }
+
     public void SendToThePointCommand()
     {
         NPCAI _interactedCharacterAI = interactedCharacter.GetComponent<NPCAI>();
@@ -75,7 +82,7 @@ public class InteractManager : MonoBehaviour
         _interactedCharacterAI.GoToRandomPoint();
     }
 
-    //add offset for follow
+    //TODO: add offset for follow
     public void FollowCommand()
     {
         NPCAI _interactedCharacterAI = interactedCharacter.GetComponent<NPCAI>();
@@ -83,12 +90,17 @@ public class InteractManager : MonoBehaviour
         _interactedCharacterAI.FollowTarget(player);
     }
 
-    public void EndInteractionCommand()
+    public void LeaveInteractionCommand()
     {
         NPCAI _interactedCharacterAI = interactedCharacter.GetComponent<NPCAI>();
 
-        _interactedCharacterAI.LeaveInteraction();
-        player.GetComponent<Character>().SetCharacterState(Character.State.Free);
+        //If npc is not in settlement
+        if (!_interactedCharacterAI.NPC.IsCharacterState(Character.State.InSettlement))
+        {
+            _interactedCharacterAI.LeaveInteraction();
+            player.GetComponent<Character>().SetCharacterState(Character.State.Free);
+        }
+        
     }
 
     public void LeaveSettlementCommand()

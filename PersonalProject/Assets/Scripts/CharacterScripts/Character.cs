@@ -19,6 +19,7 @@ public class Character : MonoBehaviour , IInteractable
         GoingToWar,
         InWar,
         Following,
+        GoingToSettlement,
     }
 
     //Soldiers current state.
@@ -134,7 +135,8 @@ public class Character : MonoBehaviour , IInteractable
         if (!isActive)
         {
             gameObject.GetComponentInChildren<MouseInteraction>().OnOffCollider();
-            for (int i = 0; i < gameObject.transform.childCount; i++)
+            //count-1 cause dont want to disable/enable selected.png
+            for (int i = 0; i < gameObject.transform.childCount-1; i++)
             {
                 gameObject.transform.GetChild(i).gameObject.SetActive(false);
             }
@@ -147,7 +149,7 @@ public class Character : MonoBehaviour , IInteractable
         else
         {
             gameObject.GetComponentInChildren<MouseInteraction>().OnOffCollider();
-            for (int i = 0; i < gameObject.transform.childCount; i++)
+            for (int i = 0; i < gameObject.transform.childCount-1; i++)
             {
                 gameObject.transform.GetChild(i).gameObject.SetActive(true);
             }

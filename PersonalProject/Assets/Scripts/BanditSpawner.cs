@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class BanditSpawner : MonoBehaviour
@@ -22,4 +23,11 @@ public class BanditSpawner : MonoBehaviour
 
         clan = ClanManager.Instance.None;
     }
+
+    private void OnDrawGizmos()
+    {
+        Handles.Label(transform.position + new Vector3(0, 1, 0), "Bandit Spawn Point");
+        Gizmos.DrawCube(transform.position, new Vector3(1,1,1));
+    }
+
 }

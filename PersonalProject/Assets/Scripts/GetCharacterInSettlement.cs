@@ -18,7 +18,23 @@ public class GetCharacterInSettlement : MonoBehaviour
         {
             Character interactedCharacter = other.GetComponentInParent<Character>();
 
-            if(interactedCharacter.IsCharacterState(Character.State.Defeated))
+            //if (interactedCharacter.IsCharacterState(Character.State.Defeated))
+            //{
+            //    //Adding characters gameobject to settlement characterintown list.
+            //    settlement.AddCharacter(interactedCharacter.gameObject);
+            //    //If panel is active mean player is in any settlement
+            //    if (UIManager.Instance.UI_inSettlementPanel.isPanelActive)
+            //    {
+            //        //if in this settlement
+            //        if (InteractManager.Instance.interactedSettlement == settlement.gameObject)
+            //        {
+            //            UIManager.Instance.UI_inSettlementPanel.UpdateCharPrev();
+            //        }
+            //    }
+            //}
+
+            //AI coming want to enter town. (if defeated or just want to enter)
+            if (interactedCharacter.IsCharacterState(Character.State.GoingToSettlement,Character.State.Defeated) && interactedCharacter.town == settlement.gameObject)
             {
                 //Adding characters gameobject to settlement characterintown list.
                 settlement.AddCharacter(interactedCharacter.gameObject);
@@ -26,7 +42,7 @@ public class GetCharacterInSettlement : MonoBehaviour
                 if (UIManager.Instance.UI_inSettlementPanel.isPanelActive)
                 {
                     //if in this settlement
-                    if(InteractManager.Instance.interactedSettlement == settlement.gameObject)
+                    if (InteractManager.Instance.interactedSettlement == settlement.gameObject)
                     {
                         UIManager.Instance.UI_inSettlementPanel.UpdateCharPrev();
                     }
