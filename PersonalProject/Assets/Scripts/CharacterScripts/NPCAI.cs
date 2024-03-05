@@ -13,27 +13,7 @@ public class NPCAI : MonoBehaviour
     private GameObject targetDestination;
     [SerializeField] private GameObject warHappening;
 
-
-    public class Task
-    {
-        //public List<Task> taskList = new List<Task>();
-        //private GameObject target;
-        //private Character.State testState;
-        //public void CreateTask(GameObject _target, Character.State _testState)
-        //{
-        //    target = _target;
-        //    testState = _testState;
-        //    taskList.Add(this);
-        //    Debug.Log(taskList[0].target.name + " " + taskList[0].testState);
-        //}
-        //public void ExecuteTask()
-        //{
-        //    if(taskList.Count > 0)
-        //    {
-
-        //    }
-        //}
-    }
+    public List<Task> taskList = new List<Task>();
 
     private void Awake()
     {
@@ -484,6 +464,15 @@ public class NPCAI : MonoBehaviour
     private void Update()
     {
         AILogic();
+
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Chase newTask = new Chase(NPC,NPC.gameObject, NPC.currentState);
+            taskList.Add(newTask);
+            newTask.ExecuteTask();
+        }
+
         ////AI checking logic every x frame
         //if (timer % interval == 0 && NPC.currentState != Character.State.InInteraction)
         //{
