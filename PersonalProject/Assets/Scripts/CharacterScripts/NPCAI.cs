@@ -13,7 +13,6 @@ public class NPCAI : MonoBehaviour
     private GameObject targetDestination;
     [SerializeField] private GameObject warHappening;
 
-    public List<Task> taskList = new List<Task>();
 
     private void Awake()
     {
@@ -468,9 +467,10 @@ public class NPCAI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Chase newTask = new Chase(NPC,NPC.gameObject, NPC.currentState);
-            taskList.Add(newTask);
-            newTask.ExecuteTask();
+            new GoToTarget(NPC,NPC.gameObject, NPC.currentState);
+            new GoToTarget(NPC, NPC.town, NPC.currentState);
+            Debug.Log(NPC.taskList[0].TargetObject);
+            Debug.Log(NPC.taskList[1].TargetObject);
         }
 
         ////AI checking logic every x frame
