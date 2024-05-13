@@ -17,6 +17,11 @@ public class NPCAI : MonoBehaviour
     private void Awake()
     {
         NPC = GetComponent<NPC>();
+        
+    }
+    private void Start()
+    {
+        SetTown();
     }
 
     private void Chase(Character _targetCharacter)
@@ -331,9 +336,9 @@ public class NPCAI : MonoBehaviour
     {
         if (!NPC.agent.hasPath)
         {
-            SetTown();
+            Debug.Log(NPC.agent.hasPath);
             Vector3 patrolPoint = NPC.town.GetComponentInChildren<GetPatrolPoint>().GetPatrolPostition();
-            NPC.agent.destination = patrolPoint;
+            NPC.agent.SetDestination(patrolPoint);
             NPC.GetPatrolPositionForDrawing(patrolPoint,true);
             NPC.SetCharacterState(Character.State.Patroling);
         }
@@ -424,40 +429,20 @@ public class NPCAI : MonoBehaviour
             default:
                 break;
         }
+    }
 
-        ////AI Logic
-        //if (NPC.currentState == Character.State.Patroling)
-        //{
-        //    GoPatrolTown();
-        //}
-        //else if (NPC.currentState == Character.State.Fleeing)
-        //{
-        //    RunFromEnemy(NPC.interactedCharacter);
-        //}
-        //else if (NPC.currentState == Character.State.Chasing)
-        //{
-        //    Chase(NPC.interactedCharacter);
-        //}
-        //else if (NPC.currentState == Character.State.Defeated)
-        //{
-        //    FleeToTown();
-        //}
-        //else if (NPC.currentState == Character.State.InSettlement)
-        //{
-        //    if (NPC.army.armyTotalTroops < 10)
-        //    {
-        //        StartCoroutine(RecruitArmy());
-        //        NPC.SetCharacterState(Character.State.Recruiting);
-        //    }
-        //}
-        //else if (NPC.currentState == Character.State.GoingToWar)
-        //{
-        //    GoToWarDestination(targetDestination);
-        //}
-        //else if(NPC.currentState == Character.State.Following)
-        //{
-        //    FollowTarget(targetDestination);
-        //}
+
+    public void InteractWithCharacter(GameObject _targetObject)
+    {
+        Player _player = _targetObject.GetComponent<Player>();
+        PlayerController _playerController = _player.GetComponent<PlayerController>();
+        StopAgent();
+        _playerController.StopAgent();
+        NPC.SetCharacterState(Character.State.InInteraction);
+        _player.SetCharacterState(Character.State.InInteraction);
+        CameraManager.Instance.MoveToObject(_player.gameObject);
+        InteractManager.Instance.TakeDataActivateCharacterInteractPanel(NPC.gameObject, _player.gameObject);
+        _playerController.ClearClickedTarget();
     }
 
     private void Update()
@@ -465,13 +450,26 @@ public class NPCAI : MonoBehaviour
         AILogic();
 
 
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            new GoToTarget(NPC,NPC.gameObject, NPC.currentState);
-            new GoToTarget(NPC, NPC.town, NPC.currentState);
-            Debug.Log(NPC.taskList[0].TargetObject);
-            Debug.Log(NPC.taskList[1].TargetObject);
-        }
+        //if(NPC.taskList.Count > 0)
+        //{
+
+        //    NPC.taskList[0].ExecuteTask();
+
+        //    //for (int i = 0; i < NPC.taskList.Count; i++)
+        //    //{
+        //    //    NPC.currentTask = NPC.taskList[i];
+        //    //    return;
+        //    //}
+        //}
+
+
+        //if (Input.GetKeyDown(KeyCode.B))
+        //{
+        //    SetTown();
+        //    GameObject player = GameObject.FindGameObjectWithTag("Player");
+        //    //new GoToTarget(NPC, player, NPC.currentState);
+        //    new GoToTarget(NPC, NPC.town, NPC.currentState);
+        //}
 
         ////AI checking logic every x frame
         //if (timer % interval == 0 && NPC.currentState != Character.State.InInteraction)

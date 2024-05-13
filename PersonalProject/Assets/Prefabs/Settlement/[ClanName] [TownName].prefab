@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448992681}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 1.94, z: 13.77}
+  m_LocalPosition: {x: 0.25, y: 0, z: 13.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7901,13 +7901,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87f935ceae9e354195179c2f0c46a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settlementName: JADOLI
+  settlementName: DENEME10
   npcPrefab: {fileID: 1493034667984823874, guid: 094e4a2dcec2d9849865ba39ce58053f,
     type: 3}
   numberOfNPC: 30
   manPower: 150
   manPowerLimit: 300
-  enumClan: 1
+  enumClan: 0
   isHavePatrol: 0
   startCollectManPower: 0
   isStartedCollectManPower: 0

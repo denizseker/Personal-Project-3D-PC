@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public enum State
     Done,
 }
 
-public interface Task
+public interface ITask
 {
     NPC NPC { get; set; }
     State TaskState { get; set; }
@@ -25,7 +26,7 @@ public interface Task
     public void DeleteTask();
 
 }
-public class GoToTarget : Task
+public class GoToTarget : ITask
 {
     public NPC NPC { get; set; }
     public GameObject TargetObject { get; set; }
@@ -39,7 +40,25 @@ public class GoToTarget : Task
 
     public void ExecuteTask()
     {
-        Debug.Log(NPC.gameObject);
+        //Target is town
+        if(TargetObject.GetComponent<Settlement>() != null)
+        {
+            //town door position
+            Vector3 doorPosition = NPC.town.GetComponentInChildren<GetCharacterInSettlement>().transform.position;
+            NPC.agent.SetDestination(doorPosition);
+        }
+        //Target not town
+        else
+        {
+            NPC.agent.SetDestination(TargetObject.transform.position);
+
+            if (NPC.agent.remainingDistance < 3f && !NPC.agent.pathPending)
+            {
+                NPCAI _npcAi = NPC.GetComponent<NPCAI>();
+                _npcAi.InteractWithCharacter(TargetObject);
+                DeleteTask();
+            }
+        }
     }
 
     public void StopTask()
@@ -58,13 +77,14 @@ public class GoToTarget : Task
         TargetObject = _targetObject;
         CharacterState = _characterState;
         TaskState = State.Created;
-        NPC.taskList.Add(this);
+        //NPC.taskList.Add(this);
         TaskState = State.Queued;
 
     }
 
     public void DeleteTask()
     {
-        throw new System.NotImplementedException();
+        TaskState = State.Done;
+        //NPC.taskList.Remove(this);
     }
 }

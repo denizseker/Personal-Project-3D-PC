@@ -11,7 +11,9 @@ public class NPC : Character
     Animator animator;
     //NPCAI using those.
 
-    [HideInInspector] public List<Task> taskList = new List<Task>();
+    //[HideInInspector] public List<ITask> taskList = new List<ITask>();
+    //[HideInInspector] public ITask currentTask;
+
     [HideInInspector] public Vector3 patrolPoint;
     [HideInInspector] public bool drawLineandPoint;
     private void Awake()

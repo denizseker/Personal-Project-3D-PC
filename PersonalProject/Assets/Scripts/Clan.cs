@@ -32,9 +32,19 @@ public class Clan
         //if there is settlement
         if(settlements.Count > 0)
         {
+            float distance;
             GameObject closestSettlement;
-            float distance = Vector3.Distance(settlements[0].transform.position, _character.transform.position);
-            closestSettlement = settlements[0];
+
+            if (_character.town != null)
+            {
+                distance = Vector3.Distance(_character.town.transform.position, _character.transform.position);
+                closestSettlement = _character.town;
+            }
+            else
+            {
+                distance = Vector3.Distance(settlements[0].transform.position, _character.transform.position);
+                closestSettlement = settlements[0];
+            }
 
             for (int i = 0; i < settlements.Count; i++)
             {
@@ -48,7 +58,9 @@ public class Clan
             }
 
             return closestSettlement;
+            
         }
+        //clan dont have any ally town
         else
         {
             _character.SetCharacterState(Character.State.Free);

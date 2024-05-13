@@ -1395,6 +1395,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8729406280781208755, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
         type: 3}
+      propertyPath: enumClan
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729406280781208755, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
+        type: 3}
       propertyPath: settlementName
       value: DENEME1
       objectReference: {fileID: 0}
@@ -3770,7 +3775,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 500
+  far clip plane: 2000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -7276,12 +7281,12 @@ PrefabInstance:
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: enumClan
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: characterName
-      value: Lord Xeloria
+      value: Lord Y
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -7291,7 +7296,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22
+      value: -42.5
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -7301,7 +7306,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -38
+      value: -69.6
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -12243,6 +12248,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1895280933}
     m_Modifications:
+    - target: {fileID: 448992682, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 8729406280781208752, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
         type: 3}
       propertyPath: m_RootOrder
@@ -12302,21 +12311,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[ClanName] [TownName] (7)'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8729406280781208754, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8729406280781208755, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
-        type: 3}
-      propertyPath: enumClan
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8729406280781208755, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8,
-        type: 3}
-      propertyPath: settlementName
-      value: DENEME10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fa3c7e9ee2a1384cb6480b7bdca6da8, type: 3}
@@ -22632,7 +22626,7 @@ PrefabInstance:
     - target: {fileID: 8011216024185143521, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
       propertyPath: characterName
-      value: Lord TolgaKaranlikoglu
+      value: Lord X
       objectReference: {fileID: 0}
     - target: {fileID: 8434928208128504208, guid: 5e27f8d9627c2b148951ab3ac4a32164,
         type: 3}
@@ -22730,6 +22724,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1493034667984823877, guid: 094e4a2dcec2d9849865ba39ce58053f,
+        type: 3}
+      propertyPath: enumClan
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_RootOrder
@@ -22738,7 +22737,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -124.74
+      value: -408
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
@@ -22748,7 +22747,7 @@ PrefabInstance:
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.82
+      value: 632
       objectReference: {fileID: 0}
     - target: {fileID: 2302328635650243832, guid: 094e4a2dcec2d9849865ba39ce58053f,
         type: 3}

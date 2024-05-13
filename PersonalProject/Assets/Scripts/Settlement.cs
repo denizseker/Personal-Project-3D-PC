@@ -96,7 +96,6 @@ public class Settlement : MonoBehaviour , IInteractable
     //Adding characters gameobject to list
     public void AddCharacter(GameObject _character)
     {
-        Debug.Log(_character.gameObject.transform.position);
         //Adding character to settlement character list.
         characterInTown.Add(_character);
         //Characterintown canvas png enable

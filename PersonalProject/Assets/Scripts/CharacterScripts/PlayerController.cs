@@ -92,10 +92,10 @@ public class PlayerController : MonoBehaviour
         SetAnimations();
 
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            CameraManager.Instance.MoveToObject(InteractManager.Instance.selectedObjects[0]);
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    CameraManager.Instance.MoveToObject(InteractManager.Instance.selectedObjects[0]);
+        //}
 
 
         //Cant click if state is those
