@@ -26,7 +26,7 @@ public class BanditSpawner : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Handles.Label(transform.position + new Vector3(0, 1, 0), "Bandit Spawn Point");
+        //Handles.Label(transform.position + new Vector3(0, 1, 0), "Bandit Spawn Point");
         Gizmos.DrawCube(transform.position, new Vector3(1,1,1));
     }
 

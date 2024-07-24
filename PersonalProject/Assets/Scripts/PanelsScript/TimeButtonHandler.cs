@@ -48,16 +48,19 @@ public class TimeButtonHandler : MonoBehaviour
         {
             int scale = 1;
             AdjustButton(scale);
+            UIManager.Instance.UpdateTimeScaleText();
         }
         if (Input.GetKeyDown("2"))
         {
             int scale = 2;
             AdjustButton(scale);
+            UIManager.Instance.UpdateTimeScaleText();
         }
         if (Input.GetKeyDown("3"))
         {
             int scale = 3;
             AdjustButton(scale);
+            UIManager.Instance.UpdateTimeScaleText();
         }
     }
 

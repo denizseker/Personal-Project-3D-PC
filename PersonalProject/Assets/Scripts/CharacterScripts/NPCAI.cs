@@ -140,7 +140,7 @@ public class NPCAI : MonoBehaviour
             }
             Vector3 townPosition = NPC.town.GetComponentInChildren<GetCharacterInSettlement>().transform.position;
             NPC.agent.destination = townPosition;
-            NPC.SetCharacterState(Character.State.Defeated);
+            //NPC.SetCharacterState(Character.State.Defeated);
         } 
     }
 
@@ -336,7 +336,6 @@ public class NPCAI : MonoBehaviour
     {
         if (!NPC.agent.hasPath)
         {
-            Debug.Log(NPC.agent.hasPath);
             Vector3 patrolPoint = NPC.town.GetComponentInChildren<GetPatrolPoint>().GetPatrolPostition();
             NPC.agent.SetDestination(patrolPoint);
             NPC.GetPatrolPositionForDrawing(patrolPoint,true);
@@ -405,14 +404,15 @@ public class NPCAI : MonoBehaviour
                 break;
 
             case Character.State.InSettlement:
-                if (NPC.army.armyTotalTroops < 10)
+                if (NPC.army.armyTotalTroops <= 10)
                 {
                     StartCoroutine(RecruitArmy());
-                    NPC.SetCharacterState(Character.State.Recruiting);
+                    //NPC.SetCharacterState(Character.State.Recruiting);
                 }
                 break;
 
             case Character.State.Recruiting:
+                FleeToTown();
                 break;
 
             case Character.State.GoingToWar:

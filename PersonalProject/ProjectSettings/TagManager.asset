@@ -15,6 +15,7 @@ TagManager:
   - War
   - InteractArea
   - VisibleArea
+  - UICamera
   layers:
   - Default
   - TransparentFX

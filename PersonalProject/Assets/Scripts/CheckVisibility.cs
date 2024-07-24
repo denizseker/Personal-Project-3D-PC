@@ -20,6 +20,7 @@ public class CheckVisibility : MonoBehaviour
 
     private void Start()
     {
+        
         SetOff();
     }
 

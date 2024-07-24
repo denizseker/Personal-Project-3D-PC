@@ -42,8 +42,7 @@ public class InstantiateManager : MonoBehaviour
                 instantiateList.Add(NPC);
             }
         }
-        npcText.text = instantiateList.Count.ToString();
-        Debug.Log("Done");
+        npcText.text = "Current NPC On Map : " + instantiateList.Count.ToString();
     }
 
     // Update is called once per frame

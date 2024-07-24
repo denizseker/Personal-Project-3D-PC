@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448992681}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 0, z: 13.77}
+  m_LocalPosition: {x: 0.25, y: 0.07, z: 13.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -700,7 +700,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 20.83}
+  m_AnchoredPosition: {x: 0, y: 21}
   m_SizeDelta: {x: 16.56, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1970788796712846410
@@ -6696,8 +6696,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.31999898, y: 0}
-  m_SizeDelta: {x: 7.629999, y: 1.2800003}
+  m_AnchoredPosition: {x: -0.0444, y: 0}
+  m_SizeDelta: {x: 6.9014, y: 1.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6500536131157079613
 CanvasRenderer:
@@ -6774,8 +6774,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 5.02, y: 0}
-  m_SizeDelta: {x: 5.94, y: 1.12}
+  m_AnchoredPosition: {x: 7.24, y: 0}
+  m_SizeDelta: {x: 9.69, y: 1.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6500536131680096648
 CanvasRenderer:
@@ -7875,7 +7875,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8729406280781208754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.322586, y: -16.574728, z: -21.696434}
+  m_LocalPosition: {x: -37.322586, y: 0, z: -21.696434}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7901,7 +7901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87f935ceae9e354195179c2f0c46a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settlementName: DENEME10
+  settlementName: CITY8
   npcPrefab: {fileID: 1493034667984823874, guid: 094e4a2dcec2d9849865ba39ce58053f,
     type: 3}
   numberOfNPC: 30

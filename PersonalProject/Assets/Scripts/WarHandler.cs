@@ -162,7 +162,15 @@ public class WarHandler : MonoBehaviour , IInteractable
         for (int i = 0; i < _party.Count; i++)
         {
             _party[i].ResetTarget();
-            _party[i].SetCharacterState(Character.State.Patroling);
+            if(_party[i].army.armyTotalTroops > 10)
+            {
+                _party[i].SetCharacterState(Character.State.Patroling);
+            }
+            else
+            {
+                _party[i].SetCharacterState(Character.State.Recruiting);
+            }
+            
             _party[i].ChangeColliderState();
 
             if (_party[i].GetType() == typeof(Player))

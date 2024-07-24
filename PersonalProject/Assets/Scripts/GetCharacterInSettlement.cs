@@ -33,8 +33,8 @@ public class GetCharacterInSettlement : MonoBehaviour
             //    }
             //}
 
-            //AI coming want to enter town. (if defeated or just want to enter)
-            if (interactedCharacter.IsCharacterState(Character.State.GoingToSettlement,Character.State.Defeated) && interactedCharacter.town == settlement.gameObject)
+            //AI coming want to enter town. (if defeated, want to recruit or just want to enter)
+            if (interactedCharacter.IsCharacterState(Character.State.GoingToSettlement,Character.State.Defeated, Character.State.Recruiting) && interactedCharacter.town == settlement.gameObject)
             {
                 //Adding characters gameobject to settlement characterintown list.
                 settlement.AddCharacter(interactedCharacter.gameObject);

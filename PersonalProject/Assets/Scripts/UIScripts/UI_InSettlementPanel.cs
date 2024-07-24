@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_InSettlementPanel : MonoBehaviour
 {
     [SerializeField] private CharacterPrevSlotHandler[] settlementPrevSlots;
     [SerializeField] private GameObject charPrevPanel;
     [SerializeField] private GameObject interactPanel;
+    [SerializeField] private Image townClanLogo;
+    [SerializeField] private TMP_Text townNameText;
     [HideInInspector] public bool isPanelActive = false;
 
     public void ResetCharPrev()
@@ -41,6 +45,9 @@ public class UI_InSettlementPanel : MonoBehaviour
         //Panel active
         else
         {
+            Settlement _settlement = InteractManager.Instance.interactedSettlement.GetComponent<Settlement>();
+            townClanLogo.sprite = _settlement.clan.clanLogo;
+            townNameText.text = _settlement.settlementName;
             isPanelActive = true;
             UpdateCharPrev();
             gameObject.SetActive(true);

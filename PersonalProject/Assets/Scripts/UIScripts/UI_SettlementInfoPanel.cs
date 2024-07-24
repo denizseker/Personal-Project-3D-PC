@@ -24,7 +24,7 @@ public class UI_SettlementInfoPanel : MonoBehaviour
         settlementLordText.text = "Sir Test";
         settlementProsperityText.text = "TestValue";
         settlementMilitaText.text = _settlement.manPower.ToString();
-        settlementVillagesText.text = "TestVillage1";
+        //settlementVillagesText.text = "TestVillage1";
         settlementDefendersText.text = (_settlement.army.armyTotalTroops + _settlement.manPower).ToString();
         settlementDefendersOfTownText.text = _settlement.army.armyTotalTroops.ToString();
         settlementMilitaOfTownText.text = _settlement.manPower.ToString();
