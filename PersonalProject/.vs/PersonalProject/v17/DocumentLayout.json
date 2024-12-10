@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Teknogenetik\\Desktop\\Projects\\ProjectX-3D-PC\\PersonalProject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EECF6B15-4990-DDCC-7010-F7236A5DC1D1}|Assembly-CSharp.csproj|c:\\users\\teknogenetik\\desktop\\projects\\projectx-3d-pc\\personalproject\\assets\\scripts\\warhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EECF6B15-4990-DDCC-7010-F7236A5DC1D1}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\warhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WarHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Teknogenetik\\Desktop\\Projects\\ProjectX-3D-PC\\PersonalProject\\Assets\\Scripts\\WarHandler.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\WarHandler.cs",
+              "ToolTip": "C:\\Users\\Teknogenetik\\Desktop\\Projects\\ProjectX-3D-PC\\PersonalProject\\Assets\\Scripts\\WarHandler.cs",
+              "RelativeToolTip": "Assets\\Scripts\\WarHandler.cs",
+              "ViewState": "AgIAAOMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-03T18:09:16.401Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
